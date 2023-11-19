@@ -1,0 +1,346 @@
+.DesktopBetPlacing--back {
+    /* background-color: #a7d8fd; */
+    /* border: solid #a7d8fd; */
+    border-width: 1px 1px 7px;
+}
+
+.DesktopBetPlacing {
+    padding: 0 5px;
+    margin-bottom: 8px;
+    /* background: var(--white); */
+    display: flex;
+    flex-direction: column;
+    /* color: var(--gray); */
+    position: relative;
+}
+
+.DesktopBetPlacing__betName {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000;
+    margin-top: 6px;
+    margin-left: 5px;
+}
+
+.DesktopBetPlacing__row {
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+}
+
+.DesktopBetPlacing__col {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    margin-right: 15px;
+    width: 22.75%;
+}
+
+.f10 {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: rgb(0, 0, 0);
+    padding-left: 11px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+.DesktopBetPlacing__odd {
+    display: flex;
+    margin-left: 5px;
+}
+
+.DesktopBetPlacing__odd__text {
+    height: 25px;
+    display: flex;
+    align-items: center;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #00000087;
+    width: 100%;
+}
+
+.DesktopBetPlacing__stake {
+    width: 28%;
+    margin-right: 8px;
+}
+
+.DesktopBetPlacing .DesktopBetPlacing__col.profit--column {
+    width: 100%;
+    max-width: 79px;
+    overflow: hidden;
+}
+
+.DesktopBetPlacing__col {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    margin-right: 15px;
+    width: 22.75%;
+}
+
+.DesktopBetPlacing .DesktopBetPlacing__col.profit--column .DesktopBetPlacing__odd {
+    align-items: flex-start;
+}
+
+.DesktopBetPlacing .DesktopBetPlacing__col.profit--column .DesktopBetPlacing__odd__text {
+    font-size: 10px;
+    height: 8px;
+}
+
+.DesktopBetPlacing__col-delete {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 20px;
+    margin-left: auto;
+    padding-bottom: 5px;
+}
+
+.DesktopBetPlacing__col-delete-btn {
+    width: 19px;
+    height: 19px;
+    box-shadow: inset -2px -2px 0 #8d3a31;
+    border-radius: 3px;
+    background-color: #b2493e;
+    cursor: pointer;
+    color: white;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.DesktopBetPlacing__row--actions {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 5px;
+    margin-top: 9px;
+    margin-bottom: 6px;
+}
+
+.DesktopBetPlacing__row--actions-row {
+    /* display: flex; */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    gap: 3px;
+
+}
+
+.DesktopBetPlacing__addstake {
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap; */
+    background: #1e8067;
+    width: 24%;
+    height: 28px;
+    box-shadow: inset -2px -3px 0 #016b4f;
+    border-radius: 3px;
+    border: unset;
+    color: #fff;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 20px;
+    /* margin: 0;
+    width: 24.5%;
+    height: 28px;
+    background: #1e8067;
+    box-shadow: inset -2px -3px 0 #016b4f;
+    border-radius: 3px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    border: unset; */
+}
+
+.DesktopBetPlacing__row--actions-row-clear {
+    display: flex;
+    justify-content: end;
+    padding-right: 3px;
+    align-items: center;
+    width: 24%;
+    height: 28px;
+    cursor: pointer;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000;
+}
+
+.DesktopBetPlacing__changedOdds-accept {
+    position: relative;
+    float: right;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    width: 43%;
+    height: 28px;
+    background: #69a57c;
+    box-shadow: inset -2px -2px 0 #497958;
+    border-radius: 3px;
+    margin-top: 8px;
+    cursor: pointer;
+    border: unset;
+}
+
+.Bet-input-field {
+    width: 79px;
+    border: 2px solid #b24a3e;
+    border-radius: 4px;
+    color: #00000099;
+    font-size: 12px;
+    padding: 2px;
+
+}
+
+
+.DesktopBetPlacing-container {
+    overflow: hidden;
+    margin-top: -2px;
+    z-index: 2;
+    position: relative;
+    background-color: #fff;
+    padding: 3px;
+}
+
+.DesktopBetPlacing__topMark {
+    display: flex;
+    margin: 25px 0 7px 7px;
+}
+
+.DesktopBetPlacing__topMark-back {
+    /* background-color: #a7d8fd; */
+    width: 12px;
+    height: 12px;
+}
+
+.DesktopBetPlacing__matchName,
+.DesktopBetPlacing__topMark-title {
+    font-family: "Lato";
+    font-style: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000;
+}
+
+.DesktopBetPlacing__topMark-title {
+    font-weight: 500;
+    margin-left: 4px;
+}
+
+.DesktopBetPlacing__matchName {
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-left: 11px;
+}
+
+.DesktopBetPlacing__matchName {
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-left: 11px;
+}
+
+.DesktopBetPlacing__bottomBtns {
+    display: flex;
+    justify-content: end;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    width: 100%;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.DesktopBetPlacing__bottomBtns-remove {
+    width: 81px;
+    height: 28px;
+    background: #b2493e;
+    box-shadow: inset -2px -2px 0 #8d3a31;
+    border-radius: 3px;
+    margin-right: 13px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #fff;
+    border: unset;
+}
+
+.DesktopBetPlacing__bottomBtns-placeBet {
+    width: 75px;
+    height: 28px;
+    color: #fff;
+    margin-right: 13px;
+    background-color: #5c996f;
+    box-shadow: inset -2px -2px 0 #497958;
+    border-radius: 3px;
+    border-bottom: 1px solid #497958;
+    border-right: 1px solid #497958;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border: unset;
+}
+
+.DesktopBetPlacing__confirm {
+    display: flex;
+    justify-content: start;
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.DesktopBetPlacing__confirm-checkbox {
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 2px solid #ddd;
+    box-sizing: border-box;
+    margin-right: 2px;
+}
+
+.DesktopBetPlacing__confirm-title {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000;
+}

@@ -1,0 +1,94 @@
+import { useEffect, useState } from "react";
+import "./OpenbetsForMobile.css"
+// import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useUnsettledBetMutation } from "../../../state/apis/main/apiSlice";
+import { useNavigate } from "react-router-dom";
+const OpenbetsForMobile = () => {
+  const [Show, setShow] = useState(false)
+  const handleMainScorll = () => {
+    if (Show === false) {
+      setShow(true)
+    } else {
+      setShow(false)
+
+    }
+  }
+  const [triger, { data: unSettledBet }] = useUnsettledBetMutation();
+  console.log(unSettledBet?.data?.dataList, "unSettledBet");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (unSettledBet?.data?.dataList !== "") {
+      setShow(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    let data = {
+      "betType": 1,
+      "index": 0,
+      "noOfRecords": 5,
+      "sportType": 1,
+      "isDeleted": "false"
+    }
+    triger(data)
+  }, [])
+  // https://api.247365.exchange/admin-new-apis/enduser/unsettled-bet
+  // {"betType":1,"index":0,"noOfRecords":5,"sportType":1,"isDeleted":"false"}
+  return (
+    <div className="OpenBetsList">
+
+      <div className="Open_bets_Name">
+        Open Bets
+      </div>
+
+      <div className="OpenBetsList__title">
+        <span className="OpenBetsList__title__text">Matched Bets</span>
+        <KeyboardArrowDownIcon fontSize="large" style={{
+          color: "black",
+          width: "10%",
+          fontSize: "20px",
+          padding: "0px",
+          rotate: Show === true ? "180deg" : ""
+        }} onClick={handleMainScorll} />
+      </div>
+      {Show === true ?
+        <div className="OpenBetsList__content">
+          <div className="OpenBetsItem nomatch">
+            {unSettledBet?.data?.dataList?.length > 0 ?
+
+              unSettledBet?.data?.dataList.map((item: any) =>
+
+                <div className="OpenBetUnamteData" >
+                  <div className="OpenBetUnamteData_Firts">
+                    <span className="OpenBetUnamteData_Back" style={{ color: item?.isback === true ? "#2d8ad1" : "#ef819a" }} onClick={() => navigate(`/match-details/${item?.matchId}`)}> {item?.isback === true ? "Back" : "Lay"} {item?.isback === true ? "Yes" : "No"}  for {item?.amount} @ {item?.rate} to Win {item?.pnl}</span>
+                  </div>
+
+                  <div className="OpenBetUnamteData_Second">
+                    <span className="OpenBetUnamteData_down_details" style={{ fontWeight: "700" }}>{item?.eventName}</span>
+
+                    <span className="OpenBetUnamteData_down_details"><span style={{ fontWeight: "700" }}>
+                      Placed:
+                    </span>
+                      <span style={{ fontWeight: "400" }}>
+                        {item?.time}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              )
+              :
+              <> You have no <span className="lowercase">Matched Bets</span> </>
+            }
+
+          </div>
+        </div>
+        : ""
+      }
+    </div>
+
+  )
+}
+
+export default OpenbetsForMobile

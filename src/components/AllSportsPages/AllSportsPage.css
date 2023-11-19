@@ -1,0 +1,190 @@
+.favourites-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px 10px;
+    /* padding: 10px 0; */
+    border-bottom: 1px solid rgba(15, 35, 39, .4);
+}
+
+.sportsPage-headerBet {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #142326;
+}
+
+.sportsPage-subHeader {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px 10px;
+    padding-left: 5px;
+    color: #142326;
+}
+
+.sportsPage-subHeader-players {
+    width: calc(50% - 17px);
+    display: flex;
+}
+
+.heading-data {
+    width: 33.3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: white;
+    height: 42px;
+    border: 1px solid #dddddd;
+}
+
+.left-table-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    cursor: pointer;
+}
+
+.starr-iconn {
+    width: 10%;
+    padding: 10px;
+}
+
+.match-namke-game-page {
+    width: 60%;
+    color: #005ba2;
+    /* max-width: 75%; */
+    font-size: wrw;
+    overflow: hidden;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    font-family: "Lato", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important
+}
+
+.date-time-inplay {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    color: #1d7f1e;
+    justify-content: right;
+    padding: 10px;
+}
+
+.date-time {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+
+}
+
+.left-table-name-mainnn {
+    width: 100%;
+}
+
+.right-table-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.item__back-inner {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+    min-width: 42px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back-color {
+    background-color: #a7d8fd;
+    padding: 13px 0px;
+    border: 1px solid #dddddd;
+}
+
+.lay-color {
+    background-color: #f9c9d4;
+    padding: 13px 0px;
+    border: 1px solid #dddddd;
+}
+
+.button__price {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+}
+
+.odd-button__volume {
+    font-size: 9px;
+    line-height: 11px;
+    min-height: 11px;
+    border: none !important;
+    margin-top: 3px;
+}
+
+.gammmeesss {
+    padding: 10px 0px
+}
+
+.no-data {
+    font-size: 15px;
+    font-weight: 700;
+    color: red;
+}
+
+@media screen and (max-width:1024px) {
+    .not-active {
+        display: none;
+    }
+
+    .Casino_in_MobileNot_show {
+        display: none;
+    }
+
+    .sportsPage-subHeader-players {
+        width: 73%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .left-table-name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        cursor: pointer;
+    }
+
+    .right-table-name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 33%;
+    }
+
+    .starr-iconn {
+        width: 13%;
+        padding: 10px;
+    }
+}

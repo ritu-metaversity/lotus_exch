@@ -1,0 +1,26 @@
+.header_for_backbtn_casino {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+}
+
+.header_for_exitliveCasino {
+    height: 38px;
+    background-color: #1a4e61;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 22px;
+    gap: 33px;
+}
+
+.ArrowBackBtn_gamePage {
+    font-size: "20px";
+}

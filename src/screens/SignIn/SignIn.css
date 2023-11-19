@@ -1,0 +1,265 @@
+@media screen and (max-width: 1024px) {
+    .login-step-wrapper {
+        position: absolute;
+        /* height: 385px; */
+        width: 90%;
+        background: #1e8067;
+        border-radius: 10px;
+        -webkit-animation: popup .5s;
+        animation: popup .5s;
+        position: relative;
+    }
+}
+
+/* 
+@media screen and (max-width: 1024px) {
+.login-step-wrapper {
+        position: absolute;
+        min-height: 354px;
+        padding: 26px 26px 17px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 10px;
+        background: #1e8067;
+
+        -webkit-animation: popup .5s;
+        animation: popup .5s;
+        top: unset;
+        left: unset;
+        transform: unset;
+    }
+} */
+
+.signin_popup_forlogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8f8f8f;
+    overflow: scroll;
+
+}
+
+@media screen and (max-width:1024px) {
+    .signin_popup_forlogin {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ffff;
+        overflow: scroll;
+
+    }
+
+}
+
+.pop-up-content_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: auto;
+    padding: 21px 20px 17px;
+    height: 65px;
+}
+
+.pop-up-content_title-logo {
+    width: 70%;
+    padding: 0px 0px 0px 36px;
+}
+
+.pop-up-content_title-Crose_icon {
+    width: 5%;
+    position: absolute;
+    top: -2px;
+    right: -48px;
+}
+
+.login-step-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 33px 13px 33px;
+
+}
+
+.login-step-content__title {
+    padding-bottom: 20px;
+    width: 100%;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff;
+}
+
+.loginInput_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 5px;
+    gap: 12px;
+    position: relative;
+}
+
+
+.loginInput {
+    width: 100%;
+    height: 45px;
+    background-color: unset;
+    border: unset;
+    border-bottom: 2px solid #f4d820;
+    width: 100%;
+    padding: 10px 9px;
+}
+
+.loginInput::placeholder {
+    color: #fff;
+    opacity: 1;
+    /* Firefox */
+}
+
+.input_show {
+    position: relative;
+}
+
+.pop-up-content__buttons {
+    padding: 11px 0px;
+}
+
+.log_in_btn_btn {
+    background-color: #f4d820;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    height: 40px;
+    border: unset;
+    width: 100%;
+    padding: 0px 111px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: green;
+    cursor: pointer;
+}
+
+.register-button-link {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    height: 40px;
+    border: unset;
+    width: 100%;
+    padding: 0px 89px;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.eyscloseeyelcoe {
+    background-color: unset;
+    border: unset;
+    position: absolute;
+    bottom: 10px;
+    right: 17px;
+    color: #f4d820;
+
+}
+
+@media screen and (max-width : 1024px) {
+    .login_tabs {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width : 1024px) {
+    .registerBtnHide {
+        display: none !important;
+    }
+}
+
+.login_tabs {
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.sign_up {
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding: 18px;
+}
+
+.login_in {
+    width: 50%;
+    float: right;
+    text-align: center;
+    padding: 18px;
+
+
+}
+
+.inActiveRight {
+    border-radius: 0 10px 0 0;
+    color: #333333;
+    background: #f4d821;
+    box-shadow: inset -2px -4px 7px rgba(0, 0, 0, .25);
+    cursor: pointer;
+}
+
+.inActiveLeft {
+    border-radius: 10px 0 0 0;
+    color: #333333;
+    background: #f4d821;
+    box-shadow: inset -2px -4px 7px rgba(0, 0, 0, .25);
+    height: 60px;
+    cursor: pointer;
+
+}
+
+.inActiveRight {
+    border-radius: 0 10px 0 0;
+    color: #333333;
+    background: #f4d821;
+    box-shadow: inset -2px -4px 7px rgba(0, 0, 0, .25);
+    height: 60px;
+}
+
+
+@media screen and (min-width: 1024px) {
+    .signin_popup_forlogin .MuiBackdrop-root {
+        background-color: #fff !important;
+    }
+
+    .login-step-wrapper {
+        background: #1e8067;
+        position: relative;
+        border-radius: 15px;
+        width: 26%;
+
+    }
+
+    .pop-up-content_title {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .crossBtnLogog {
+        display: none;
+    }
+
+    .pop-up-content_title-logo {
+        padding: unset
+    }
+}
+
+.desk_modal {
+    position: absolute;
+    right: -35px;
+    top: 0px;
+}
+
+@media screen and (max-width:1024px) {
+    .desk_modal {
+        display: none;
+    }
+}

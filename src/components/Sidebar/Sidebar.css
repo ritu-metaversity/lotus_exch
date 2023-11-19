@@ -1,0 +1,30 @@
+.wraper_for_side_bar {
+    height: 61px;
+    width: 171px;
+    background-color: #fff;
+    border: 0.5px solid #ddd;
+    width: 175px;
+    font-family: "Lato";
+    font-weight: 700;
+    font-size: 12px;
+    color: #000;
+    display: flex;
+    border: 0.5px solid #ddd;
+    margin-right: 100px;
+}
+
+.content-list__item-icon {
+    display: block;
+    margin: 20px 3px 20px 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.content-list__item-text {
+    display: block;
+    margin: 23px 0 23px 6px;
+}
+
+.wraper_for_side_main_bar {
+    width: 15%
+}

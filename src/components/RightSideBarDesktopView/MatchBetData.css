@@ -1,0 +1,90 @@
+.OpenBetsList__content-competition {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.OpenBetsList__content-competition-title {
+    margin: 15px 0 0;
+}
+
+.OpenBetsList__content-itemsRow {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 18px;
+    margin-top: 10px;
+}
+
+.noBetsItem,
+.OpenBetsList__content-itemsRow {
+    font-family: "Lato";
+    font-style: normal;
+    text-align: center;
+}
+
+.OpenBetsList__content-itemsRow-market {
+    color: #000;
+    width: 29%;
+    text-align: left;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+}
+
+.OpenBetsList__content-itemsRow-odds {
+    width: 17%;
+}
+
+.OpenBetsList__content-itemsRow-profit,
+.OpenBetsList__content-itemsRow-runs,
+.OpenBetsList__content-itemsRow-stake {
+    flex: 1 1;
+}
+
+.DesktopOpenBetsItem {
+    padding: 6px;
+    background: #b1d7f9;
+    margin: 0 0 4px;
+    font-size: 12px;
+    /* position: relative; */
+    cursor: pointer;
+}
+
+.DesktopOpenBetsItem__info {
+    color: #000;
+}
+
+.DesktopOpenBetsItem__info {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 11px;
+}
+
+.DesktopOpenBetsItem__info-market {
+    width: 29%;
+    text-align: left;
+    font-size: 11px;
+}
+
+.DesktopOpenBetsItem__info-odds {
+    width: 17%;
+}
+
+.DesktopOpenBetsItem__info-profit,
+.DesktopOpenBetsItem__info-stake {
+    flex: 1 1;
+}
+
+.DesktopOpenBetsItem__detailedInfo {
+    display: flex;
+    justify-content: space-between;
+}

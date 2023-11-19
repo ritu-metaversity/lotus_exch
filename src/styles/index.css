@@ -1,0 +1,30 @@
+@import url('https://use.typekit.net/ovs7dwb.css');
+
+@font-face {
+	font-family: 'Helvetica Neue';
+	src: url(/assets/fonts/helvetica-neue/HelveticaNeue500.otf) format('opentype');
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: 'Helvetica Neue';
+	src: url(/assets/fonts/helvetica-neue/HelveticaNeue700.ttf) format('truetype');
+	font-weight: 700;
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+button {
+	font-weight: 600;
+}

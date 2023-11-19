@@ -1,0 +1,82 @@
+.Stack_edit_btn_value_main_Wroper_body {
+    padding: 20px;
+}
+
+.Stack_edit_btn_value_wrapor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    /* height: 163px; */
+}
+
+.Stack_edit_Name {
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+
+
+}
+
+.Stack_edit_Name span {
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+.Stack_edit_btn_value_all_Data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.Stack_edit_btn_value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    height: 46px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    /* flex-basis: calc(33.33333% - 10px); */
+    border: 1px solid #1f8067;
+    color: #1f8067;
+    --placeholder-opacity: 1;
+    /* padding: 10px 26px 10px 26px; */
+    border-radius: 4px;
+    width: 29%;
+}
+
+.Stack_edit_button_wrap {
+    text-transform: none;
+    width: 50%;
+    margin: 0 0 0 auto;
+    height: 38px;
+}
+
+.Stack_edit_button_EDIT {
+    width: 100%;
+    height: 100%;
+    background-color: #1f8067;
+    border: unset;
+    border-radius: 4px;
+    color: white;
+}
+
+.Stack_edit_btn_value_all_Data {}
+
+/* div[disabled] {
+    pointer-events: none;
+    opacity: 0.7;
+} */

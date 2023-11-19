@@ -1,0 +1,61 @@
+.socials {
+    height: 50px;
+    width: 90%;
+    /* position: relative; */
+    margin: 0 20px 400px;
+}
+
+.socials .left-side-menu-item__label_Whatsapp {
+    line-height: 50px !important;
+}
+
+.left-side-menu-item__label,
+.left-side-menu-item__label_Whatsapp {
+    font-family: "Lato", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 19px !important;
+    color: #35795e;
+
+}
+
+@media screen and (min-width:1024px) {
+    .socials {
+        display: none !important;
+    }
+}
+
+/* a {
+    background-color: initial;
+    color: #3880ff;
+    color: var(--ion-color-primary, #3880ff);
+} */
+
+.socials .whatsapp-button {
+    height: 50px;
+    width: 100%;
+    background: url(https://lotus365.co/static/media/whatsapp.19c24b7a.svg);
+    background-repeat: no-repeat;
+}
+
+.socials .instagram-button {
+    height: 50px;
+    width: 100%;
+    background: url(https://lotus365.co/static/media/instagram.f8148b4d.svg);
+    background-repeat: no-repeat;
+}
+
+.socials .telegram-button {
+    height: 50px;
+    width: 100%;
+    background: url(https://lotus365.co/static/media/telegram.fa19b39b.svg);
+    background-repeat: no-repeat;
+}
+
+.socials .whatsapp-care-button {
+    height: 50px;
+    width: 100%;
+    background: url(https://lotus365.co/static/media/whatsappSupport.adca2937.svg);
+    background-repeat: no-repeat;
+}

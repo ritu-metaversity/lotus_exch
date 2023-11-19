@@ -1,0 +1,28 @@
+.CasinoGames__toolbar {
+    min-height: 38px;
+    background-color: #1a4e61;
+    color: white
+}
+
+
+.CasinoGames__toolbar__wrapper {
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    /* paddingp: 0 5px; */
+}
+
+.ion-toolbar__left {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+}
+
+.CasinoGames__toolbar__title {
+    margin-left: 10px;
+    line-height: 32px;
+    font-weight: 700;
+    font-size: 18px;
+}

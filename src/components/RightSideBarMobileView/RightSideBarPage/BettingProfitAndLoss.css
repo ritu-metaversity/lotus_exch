@@ -1,0 +1,1079 @@
+.page-title-wrapper {
+    margin: 15px 15px 10px;
+}
+
+.page-title {
+    font-family: "Lato";
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    margin-bottom: 16px;
+}
+
+.page-title {
+    margin: 15px 0 0;
+}
+
+@media (max-width: 1024px) {
+    .page-title {
+        color: #000;
+    }
+
+    .pnl_div_main {
+        border-bottom: unset
+    }
+}
+
+@media (min-width: 1024px) {
+    .betting-profit-and-loss-page .page-title {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #9aa1a4;
+        font-size: 24px;
+        width: 100%;
+        max-width: calc(100% - 292px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .betting-profit-and-loss-page__filters-date {
+        margin-bottom: 45px;
+        width: 100%;
+        max-width: 360px;
+        padding: 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        position: relative;
+    }
+}
+
+@media (min-width: 1024px) {
+    .betting-profit-and-loss-page__filters-date p {
+        margin: 0 0 10px;
+        font-family: "Lato";
+        font-weight: 400;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .filter-button {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: black;
+        background: #fff;
+        border: 1px solid rgba(218, 223, 239, .4);
+        padding: 8px 23px 8px 10px;
+        max-width: 140px;
+        width: 100%;
+        text-align: left;
+        border-radius: 5px;
+    }
+}
+
+.imgg_for_search_filter {
+    margin-bottom: -3px;
+    padding-right: 7px;
+}
+
+@media (max-width: 1024px) {
+    .account-statement-page__filter-content {
+        padding: 20px 16px 17px 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .account-statement-page__date-search-button {
+        background: #1f8067;
+        width: 100%;
+        height: 38px;
+        margin-top: 15px;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 400;
+        border-radius: 3px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: unset;
+    }
+}
+
+@media (max-width: 1024px) {
+    .account-statement-page__filters-date-input {
+        border-bottom: 1px solid rgba(180, 178, 178, .849);
+        position: relative;
+        background: #fff;
+        height: 55px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        /* gap: 10px; */
+    }
+}
+
+.Date_from_accountStatment {
+    height: 19px;
+    font-size: 16px;
+    /* margin-top: -10px; */
+}
+
+.input_fielDate_from_accountStatment {
+    border: unset;
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+} */
+
+
+/* betting detaila table  */
+.betting-profit-and-loss-page__item-list {
+    margin: 0 4px 10px;
+}
+
+@media (max-width: 1024px) {
+    .betting-profit-and-loss-page__item-list {
+        margin: 0 4px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-profit-and-lose-item-list {
+        padding-bottom: 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-profit-and-lose-item-list__header {
+        background-color: #1f8067;
+        color: #fff;
+        height: 31px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3px 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-profit-and-lose-item-list__header-date {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-profit-and-lose-item-list__header-total-pl {
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .betting-profit-and-lose-item-list__header-total-pl-title,
+    .betting-profit-and-lose-item-list__header-total-pl-value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-profit-and-lose-item-list__header-total-pl-title {
+        font-weight: 400;
+        color: var(--accordion-color);
+        padding-right: 4px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .pnl-total-value--red {
+        color: red;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-profit-and-lose-item-list__header-total-pl-value {
+        font-weight: 700;
+        color: red;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .betting-profit-and-lose-item-list__header-total-pl-title,
+    .betting-profit-and-lose-item-list__header-total-pl-value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-pnl-item {
+        background: white;
+        color: black;
+        display: flex;
+        justify-content: space-between;
+        padding: 11px 11px 15px 12px;
+        margin-top: 3px;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .betting-pnl-item__left-side {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1;
+        width: 60%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-pnl-item {
+        background: #fff;
+        color: black;
+        display: flex;
+        justify-content: space-between;
+        padding: 11px 11px 15px 12px;
+        margin-top: 3px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-pnl-item__title {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        align-items: center;
+        -webkit-text-decoration-line: underline;
+        text-decoration-line: underline;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        color: rgb(63, 142, 188);
+        padding-right: 15px;
+        cursor: default;
+    }
+}
+
+@media (max-width: 1024px) {
+    .start-time {
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .start-time__title,
+    .start-time__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        color: var(--black);
+    }
+}
+
+@media (max-width: 1024px) {
+    .start-time__title {
+        font-weight: 700;
+        padding-right: 2px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .start-time__value {
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .start-time__title,
+    .start-time__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        color: var(--black);
+    }
+}
+
+@media (max-width: 1024px) {
+    .settled-time {
+        display: flex;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .settled-time__title,
+    .settled-time__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        color: var(--black);
+    }
+}
+
+@media (max-width: 1024px) {
+    .settled-time__title {
+        font-weight: 700;
+        padding-right: 2px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .settled-time__value {
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .settled-time__title,
+    .settled-time__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+        color: var(--black);
+    }
+}
+
+@media (max-width: 1024px) and (max-width: 540px) {
+    .betting-pnl-item__right-side {
+        flex: 0.4 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .betting-pnl-item__right-side {
+        display: flex;
+        flex-direction: column;
+        flex: 0.40 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .comm {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .comm__title,
+    .comm__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    .comm__title {
+        font-weight: 700;
+    }
+}
+
+.pnl-item-value--green {
+    color: green;
+}
+
+@media (max-width: 1024px) {
+    .comm__value {
+        font-weight: 400;
+        color: green;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .comm__title,
+    .comm__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    .net-win {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .net-win__title,
+    .net-win__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    .net-win__title {
+        font-weight: 700;
+        color: black;
+    }
+}
+
+@media (max-width: 1024px) {
+    .net-win__value {
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .net-win__title,
+    .net-win__value {
+        font-family: "Lato", sans-serif !important;
+        font-style: normal;
+        font-size: 10px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* element.style {
+    min-height: calc(100% - 163px);
+}
+.main-content {
+    padding: 5px;
+}
+
+div {
+    display: block;
+} */
+.main-content section {
+    float: left;
+    width: 100%;
+}
+
+.m-t-10 {
+    margin-top: 10px !important;
+}
+
+.page-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 17px;
+}
+
+.p-l-15 {
+    padding-left: 15px !important;
+}
+
+h2,
+.h2 {
+    font-size: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.game-date {
+    background-color: #0f2327;
+    color: #fff;
+}
+
+.game-date {
+    font-size: 12px;
+    padding: 8px 13px;
+    float: left;
+    width: 100%;
+}
+
+.float-right {
+    float: right !important;
+}
+
+/* .betting-pnl .wrapper {
+    padding: 11px 11px 15px 12px;
+    margin: 2px 0 0;
+    background: #fff;
+    color: #000;
+    font-size: 10px;
+    float: left;
+    width: 100%;
+} */
+
+.betting-pnl .dsfsfdfsd .info .game-name {
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+}
+
+.game-name {
+    font-size: 16px;
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.betting-pnl .betting-back {
+    color: #2587d0;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+/* a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+} */
+
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
+/* p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+} */
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+.betting-pnl .pnl-titles,
+.betting-pnl .pnl-numbers {
+    text-align: right;
+    width: 15%;
+    float: left;
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+.negative {
+    color: red;
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
+.game-date {
+    background-color: #0f2327;
+    color: #fff;
+}
+
+.game-date {
+    font-size: 12px;
+    padding: 8px 13px;
+    float: left;
+    width: 100%;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.betting-pnl .dsfsfdfsd {
+    padding: 2px 11px 15px 12px;
+    margin: 2px 0 0;
+    background: #fff;
+    color: #000;
+    font-size: 10px;
+    float: left;
+    width: 95%;
+    height: 64px;
+    margin-top: 17px;
+}
+
+.betting-pnl .dsfsfdfsd .info {
+    float: left;
+    width: 70%;
+}
+
+.betting-pnl .betting-back {
+    color: #2587d0;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+/* a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+} */
+
+.btnnnn {
+    color: #ffffff;
+    background-color: #2c4f58;
+    border: #000;
+    width: 118px;
+    height: 36px;
+    border-radius: 4px;
+    font-size: 15px;
+    margin: 4px;
+}
+
+.casinooooo {
+    width: 86px;
+    /* margin-right: 8px; */
+}
+
+.buttttt {
+    margin-top: 93px;
+}
+
+.CasinolButton {
+    padding: 20px;
+}
+
+
+
+input#tbg-radio-3 {
+    display: none;
+}
+
+input#tbg-radio-2 {
+    display: none;
+}
+
+/* 
+.active1111 {
+    background-color: red;
+}
+
+label.active1111.btn.btn-primary {
+    background: red !important;
+    font-size: 18px;
+} */
+
+.btn.btn-primary {
+    background: #2c4f58 !important;
+    font-size: 18px;
+    border-color: unset !important;
+}
+
+.btn-primary:hover {
+    color: unset !important;
+    border-color: unset !important;
+}
+
+.btn-group,
+.btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    width: 93% !important;
+    margin-left: 3%;
+
+}
+
+.selectionnnn {
+    width: 150px;
+    height: 34px;
+    font-size: 15px;
+    margin-left: 16px;
+    margin: 7px;
+}
+
+.dsdsdsdsd {
+    width: 10px;
+}
+
+.dateee {
+    width: 100px;
+    height: 41px;
+}
+
+.nodataforund {
+    margin-top: 29px;
+    margin-left: 31px;
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    color: red;
+}
+
+.selectionnnn {
+    width: 50%;
+    height: 34px;
+    font-size: 15px;
+    margin-left: 16px;
+    margin: 7px;
+    background: #2c4f58;
+    color: #fff;
+    text-align: center;
+    padding: 6px 22px;
+    margin: 8px;
+    margin-left: 1px;
+}
+
+.sport-data-list {
+    display: flex;
+    justify-content: space-evenly;
+    margin-inline: 3%;
+}
+
+.casino-section {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* .pagination {
+    font-size: 31px;
+    margin-left: 18%;
+    margin-top: 132px;
+    position: fixed;
+
+} */
+
+.arrowDoubleLeft {
+    margin-right: 5%;
+}
+
+.arrowSingleLeft {
+    margin-right: 10%;
+}
+
+.arrowSingleRight {
+    margin-right: 10%;
+}
+
+.arrowDoubleRight {
+    margin-right: 5%;
+}
+
+.paginationno {
+    margin-right: 9%;
+    font-size: 19px;
+}
+
+.btn.btn-primary {
+    background: #2c4f58 !important;
+    font-size: 18px;
+    width: 20% !important;
+    margin-right: unset !important;
+    height: 45px;
+    border-color: unset !important;
+    margin-left: unset !important;
+}
+
+.startDate {
+    width: 46% !important;
+    height: 41px;
+    margin-left: 24px
+}
+
+.endDate {
+    width: 47% !important;
+    height: 41px;
+    margin-left: 6px
+}
+
+@media screen and (min-width: 300px) and (max-width: 450px) {
+    .startDate {
+        width: 43% !important;
+        height: 41px;
+        margin-left: 11px;
+    }
+
+}
+
+@media screen and (min-width: 1024px) and (max-width: 3000px) {
+    .startDate {
+        width: 46.7% !important;
+        height: 41px;
+        margin-left: 50px;
+
+    }
+
+    .endDate {
+        width: 46.6% !important;
+        height: 41px;
+        margin-left: 5px;
+    }
+
+}
+
+.customclass {
+    /* position: fixed; */
+    bottom: 11% !important;
+    left: 3% !important;
+}
+
+.mainDivFor {
+    margin-top: 23px;
+    height: 505px !important;
+    overflow: scroll;
+}
+
+.mainDivFor::-webkit-scrollbar {
+    display: none;
+}
+
+.dest_startDate {
+    width: 23.2% !important;
+    margin-left: 30px !important;
+    height: 41px !important;
+}
+
+.dest_main_div {
+    margin-left: 24px;
+    margin-left: 20px;
+
+}
+
+.dest_main_div .info {
+    margin-left: 20px;
+}
+
+.ant-picker.css-dev-only-do-not-override-1km3mtt.dest_end.dest_startDate {
+    margin-left: 4px !important;
+}
+
+.acc_loading {
+    background-color: #0000002b;
+    height: calc(100vh - 400px) !important;
+    position: absolute;
+    width: 62%;
+}
+
+.loading1 {
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* height: 100vh; */
+    background: unset;
+    position: absolute;
+    height: 0;
+    top: 50%;
+}
+
+.page-title {
+    margin-bottom: 12px !important;
+}
+
+div#radios2 {
+    display: flex !important;
+}
+
+.pnlsection {
+    margin-top: -1px !important;
+}
+
+.outer_box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.mybetsssssPnl {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 44px;
+    padding: 20px 5px;
+
+}
+
+/* @media screen and (max-width:1024px) {
+    .pnl_div_main {
+        border-bottom: unset
+    }
+} */
+
+/* .boxed-layout-wrapper {
+    padding: 30px 5px;
+} */
+
+.pnl_div_main {
+    border-bottom: 1px solid;
+}
+
+.main_for_sports {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+.box_selection_time {
+    width: 50%;
+    height: 30px;
+    border-radius: 6px;
+    font-size: 15px;
+    /* background-color: #317383; */
+}
+
+/* .main_for_date_picker {} */
+
+.colorrrr {
+    background-color: #317383;
+}
+
+.OpenBetsTable__table-header_datataPnladtaa {
+    background-color: #f0f0f0;
+    display: grid;
+    grid-template-columns: 58% 15% 15% 6% 6%;
+    height: 33px;
+    align-items: center;
+}
+
+.OpenBetsTable__table-headerPnlPnl {
+    background-color: #ddd;
+    display: grid;
+    grid-template-columns: 58% 15% 15% 6% 6%;
+    height: 33px;
+    align-items: center;
+}
+
+.OpenBetsTable__table-header li {
+    color: #0f2327;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.pnl_jkshdsdvnd {
+    padding: 0px 0px 28px 0px;
+    width: 61%;
+}
+
+.table-bordered tbody tr td {
+    /* border: 1px solid #dddddd; */
+    text-align: left;
+    padding: 8px;
+    /* white-space: nowrap; */
+    font-size: 11px;
+    background: white;
+}
+
+.table-bordered thead tr th {
+    background-color: #dddddd;
+    /* color: white; */
+    white-space: nowrap;
+    padding: 7px 6px;
+    font-size: 11px;
+
+    text-align: left;
+    /* border-left: 1px solid #fff; */
+}
+
+.table-bordered {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: scroll;
+}

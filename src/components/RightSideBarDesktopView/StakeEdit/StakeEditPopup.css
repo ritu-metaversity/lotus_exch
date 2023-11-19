@@ -1,0 +1,57 @@
+.main_layout_for_desk_stake {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 6px;
+    background-color: #00000096;
+    height: 350px;
+
+}
+
+.inner_for_desk_stake {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 6px;
+    background-color: white;
+    padding: 8px 0px;
+    margin-bottom: 26px;
+    width: 85%;
+}
+
+.main_imput_desk_stake {
+    width: 29.5%;
+    height: 31px;
+    border: 2px solid #ddd;
+}
+
+.Stack_edit_button_cancel {
+    background: unset;
+    border: unset;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+.Stack_edit_button_save {
+    padding: 3px 14px;
+    font-size: 13px;
+    background-color: #6a9772;
+    border: unset;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.stack_cancel_save {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
