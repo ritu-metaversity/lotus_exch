@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import Section from '../../../components/Section/Index';
-import Icon from '../../../components/common/Icon/Index';
+// import Icon from '../../../components/common/Icon/Index';
 import {
 	CasinoGamesContainer,
-	CasinoGamesGrid,
+	// CasinoGamesGrid,
 	// CasinoGamesImage,
 	CasinoSectionContainer,
 } from './Index.styled';
+import QtechLogooo from "../../../../public/assets/images/qtechlogo.png";
+import { CardGamesGrid } from '../IndianCardGamesSection/Index.styled';
 
 export const casinoProviderList = [
 	{
@@ -78,7 +80,7 @@ export const casinoProviderList = [
 	},
 	{
 		name: "Q Tech",
-		logo: "Qtech",
+		logo: QtechLogooo,
 		gameCode: "Qtech",
 		filterType: "SPB",
 	}
@@ -108,33 +110,50 @@ const CasinoGamesSection = () => {
 	return (
 		<CasinoSectionContainer>
 			<Section
-				heading='Casino Games'
-				icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
+				heading='International Casino'
+
 			>
 				<CasinoGamesContainer>
-					<CasinoGamesGrid>
+					<CardGamesGrid>
 
-						{casinoProviderList.map((item: any) => (
+						{casinoProviderList.map((item) => (
+							<div className="Lottery-Home-Page"
+								onClick={() => handleGameLobby(item)}
+
+							>
+								<img
+									className='Lottery-Home-Page-img'
+									src={item?.logo}
+								/>
+								<span style={{
+									fontSize: "14px",
+									fontWeight: "700"
+								}}>
+									{item?.name}
+								</span>
+							</div>
+						))}
+
+						{/* {casinoProviderList.map((item: any) => (
 							<div style={{
 								width: "129px",
-								backgroundColor: "#00000061",
+								backgroundColor: "#00000021",
 								height: "63px",
 								borderRadius: "8px"
 							}}>
 
 								<img style={{
-									width: "100%",
+									maxWidth: "100%",
 									height: "58px",
 									padding: "10px"
 								}}
-									onClick={() => handleGameLobby(item)}
 									src={item?.logo}
 									alt=''
 								/>
 							</div>
 
-						))}
-					</CasinoGamesGrid>
+						))} */}
+					</CardGamesGrid>
 				</CasinoGamesContainer>
 			</Section>
 		</CasinoSectionContainer>

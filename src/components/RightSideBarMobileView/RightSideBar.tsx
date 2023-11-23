@@ -67,8 +67,8 @@ const RightSideBar: FC<{ expanded: boolean, closeRightMenu: any }> = ({ expanded
                                 Net Exposure:
                             </span>
                             <span className="right-side-menu__account__info__item__value" style={{ color: "red" }} >
-                                {balanceDtaa?.data?.libality
-                                    ? balanceDtaa?.data?.libality
+                                {balanceDtaa?.data?.libality === 0
+                                    ? <span>-{balanceDtaa?.data?.libality}</span>
                                     : "0:00"}
                             </span>
                         </div>

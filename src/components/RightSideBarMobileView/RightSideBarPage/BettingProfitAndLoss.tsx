@@ -561,10 +561,21 @@ const BettingProfitAndLoss = () => {
                                   className="text-left">
                                   Settled time
                                 </th> */}
+
                                 <th
                                   role="columnheader"
                                   className="text-left">
-                                  Comm
+                                  Start time
+                                </th>
+                                <th
+                                  role="columnheader"
+                                  className="text-left">
+                                  Settled time
+                                </th>
+                                <th
+                                  role="columnheader"
+                                  className="text-left">
+                                  Comm.
                                 </th>
                                 <th
                                   role="columnheader"
@@ -583,14 +594,14 @@ const BettingProfitAndLoss = () => {
                                         className="text-left withdraw-data">
                                         {el?.matchName}
                                       </td>
-                                      {/* <td style={{ height: "30px" }}
+                                      <td style={{ height: "30px" }}
                                         className="text-left withdraw-data">
                                         N/A
                                       </td>
                                       <td style={{ height: "30px" }}
                                         className="text-left withdraw-data">
                                         N/A
-                                      </td> */}
+                                      </td>
                                       <td
                                         style={{ height: "30px" }}
                                         className="text-left withdraw-data">

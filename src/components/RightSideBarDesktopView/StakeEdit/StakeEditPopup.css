@@ -1,13 +1,14 @@
 .main_layout_for_desk_stake {
     position: absolute;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     gap: 6px;
     background-color: #00000096;
-    height: 350px;
+    height: 301px;
+    padding-top: 22px;
 
 }
 
@@ -17,17 +18,21 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    gap: 6px;
+    gap: 6px 12px;
     background-color: white;
-    padding: 8px 0px;
+    padding: 14px 0px 0px;
     margin-bottom: 26px;
     width: 85%;
 }
 
 .main_imput_desk_stake {
-    width: 29.5%;
+    width: 26.5%;
     height: 31px;
     border: 2px solid #ddd;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .Stack_edit_button_cancel {
@@ -40,7 +45,7 @@
 }
 
 .Stack_edit_button_save {
-    padding: 3px 14px;
+    padding: 3px 19px;
     font-size: 13px;
     background-color: #6a9772;
     border: unset;
@@ -54,4 +59,14 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.eddit-stake-wrapper {
+    position: fixed;
+    height: 100vh;
+    background-color: #000000c9;
+    width: 100vw;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
 }

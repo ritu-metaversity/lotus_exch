@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import "./GamesPage.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const GamesPage = (slotGameDetail: any) => {
+const GamesPage = ({ slotGameDetail }: any) => {
 
     const [gameFilter, setGameFilter] = useState<any>([])
     const [gameAllData, setGameAllData] = useState<any>([])
@@ -91,6 +91,15 @@ const GamesPage = (slotGameDetail: any) => {
         }
     }, [])
 
+    useEffect(() => {
+        if (slotGameDetail) {
+            document.getElementById(slotGameDetail)?.scrollIntoView()
+        }
+    }, [slotGameDetail])
+
+    console.log(slotGameDetail, "hi");
+
+
 
 
     // const handleGamePage = (vl: any) => {
@@ -133,7 +142,7 @@ const GamesPage = (slotGameDetail: any) => {
                 </div>
                 {Object.keys(gameFilter).map((key: any) => (
                     <>
-                        <div className="liveCasino-content__menu-games__allgames-title">
+                        <div id={key} className="liveCasino-content__menu-games__allgames-title">
                             <span className="liveCasino-content__menu-games__allgames-title-ref" />
                             <div className="liveCasino-content__menu-games__allgames-title-name">
                                 {key}

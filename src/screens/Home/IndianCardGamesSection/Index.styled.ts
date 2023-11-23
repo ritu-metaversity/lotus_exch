@@ -29,10 +29,13 @@ export const CardGamesContainer = styled('div')({
 });
 
 export const CardGamesGrid = styled('div')({
-	display: 'grid',
+	display: 'flex',
 	gridTemplateColumns: 'repeat(12, min-content)',
 	gap: '1.4rem 1rem',
 	placeItems: 'center',
+	flexDirection: "column",
+    flexWrap: "wrap",
+    height: "235px",
 });
 
 export const CardGamesImage = styled('img')({

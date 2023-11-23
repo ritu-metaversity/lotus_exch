@@ -32,6 +32,12 @@ import CardGame from './components/AllCasino/CardGame/CardGame';
 import GamePageMain from './components/AllCasino/LiveCasino/GamePageMain';
 import SlotGames from './components/AllCasino/SlotGames/SlotGames';
 import GamePlayPage from './components/AllCasino/SlotGames/GamePlayPage';
+import MyMarket from './components/common/List/MyMarket';
+import CardGamePlay from './components/AllCasino/CardGame/CardGamePlay';
+import FanctasyGameList from './screens/Home/PopularGamesSection/FantasyGameList';
+import FantasyGamePage from './screens/Home/PopularGamesSection/FantasyGamePage';
+import LotteryGameList from './screens/Home/IndianCardGamesSection/LotteryGameList';
+import LotteryCasionListGamePage from './screens/Home/IndianCardGamesSection/LotteryCasionListGamePage';
 
 
 const App = () => {
@@ -65,7 +71,11 @@ const App = () => {
 						<Route path='/live-casino' element={<LiveCasino />} />
 						<Route path='/Slot-Games' element={<SlotGames />} />
 						<Route path='/Slot-Games-play' element={<GamePlayPage />} />
+						<Route path='/Card-Games-play' element={<CardGamePlay />} />
+						<Route path='/Fantasy-Game-List' element={<FanctasyGameList />} />
+						<Route path='/Lottery-Game-List' element={<LotteryGameList />} />
 						<Route path='/Card-Game' element={<CardGame />} />
+						<Route path='/My-Market' element={<MyMarket />} />
 
 
 						<Route path='Withdraw-amount' element={<WithDraw1 />} />
@@ -88,6 +98,8 @@ const App = () => {
 					<Route path='/signin' element={<SignIn />} />
 					<Route path='/Game-play' element={<CasinoGamePage />} />
 					<Route path='/Live-Casino-play' element={<GamePageMain />} />
+					<Route path='/Fantasy-Game-play' element={<FantasyGamePage />} />
+					<Route path='/Lottery-Game-play' element={<LotteryCasionListGamePage />} />
 					<Route path='/Sports_book' element={<SportsBook />} />
 					<Route path="*" element={<Navigate to="/home" />} />
 

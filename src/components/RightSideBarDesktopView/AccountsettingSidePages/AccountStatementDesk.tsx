@@ -134,7 +134,7 @@ const AccountStatementDesk = () => {
                   <th
                     role="columnheader"
                     className="text-left">
-                    Credit Limit
+                    Credit
                   </th>
                   <th
                     role="columnheader"
@@ -144,27 +144,32 @@ const AccountStatementDesk = () => {
                 </tr>
               </thead>
 
-              <tbody>
-                {AccountStatementRespone?.data?.dataList?.length &&
+              <tbody className="my_bet">
+                {AccountStatementRespone?.data?.dataList?.length ?
                   AccountStatementRespone?.data?.dataList?.map((item: any) => {
                     return (
-                      <tr role="row">
+                      <tr role="row ">
                         <td style={{ height: "30px" }}
                           className="text-left withdraw-data">
                           {item?.date}
                         </td>
-                        <td style={{ height: "30px" }}
+                        <td style={{ height: "30px", width: "443px" }}
                           className="text-left withdraw-data">
                           {item?.remark}
+                          {item?.date}
                         </td>
-                        <td style={{ height: "30px" }}
-                          className="text-left withdraw-data">
-                          {item?.pts}
-                        </td>
+                        {/* <td style={{ height: "30px" }}
+                                                        className="text-left withdraw-data">
+                                                        N/A
+                                                    </td> */}
                         <td
                           style={{ height: "30px" }}
                           className="text-left withdraw-data">
-                          N/A
+                          {item?.pts}
+                        </td>
+                        <td style={{}}
+                          className="text-left withdraw-data">
+                          {item?.credit}
                         </td>
                         <td style={{}}
                           className="text-left withdraw-data">
@@ -173,6 +178,18 @@ const AccountStatementDesk = () => {
                       </tr>
                     )
                   })
+
+                  :
+                  <tr role="row ">
+                    <td style={{
+                      height: "30px", textAlign: "center",
+                      color: "red",
+                      fontWeight: "600"
+                    }} colSpan={5}
+                      className="text-left withdraw-data">
+                      NO DATA FOUND
+                    </td>
+                  </tr>
                 }
               </tbody>
 

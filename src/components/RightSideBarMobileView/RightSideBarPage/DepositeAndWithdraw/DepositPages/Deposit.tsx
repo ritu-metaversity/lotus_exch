@@ -99,15 +99,21 @@ const Deposit = () => {
                 <tr className="previous-deposite">
                   <th colSpan={4} style={{
                     fontSize: "15px",
-                    padding: "5px"
+                    padding: "5px",
+                    backgroundColor: "#1f8067",
+                    // border: "1px solid black"
                   }}>Previous Deposit</th>
                 </tr>
-                <tr role="row" className="deposit-list">
+                <tr role="row" className="deposit-list" >
                   <th
                     role="columnheader"
                     scope="col"
                     aria-colindex={1}
                     className="text-left"
+                    style={{
+                      backgroundColor: "#1f8067",
+                      border: "1px solid black"
+                    }}
                   >
                     Amount
                   </th>
@@ -116,6 +122,10 @@ const Deposit = () => {
                     scope="col"
                     aria-colindex={2}
                     className="text-center"
+                    style={{
+                      backgroundColor: "#1f8067",
+                      border: "1px solid black"
+                    }}
                   >
                     Image
                   </th>
@@ -124,6 +134,10 @@ const Deposit = () => {
                     scope="col"
                     aria-colindex={3}
                     className="text-center"
+                    style={{
+                      backgroundColor: "#1f8067",
+                      border: "1px solid black"
+                    }}
                   >
                     Date
                   </th>
@@ -132,6 +146,9 @@ const Deposit = () => {
                     scope="col"
                     aria-colindex={4}
                     className="text-center"
+                    style={{
+                      backgroundColor: "#1f8067", border: "1px solid black"
+                    }}
                   >
                     Status
                   </th>

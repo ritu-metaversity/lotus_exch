@@ -153,6 +153,7 @@ export const mainApiSlice = createApi({
 			body:payload
 		}),
 		onQueryStarted:async (_,{queryFulfilled})=>{
+			try{
 			const data = await queryFulfilled
 			console.log(data,"huihiu");
 			if(data?.data?.status === true){
@@ -161,6 +162,12 @@ export const mainApiSlice = createApi({
 			}else{
 				toast.error(data?.data?.message)
 			}
+		} catch(data:any){
+			console.log(data,"error-error");
+			
+			toast.error(data?.error?.data?.message)
+
+		}
 		}
 		}),
 		

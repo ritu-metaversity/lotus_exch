@@ -1,0 +1,27 @@
+.FantasyGameWrapor-inner {
+    width: 100%;
+}
+
+.FantasyGameWrapor-inner-Game {
+    width: 100%;
+}
+
+.FantasyGameWrapor-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px 0px;
+    gap: 10px;
+}
+
+.FantasyGameWrapor-inner-Game {
+    width: 45%;
+}
+
+.FantasyGameWrapor_nameeeee {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}

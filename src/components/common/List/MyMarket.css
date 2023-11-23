@@ -1,0 +1,37 @@
+.my_market_wraper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.my_market_wraper_name {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 13px 0px;
+}
+
+.my_market_wraper_gamedetails_wraper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.my_market_wraper_game_detaols {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 40px;
+    gap: 10px;
+    padding: 10px
+}
+
+.my_market_wraper_game_name {
+    font-size: 14px;
+}

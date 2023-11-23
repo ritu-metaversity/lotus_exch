@@ -38,6 +38,7 @@ export const PopularGamesGrid = styled('div')({
 
 export const GameImage = styled('img')(({ theme }) => ({
 	width: '10rem',
+	    height: "60px",
 
 	[theme.breakpoints.up(1024)]: {
 		width: '13rem',

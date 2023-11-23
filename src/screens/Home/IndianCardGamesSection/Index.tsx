@@ -1,67 +1,107 @@
+import { useNavigate } from 'react-router-dom';
 import Section from '../../../components/Section/Index';
 import Icon from '../../../components/common/Icon/Index';
+// import { GameImage } from '../PopularGamesSection/Index.styled';
 import {
 	CardGamesContainer,
 	CardGamesGrid,
-	CardGamesImage,
 	CardSectionContainer,
 } from './Index.styled';
+import "./LotteryGameList.css"
+
+export const lotteryprovidersList = [
+	{
+		name: "BET GAMES",
+		logo: "https://www.betgames.tv/api/uploads/BG_Logo_White_Horizontal_Lock_Up_dcca475d41.png",
+		filterType: "BTV",
+	},
+	{
+		name: "EVOLUTION",
+		logo: "https://wver.sprintstaticdata.com/v14/static/front/img/icons/5.png",
+		filterType: "EVO",
+	},
+	{
+		name: "EVOPLAY",
+		logo: "https://evoplay.games/wp-content/themes/evoplay/assets/img/logo.svg",
+		filterType: "EVP",
+	},
+	{
+		name: "GALAXSYS",
+		logo: "https://galaxsys.co/wp-content/uploads/2022/02/Galaxsys.svg",
+		filterType: "GLX",
+	},
+	{
+		name: "PLAY GO",
+		logo: "https://static.wixstatic.com/media/dad1c6_ef8a09e283c54aa9863a02228afb9852~mv2.png/v1/fill/w_272,h_74,al_c,q_95,enc_auto/playngo_logo_on_black.png",
+		filterType: "PNG",
+	},
+	{
+		name: "S4",
+		logo: "https://media.licdn.com/dms/image/C4E0BAQGMnMvRWUcOsA/company-logo_200_200/0/1519900555706?e=1703116800&v=beta&t=ezkTp_NYg2wcB5L2JADuOxm2SyH77pKxl6aYnJ0Vuzs",
+		filterType: "S4G",
+	},
+	{
+		name: "SPEARHEAD",
+		logo: "https://spearheadstudios.com/wp-content/themes/spearheadstudios/assets/img/logo.svg?v=1",
+		filterType: "SHS",
+	},
+	{
+		name: "SPRIBE",
+		logo: "https://spribe.co/spribe-logo.b13289b5f5fab437.svg",
+		filterType: "SPB",
+	},
+	{
+		name: "TRIPLE",
+		logo: "https://www.triple-pg.com/wp-content/uploads/2023/05/logo-wh.svg",
+		filterType: "TPG",
+	},
+	{
+		name: "KIRON",
+		logo: "https://kironinteractive.com/wp-content/uploads/2022/03/Kiron-Logo-Flat-white.png",
+		filterType: "KIR",
+	},
+	{
+		name: "TURBO",
+		logo: "https://turbogames.io/images/home/home-logo.png",
+		filterType: "TRB",
+	},
+	// {
+	//   logo: "https://wazdan.com/wp-content/themes/wazdan/assets/images/logo.svg",
+	//   name: "WAZDAN",
+	//   filterType: "WAZ",
+	// },
+];
 
 const IndianCardGamesSection = () => {
-	const indianCardGames: Array<string> = [
-		'2-card-teen-patti.png',
-		'20-20-poker.jpg',
-		'32-cards-virtual.jpg',
-		'32-cards.jpg',
-		'6-player-poker.jpg',
-		'7up7down-virtual.jpg',
-		'7up7down.jpg',
-		'Baccarat.png',
-		'aaa-virtual.jpg',
-		'aaa.jpg',
-		'andar-bahar-virtual.jpg',
-		'andarbahar.jpg',
-		'bollywood.jpg',
-		'casino-meter.png',
-		'casino-war.png',
-		'dragon-tiger.jpg',
-		'hi-low-virtual.jpg',
-		'hi-low.jpg',
-		'live-teen-patti.jpg',
-		'matka-virtual.jpg',
-		'matka.jpg',
-		'muflis-teenpatti.png',
-		'poker-virtual.jpg',
-		'poker.jpg',
-		'hi-low.jpg',
-		'queen-race.png',
-		'race-20-20.png',
-		'roullete-virtual.jpg',
-		'roullete.jpg',
-		'sicbo.png',
-		'teenpatti-t20-virtual.jpg',
-		'teenpatti-t20.jpg',
-		'teenpatti-test.png',
-		'teenpatti-virtual.jpg',
-		'trap.png',
-		'trio.png',
-	];
+
+	const navigate = useNavigate();
+	const handleGameFastasy = (game: any) => {
+
+		navigate("/Lottery-Game-List", { state: game })
+	}
 
 	return (
 		<CardSectionContainer>
 			<Section
-				heading='Indian Card Games'
+				heading='Lottery Games'
 				icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
 			>
 				<CardGamesContainer>
 					<CardGamesGrid>
 
-						{indianCardGames.map((game, idx) => (
-							<CardGamesImage
-								key={idx}
-								src={`/assets/images/indianCardGames/${game}`}
-								alt=''
-							/>
+						{lotteryprovidersList.map((game) => (
+							<div className="Lottery-Home-Page" onClick={() => handleGameFastasy(game)}>
+								<img
+									className='Lottery-Home-Page-img'
+									src={game?.logo}
+								/>
+								<span style={{
+									fontSize: "14px",
+									fontWeight: "700"
+								}}>
+									{game?.name}
+								</span>
+							</div>
 						))}
 
 					</CardGamesGrid>

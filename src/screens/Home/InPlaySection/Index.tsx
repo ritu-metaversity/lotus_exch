@@ -65,7 +65,7 @@ const InPlaySection = () => {
 									name={sports.name}
 								/>
 								{sports.matchList.map(match => (
-									<MatchDataRow  key={match.matchId} {...match} />
+									<MatchDataRow key={match.matchId} {...match} />
 								))}
 							</React.Fragment>
 						)

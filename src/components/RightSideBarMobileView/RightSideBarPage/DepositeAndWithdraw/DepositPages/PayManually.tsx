@@ -88,75 +88,85 @@ const PayManually = (props: any) => {
     setDepositeType(dtype);
   };
   const handleSubmit = () => {
-    try {
+    console.log(Bitvalue, "kflsdiufgycg");
 
-      setAlertBtnshow(false);
-      // setIsLoading(true);
-      // if (Bitvalue === 0 || Bitvalue === NaN) {
-      //   setColor("danger");
-      //   setMessege("Amount should be greater than 99");
-      //   setAlertBtnshow(true);
-      //   setIsLoading(false);
-      // } else if (files === null) {
-      //   setColor("danger");
-      //   setMessege("Payment Screenshot is required");
-      //   setAlertBtnshow(true);
-      //   setIsLoading(false);
-      // } else if (Bitvalue <= 99) {
-      //   setColor("danger");
-      //   setMessege("Minimum Deposit Amount is 100");
-      //   setAlertBtnshow(true);
-      //   setIsLoading(false);
-      // }
+    if (Bitvalue >= 100) {
+      try {
 
-      const data = new FormData();
-      data.append("amount", Bitvalue);
-      data.append("image", files || "");
-      // if (Bitvalue > 99 && Bitvalue !== "" && Bitvalue != NaN) {
-      const TokenId = localStorage.getItem("token");
-      console.log(Bitvalue, files, "dsfsdfsdfsdfsdqec")
-      axios.post(
-        "https://api.247365.exchange/admin-new-apis/enduser/self-deposit-app", (data),
-        {
-          headers: {
-            // "Content-Type": "application/json",
-            Authorization: `Bearer ${TokenId}`,
-          },
+        setAlertBtnshow(false);
+        // setIsLoading(true);
+        // if (Bitvalue === 0 || Bitvalue === NaN) {
+        //   setColor("danger");
+        //   setMessege("Amount should be greater than 99");
+        //   setAlertBtnshow(true);
+        //   setIsLoading(false);
+        // } else if (files === null) {
+        //   setColor("danger");
+        //   setMessege("Payment Screenshot is required");
+        //   setAlertBtnshow(true);
+        //   setIsLoading(false);
+        // } else if (Bitvalue <= 99) {
+        //   setColor("danger");
+        //   setMessege("Minimum Deposit Amount is 100");
+        //   setAlertBtnshow(true);
+        //   setIsLoading(false);
+        // }
 
-        }
-      )
-        .then((res) => {
-          // console.log(res, "sdfdsda")
+        const data = new FormData();
+        data.append("amount", Bitvalue);
+        data.append("image", files || "");
+        // if (Bitvalue > 99 && Bitvalue !== "" && Bitvalue != NaN) {
+        const TokenId = localStorage.getItem("token");
+        console.log(Bitvalue, files, "dsfsdfsdfsdfsdqec")
+        axios.post(
+          "https://api.247365.exchange/admin-new-apis/enduser/self-deposit-app", (data),
+          {
+            headers: {
+              // "Content-Type": "application/json",
+              Authorization: `Bearer ${TokenId}`,
+            },
 
-          setIsLoading(false);
-          // props.UpdateDetails(true);
-          setMessege(res?.data?.message);
-          setColor("success");
-          setAlertBtnshow(true);
-          if (res?.data?.status === true) {
-            setBitValue(0);
-            setFiles(null);
-            setPaymentMode("UPI");
-            setActive(0);
-            // console.log(res.status, "hgfds")
-            props.UpdateList(true);
-            setBitValue(0)
-            setFiles(null)
           }
+        )
+          .then((res) => {
+            console.log(res, "sdfdsda")
+            toast.success(res?.data?.message)
 
-        })
-        .catch((error) => {
-          // console.log(error, "sdfdsdab")
+            setIsLoading(false);
+            // props.UpdateDetails(true);
+            setMessege(res?.data?.message);
+            setColor("success");
+            setAlertBtnshow(true);
+            if (res?.data?.status === true) {
+              setBitValue(0);
+              setFiles(null);
+              setPaymentMode("UPI");
+              setActive(0);
+              // console.log(res.status, "hgfds")
+              props.UpdateList(true);
+              setBitValue(0)
+              setFiles(null)
+            }
 
-          setIsLoading(false);
-          setMessege(error.respose.data.message);
-          setColor("danger");
-          setAlertBtnshow(true);
-        });
-      // }
-      // console.log("not errror");
+          })
+          .catch((error) => {
+            console.log(error, "sdfdsdab")
+
+            setIsLoading(false);
+            setMessege(error.respose.data.message);
+            setColor("danger");
+            setAlertBtnshow(true);
+          });
+        // }
+        // console.log("not errror");
+      }
+      catch { console.log("errrordasdfghjkl;"); }
+      console.log(Bitvalue, "sdfsdfsdf");
+
+    } else {
+      toast.error("The Amount should be more than 99.")
+      console.log(Bitvalue, "sdfsdfsdf");
     }
-    catch { console.log("errrordasdfghjkl;"); }
 
   };
 

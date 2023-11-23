@@ -36,8 +36,10 @@ const StakeEditPopup = ({ closePopup }: any) => {
         // setShowEditSave(true)
         closePopup(false)
     }
-    return (
-
+    return (<>
+        <div
+        
+        className="eddit-stake-wrapper"></div>
         <div className="main_layout_for_desk_stake">
             <div className="inner_for_desk_stake">
 
@@ -46,7 +48,9 @@ const StakeEditPopup = ({ closePopup }: any) => {
                         <input className="main_imput_desk_stake"
                             name={item}
                             value={buttonValue[item]}
-                            onChange={handleChange} />
+                            onChange={handleChange}
+
+                        />
 
                     );
                 })}
@@ -58,7 +62,7 @@ const StakeEditPopup = ({ closePopup }: any) => {
                 </div>
             </div>
 
-        </div>
+        </div></>
 
     )
 }

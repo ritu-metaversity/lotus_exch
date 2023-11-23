@@ -6,6 +6,7 @@ import { useAppSelector } from "../../hooks/useAppSelector";
 import { selectBetData, selectBetDataFancy, setBetData } from "../../state/features/client/clientSlice";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { CircularProgress } from "@mui/material";
 const Bettingpage = () => {
 
     const betData = useAppSelector(selectBetData)
@@ -32,7 +33,7 @@ const Bettingpage = () => {
             });
     }, []);
 
-    const [triger, { data: bettingResult, error }] = usePlaceBetMutation()
+    const [triger, { data: bettingResult, isLoading, error, isSuccess, isError }] = usePlaceBetMutation()
     console.log(bettingResult, error, "ewfwecwe");
     console.log(betData, "mpmkjibhct");
 
@@ -72,8 +73,31 @@ const Bettingpage = () => {
     const handleNewStack = () => {
         setUpdated(100)
     }
+
+
+    useEffect(() => {
+        if (isSuccess || isError) dispatch(setBetData(""))
+
+        return () => {
+        }
+    }, [isSuccess, isError])
+
     return (
         <div className="DesktopBetPlacing-container">
+            {isLoading && <>
+                <div className="desktop-bet-loading-overlay">
+                    <div className="loading-popup-type-overlay">
+                    </div>
+                    <div className="loading-popup-type-comp">
+                        <div className="loding-popup-Bet-placement-in-progress">
+
+                            <CircularProgress style={{ color: "white" }} />
+                            <span>Bet placement in progress</span>
+                        </div>
+                    </div>
+
+                </div>
+            </>}
             <div className="DesktopBetPlacing__topMark">
                 <div className="DesktopBetPlacing__topMark-back" style={{ backgroundColor: betData?.color === "blue" ? "#a7d8fd" : "#F9C9D4" }}>
                 </div>

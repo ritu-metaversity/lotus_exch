@@ -19,6 +19,7 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import {
 	selectHomeSwipe,
 	selectSelectedSid,
+	setBetData,
 	setHomeSwipe,
 	setSelectedSid,
 } from '../../state/features/client/clientSlice';
@@ -89,12 +90,12 @@ const MatchDataRow = (props: MatchDataRowProps) => {
 	// const [mobileviewbettingPopUpMatch, setMobileviewbettingPopUpMatch] = useState('')
 	const OddsData = (vl: any) => {
 		dispatch(setSelectedSid(vl.SelectionIdForAll.selectionId))
+		dispatch(setBetData({ ...vl, }))
 
 		setMobileViewBettingData(vl)
 
 	}
 
-	console.log(selectedSid, "lokijuhugyttrfrd");
 
 
 	return (

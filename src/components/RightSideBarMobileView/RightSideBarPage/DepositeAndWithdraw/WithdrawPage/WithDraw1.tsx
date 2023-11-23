@@ -17,6 +17,7 @@ const WithDraw1 = () => {
 
     const erreeee = {
         Amountfieldrequired: "The Amount field is required",
+        AmountfieldLow: "The Amount should be more than 99.",
         AmountNumberrequired: "The Account Number is required",
         AmountNamerequired: "The Account Name field is required",
         bankName: "The Bank Name field is required",
@@ -241,6 +242,11 @@ const WithDraw1 = () => {
             toast.error("insufficient balance");
             setErrorAlert(true);
             setColorName("danger");
+            setIsLoading(false);
+            return false;
+        }
+        if (withCoinValue < 100) {
+            toast.error(erreeee?.AmountfieldLow)
             setIsLoading(false);
             return false;
         }

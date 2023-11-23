@@ -22,7 +22,7 @@ const DesktopLayout = () => {
         <>
             <NavbarDesktop />
             <LayoutWrapper pathname={pathname}>
-                {pathname.includes("Slot-Games" || "/live-casino" || "/Card-Game") ?
+                {["/Card-Game", "/Slot-Games", "/live-casino"].includes(pathname) ?
                     "" :
                     <SidebaDeskTop />
                 }

@@ -87,12 +87,12 @@ const AllSportsPages = () => {
 
                             <div className="starr-iconn">
 
-                                <img src="../../../public/assets/icons/sideBarStar.8347cb3e.svg" />
+                                <img src="https://lotus365.co/static/media/sideBarStar.8347cb3e.svg" />
                             </div>
                             <div className="match-namke-game-page">{item?.matchName}</div>
                             {item?.inPlay === true ?
                                 <div className="date-time-inplay">
-                                    <img src="../../../public/assets/icons/inplay-logo-iconSport.bb6548ae.svg" /> In-Play
+                                    <img src="https://lotus365.co/static/media/inplay-broadcast-icon.e5eb4298.svg" />
 
 
                                     {/* </div> */}

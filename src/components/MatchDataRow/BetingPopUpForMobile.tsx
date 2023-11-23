@@ -8,7 +8,8 @@ import { useParams } from "react-router-dom";
 import { usePlaceBetMutation, useGetStackDetailsQuery } from "../../state/apis/main/apiSlice";
 import { setSelectedSid } from "../../state/features/client/clientSlice";
 import { useDispatch } from "react-redux";
-
+import { CircularProgress, Dialog, DialogContent } from "@mui/material";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }: any) => {
     const user = useAppSelector(selectUser)
     // const betData = useAppSelector(selectBetData);
@@ -42,7 +43,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
 
         // datatattatattat("true");
     };
-    const [triger, { data: bettingResult, error }] = usePlaceBetMutation()
+    const [triger, { data: bettingResult, error, isLoading, isError, isSuccess }] = usePlaceBetMutation()
     console.log(mobileViewBettingData?.size, "lnjohuiyguftychvgjbhjnl");
     console.log(error, "betDatafssd");
 
@@ -112,11 +113,31 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
 
         }
     }
-    console.log(mobileViewBettingData?.mobileViewBettingData, "rrjfnwinwokdoews");
+    console.log(mobileViewBettingData?.allData?.betDelay, "rrjfnwinwokdoews");
 
+    useEffect(() => {
+        if (isSuccess || isError) dispatch(setSelectedSid(""))
+
+        return () => {
+        }
+    }, [isSuccess, isError])
+    console.log(updated, "DSGfdhgsfsaadfg");
 
     return (
         <div className="BetPlacing__wrapper" style={{ backgroundColor: mobileViewBettingData?.color === "blue" ? "#a7d8fd" : "#F9C9D4" }}>
+            <Dialog fullWidth maxWidth="sm" open={isLoading} >
+                <DialogContent>
+                    <div className="betting_place_lodder">
+                        <span className="betting_place_lodder_placeeeeee">
+                            Your bet is being processed.
+                        </span>
+                        <span className="betting_place_lodder_placeeeeee">
+                            Please wait...
+                        </span>
+                        <CircularProgress></CircularProgress>
+                    </div>
+                </DialogContent>
+            </Dialog>
             <div className="BetPlacing__wrapper__InnerWrapper">
 
                 <div className="BetPlacing_Upper_Head_Odds">
@@ -132,13 +153,14 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
                     <div className="BetPlacing_Upper_Head_Odds_RightSide">
                         <div className="BetPlacing_Upper_Head_Odds_RightSide_Upper">
                             <span>STAKE</span>
-                            <span>Max Mkt: 0</span>
+                            <span>Max Mkt: {mobileViewBettingData?.allData?.maxBet}</span>
                         </div>
                         <input className="BetPlacing_Upper_Head_Odds_RightSide_Lower" placeholder="Max:0"
                             onChange={(e) =>
                                 !isNaN(Number(e.target.value)) &&
                                 setUpdated(Number(e.target.value))
                             }
+                            // value={updated === 0 ? (`Max: ${mobileViewBettingData?.allData?.maxBet}`) : updated}
                             value={updated === 0 ? 0 : updated}
                         />
                         {/* <div className="BetPlacing_Upper_Head_Odds_RightSide_Lower">
@@ -170,52 +192,36 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
                     <button onClick={() => dispatch(setSelectedSid(""))} className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss btn-cancel">Cancel</button>
                     {/* <button>Place Bet</button> */}
                     {user ?
-                        <button className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss btn-login" onClick={handleBetPalce}>
-                            <span>Place Bet</span>
-                            <span>Profit:
-                                {/* {marketId?.includes("BM") ||
-                            marketId?.includes("Bm") ||
-                            marketId?.includes("bm")
-                              ? profits?.Bookmaker?.filter(
-                                  (item) => item?.mid === marketId
-                                ).map((profit) => {
-                                  return (
-                                    profit.sid === selectionId &&
-                                    (
-                                      (profit?.value || 0) +
-                                      ((colorName === "back" ? 1 : -1) *
-                                        spanValueRate *
-                                        updated) /
-                                        100
-                                    ).toFixed(2)
-                                  );
-                                })
-                              : profits?.Odds[marketId]?.map((profit) => {
-                                  return (
-                                    profit.sid === selectionId &&
-                                    (
-                                      (profit?.value || 0) +
-                                      (colorName === "back" ? 1 : -1) *
-                                        (spanValueRate - 1) *
-                                        updated
-                                    ).toFixed(2)
-                                  );
-                                })} */}
+                        <button className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss btn-palce" style={{
+                            backgroundColor: updated !== 0 ? "#f4d820" : "#979797"
+                        }} onClick={handleBetPalce}>
+                            <div className="Place-Bet-Placebte">
+                                <span>Place Bet</span>
+                                <span>Profit:
 
-                                {
-                                    mobileViewBettingData?.color === "blue"
-                                        ? mobileViewFancyBetting
-                                            ? (updated * mobileViewBettingData?.size
-                                            ) / 100
-                                            : (mobileViewBettingData?.allData?.mid?.includes("BM") ||
-                                                mobileViewBettingData?.allData?.mid?.includes("bm") ||
-                                                mobileViewBettingData?.allData?.mid?.includes("Bm")
-                                                ? (mobileViewBettingData?.vl * updated) / 100
-                                                : (mobileViewBettingData?.vl - 1) * updated
-                                            ).toFixed(2)
-                                        : updated
-                                }
-                            </span>
+
+                                    {
+                                        mobileViewBettingData?.color === "blue"
+                                            ? mobileViewFancyBetting
+                                                ? (updated * mobileViewBettingData?.size
+                                                ) / 100
+                                                : (mobileViewBettingData?.allData?.mid?.includes("BM") ||
+                                                    mobileViewBettingData?.allData?.mid?.includes("bm") ||
+                                                    mobileViewBettingData?.allData?.mid?.includes("Bm")
+                                                    ? (mobileViewBettingData?.vl * updated) / 100
+                                                    : (mobileViewBettingData?.vl - 1) * updated
+                                                ).toFixed(2)
+                                            : updated
+                                    }
+                                </span>
+                            </div>
+
+                            <div className="Place-Bet-AccessTimeIcon">
+                                <AccessTimeIcon />
+                                <span> {mobileViewBettingData?.allData?.betDelay}s</span>
+                            </div>
+
+
                         </button>
                         :
                         <button className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss btn-login" >Log in</button>

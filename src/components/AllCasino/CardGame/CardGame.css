@@ -1,5 +1,5 @@
 .exchangeGames__bg-top {
-    background: linear-gradient(180deg,#065824,#063e39);
+    background: linear-gradient(180deg, #065824, #063e39);
     width: 100%;
     height: 65%;
     background-size: cover;
@@ -8,40 +8,171 @@
     position: relative;
     min-height: 350px;
 }
-.exchangeGamesMobile-header-text {
-    position: unset;
-    display: flex;
-    align-items: center;
-    height: 133px;
-    width: 100%;
-    padding: 30px 32px;
-    background-color: #86aa16;
-    text-align: center;
-    z-index: 1;
-}
-.exchangeGamesMobile-header__credo {
-    position: absolute;
-    top: 7.5%;
-    height: 102px;
-    width: 81px;
+
+.exchangeGames__bg-top_credo-text {
+    width: 420px;
     font-family: "Lato";
     font-style: normal;
     font-weight: 400;
-    font-size: 25px;
-    line-height: 34px;
+    font-size: 45px;
+    line-height: 62px;
+    text-align: right;
     letter-spacing: .09em;
-    text-align: left;
     color: #fff;
-    text-shadow: 0 4px 4px rgba(0,0,0,.25);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    margin-left: 50px;
+    margin-top: 11px;
 }
 
-.exchangeGamesMobile-header__description {
+.exchangeGames__bg-top_description {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
     font-family: "Lato";
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
-    text-align: center;
+    font-size: 25px;
+    line-height: 30px;
     letter-spacing: .09em;
-    color: #fff;
+    color: #86aa16;
+    z-index: 2;
+    margin-left: 88px;
+    margin-top: 31px;
+}
+
+.outsideRouletteM_container {}
+
+.outsideRouletteM {
+    width: 62%;
+    position: absolute;
+    top: 32%;
+    left: 16%;
+}
+
+.insideRoulette {
+    animation: animName 15s linear infinite;
+    width: 62%;
+    position: absolute;
+    top: 32%;
+    left: 16%;
+}
+
+@keyframes animName {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.outsideRouletteM_girl {
+    width: 35%;
+    position: absolute;
+    top: 12%;
+    right: 1%;
+}
+
+.exchangeGamesMobile-header-text-mobile {
+    display: none;
+}
+
+/* .exchangeGamesMobile-header__credo {
+    display: none;
+} */
+
+@media screen and (max-width:1024px) {
+
+    .exchangeGamesMobile-header-text-mobile {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 133px;
+        width: 100%;
+        padding: 30px 32px;
+        background-color: #86aa16;
+        text-align: center;
+        z-index: 1;
+    }
+
+
+    .exchangeGamesMobile-header-text {
+        display: none;
+    }
+
+    .exchangeGamesMobile-header__credo {
+        position: absolute;
+        height: 102px;
+        width: 81px;
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 34px;
+        letter-spacing: .09em;
+        text-align: left;
+        color: #fff;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+        bottom: 42vh;
+    }
+
+    .exchangeGames__bg-top_credo-text {
+        position: absolute;
+        top: 7.5%;
+        height: 102px;
+        width: 81px;
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 34px;
+        letter-spacing: .09em;
+        text-align: left;
+        color: #fff;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    }
+
+    .exchangeGames__bg-top_description {
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 18px;
+        text-align: center;
+        letter-spacing: .09em;
+        color: #fff;
+    }
+
+    .outsideRouletteM {
+        position: absolute;
+        width: 456px;
+        left: -50vw;
+        top: 28vh;
+    }
+
+    .insideRoulette {
+        animation: animName 15s linear infinite;
+        position: absolute;
+        width: 456px;
+        left: -50vw;
+        top: 28vh;
+    }
+
+    @keyframes animName {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .outsideRouletteM_girl {
+        width: 100%;
+        position: absolute;
+        top: 8%;
+        right: 0%;
+    }
 }

@@ -1,0 +1,80 @@
+.gamedetails_page_wraper {
+    background-image: url("../../../../public//assets/images/casinoGames/CaisnoNewImg/exchange_games_bg_mobile.1ddc3444.jpg");
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.inner_gamedetails_page_wraper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.game_img_proves_btn {
+    width: 43%;
+    background-color: transparent;
+    border: unset;
+}
+
+.games_provider_name_with_details {
+    font-family: "Lato";
+    font-weight: 700;
+    font-size: 25px;
+    letter-spacing: .09em;
+    color: #86aa16;
+    margin: 0;
+    text-align: left;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.Live_Game_waper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 17px;
+}
+
+@media screen and (min-width:1024px) {
+    .gamedetails_page_wraper {
+        background-image: url("../../../../public//assets/images/casinoGames/CaisnoNewImg/bgLinesCasino.9d1fc785.jpg");
+        /* min-height: 100vh; */
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inner_gamedetails_page_wraper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 10px;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .game_img_proves_btn {
+        width: 25%;
+        background-color: transparent;
+        border: unset;
+    }
+
+    .games_provider_name_with_details {
+        font-family: "Lato";
+        font-weight: 700;
+        font-size: 45px;
+        letter-spacing: .09em;
+        color: #86aa16;
+        margin: 0 0 20px;
+        text-align: left;
+        text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    }
+}

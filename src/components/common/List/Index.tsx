@@ -4,7 +4,9 @@ import "./Mobile.list.css"
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLeftMenuDataOpenMutation } from '../../../state/apis/main/apiSlice';
-
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { ListItemContainer, ListItemContainerWrapper, ListItemLabel } from './ListItem/Index.styled';
+// import { ListItemIcon } from '@mui/material';
 interface ListProps {
 	items: Array<ListItemProps>;
 	hover?: boolean;
@@ -31,8 +33,26 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 	}
 	console.log(leftMenuData?.data, "fdvfddfgdvwerf");
 
+	const handleGameMyMarketPage = () => {
+		closeLefySideBar(false)
+		navigate("/My-Market")
+
+	}
+
 	return (
 		<ListContainer className='list'>
+			<ListItemContainerWrapper className='list-item-container' onClick={handleGameMyMarketPage}>
+				<ListItemContainer
+					hover={hover}
+					className='list-item'
+				>
+					<RemoveRedEyeIcon style={{
+						fontSize: "20px",
+						color: "black"
+					}} />
+					<ListItemLabel className='list__label'>My Market</ListItemLabel>
+				</ListItemContainer>
+			</ListItemContainerWrapper>
 			{leftMenuData?.data && leftMenuData?.data.map((item: any, i: any) => (
 				<ListItem
 					onClick={() => handleGamePage(item)}

@@ -14,6 +14,42 @@
     position: relative;
 }
 
+.desktop-bet-loading-overlay {
+    position: absolute;
+    top: 0;
+    z-index: 2000;
+    left: 0;
+    overflow: visible;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.desktop-bet-loading-overlay .loading-popup-type-overlay {
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    left: 0;
+    overflow: visible;
+    width: 100vw;
+    height: 100%;
+    background-color: #00000059;
+}
+
+
+.desktop-bet-loading-overlay .loading-popup-type-comp {
+    margin: auto;
+    border: 2px solid white;
+    width: 80%;
+    height: 70%;
+    margin-top: 50%;
+    opacity: 1;
+    background-color: black;
+    z-index: 201;
+    position: relative;
+}
+
+
 .DesktopBetPlacing__betName {
     display: flex;
     justify-content: space-between;
@@ -231,9 +267,9 @@
 
 
 .DesktopBetPlacing-container {
-    overflow: hidden;
+    overflow: visible;
     margin-top: -2px;
-    z-index: 2;
+    /* z-index: 2; */
     position: relative;
     background-color: #fff;
     padding: 3px;
@@ -343,4 +379,16 @@
     font-size: 12px;
     line-height: 14px;
     color: #000;
+}
+
+.loding-popup-Bet-placement-in-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 15px;
+    flex-direction: column;
+    gap: 29px;
+    margin-top: 86px;
+    color: rgb(120 120 120);
 }

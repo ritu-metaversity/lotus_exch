@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 // import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -23,6 +23,7 @@ import SecondaryNavbar from './SecondaryNavbar';
 import "./Header.css"
 import { useGetBalanceUpdateQuery, useIsSelfByAppUrlMutation } from '../../state/apis/main/apiSlice';
 import SignIn from '../../screens/SignIn/Index';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 interface NavbarProps {
 	sidebarExpanded: boolean;
 	rightSidebarExpanded: boolean;
@@ -33,6 +34,7 @@ interface NavbarProps {
 const NavbarMobile = (props: NavbarProps) => {
 	const { rightSidebarExpanded, sidebarExpanded, setSidebarExpanded, setRightSideBarExpanded } = props;
 	const [open, setOpen] = React.useState(false);
+	const { pathname } = useLocation();
 	// const [signUpopen, setSignUpopen] = React.useState(false);
 	const handleClose = () => setOpen(false);
 	// const handleCloseSignUp = () => setSignUpopen(false);
@@ -59,7 +61,7 @@ const NavbarMobile = (props: NavbarProps) => {
 	// const [userBalance, setuserBalance] = useState();
 	// const [userLibality, setuserLibality] = useState(0);
 
-	const { data } = useGetBalanceUpdateQuery(undefined, { pollingInterval: 3000 ,skip: !(localStorage.getItem("token"))});
+	const { data } = useGetBalanceUpdateQuery(undefined, { pollingInterval: 3000, skip: !(localStorage.getItem("token")) });
 	const [triger, { data: IsSelfByAppUrl }] = useIsSelfByAppUrlMutation();
 
 	useEffect(() => {
@@ -78,9 +80,13 @@ const NavbarMobile = (props: NavbarProps) => {
 				<div className='wrapppor_for_both_view'>
 					<div className="wrapppor_for_Mobile_view">
 						<div className='left_side_logo_menu'>
-							<MenuIcon style={{ fontSize: "26px" }} onClick={() => setSidebarExpanded(!sidebarExpanded)} />
-							<img src={IsSelfByAppUrl?.data?.logo} style={{ width: "133px", height: "60px" }} onClick={handleLogoClick} />
+							{pathname === "/home" ?
 
+								(<MenuIcon style={{ fontSize: "26px" }} onClick={() => setSidebarExpanded(!sidebarExpanded)} />)
+								:
+								(<ArrowBackIcon style={{ fontSize: "25px" }} />)
+							}
+							<img src={IsSelfByAppUrl?.data?.logo} style={{ width: "133px", height: "60px" }} onClick={handleLogoClick} />
 						</div>
 						{localStorage.getItem("token") ?
 							<div className='right_side_menu_pnl'>

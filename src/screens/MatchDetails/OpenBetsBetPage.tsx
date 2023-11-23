@@ -77,7 +77,7 @@ const OpenBetsBetPage = () => {
                                             {console.log(item, "Fe3rgtrwerewfdw")}
                                             <div className="OpenBetUnamteData">
                                                 <div className="OpenBetUnamteData_Firts">
-                                                    <span className="OpenBetUnamteData_Back" style={{ color: item?.isback === true ? "#2d8ad1" : "#ef819a" }} onClick={() => navigate(`/match-details/${item?.matchId}`)}> {item?.isback === true ? "Back" : "Lay"} {item?.nation}  for {item?.amount} @ {item?.rate} to Win {item?.pnl}</span>
+                                                    <span className="OpenBetUnamteData_Back" style={{ color: item?.back === true ? "#2d8ad1" : "#ef819a" }} onClick={() => navigate(`/match-details/${item?.matchId}`)}> {item?.back === true ? "Back" : "Lay"} {item?.nation}  for {item?.amount} @ {item?.rate} to Win {item?.pnl}</span>
                                                 </div>
 
                                                 <div className="OpenBetUnamteData_Second">

@@ -748,6 +748,7 @@ p.lodder.depositLoading {
     background-color: #2c4f58;
     border: unset;
     border-radius: 5px;
+    color: white;
 }
 
 .Qr_code_img {

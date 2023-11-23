@@ -98,7 +98,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    padding: 0px 5px;
+    /* padding: 0px 5px; */
     gap: 12px;
     position: relative;
 }
@@ -126,6 +126,7 @@
 
 .pop-up-content__buttons {
     padding: 11px 0px;
+    width: 100%;
 }
 
 .log_in_btn_btn {
@@ -134,7 +135,7 @@
     height: 40px;
     border: unset;
     width: 100%;
-    padding: 0px 111px;
+    /* padding: 0px 111px; */
     border-radius: 5px;
     font-size: 15px;
     color: green;
@@ -146,7 +147,7 @@
     height: 40px;
     border: unset;
     width: 100%;
-    padding: 0px 89px;
+    /* padding: 0px 89px; */
     border-radius: 5px;
     background-color: #fff;
     font-size: 15px;
