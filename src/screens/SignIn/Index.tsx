@@ -117,7 +117,7 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 			const data = {
 				userId,
 				password,
-				appUrl: host === "localhost" ? "localhost" : "localhost",
+				appUrl: host === "localhost" ? "localhost" : host,
 			};
 			signIn(data)
 			// axios
