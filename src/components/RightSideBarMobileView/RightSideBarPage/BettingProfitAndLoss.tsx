@@ -336,6 +336,9 @@ const BettingProfitAndLoss = () => {
       }
     }
   }, [pageSports]);
+
+  console.log(resposeProfiteAndLossMatchWiseData?.data?.totalPnl, "klokjnhbgytfrdx");
+
   return (
 
     <div className="boxed-layout-wrapper" >
@@ -528,6 +531,67 @@ const BettingProfitAndLoss = () => {
 
                   </div>
 
+
+
+                  {/* fhjgfdfghkjiouytdrsdfghiuyftdgxhuiyfhdgxhuyighcv */}
+                  <div className="betting-profit-and-loss-page__filters-sports-buttons-total">
+                    {/* <ul className="betting-profit-and-loss-page__filters-sports-buttons-list">
+                      <li className=" betting-profit-and-loss-page__filters-sport-button">
+                        <span className="betting-profit-and-loss-page__filters-sport-button-name">
+                          Cricket:
+                        </span>
+                        &nbsp;
+                        <span className="negative-amount betting-profit-and-loss-page__filters-sport-amount">
+                          -669.00
+                        </span>
+                      </li>
+                    </ul> */}
+                    <div className="active-button betting-profit-and-loss-page__filters-total">
+                      <span>Total P&amp;L:</span>&nbsp; &nbsp;
+                      {resposeProfiteAndLossMatchWiseData?.data === null ?
+
+
+                        "0:00" :
+
+                        <>
+                          {resposeProfiteAndLossMatchWiseData?.data?.totalPnl <= 0 ?
+
+                            <span className="negative-amount betting-profit-and-loss-page__filters-total-amount"
+
+                              style={{
+                                color: "#bf311c"
+                              }}>
+
+                              -{resposeProfiteAndLossMatchWiseData?.data?.totalPnl}
+                            </span>
+                            :
+                            <span className="negative-amount betting-profit-and-loss-page__filters-total-amount"
+
+                              style={{
+                                color: "green"
+                              }}>
+
+                              {resposeProfiteAndLossMatchWiseData?.data?.totalPnl}
+                            </span>
+                          }
+
+                        </>
+
+                      }
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
                   {/* 
   <DatePicker style={{width: "50%", height: "41px"}} onChange={handleStartDate}  />
   <DatePicker style={{width: "50%", height: "41px"}} onChange={handleEndDate} /> */}
@@ -586,7 +650,7 @@ const BettingProfitAndLoss = () => {
                             </thead>
 
                             <tbody>
-                              {resposeProfiteAndLossMatchWiseData?.data?.market.length &&
+                              {resposeProfiteAndLossMatchWiseData?.data?.market.length ?
                                 resposeProfiteAndLossMatchWiseData?.data?.market.map((el: any) => {
                                   return (
                                     <tr role="row">
@@ -603,9 +667,9 @@ const BettingProfitAndLoss = () => {
                                         N/A
                                       </td>
                                       <td
-                                        style={{ height: "30px" }}
+                                        style={{ height: "30px", color: "green" }}
                                         className="text-left withdraw-data">
-                                        {el?.commssionDiya}
+                                        {el?.commssionMila}
                                       </td>
                                       {el?.pnl > 0 ?
                                         <td style={{
@@ -632,6 +696,17 @@ const BettingProfitAndLoss = () => {
                                     </tr>
                                   )
                                 })
+                                :
+                                <tr role="row ">
+                                  <td style={{
+                                    height: "30px", textAlign: "center",
+                                    color: "red",
+                                    fontWeight: "600"
+                                  }} colSpan={5}
+                                    className="text-left withdraw-data">
+                                    NO DATA FOUND
+                                  </td>
+                                </tr>
                               }
 
                             </tbody>

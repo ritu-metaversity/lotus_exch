@@ -506,8 +506,8 @@ const WithDraw1 = () => {
                 </div>
                 <div
                     className="withdrow_type"
-                    style={{ marginBottom: "12px", width: "100%" }}>
-                    <select value={withdrawType} onChange={(e) => setWithdrawType(e.target.value)} style={{ width: "50%", cursor: "pointer" }} >
+                    style={{ marginBottom: "12px", width: "100%", color: "#000" }}>
+                    <select value={withdrawType} onChange={(e) => setWithdrawType(e.target.value)} style={{ width: "50%", cursor: "pointer", color: "#000", borderColor: "#000" }} >
                         <option value="Normal" style={{ cursor: "pointer" }}>Normal</option>
                         <option value="Instant" style={{ cursor: "pointer" }}>Instant</option>
                     </select>
@@ -633,6 +633,7 @@ const WithDraw1 = () => {
                                         name="reportType"
                                         // style={{ width: "100%" }}
                                         value={AccountType}
+                                        style={{ color: "#000", borderColor: "#000" }}
                                         className="custom-select select-type accounttype"
                                         onChange={(e) => setAccountType(e.target.value)}>
                                         <option value="Saving">Saving</option>

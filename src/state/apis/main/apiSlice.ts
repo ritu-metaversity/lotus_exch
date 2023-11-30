@@ -236,6 +236,12 @@ export const mainApiSlice = createApi({
 			body:payload
 		})
 		}),
+		userFancyPnl: builder.mutation({
+			query: (payload) => ({url : `/enduser/user-fancy-pnl`,
+			method:"post",
+			body:payload
+		})
+		}),
 		betHistory: builder.mutation({
 			query: (payload) => ({url : `/enduser/bet-list-history`,
 			method:"post",
@@ -282,5 +288,6 @@ export const {
 	useUserOddsPnlMutation,
 	useBetHistoryMutation,
 	useDepositeRequestClientMutation,
-	useBetListByMatchIdMutation
+	useBetListByMatchIdMutation,
+	useUserFancyPnlMutation
 } = mainApiSlice;

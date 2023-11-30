@@ -9,6 +9,11 @@ const initialClientState: ClientState = {
 	selectedSid:"",
 	betData:null,
 	betDataFancy:"",
+	profits:{
+		Odds: {},
+		Bookmaker: [],
+		Fancy: [],
+	  },
 };
 
 const clientSlice = createSlice({
@@ -30,19 +35,23 @@ const clientSlice = createSlice({
 		},
 		setSelectedSid:(state,action:PayloadAction<string>)=>{
 			state.selectedSid=action.payload
-		}
+		},
+		setProfits:(state,action:PayloadAction<any>)=>{
+			state.profits = action.payload
+		},
 	},
 });
 
 export default clientSlice.reducer;
 
-export const { setHomeSwipe,setBetData,setBetDataFancy,setSelectedSid } = clientSlice.actions;
+export const { setHomeSwipe,setBetData,setBetDataFancy,setSelectedSid,setProfits } = clientSlice.actions;
 
 /* SELECTORS */
 const swipeSelector = (state: RootState) => state.client.swipeView;
 const betDataSelector = (state: RootState) => state.client.betData;
 const betDataSelectorFancy = (state: RootState) => state.client.betDataFancy;
 const selectedSidSelector = (state: RootState) => state.client.selectedSid;
+const profitsSelector = (state: RootState) => state.client.profits;
 
 export const selectHomeSwipe = createSelector(
 	swipeSelector,
@@ -58,5 +67,9 @@ export const selectBetDataFancy = createSelector(
 );
 export const selectSelectedSid = createSelector(
 	selectedSidSelector,
+	swipe => swipe
+);
+export const selectProfits = createSelector(
+	profitsSelector,
 	swipe => swipe
 );

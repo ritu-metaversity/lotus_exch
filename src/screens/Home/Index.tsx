@@ -9,6 +9,7 @@ import CasinoGamesSection from './CasinoGamesSection/Index';
 
 import Footer from '../../components/Footer/Index';
 import { useState } from 'react';
+import UpcommingEvents from './InPlaySection/UpcommingEvents';
 
 const Home = () => {
 	const [rightSidebarExpanded] = useState(false);
@@ -22,6 +23,7 @@ const Home = () => {
 			<IndianCardGamesSection />
 			<PopularGamesSection />
 			<CasinoGamesSection />
+			<UpcommingEvents />
 
 			{
 				window.location.pathname === "/home" ?

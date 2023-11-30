@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 import { isBetOpened } from '../../../services/betUtil';
 import { BettingPopUpmobileViewShow } from '../../../components/MatchDataRow/Index.styled';
 import BetingPopUpForMobile from '../../../components/MatchDataRow/BetingPopUpForMobile';
-import { selectSelectedSid, setBetData, setBetDataFancy, setSelectedSid } from '../../../state/features/client/clientSlice';
+import { selectProfits, selectSelectedSid, setBetData, setBetDataFancy, setSelectedSid } from '../../../state/features/client/clientSlice';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useState } from 'react';
 import { MinMax, TypoGraphy } from '../../../components/MatchOddsRow/Index.styled';
@@ -36,7 +36,7 @@ const FancyOdds = (props: FancyOddsProps) => {
 
 		setMobileViewBettingData(vl)
 		setMobileViewFancyBetting("fancy")
-		dispatch(setBetData({ ...vl, }))
+		dispatch(setBetData({ ...vl, isFancy: true }))
 		dispatch(setBetDataFancy("fancy"))
 
 		dispatch(setSelectedSid(vl.SelectionIdForAll))
@@ -53,6 +53,8 @@ const FancyOdds = (props: FancyOddsProps) => {
 			</Box>
 		);
 
+	const profits = useAppSelector(selectProfits)
+	// console.log(profits,"sushant");
 
 	console.log(selectedSid === mobileViewBettingData?.SelectionIdForAll, "dvecvevrsdcxw");
 
@@ -72,6 +74,7 @@ const FancyOdds = (props: FancyOddsProps) => {
 							isFancy={true}
 							content={`${gstatus}`}
 							key={nation} title={nation}
+							pnl={profits?.Fancy?.find(profit => profit.sid == sid)?.value}
 							betDelay={betDelay}>
 							<FancyOddsGrid
 								isBetOpened={isBetOpened(gstatus)}

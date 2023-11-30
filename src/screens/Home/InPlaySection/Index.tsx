@@ -55,6 +55,7 @@ const InPlaySection = () => {
 			<Section
 				heading='In Play'
 				icon={<Icon src='/assets/icons/play.svg#play' isSvgIcon />}
+				inplay="true"
 			>
 				{data?.data.map(
 					sports =>
@@ -65,7 +66,7 @@ const InPlaySection = () => {
 									name={sports.name}
 								/>
 								{sports.matchList.map(match => (
-									<MatchDataRow key={match.matchId} {...match} />
+									<MatchDataRow key={match.matchId} {...match}/>
 								))}
 							</React.Fragment>
 						)
@@ -74,5 +75,4 @@ const InPlaySection = () => {
 		</InPlayContainer>
 	);
 };
-
 export default InPlaySection;

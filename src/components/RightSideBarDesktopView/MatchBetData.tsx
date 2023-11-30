@@ -10,14 +10,17 @@ const MatchBetData = (unSettledBet: any) => {
         <div className="OpenBetsList__content-competition">
 
             <div className="OpenBetsList__content-itemsByMarket">
-                <div className="OpenBetsList__content-itemsRow">
-                    <div className="OpenBetsList__content-itemsRow-market">Event Name</div>
-                    <div className="OpenBetsList__content-itemsRow-odds">Odds</div>
-                    <div className="OpenBetsList__content-itemsRow-stake">Stake</div>
-                    <div className="OpenBetsList__content-itemsRow-profit">
-                        Profit/Liability
+                {unSettledBet?.unSettledBet?.data?.dataList?.length > 0 ?
+
+                    <div className="OpenBetsList__content-itemsRow">
+                        <div className="OpenBetsList__content-itemsRow-market">Event Name</div>
+                        <div className="OpenBetsList__content-itemsRow-odds">Odds</div>
+                        <div className="OpenBetsList__content-itemsRow-stake">Stake</div>
+                        <div className="OpenBetsList__content-itemsRow-profit">
+                            Profit/Liability
+                        </div>
                     </div>
-                </div>
+                    : ""}
                 <div className="">
                     {unSettledBet?.unSettledBet?.data?.dataList?.length > 0 ?
 
@@ -38,7 +41,7 @@ const MatchBetData = (unSettledBet: any) => {
                             </div>
                         )
                         :
-                        <> You have no <span className="lowercase">Mmatched Bets</span> </>
+                        <div className="OpenBetsItem noBetsItem">You have no <span className="lowercase">Matched Bets</span></div>
                     }
                 </div>
             </div>

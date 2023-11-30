@@ -30,9 +30,9 @@ export const MatchTimeAndFavouriteContainer = styled('div')(({ theme }) => ({
 	},
 }));
 
-export const MatchTiming = styled('p')(({ theme }) => ({
+export const MatchTiming = styled('p')(() => ({
 	textAlign: 'center',
-	color: theme.palette.primary[300],
+	// color: theme.palette.primary[300],
 	fontSize: '1rem',
 	lineHeight: '120%',
 	display: 'flex',

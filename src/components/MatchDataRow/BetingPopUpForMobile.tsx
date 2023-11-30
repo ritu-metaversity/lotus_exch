@@ -6,14 +6,14 @@ import { useAppSelector } from "../../hooks/useAppSelector";
 import { useParams } from "react-router-dom";
 // import toast from "react-hot-toast";
 import { usePlaceBetMutation, useGetStackDetailsQuery } from "../../state/apis/main/apiSlice";
-import { setSelectedSid } from "../../state/features/client/clientSlice";
+import { selectBetData, setBetData, setSelectedSid } from "../../state/features/client/clientSlice";
 import { useDispatch } from "react-redux";
 import { CircularProgress, Dialog, DialogContent } from "@mui/material";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }: any) => {
     const user = useAppSelector(selectUser)
-    // const betData = useAppSelector(selectBetData);
-    console.log(mobileViewBettingData, mobileViewFancyBetting, "dsrgethrjytkuilyymujhngb");
+    const betData = useAppSelector(selectBetData);
+    console.log(mobileViewBettingData, "dsrgethrjytkuilyymujhngb");
     const { matchId } = useParams();
 
     const dispatch = useDispatch()
@@ -21,7 +21,8 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
     const [userIP, setUserIP] = useState("");
     const [updated, setUpdated] = useState(0);
     const { data } = useGetStackDetailsQuery(undefined)
-    console.log(data?.data, "sdfsdfsdfsdf");
+    console.log(updated, "sdfsdfsdfsdf");
+
 
 
 
@@ -43,6 +44,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
 
         // datatattatattat("true");
     };
+
     const [triger, { data: bettingResult, error, isLoading, isError, isSuccess }] = usePlaceBetMutation()
     console.log(mobileViewBettingData?.size, "lnjohuiyguftychvgjbhjnl");
     console.log(error, "betDatafssd");
@@ -53,8 +55,8 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
         // } else if (error?.status === true) {
         //     dispatch(setSelectedSid(""))
         // }
-
-    }, [bettingResult])
+        dispatch(setBetData({ ...betData, stake: updated }))
+    }, [updated])
 
     const handleBetPalce = () => {
         let dataaaaa = {
@@ -113,7 +115,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
 
         }
     }
-    console.log(mobileViewBettingData?.allData?.betDelay, "rrjfnwinwokdoews");
+    console.log(mobileViewBettingData?.allData?.maxBet, "rrjfnwinwokdoews");
 
     useEffect(() => {
         if (isSuccess || isError) dispatch(setSelectedSid(""))
@@ -122,7 +124,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
         }
     }, [isSuccess, isError])
     console.log(updated, "DSGfdhgsfsaadfg");
-
+    let placeholder = `Max: ${mobileViewBettingData?.allData?.maxBet}`
     return (
         <div className="BetPlacing__wrapper" style={{ backgroundColor: mobileViewBettingData?.color === "blue" ? "#a7d8fd" : "#F9C9D4" }}>
             <Dialog fullWidth maxWidth="sm" open={isLoading} >
@@ -143,7 +145,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
                 <div className="BetPlacing_Upper_Head_Odds">
                     <div className="BetPlacing_Upper_Head_Odds_LeftSide">
                         <div className="BetPlacing_Upper_Head_Odds_LeftSide_Uper">
-                            Odds
+                            ODDS
 
                         </div>
                         <div className="BetPlacing_Upper_Head_Odds_LeftSide_Lower">
@@ -153,15 +155,17 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
                     <div className="BetPlacing_Upper_Head_Odds_RightSide">
                         <div className="BetPlacing_Upper_Head_Odds_RightSide_Upper">
                             <span>STAKE</span>
-                            <span>Max Mkt: {mobileViewBettingData?.allData?.maxBet}</span>
+                            <span>Max Mkt: {mobileViewBettingData?.allData?.maxBet || ""}</span>
                         </div>
-                        <input className="BetPlacing_Upper_Head_Odds_RightSide_Lower" placeholder="Max:0"
-                            onChange={(e) =>
-                                !isNaN(Number(e.target.value)) &&
-                                setUpdated(Number(e.target.value))
-                            }
-                            // value={updated === 0 ? (`Max: ${mobileViewBettingData?.allData?.maxBet}`) : updated}
-                            value={updated === 0 ? 0 : updated}
+                        <input className="BetPlacing_Upper_Head_Odds_RightSide_Lower"
+                            min={0}
+                            value={Number(updated) || ""}
+                            onChange={(e) => {
+                                e.preventDefault();
+                                setUpdated(Number(e.target.value));
+                            }}
+                            // placeholder={mobileViewBettingData?.allData?.maxBet}
+                            placeholder={placeholder}
                         />
                         {/* <div className="BetPlacing_Upper_Head_Odds_RightSide_Lower">
                         </div> */}
@@ -189,7 +193,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
                 </div>
                 <div className="BetPlacing_Upper_Head_Cancel_Done_Login">
 
-                    <button onClick={() => dispatch(setSelectedSid(""))} className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss btn-cancel">Cancel</button>
+                    <button onClick={() => dispatch(setSelectedSid(""))} className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss_cancel btn-cancel">Cancel</button>
                     {/* <button>Place Bet</button> */}
                     {user ?
                         <button className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss btn-palce" style={{

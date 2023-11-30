@@ -74,7 +74,6 @@ const OpenBetsBetPage = () => {
                                     {console.log(key, "fwwcsxszqwe")}
                                     {unSettledBet?.data[key].map((item: any) => (
                                         <>
-                                            {console.log(item, "Fe3rgtrwerewfdw")}
                                             <div className="OpenBetUnamteData">
                                                 <div className="OpenBetUnamteData_Firts">
                                                     <span className="OpenBetUnamteData_Back" style={{ color: item?.back === true ? "#2d8ad1" : "#ef819a" }} onClick={() => navigate(`/match-details/${item?.matchId}`)}> {item?.back === true ? "Back" : "Lay"} {item?.nation}  for {item?.amount} @ {item?.rate} to Win {item?.pnl}</span>
@@ -96,8 +95,6 @@ const OpenBetsBetPage = () => {
                                     ))}
 
                                 </>))
-                            // :
-                            // <> You ha   ve no <span className="lowercase">Unmatched Bets</span> </>
                         }
 
                     </div >

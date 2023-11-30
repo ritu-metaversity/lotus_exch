@@ -5,7 +5,7 @@ export const MatchOddsRowContainer = styled(FlexBetween)<{isFancy?:boolean}>(({ 
 	background: '#FFFFFF',
 	padding: '0 1rem',
 	borderBottom: '1px solid #034a010a',
-    height: "38px",
+    minHeight: "43px",
 	paddingRight: '0',
 	margin:isFancy? "6px 0":undefined,
 	[theme.breakpoints.up(1024)]: {
@@ -15,7 +15,7 @@ export const MatchOddsRowContainer = styled(FlexBetween)<{isFancy?:boolean}>(({ 
 
 export const MatchOddsRowTitle = styled('div')(({ theme }) => ({
 	fontSize: '1.2rem',
-	margin: '1rem 0',
+	// margin: '1rem 0',
 	display:"flex",
 	justifyContent:"space-between",
 	alignItems:"center",
@@ -53,11 +53,19 @@ export const MatchOddsRowContent = styled('div')(({theme,content})=>({
 	}
 }));
 
+export const NameLedgerAndPnl = styled('div')({
+	display:"flex",
+	justifyContent:"flex-start",
+	alignItems:"center",
+	width:"70%",
+	flexDirection: "column"
+
+})
 export const LedgerAndPnl = styled('div')({
 	display:"flex",
 	justifyContent:"space-around",
 	alignItems:"center",
-	width:"20%",
+	width:"30%",
 })
 export const TypoGraphy = styled('div')({
 margin: "2px"

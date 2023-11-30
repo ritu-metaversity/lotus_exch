@@ -193,6 +193,7 @@ const FanctasyGameList = () => {
 
   const [GameLists, setGameLists] = useState<GameDataInterface[]>([]);
   useEffect(() => {
+    console.log(state, "jnhgyftdresza");
     if (state?.filterType) {
       const gamesAr = FgameData.filter(
         (el) => el.providerId === state?.filterType
@@ -203,14 +204,15 @@ const FanctasyGameList = () => {
 
   const handleGameFastasy = (key: any) => {
 
-    navigate("/Fantasy-Game-play", { state: key })
+    navigate("/Fantasy-Game-play", { state: { "Game": key, "filterType": state } })
   }
   // navigate("/home")
+
 
   return (
     <div className="FantasyGameWrapor">
       <span className="FantasyGameWrapor_nameeeee">
-        FanctasyGameList
+        Fantasy GameList
 
       </span>
       <div className="FantasyGameWrapor-inner">

@@ -198,3 +198,130 @@
         padding: 10px;
     }
 }
+
+
+
+
+@media screen and (max-width:1024px) {
+    .desktop_game_dtails_page {
+        display: none
+    }
+
+
+
+
+}
+
+@media screen and (min-width:1024px) {
+
+    .Mobile_game_dtails {
+        display: none !important;
+    }
+}
+
+.Mobile_game_dtails {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    flex-direction: column;
+}
+
+.MenuEvent-md-hydrated {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    flex-direction: column;
+}
+
+.main_wrapper_for_gameoage {
+
+    padding: 8px 20px;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: left;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: flex-start; */
+    width: 100%;
+}
+
+.MenuEvent__lisin-mdlist-mdhydrated {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.MenuEvent__list__header__green {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0px 19px;
+    color: #257b24;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 16px 11px;
+}
+
+.MenuEvent__list__header__green__name {
+    width: 100%;
+
+}
+
+.MenuEvent__list__eventin-listhydrated {
+    width: 100%;
+}
+
+.MenuEvent__list__eventin-listhydrated {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 44px;
+    padding: 0px 0px 0px 15px;
+    background-color: white;
+    width: 98%;
+}
+
+/* #2ba033 */
+.MenuEvent__list__event__name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 90%;
+}
+
+.Upcomming-container-Wappor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 2px;
+
+}
+
+.list-header-inner-upcomming {
+    height: 38px;
+
+    width: 100%;
+    padding: 4px 24px;
+    font-size: 17px;
+    font-weight: 800;
+    margin: 10px;
+}
+
+.list-header-inner-upcomming-game {
+    font-weight: 400;
+    font-size: 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    width: 100%;
+    padding: 10px 20px;
+}

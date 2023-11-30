@@ -123,6 +123,8 @@
     border: unset;
     font-size: 16px;
     padding: 10px;
+    color: #000;
+    background-color: white;
 }
 
 /* input[type="date"]::-webkit-calendar-picker-indicator {
@@ -1010,6 +1012,8 @@ div#radios2 {
     height: 30px;
     border-radius: 6px;
     font-size: 15px;
+    color: #000;
+    border-color: #000;
     /* background-color: #317383; */
 }
 
@@ -1064,6 +1068,7 @@ div#radios2 {
     font-size: 11px;
 
     text-align: left;
+    font-weight: 400;
     /* border-left: 1px solid #fff; */
 }
 
@@ -1076,4 +1081,51 @@ div#radios2 {
 .table-responsive {
     width: 100%;
     overflow-x: scroll;
+}
+
+.betting-profit-and-loss-page__filters-sports-buttons-total {
+    padding: 0 15px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.betting-profit-and-loss-page__filters-sports-buttons-list {
+    margin: 0 15px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    color: #000;
+    font-size: 12px;
+}
+
+.betting-profit-and-loss-page__filters-sports-buttons-list li:first-child {
+    padding-right: 5px;
+    border-bottom: 1px solid;
+}
+
+.betting-profit-and-loss-page__filters-sport-button-name {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.betting-profit-and-loss-page__filters-sport-button .negative-amount {
+    color: #bf311c;
+}
+
+.betting-profit-and-loss-page__filters-sport-amount {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.betting-profit-and-loss-page__filters-total {
+    position: relative;
+    cursor: pointer;
+    font-weight: 700;
+
+    font-size: 16px;
+}
+
+.betting-profit-and-loss-page__filters-total .negative-amount {
+    color: #bf311c;
 }

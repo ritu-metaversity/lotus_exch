@@ -223,16 +223,12 @@ const PayManually = (props: any) => {
       <div className="main_box_amount">
         <div className="enter_amount_div">
           <span className="enter_amount_name">Enter Amount</span>
-          <div>
+          <div className="enter_amount_decrement_btn_input">
 
             <button
               className="enter_amount_decrement"
               onClick={decrement}>
-              <span
-                className="fa fa-minus"
-                aria-hidden="true"
-                style={{ color: "#fff" }}
-                onClick={decrement}>-</span>
+              -
             </button>
             <input
               type="number"
@@ -244,11 +240,7 @@ const PayManually = (props: any) => {
             <button
               className="enter_amount_decrement"
               onClick={increment}>
-              <span
-                style={{ color: "#fff" }}
-                className="fa fa-plus"
-                aria-hidden="true"
-                onClick={increment}>+</span>
+              +
             </button>
           </div>
         </div>

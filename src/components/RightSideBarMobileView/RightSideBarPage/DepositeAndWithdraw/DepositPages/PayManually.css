@@ -664,6 +664,14 @@ p.lodder.depositLoading {
 .enter_amount_decrement {
     background-color: black;
     padding: 0px 7px;
+    color: white;
+    border-color: #000;
+}
+
+.enter_amount_decrement_btn_input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .stack_box_mobile {

@@ -1,5 +1,5 @@
 
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import "./RightSideBar.css"
 // import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 // import MenuIcon from '@mui/icons-material/Menu';
@@ -32,6 +32,16 @@ const RightSideBar: FC<{ expanded: boolean, closeRightMenu: any }> = ({ expanded
     const hanldeClose = () => {
         closeRightMenu(false)
     }
+    useEffect(() => {
+
+        if (expanded) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "scroll";
+        }
+
+    }, [expanded])
+
 
     return (
 
@@ -66,10 +76,14 @@ const RightSideBar: FC<{ expanded: boolean, closeRightMenu: any }> = ({ expanded
                             <span className="right-side-menu__account__info__item__label">
                                 Net Exposure:
                             </span>
-                            <span className="right-side-menu__account__info__item__value" style={{ color: "red" }} >
-                                {balanceDtaa?.data?.libality === 0
-                                    ? <span>-{balanceDtaa?.data?.libality}</span>
-                                    : "0:00"}
+                            <span className="right-side-menu__account__info__item__value"  >
+                                {balanceDtaa?.data?.libality === "0"
+                                    ? <span style={{ color: "black" }}>0:00</span>
+                                    : <span style={{ color: "red" }}>
+
+                                        -{balanceDtaa?.data?.libality}
+                                    </span>
+                                }
                             </span>
                         </div>
                     </div>

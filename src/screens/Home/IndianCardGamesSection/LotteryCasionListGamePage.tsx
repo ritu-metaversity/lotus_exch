@@ -11,6 +11,7 @@ const LotteryCasionListGamePage = () => {
     const [gameLobbyUrl, setGameLobbyUrl] = useState("")
     const TokenGame = localStorage.getItem("GameToken");
 
+    console.log(state, "kuyt6r5esdfxcgv");
 
     useEffect(() => {
         let data = {
@@ -18,7 +19,7 @@ const LotteryCasionListGamePage = () => {
             currency: "INR",
             country: "IN",
             gender: "M",
-            gameName: state,
+            gameName: state?.Game,
             birthDate: "1986-01-01",
             lang: "en_IN",
             mode: "real",
@@ -51,14 +52,14 @@ const LotteryCasionListGamePage = () => {
 
     }, [])
     const handleBack = () => {
-        navigate("/Lottery-Game-List")
+        navigate("/Lottery-Game-List", { state: state })
     }
 
     return (
         <div className="header_for_backbtn_casino">
             <div className="header_for_exitliveCasino" onClick={handleBack}>
                 <ArrowBackIcon style={{ fontSize: "20px" }} />
-                <span>Exit Fantasy Game</span>
+                <span>Exit Lottery Game</span>
             </div>
 
             {/* <div> */}

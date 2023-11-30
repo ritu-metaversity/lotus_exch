@@ -225,8 +225,8 @@ const SignUpPage = ({ loginRegisterrrrr, closeLoginModal, loginRegisterButtonSwi
 
         < div className='login-step-wrapper ' >
             <div className='login_tabs'>
-                <div className={`sign_up ${loginRegisterrrrr === "register" ? "inActiveLeft" : ""}`} onClick={() => handleSwitchLoginReg("register")}>Sign Up</div>
-                <div className={`login_in `} style={{ cursor: "pointer" }} onClick={() => handleSwitchLoginReg("login")}>Login In</div>
+                <div className={`sign_up`} onClick={() => handleSwitchLoginReg("register")}>Sign Up</div>
+                <div className={`login_in  ${loginRegisterrrrr === "register" ? "inActiveLeft" : ""}`} style={{ cursor: "pointer" }} onClick={() => handleSwitchLoginReg("login")}>Login In</div>
             </div>
 
             <div className='pop-up-content_title'>

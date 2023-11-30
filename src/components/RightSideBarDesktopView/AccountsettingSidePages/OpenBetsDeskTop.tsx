@@ -273,12 +273,13 @@ const OpenBetsDeskTop = () => {
                                     <tr role="row" className="account-detail">
                                         <th
                                             role="columnheader"
-                                            className="text-left ">
+                                            className="text-left " style={{ fontWeight: "700" }}>
                                             Placed
                                         </th>
                                         <th
                                             role="columnheader"
-                                            className="text-left ">
+                                            className="text-left "
+                                            style={{ fontWeight: "700" }}>
                                             Description
                                         </th>
                                         {/* <th
@@ -288,17 +289,20 @@ const OpenBetsDeskTop = () => {
                                         </th> */}
                                         <th
                                             role="columnheader"
-                                            className="text-left">
+                                            className="text-left"
+                                            style={{ fontWeight: "700" }}>
                                             Type
                                         </th>
                                         <th
                                             role="columnheader"
-                                            className="text-left">
+                                            className="text-left"
+                                            style={{ fontWeight: "700" }}>
                                             Odds
                                         </th>
                                         <th
                                             role="columnheader"
-                                            className="text-left">
+                                            className="text-left"
+                                            style={{ fontWeight: "700" }}>
                                             Stake
                                         </th>
                                         {/* <th
@@ -308,14 +312,15 @@ const OpenBetsDeskTop = () => {
                                         </th> */}
                                         <th
                                             role="columnheader"
-                                            className="text-left">
+                                            className="text-left"
+                                            style={{ fontWeight: "700" }}>
                                             Potential Profit
                                         </th>
                                     </tr>
                                 </thead>
 
                                 <tbody className="my_bet">
-                                    {unsettledbetmatchdata?.length &&
+                                    {unsettledbetmatchdata?.length ?
                                         unsettledbetmatchdata?.map((item: any) => {
                                             return (
                                                 <tr role="row ">
@@ -360,6 +365,18 @@ const OpenBetsDeskTop = () => {
                                                 </tr>
                                             )
                                         })
+
+                                        : <tr role="row " >
+                                            <td
+                                                colSpan={6}
+                                                style={{
+                                                    height: "30px", textAlign: "center",
+                                                    color: "red",
+                                                    fontWeight: "600"
+                                                }}
+                                                className="You-have-no-matched-bets">
+                                                You have no matched bets
+                                            </td></tr>
                                     }
                                 </tbody>
                             </table>

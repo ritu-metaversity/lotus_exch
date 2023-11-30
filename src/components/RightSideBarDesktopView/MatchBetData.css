@@ -88,3 +88,13 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+.OpenBetsItem {
+    padding: 16px 12px;
+    background-color: white;
+    margin: 0 0 4px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}

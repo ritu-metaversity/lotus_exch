@@ -23,7 +23,7 @@ const OddCell = (props: OddCellProps) => {
 	const handleOddsData = (vl: any, allData: any, SelectionIdForAll: any, color: any,size:any) => {
 		console.log(vl, allData, "kjuhygtfvb");
 
-		props.OddsData({ vl, allData, SelectionIdForAll, color ,size})
+		props.OddsData({ vl, allData,marketName:allData?.mid?.includes("-BM")?"Bookmaker":"FANCY/ODDS", SelectionIdForAll, color ,size})
 	}
 
 	console.log(size, "ccsdcdcfsdfsdfsdfs")

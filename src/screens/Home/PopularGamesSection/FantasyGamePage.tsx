@@ -11,9 +11,9 @@ const FantasyGamePage = () => {
     const navigate = useNavigate();
 
     const handleBack = () => {
-        navigate("/Fantasy-Game-List", { state: { "filterType": state?.providerId } })
+        navigate("/Fantasy-Game-List", { state:  state?.filterType })
     }
-    console.log(state, "dsfkmljhgyftdres");
+    console.log(state, "jnhgyftresza");
 
     const TokenId = localStorage.getItem("token");
     const TokenGame = localStorage.getItem("GameToken");
@@ -23,7 +23,7 @@ const FantasyGamePage = () => {
             currency: "INR",
             country: "IN",
             gender: "M",
-            gameName: state?.item,
+            gameName: state?.Game?.id,
             birthDate: "1986-01-01",
             lang: "en_IN",
             mode: "real",

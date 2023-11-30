@@ -46,7 +46,7 @@ const RightSideBetPage = () => {
         }
     }
     const handleEditStake = () => {
-        if (showStake === false) {
+        if (showStake === false && localStorage.getItem("token")) {
             setShoeStake(true)
         } else {
             setShoeStake(false)
@@ -125,7 +125,7 @@ const RightSideBetPage = () => {
 
             {
                 show === "1" ?
-                    showBetData && betData ?
+                    showBetData && betData && localStorage.getItem("token") ?
                         <Bettingpage />
                         :
 

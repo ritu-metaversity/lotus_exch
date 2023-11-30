@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const LotteryGameList = () => {
 
     const { state } = useLocation()
-    const [gameFilter, setGameFilter] = useState([])
+    const [gameFilter, setGameFilter] = useState<any>([])
     const navigate = useNavigate();
     const TokenId = localStorage.getItem("token");
 
@@ -31,7 +31,7 @@ const LotteryGameList = () => {
             )
                 .then((response) => {
                     setGameFilter(response?.data?.data?.items)
-                    console.log(response?.data?.data?.items, "statestatestatestate");
+                    console.log(response?.data, "statestatestatestate");
 
                 })
         } else {
@@ -39,23 +39,26 @@ const LotteryGameList = () => {
     }, [])
 
     const handleChangeaa = (val: any) => {
-        navigate("/Lottery-Game-play", { state: val })
+        navigate("/Lottery-Game-play", { state: { "Game": val, "filterType": state?.filterType } })
     }
+    console.log(gameFilter, "jhygtfrdeszd");
 
     return (
         <div className="FantasyGameWrapor">
             <span className="FantasyGameWrapor_nameeeee">
-                FanctasyGameList
+                Lottery GameList
 
             </span>
             <div className="FantasyGameWrapor-inner">
-                {gameFilter.map((key: any) => (
+                {gameFilter.map((item: any) => (
 
-                    <div className="FantasyGameWrapor-inner-Game" onClick={() => handleChangeaa(key?.id)}>
-                        <img src={key?.image} style={{ width: "100%" }} />
+                    <div className="FantasyGameWrapor-inner-Game" onClick={() => handleChangeaa(item?.id)}>
+
+                        <img src={item?.images[2]?.url} style={{ width: "100%" }} />
+
                     </div>
-                ))
-                }
+                ))}
+
             </div>
         </div>
     )

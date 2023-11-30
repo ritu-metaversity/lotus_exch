@@ -129,17 +129,91 @@
     width: 100%;
 }
 
+@media screen and (min-width: 1024px) {
+    .pop-up-content__buttons-mobileView {
+        padding: 11px 0px;
+        width: 100%;
+    }
+
+    .pop-up-content__buttons {
+        display: none
+    }
+
+    .log_in_btn_btn {
+        background-color: #f4d820;
+        /* box-shadow: 0 4px 4px rgba(0, 0, 0, .25); */
+        height: 40px;
+        border: unset;
+        width: 100%;
+        transition: all 0.3s ease-in-out 0s;
+        /* padding: 0px 111px; */
+        border-radius: 5px;
+        font-size: 15px;
+        color: #000 !important;
+        cursor: pointer;
+        position: relative;
+        /* top: 0px; */
+        left: 0;
+        width: 100%;
+        /* height: auto; */
+    }
+}
+
+
+@media screen and (max-width:1024px) {
+
+    .pop-up-content__buttons-mobileView {
+        display: none;
+    }
+}
+
+.pop-up-content__buttons {
+    padding: 11px 0px;
+    width: 100%;
+}
+
 .log_in_btn_btn {
     background-color: #f4d820;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    /* box-shadow: 0 4px 4px rgba(0, 0, 0, .25); */
     height: 40px;
     border: unset;
     width: 100%;
+    transition: all 0.3s ease-in-out 0s;
     /* padding: 0px 111px; */
     border-radius: 5px;
     font-size: 15px;
     color: green;
     cursor: pointer;
+    position: relative;
+    /* top: 0px; */
+    left: 0;
+    width: 100%;
+    /* height: auto; */
+}
+
+
+.log_in_btn_btn:hover ._shadow {
+    z-index: -10;
+    isolation: isolate;
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 100%;
+    height: 27px;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, .25);
+    will-change: transform;
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+    transition: -webkit-transform .6s cubic-bezier(.3, .7, .4, 1);
+    transition: transform .6s cubic-bezier(.3, .7, .4, 1);
+    transition: transform .6s cubic-bezier(.3, .7, .4, 1), -webkit-transform .6s cubic-bezier(.3, .7, .4, 1);
+}
+
+
+.log_in_btn_btn:hover {
+    box-shadow: 0 9px 3px 1px rgba(0, 0, 0, .25);
+
 }
 
 .register-button-link {
@@ -152,6 +226,7 @@
     background-color: #fff;
     font-size: 15px;
     cursor: pointer;
+    color: black;
 }
 
 .eyscloseeyelcoe {
@@ -199,7 +274,7 @@
 }
 
 .inActiveRight {
-    border-radius: 0 10px 0 0;
+    border-radius: 10px 0 0 0;
     color: #333333;
     background: #f4d821;
     box-shadow: inset -2px -4px 7px rgba(0, 0, 0, .25);
@@ -207,7 +282,7 @@
 }
 
 .inActiveLeft {
-    border-radius: 10px 0 0 0;
+    border-radius: 0 10px 0 0;
     color: #333333;
     background: #f4d821;
     box-shadow: inset -2px -4px 7px rgba(0, 0, 0, .25);
@@ -217,7 +292,7 @@
 }
 
 .inActiveRight {
-    border-radius: 0 10px 0 0;
+    border-radius: 10px 0 0 0;
     color: #333333;
     background: #f4d821;
     box-shadow: inset -2px -4px 7px rgba(0, 0, 0, .25);
@@ -255,7 +330,7 @@
 
 .desk_modal {
     position: absolute;
-    right: -35px;
+    right: -43px;
     top: 0px;
 }
 

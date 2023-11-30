@@ -11,13 +11,13 @@ import { useState } from 'react';
 import { BettingPopUpmobileViewShow } from '../../../components/MatchDataRow/Index.styled';
 import BetingPopUpForMobile from '../../../components/MatchDataRow/BetingPopUpForMobile';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { selectSelectedSid, setBetData, setSelectedSid } from '../../../state/features/client/clientSlice';
+import { selectProfits, selectSelectedSid, setBetData, setSelectedSid } from '../../../state/features/client/clientSlice';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 
-type Odd = MatchDetails['Odds'][number];
+// type Odd = MatchDetails['Odds'][number];
 
 interface MatchOddsProps {
-	odd: Odd;
+	odd: MatchDetails['Odds'];
 }
 
 const MatchOdds = (props: MatchOddsProps) => {
@@ -26,6 +26,7 @@ const MatchOdds = (props: MatchOddsProps) => {
 	const [mobileviewbettingPopUp, setMobileviewbettingPopUp] = useState('')
 	const [mobileviewbettingPopUpMatch, setMobileviewbettingPopUpMatch] = useState('')
 	const [mobileViewBettingData, setMobileViewBettingData] = useState<any>()
+
 	console.log(props, mobileviewbettingPopUp, mobileviewbettingPopUpMatch, "propsprops");
 	const dispatch = useAppDispatch()
 
@@ -36,99 +37,101 @@ const MatchOdds = (props: MatchOddsProps) => {
 		setMobileviewbettingPopUp(vl?.vl)
 		setMobileviewbettingPopUpMatch(vl?.vl)
 	}
+	const profits = useAppSelector(selectProfits);
 
 
 	return (
 		<>
+
 			<MatchOddsContainer>
 				<OddsHeader
 					type="back-lay"
-					name={odd.Name}
+					name={odd[0]?.Name === "Match Odds" ? "Match Odds" : "Tied Match"}
 					icon={<StarIcon fontSize='inherit' color='inherit' />}
 				/>
-				{odd.runners.map(runner => (
-					<>
-						<MatchOddsRow content="" key={runner.selectionId} title={runner.name}>
-							<MatchOddsGrid
-								isBetOpened={isBetOpened(odd.status)}
-								className='match-odds__grid'
-							>
-								{isBetOpened(odd.status) ? (
-									<>
-										{/* ----BACK---- */}
 
-										<OddCell
-											type='team2back'
-											color='blue'
-											odd={runner.ex.availableToBack[2].price}
-											size={runner.ex.availableToBack[2].size}
-											// OddsData={OddsData}
-											allData={props?.odd}
-											SelectionIdForAll={runner}
-										/>
-										<OddCell
-											type='drawback'
-											color='blue'
-											odd={runner.ex.availableToBack[1].price}
-											size={runner.ex.availableToBack[1].size}
-											// OddsData={OddsData}
-											allData={props?.odd}
-											SelectionIdForAll={runner}
-										/>
-										<OddCell
-											type='team1back'
-											color='blue'
-											odd={runner.ex.availableToBack[0].price}
-											size={runner.ex.availableToBack[0].size}
-											OddsData={OddsData}
-											allData={props?.odd}
-											SelectionIdForAll={runner}
+				{odd[0].runners.map(runner => {
+					return (
+						<>
+							<MatchOddsRow content="" key={runner.selectionId} pnl={profits.Odds[odd[0].marketId]?.find(profit => profit.sid == runner.selectionId)?.value} title={runner.name} >
+								<MatchOddsGrid
+									isBetOpened={isBetOpened(odd[0].status)}
+									className='match-odds__grid'
+								>
+									{isBetOpened(odd[0].status) ? (
+										<>
+											<OddCell
+												type='team2back'
+												color='blue'
+												odd={runner.ex.availableToBack[2].price}
+												size={runner.ex.availableToBack[2].size}
+												// OddsData={OddsData}
+												allData={props?.odd[0]}
+												SelectionIdForAll={runner}
+											/>
+											<OddCell
+												type='drawback'
+												color='blue'
+												odd={runner.ex.availableToBack[1].price}
+												size={runner.ex.availableToBack[1].size}
+												// OddsData={OddsData}
+												allData={props?.odd[0]}
+												SelectionIdForAll={runner}
+											/>
+											<OddCell
+												type='team1back'
+												color='blue'
+												odd={runner.ex.availableToBack[0].price}
+												size={runner.ex.availableToBack[0].size}
+												OddsData={OddsData}
+												allData={props?.odd[0]}
+												SelectionIdForAll={runner}
 
-										/>
+											/>
 
-										{/* ----LAY---- */}
-										<OddCell
-											type='team1lay'
-											color='red'
-											odd={runner.ex.availableToLay[0].price}
-											size={runner.ex.availableToLay[0].size}
-											OddsData={OddsData}
-											allData={props?.odd}
-											SelectionIdForAll={runner}
-										/>
-										<OddCell
-											type='drawlay'
-											color='red'
-											odd={runner.ex.availableToLay[1].price}
-											size={runner.ex.availableToLay[1].size}
-											// OddsData={OddsData}
-											allData={props?.odd}
-											SelectionIdForAll={runner}
-										/>
-										<OddCell
-											type='team2lay'
-											color='red'
-											odd={runner.ex.availableToLay[2].price}
-											size={runner.ex.availableToLay[2].size}
-											// OddsData={OddsData}
-											allData={props?.odd}
-											SelectionIdForAll={runner}
-										/>
-									</>
-								) : (
-									<OddOverlayLabel label={odd.status} />
-								)}
-							</MatchOddsGrid>
-						</MatchOddsRow>
-						{selectedSid === runner.selectionId && localStorage.getItem("token") ?
-							<BettingPopUpmobileViewShow>
-								<BetingPopUpForMobile mobileViewBettingData={mobileViewBettingData} />
-							</BettingPopUpmobileViewShow>
-							:
-							""
-						}
-					</>
-				))}
+
+											<OddCell
+												type='team1lay'
+												color='red'
+												odd={runner.ex.availableToLay[0].price}
+												size={runner.ex.availableToLay[0].size}
+												OddsData={OddsData}
+												allData={props?.odd[0]}
+												SelectionIdForAll={runner}
+											/>
+											<OddCell
+												type='drawlay'
+												color='red'
+												odd={runner.ex.availableToLay[1].price}
+												size={runner.ex.availableToLay[1].size}
+												// OddsData={OddsData}
+												allData={props?.odd[0]}
+												SelectionIdForAll={runner}
+											/>
+											<OddCell
+												type='team2lay'
+												color='red'
+												odd={runner.ex.availableToLay[2].price}
+												size={runner.ex.availableToLay[2].size}
+												// OddsData={OddsData}
+												allData={props?.odd[0]}
+												SelectionIdForAll={runner}
+											/>
+										</>
+									) : (
+										<OddOverlayLabel label={odd[0].status} />
+									)}
+								</MatchOddsGrid>
+							</MatchOddsRow>
+							{selectedSid === runner.selectionId && localStorage.getItem("token") ?
+								<BettingPopUpmobileViewShow>
+									<BetingPopUpForMobile mobileViewBettingData={mobileViewBettingData} />
+								</BettingPopUpmobileViewShow>
+								:
+								""
+							}
+						</>)
+				})}
 			</MatchOddsContainer>
 			{/* {mobileviewbettingPopUp !== "" && mobileviewbettingPopUp === mobileviewbettingPopUpMatch ?
 				<BettingPopUpmobileViewShow>

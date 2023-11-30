@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Section from '../../../components/Section/Index';
-import Icon from '../../../components/common/Icon/Index';
+// import Icon from '../../../components/common/Icon/Index';
 // import { GameImage } from '../PopularGamesSection/Index.styled';
 import {
 	CardGamesContainer,
@@ -84,7 +84,8 @@ const IndianCardGamesSection = () => {
 		<CardSectionContainer>
 			<Section
 				heading='Lottery Games'
-				icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
+				inplay="game"
+			// icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
 			>
 				<CardGamesContainer>
 					<CardGamesGrid>

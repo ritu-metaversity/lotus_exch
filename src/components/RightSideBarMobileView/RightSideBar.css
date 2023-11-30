@@ -19,20 +19,24 @@
 
     position: fixed;
     right: 0;
-    overflow: hidden;
+    overflow-y: scroll;
     width: 260px;
     top: 0;
+    height: 100%;
+    margin-bottom: 150px;
 }
 
 .right-side-menu__top {
-    height: 150vh;
+    height: 100vh;
     /* min-height: calc(100vh - 49px); */
     background-color: white;
     overflow: scroll;
+
 }
 
 .right-side-menu__top {
     padding: 0px 10px;
+
 }
 
 .right-side-menu__account {

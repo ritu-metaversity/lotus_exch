@@ -9,9 +9,9 @@
 .BetPlacing__wrapper__InnerWrapper {
     background-color: white;
     width: 99%;
-    height: 230px;
-    margin-top: 2px;
-    padding: 4px;
+    height: 232px;
+    margin-top: 1px;
+    padding: 2px 8px;
 }
 
 .BetPlacing_Upper_Head_Odds {
@@ -26,8 +26,8 @@
 .btn-palce {
     background-color: #f4d820;
     border: unset;
-    border-radius: 4px;
-    font-size: 13px;
+    border-radius: 2px;
+    font-size: 12px;
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -45,7 +45,7 @@
 }
 
 .BetPlacing_Upper_Head_Odds_LeftSide_Uper {
-    height: 45%;
+    height: 40%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -56,10 +56,16 @@
 
 .BetPlacing_Upper_Head_Odds_LeftSide_Lower {
     color: #1f8067;
-    height: 55%;
+    height: 63%;
     font-size: 15px;
     font-weight: 600;
-
+    border: 1px solid;
+    width: 91%;
+    border-radius: 3px;
+    border-color: #0000001f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -84,8 +90,13 @@
 }
 
 .BetPlacing_Upper_Head_Odds_RightSide_Lower {
-    height: 55%;
+    height: 66%;
     padding: 7px;
+    border: 1px solid;
+    border-color: #00000014;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .BetPlacing_Upper_Head_Odds_RightSide_Lower::placeholder {
@@ -111,10 +122,10 @@
 
 .Stack_Button_forBetting {
     background-color: #1f8067;
-    width: 31%;
+    width: 32%;
     padding: 0px 21px;
     height: 28px;
-    border-radius: 4px;
+    border-radius: 2px;
     color: white;
     border: unset;
 }
@@ -134,6 +145,19 @@
     height: 45px;
     background-color: white;
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 33px;
+    padding: 2px;
+}
+
+
+.BetPlacing_Upper_Head_Cancel_Done_Login_btnss_cancel {
+    width: 49%;
+    height: 45px;
+    background-color: white;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
@@ -145,6 +169,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    font-size: 11px;
+    padding: 3px;
 }
 
 .Place-Bet-AccessTimeIcon {
@@ -156,8 +182,8 @@
 .btn-cancel {
     color: #777777;
     border: 1px solid;
-    border-radius: 4px;
-    font-size: 13px;
+    border-radius: 2px;
+    font-size: 12px;
     font-weight: 400;
 }
 

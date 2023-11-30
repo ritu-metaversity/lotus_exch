@@ -18,10 +18,10 @@ export const casinoProviderList = [
 		filterType: "EVO",
 	},
 	{
-		name: "VIVO GAMING",
-		logo: "https://wver.sprintstaticdata.com/v14/static/front/img/icons/21.png",
-		gameCode: "VGL-europeanroulette",
-		filterType: "VGL",
+		name: "Q Tech",
+		logo: QtechLogooo,
+		gameCode: "Qtech",
+		filterType: "SPB",
 	},
 	{
 		name: "EZUGI",
@@ -78,12 +78,13 @@ export const casinoProviderList = [
 		gameCode: "SPB-aviator",
 		filterType: "SPB",
 	},
+
 	{
-		name: "Q Tech",
-		logo: QtechLogooo,
-		gameCode: "Qtech",
-		filterType: "SPB",
-	}
+		name: "VIVO GAMING",
+		logo: "https://wver.sprintstaticdata.com/v14/static/front/img/icons/21.png",
+		gameCode: "VGL-europeanroulette",
+		filterType: "VGL",
+	},
 ];
 
 const CasinoGamesSection = () => {
@@ -104,14 +105,14 @@ const CasinoGamesSection = () => {
 
 	const handleGameLobby = (vl: any) => {
 		console.log(vl, "Sdvkhgyuftcgv");
-		navigate("/Live-Casino-play", { state: vl })
+		navigate("/International-Game-play", { state: vl })
 	}
 
 	return (
 		<CasinoSectionContainer>
 			<Section
 				heading='International Casino'
-
+				inplay="game"
 			>
 				<CasinoGamesContainer>
 					<CardGamesGrid>

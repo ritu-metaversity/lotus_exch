@@ -26,17 +26,13 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 		triger({})
 	}, [])
 	const handleGamePage = (vl: any) => {
-		console.log(vl, "sdfsdkfbsdj")
 		closeLefySideBar(false)
 		navigate(`/gameDetail/${vl?.sportId}`, { state: vl?.sportName })
-
 	}
-	console.log(leftMenuData?.data, "fdvfddfgdvwerf");
 
 	const handleGameMyMarketPage = () => {
 		closeLefySideBar(false)
 		navigate("/My-Market")
-
 	}
 
 	return (

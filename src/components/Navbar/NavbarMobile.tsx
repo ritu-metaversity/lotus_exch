@@ -72,6 +72,12 @@ const NavbarMobile = (props: NavbarProps) => {
 	const closeLoginModal = () => {
 		setOpen(false)
 	}
+
+	const handleBackBtn=()=>{
+		navigate(-1)
+	}
+
+
 	return (
 		<NavbarContainer>
 			<AppBar
@@ -84,7 +90,7 @@ const NavbarMobile = (props: NavbarProps) => {
 
 								(<MenuIcon style={{ fontSize: "26px" }} onClick={() => setSidebarExpanded(!sidebarExpanded)} />)
 								:
-								(<ArrowBackIcon style={{ fontSize: "25px" }} />)
+								(<ArrowBackIcon style={{ fontSize: "25px" }}  onClick={()=>handleBackBtn()}/>)
 							}
 							<img src={IsSelfByAppUrl?.data?.logo} style={{ width: "133px", height: "60px" }} onClick={handleLogoClick} />
 						</div>

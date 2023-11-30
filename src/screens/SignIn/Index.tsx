@@ -13,7 +13,7 @@ import { useIsSelfByAppUrlMutation, useSingInMutation } from '../../state/apis/m
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { login } from '../../state/features/auth/authSlice';
 import { Modal } from '@mui/material';
-
+import CloseBtnnLogin from "../../../public/assets/icons/CloseBtnnLogin.svg"
 import SignUpPage from './SignUpPage';
 import axios from 'axios';
 const initialFormValues: SignInFormData = {
@@ -117,7 +117,7 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 			const data = {
 				userId,
 				password,
-				appUrl: host === "localhost" ? "localhost" : host,
+				appUrl: host === "localhost" ? "localhost" : "localhost",
 			};
 			signIn(data)
 			// axios
@@ -240,16 +240,16 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 
 					< div className='login-step-wrapper '>
 						<div className='login_tabs'>
-							<div className={`sign_up `} onClick={() => handleSwitchLoginReg("register")} style={{ cursor: "pointer" }}>Sign Up</div>
-							<div className={`login_in ${loginRegisterrrrr === "login" ? "inActiveRight" : ""}`} onClick={() => handleSwitchLoginReg("login")}     >Login In</div>
+							<div className={`sign_up  ${loginRegisterrrrr === "login" ? "inActiveRight" : ""}`} onClick={() => handleSwitchLoginReg("register")} style={{ cursor: "pointer" }}>Sign Up</div>
+							<div className={`login_in`} onClick={() => handleSwitchLoginReg("login")}     >Login In</div>
 						</div>
 
 						<div className='pop-up-content_title'>
 							<img src={IsSelfByAppUrl?.data?.logo} className='pop-up-content_title-logo' />
-							<img onClick={handleCloseModal} src="https://lotus365.co/static/media/closeLogin.3968ed62.svg" className='desk_modal' style={{ cursor: "pointer" }} />
+							<img onClick={handleCloseModal} src={CloseBtnnLogin} className='desk_modal' style={{ cursor: "pointer" }} />
 
 							<img onClick={handleCloseModal} src="https://lotus365.co/static/media/closeLogin.3968ed62.svg" className='crossBtnLogog' style={{ cursor: "pointer" }} />
-							{/* <HighlightOffIcon /> */}
+
 
 
 						</div>
@@ -284,11 +284,24 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 							<div className='pop-up-content__buttons' >
 								{/* #979797 */}
 								{/* background-color: #f4d820; */}
-								<button className='log_in_btn_btn' type='submit' style={{ backgroundColor: password && userId !== "" ? "#f4d820" : "#979797" }} disabled={password && userId !== "" ? false : true}>Log in</button>
+								<button className='log_in_btn_btn' type='submit' style={{ backgroundColor: password && userId !== "" ? "#f4d820" : "#979797" }} disabled={password && userId !== "" ? false : true}>
+									<div className="_shadow"></div>
+									Log in
+								</button>
+							</div>
+							<div className='pop-up-content__buttons-mobileView ' >
+								{/* #979797 */}
+								{/* background-color: #f4d820; */}
+								<button className='log_in_btn_btn' type='submit' style={{ backgroundColor: "#f4d820" }} disabled={password && userId !== "" ? false : true}>
+									<div className="_shadow"></div>
+									Log in
+								</button>
 							</div>
 							<div className='pop-up-content__buttons registerBtnHide' onClick={handleRegisterBtn}>
 
-								<button className='register-button-link' >Register now</button>
+								<button className='register-button-link'>
+									Register now
+								</button>
 							</div>
 						</form>
 						{/* </div> */}

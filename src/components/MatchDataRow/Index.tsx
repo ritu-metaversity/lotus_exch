@@ -26,7 +26,6 @@ import {
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import Icon from '../common/Icon/Index';
 import BetingPopUpForMobile from './BetingPopUpForMobile';
-
 interface MatchDataRowProps extends Match { type?: any, runners?: any }
 
 const MatchDataRow = (props: MatchDataRowProps) => {
@@ -39,6 +38,7 @@ const MatchDataRow = (props: MatchDataRowProps) => {
 			team2: team2.trim() || 'Team 2',
 		};
 	};
+
 	const selectedSid = useAppSelector(selectSelectedSid)
 
 	const {
@@ -103,9 +103,10 @@ const MatchDataRow = (props: MatchDataRowProps) => {
 		<>
 			<MatchDataRowContainer className='match-data-row'>
 				<MatchTimeAndFavouriteContainer>
-					<MatchTiming className='match-data__time'>
+					<MatchTiming className='match-data__time' style={{ color: '#257B23' }}>
 						<span>{dateTime.getDate(openDate, true)}</span>
 						<span>{dateTime.getTimeIn12HourFormat(openDate)}</span>
+
 					</MatchTiming>
 					<Icon width='2rem' isSvgIcon src='/assets/icons/star.svg#star' />
 				</MatchTimeAndFavouriteContainer>
@@ -139,6 +140,7 @@ const MatchDataRow = (props: MatchDataRowProps) => {
 					</MatchOddsWrapper>
 				</FlexBetween>
 			</MatchDataRowContainer>
+
 			{selectedSid === mobileViewBettingData?.SelectionIdForAll?.selectionId && localStorage.getItem("token") ?
 				<BettingPopUpmobileViewShow>
 					<BetingPopUpForMobile mobileViewBettingData={mobileViewBettingData} />

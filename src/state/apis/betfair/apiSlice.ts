@@ -12,13 +12,16 @@ export const betfairApiSlice = createApi({
 		getMatchesBySports: builder.query<GetMatchesBySports, void>({
 			query: () => '/active_match/v2',
 		}),
-
+		
 		getMatchDetails: builder.query<MatchDetails, string>({
 			query: matchId => `/fancy/${matchId}`,
+		}),
+		getMatchesBySportsAll: builder.query<GetMatchesBySports, void>({
+			query: () => '/active_match/v2/All',
 		}),
 	
 	}),
 });
  
-export const { useGetMatchesBySportsQuery, useGetMatchDetailsQuery } =
+export const { useGetMatchesBySportsQuery, useGetMatchDetailsQuery,useGetMatchesBySportsAllQuery } =
 	betfairApiSlice;

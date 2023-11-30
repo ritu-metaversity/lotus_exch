@@ -38,6 +38,7 @@ import FanctasyGameList from './screens/Home/PopularGamesSection/FantasyGameList
 import FantasyGamePage from './screens/Home/PopularGamesSection/FantasyGamePage';
 import LotteryGameList from './screens/Home/IndianCardGamesSection/LotteryGameList';
 import LotteryCasionListGamePage from './screens/Home/IndianCardGamesSection/LotteryCasionListGamePage';
+import GamePageInternational from './screens/Home/CasinoGamesSection/GamePageInternational';
 
 
 const App = () => {
@@ -100,6 +101,7 @@ const App = () => {
 					<Route path='/Live-Casino-play' element={<GamePageMain />} />
 					<Route path='/Fantasy-Game-play' element={<FantasyGamePage />} />
 					<Route path='/Lottery-Game-play' element={<LotteryCasionListGamePage />} />
+					<Route path='/International-Game-play' element={<GamePageInternational />} />
 					<Route path='/Sports_book' element={<SportsBook />} />
 					<Route path="*" element={<Navigate to="/home" />} />
 

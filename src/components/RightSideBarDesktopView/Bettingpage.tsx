@@ -131,6 +131,7 @@ const Bettingpage = () => {
                                     inputMode="decimal"
                                     placeholder="Min Bet: "
                                     type="text"
+                                    style={{ border: updated ? "unset" : "2px solid #b24a3e" }}
                                     onChange={(e) =>
                                         !isNaN(Number(e.target.value)) &&
                                         setUpdated(Number(e.target.value))
@@ -142,27 +143,27 @@ const Bettingpage = () => {
                     </div>
                     <div className="DesktopBetPlacing__col profit--column ">
                         <div className="DesktopBetPlacing__row f10" style={{ padding: 0 }}>
-                            <div>Profit</div>
+                            Profit
                         </div>
-                        <div className="DesktopBetPlacing__row">
-                            <div className="DesktopBetPlacing__odd" style={{ margin: 0 }}>
-                                <div className="DesktopBetPlacing__odd__text">
-                                    {
-                                        betData?.color === "blue"
-                                            ? betDataFancy
-                                                ? (updated * betData?.vl
-                                                ) / 100
-                                                : (betData?.allData?.mid?.includes("BM") ||
-                                                    betData?.allData?.mid?.includes("bm") ||
-                                                    betData?.allData?.mid?.includes("Bm")
-                                                    ? (betData?.vl * updated) / 100
-                                                    : (betData?.vl - 1) * updated
-                                                ).toFixed(2)
-                                            : updated
-                                    }
-                                </div>
-                            </div>
+                        {/* <div className="DesktopBetPlacing__row"> */}
+                        {/* <div className="DesktopBetPlacing__odd" style={{ margin: 0 }}> */}
+                        <div className="DesktopBetPlacing__odd__text">
+                            {
+                                betData?.color === "blue"
+                                    ? betDataFancy
+                                        ? (updated * betData?.vl
+                                        ) / 100
+                                        : (betData?.allData?.mid?.includes("BM") ||
+                                            betData?.allData?.mid?.includes("bm") ||
+                                            betData?.allData?.mid?.includes("Bm")
+                                            ? (betData?.vl * updated) / 100
+                                            : (betData?.vl - 1) * updated
+                                        ).toFixed(2)
+                                    : updated
+                            }
                         </div>
+                        {/* </div> */}
+                        {/* </div> */}
                     </div>
                     <div className="DesktopBetPlacing__col-delete">
 
@@ -194,20 +195,22 @@ const Bettingpage = () => {
             <div className="DesktopBetPlacing__bottomBtns">
                 {/* <button className="DesktopBetPlacing__bottomBtns-remove" type="button">Remove All</button> */}
                 {localStorage.getItem("token") ?
+                    updated ?
+                        <button className="DesktopBetPlacing__bottomBtns-placeBet" style={{ backgroundColor: "#5c996f" }} type="submit" onClick={handleBetPalce}>Place Bet</button>
+                        : <button className="DesktopBetPlacing__bottomBtns-placeBet" style={{ backgroundColor: "#9a9a9a21" }} type="submit" onClick={handleBetPalce}>Place Bet</button>
 
-                    <button className="DesktopBetPlacing__bottomBtns-placeBet" type="submit" onClick={handleBetPalce}>Place Bet</button>
                     :
                     <button className="DesktopBetPlacing__bottomBtns-placeBet" type="submit">Log In</button>
                 }
             </div>
-            <div className="DesktopBetPlacing__confirm">
+            {/* <div className="DesktopBetPlacing__confirm">
                 <div className="DesktopBetPlacing__confirm-checkbox checked">
                     <input type="checkbox" />
                 </div>
                 <div className="DesktopBetPlacing__confirm-title">
                     Confirm bets before placing
                 </div>
-            </div>
+            </div> */}
         </div >
 
     )

@@ -40,6 +40,7 @@ const IndianCardGamesSection = () => {
 		<PopularGamesSectionContainer>
 			<Section
 				heading='Fantasy Game'
+				inplay="game"
 
 			>
 				<PopularGamesContainer>

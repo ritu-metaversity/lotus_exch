@@ -4,7 +4,7 @@ export const SectionHeaderContainer = styled('header')(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'space-between',
 	fontSize: '2.4rem',
-	background: theme.palette.primary[300],
+	// background: theme.palette.primary[300],
 	color: '#FFFFFF',
 	padding: '1rem',
 	height: '42px',

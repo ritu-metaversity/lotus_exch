@@ -9,9 +9,10 @@ import { isBetOpened } from '../../../services/betUtil';
 import { BettingPopUpmobileViewShow } from '../../../components/MatchDataRow/Index.styled';
 import BetingPopUpForMobile from '../../../components/MatchDataRow/BetingPopUpForMobile';
 import { useState } from 'react';
-import { selectSelectedSid, setBetData, setSelectedSid } from '../../../state/features/client/clientSlice';
+import { selectProfits, selectSelectedSid, setBetData, setSelectedSid } from '../../../state/features/client/clientSlice';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../../hooks/useAppSelector';
 
 interface BookmakerOddProps {
 	odd: MatchDetails['Bookmaker'];
@@ -33,13 +34,13 @@ const BookmakerOdds = (props: BookmakerOddProps) => {
 		// setMobileviewbettingPopUp(vl?.vl)
 		// setMobileviewbettingPopUpMatch(vl?.vl)
 	}
-	console.log(mobileViewBettingData, "hgfdcv");
-
+	console.log(odd, "sdfsdfsdfdfsdfwefe");
+	const profits = useAppSelector(selectProfits);
 	return (
 		<BookmakerOddsContainer>
 			<OddsHeader
 				type="back-lay"
-				name={'Bookmaker'}
+				name={odd[0]?.t !== "TOSS" ? 'Bookmaker' : 'TOSS'}
 				icon={<StarIcon fontSize='inherit' color='inherit' />}
 			/>
 
@@ -47,7 +48,7 @@ const BookmakerOdds = (props: BookmakerOddProps) => {
 				const { b1, l1, bs1, ls1, nation, gstatus, sid } = allData
 				return (
 					<>
-						<MatchOddsRow key={nation} title={nation} content=''>
+						<MatchOddsRow key={nation} title={nation} content='' pnl={profits?.Bookmaker?.find(profit => profit?.sid == sid)?.value}>
 							<BookmakerOddsGrid
 								isBetOpened={isBetOpened(gstatus)}
 								className='bookmaker-odds__grid'
@@ -68,7 +69,7 @@ const BookmakerOdds = (props: BookmakerOddProps) => {
 							</BookmakerOddsGrid>
 						</MatchOddsRow>
 						{/* {mobileviewbettingPopUp !== "" && mobileviewbettingPopUp === mobileviewbettingPopUpMatch ? */}
-						{selectedSid === sid && localStorage.getItem("token")?
+						{selectedSid === sid && localStorage.getItem("token") ?
 							<BettingPopUpmobileViewShow>
 								<BetingPopUpForMobile mobileViewBettingData={mobileViewBettingData} />
 							</BettingPopUpmobileViewShow>

@@ -20,6 +20,12 @@
     width: 45%;
 }
 
+@media screen and (min-width:1024px) {
+    .FantasyGameWrapor-inner-Game {
+        width: 22%;
+    }
+}
+
 .FantasyGameWrapor_nameeeee {
     padding: 10px;
     font-size: 20px;

@@ -10,22 +10,31 @@ import { Link } from 'react-router-dom';
 interface SectionHeadingProps {
 	heading: ReactNode;
 	icon?: ReactNode;
+	inplay?: ReactNode;
 	content?: ReactNode;
 	children?: ReactNode;
 }
 
 const Section = (props: SectionHeadingProps) => {
 
-	const { heading, icon, content, children } = props;
+	const { heading, icon, inplay, content, children } = props;
+	console.log(inplay, "inplaywfsdfsd");
 
 	return (
 		<section className='section'>
-			<SectionHeaderContainer className='section__header'>
+			<SectionHeaderContainer className='section__header'
+				style={{ backgroundColor: inplay === "true" ? '#257B23' : inplay === "game" ? "" : "#cc5f37" }}>
 				<SectionHeaderLeft>
 					{icon}
-					<SectionHeaderTitle className='section__header__title'>
+					<SectionHeaderTitle className='section__header__title'
+
+					>
 						<span style={{ fontSize: "17px" }}>{heading}</span>
-						<Link to="/open-bets" style={{ color: "white", cursor: "pointer" }}>Open Bets</Link>
+						{inplay === "true" ?
+							<Link to="/open-bets" style={{ color: "white", cursor: "pointer" }}>Open Bets</Link>
+							:
+							""
+						}
 					</SectionHeaderTitle>
 				</SectionHeaderLeft>
 
@@ -34,7 +43,7 @@ const Section = (props: SectionHeadingProps) => {
 				</SectionHeaderRight>
 			</SectionHeaderContainer>
 			{children}
-		</section>
+		</section >
 	);
 };
 
