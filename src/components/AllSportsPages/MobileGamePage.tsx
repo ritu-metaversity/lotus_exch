@@ -41,7 +41,7 @@ const MobileGamePage = ({ allMatchInSport }: any) => {
                 </div>
                 {allMatchInSport && allMatchInSport?.length > 0 ? (
                     // Object.keys(allMatchInSport).map((key: any, item: any) => (
-                    allMatchInSport && allMatchInSport.map((item: any, index: any) => item.inPlay === true && (
+                    allMatchInSport && allMatchInSport.map((item: any) => item.inPlay === true && (
 
 
                         <div className="MenuEvent__list__eventin-listhydrated" onClick={() => handleInput(item?.matchId)}>
@@ -79,7 +79,7 @@ const MobileGamePage = ({ allMatchInSport }: any) => {
                 <div className="list-header-inner-upcomming">Upcoming</div>
                 {allMatchInSport && allMatchInSport?.length > 0 ? (
                     // Object.keys(allMatchInSport).map((key: any, item: any) => (
-                    allMatchInSport && allMatchInSport.map((item: any, index: any) => item.inPlay === false && (
+                    allMatchInSport && allMatchInSport.map((item: any) => item.inPlay === false && (
 
                         <div className="list-header-inner-upcomming-game" onClick={() => handleInput(item?.matchId)}><span>{item?.matchName}
                         </span></div>

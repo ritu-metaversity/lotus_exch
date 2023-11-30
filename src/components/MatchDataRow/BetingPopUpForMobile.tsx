@@ -47,7 +47,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
 
     const [triger, { data: bettingResult, error, isLoading, isError, isSuccess }] = usePlaceBetMutation()
     console.log(mobileViewBettingData?.size, "lnjohuiyguftychvgjbhjnl");
-    console.log(error, "betDatafssd");
+    console.log(error,bettingResult, "betDatafssd");
 
     useEffect(() => {
         // if (bettingResult?.status === true) {
