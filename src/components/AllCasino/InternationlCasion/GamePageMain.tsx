@@ -12,7 +12,7 @@ const GamePageMainInternational = () => {
 
     const navigate = useNavigate();
     const handleBackToVCasion = () => {
-        navigate("/live-casino")
+        navigate("/Internationl-casino")
     }
 
     const TokenGame = localStorage.getItem("GameToken");

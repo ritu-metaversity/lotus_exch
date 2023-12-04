@@ -51,7 +51,7 @@
 
 .liveCasino-content__menu-games__allgames-items-item {
     height: 203px;
-    width: 163px;
+    width: 20%;
     margin: 0 5px 19px;
     cursor: pointer;
     border-radius: 15px;
@@ -165,9 +165,11 @@
 
 
 @media screen and (max-width: 500px) {
-    .liveCasino-content__menu-games__allgames-items-item{
-        width: calc(33.33333vw - 35px);
-        height: calc(42.73504vw - 44.87179px);
+    .liveCasino-content__menu-games__allgames-items-item {
+        /* width: calc(33.33333vw - 35px);
+        height: calc(42.73504vw - 44.87179px); */
+        max-width: 45%;
+        width: 45%;
     }
 
     .liveCasino-content__menu-games__allgames-items-item .altBackgroundCasino span {
@@ -184,5 +186,19 @@
         bottom: 5px;
         left: 5px;
         font-size: 10px;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .for_Desktop {
+        display: none;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 700px) {
+
+    .For_mobile {
+        display: none;
     }
 }

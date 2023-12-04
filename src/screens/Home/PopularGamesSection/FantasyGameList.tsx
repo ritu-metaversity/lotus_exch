@@ -1,7 +1,21 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import "./FantasyGameList.css"
 import { useEffect, useState } from "react";
+import { Box, Modal } from "@mui/material";
+import CasinoPointPopup from "../../../components/AllCasino/CasinoPointPopup";
 
+
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 export const FgameData = [
   {
@@ -191,6 +205,11 @@ const FanctasyGameList = () => {
 
   const navigate = useNavigate();
 
+  const [casionId, setCasionId] = useState("")
+  const [confirmPopup, setConfirmPopup] = useState(false)
+
+  const handleClose = () => setConfirmPopup(false);
+
   const [GameLists, setGameLists] = useState<GameDataInterface[]>([]);
   useEffect(() => {
     console.log(state, "jnhgyftdresza");
@@ -202,13 +221,24 @@ const FanctasyGameList = () => {
     }
   }, [state?.filterType]);
 
-  const handleGameFastasy = (key: any) => {
+  // const handleGameFastasy = (key: any) => {
 
-    navigate("/Fantasy-Game-play", { state: { "Game": key, "filterType": state } })
-  }
+  // }
   // navigate("/home")
 
+  const handleGameFastasy = (vl: any) => {
+    if (localStorage.getItem("token")) {
+    setConfirmPopup(true)
+    setCasionId(vl)
+    }
+  }
+  const handleAgree = () => {
+    navigate("/Fantasy-Game-play", { state: { "Game": casionId, "filterType": state } })
 
+    // navigate("/Slot-Games-play", { state: casionId })
+
+
+  }
   return (
     <div className="FantasyGameWrapor">
       <span className="FantasyGameWrapor_nameeeee">
@@ -224,6 +254,19 @@ const FanctasyGameList = () => {
         ))
         }
       </div>
+      <Modal
+        className="modal_style"
+        open={confirmPopup}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <CasinoPointPopup handleClose={handleClose} type={"qtech"} />
+          <button onClick={handleAgree} className='slotsCasino-pop-up__content-button'>OK, I AGREE !</button>
+
+        </Box>
+      </Modal>
     </div>
   )
 }

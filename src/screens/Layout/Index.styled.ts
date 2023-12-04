@@ -13,6 +13,7 @@ export const LayoutWrapper = styled(Box)<{ pathname: any }>(
 				'/Slot-Games',
 				'/live-casino',
 				'/Internationl-casino',
+				'/Slot-Games-play',
 			].includes(pathname)
 				? '100%'
 				: '1280px',
@@ -21,6 +22,7 @@ export const LayoutWrapper = styled(Box)<{ pathname: any }>(
 				'/Slot-Games',
 				'/live-casino',
 				'/Internationl-casino',
+				'/Slot-Games-play',
 			].includes(pathname)
 				? '100%'
 				: '77%',

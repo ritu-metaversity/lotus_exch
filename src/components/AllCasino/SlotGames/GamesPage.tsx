@@ -1,7 +1,25 @@
 import { useEffect, useState } from "react"
 import "./GamesPage.css"
+
+import { Box, Modal } from "@mui/material";
+
+import CasinoPointPopup from "../CasinoPointPopup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+
+const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
+
 const GamesPage = ({ slotGameDetail }: any) => {
 
     const [gameFilter, setGameFilter] = useState<any>([])
@@ -12,43 +30,12 @@ const GamesPage = ({ slotGameDetail }: any) => {
     const TokenId = localStorage.getItem("token");
     const TokenGame = localStorage.getItem("GameToken");
 
-    // useEffect(() => {
-    //     if (
-    //         TokenGame
-    //     ) {
-    //         let data = {
-    //             token: TokenGame, provider: slotGameDetail?.slotGameDetail?.filterType, gameCategory: "SLOT"
-    //         }
-    //         // https://api.247idhub.com/api/qtech/gamelist
-    //         axios.post(
-    //             "https://api.247idhub.com/api/qtech/gamelist", data,
-    //             {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     Authorization: `Bearer ${TokenId}`,
-    //                 },
-    //             }
-    //         )
-    //             .then((response) => {
-    //                 console.log(response?.data?.data, "slotGameDetailsdfsdf");
-    //                 if (response?.data?.data?.items) {
-    //                     setGameAllData(response?.data?.data?.items)
-    //                     const data: any = {};
-    //                     for (const x of response.data.data.items as any) {
-    //                         const cat = x.category.split('/');
-    //                         for (const y of cat) {
-    //                             if (data[y]) data[y].push(x);
-    //                             else data[y] = [x];
-    //                         }
-    //                     }
-    //                     setGameFilter(data)
-    //                     console.log(data, "kjhgyftdxsz");
-    //                 }
-    //             })
-    //     } else {
 
-    //     }
-    // }, [slotGameDetail?.slotGameDetail])
+
+    const [casionId, setCasionId] = useState("")
+    const [confirmPopup, setConfirmPopup] = useState(false)
+
+    const handleClose = () => setConfirmPopup(false);
 
     useEffect(() => {
         if (
@@ -100,16 +87,17 @@ const GamesPage = ({ slotGameDetail }: any) => {
     console.log(slotGameDetail, "hi");
 
 
-
-
-    // const handleGamePage = (vl: any) => {
-    //     navigate("/Live-Casino-play", { state: vl })
-    // }
-
     const handleGamePage = (vl: any) => {
-        navigate("/Slot-Games-play", { state: vl })
+        if (localStorage.getItem("token")) {
+        setConfirmPopup(true)
+        setCasionId(vl)
+        }
     }
+    const handleAgree = () => {
+        navigate("/Slot-Games-play", { state: casionId })
 
+
+    }
     return (
         <div className="liveCasino-content__menu-games">
             <div className="liveCasino-content__menu-games__allgames">
@@ -182,6 +170,19 @@ const GamesPage = ({ slotGameDetail }: any) => {
                     <div className="liveCasino-content__menu-games__allgames-title-name" />
                 </div>
             </div>
+            <Modal
+                className="modal_style"
+                open={confirmPopup}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <CasinoPointPopup handleClose={handleClose} />
+                    <button onClick={handleAgree} className='slotsCasino-pop-up__content-button'>OK, I AGREE !</button>
+
+                </Box>
+            </Modal>
         </div >
 
     )

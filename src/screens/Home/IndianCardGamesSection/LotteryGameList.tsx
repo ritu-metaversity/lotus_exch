@@ -2,6 +2,21 @@ import axios from "axios";
 import "./LotteryGameList.css"
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+import { Box, Modal } from "@mui/material";
+import CasinoPointPopup from "../../../components/AllCasino/CasinoPointPopup";
+
+const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 const LotteryGameList = () => {
 
     const { state } = useLocation()
@@ -38,11 +53,24 @@ const LotteryGameList = () => {
         }
     }, [])
 
+    const [casionId, setCasionId] = useState("")
+    const [confirmPopup, setConfirmPopup] = useState(false)
+
+    const handleClose = () => setConfirmPopup(false);
+
     const handleChangeaa = (val: any) => {
-        navigate("/Lottery-Game-play", { state: { "Game": val, "filterType": state?.filterType } })
+        if (localStorage.getItem("token")) {
+
+            setConfirmPopup(true)
+            setCasionId(val)
+        }
     }
     console.log(gameFilter, "jhygtfrdeszd");
+    const handleAgree = () => {
+        navigate("/Lottery-Game-play", { state: { "Game": casionId, "filterType": state?.filterType } })
 
+
+    }
     return (
         <div className="FantasyGameWrapor">
             <span className="FantasyGameWrapor_nameeeee">
@@ -60,6 +88,19 @@ const LotteryGameList = () => {
                 ))}
 
             </div>
+            <Modal
+                className="modal_style"
+                open={confirmPopup}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <CasinoPointPopup handleClose={handleClose} type={"qtech"} />
+                    <button onClick={handleAgree} className='slotsCasino-pop-up__content-button'>OK, I AGREE !</button>
+
+                </Box>
+            </Modal>
         </div>
     )
 }

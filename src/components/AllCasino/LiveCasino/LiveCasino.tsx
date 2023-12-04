@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import "./LiveCasino.css"
 import GamesPage from "./GamesPage";
 import HeaderPage from "./HeaderPage";
@@ -35,14 +35,19 @@ const LiveCasino = () => {
 
   const { state } = useLocation()
   console.log(state, "sdkjcguadjbclj");
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [casinoList, setCasinoList] = useState([]);
-  const [gameFilter, setGameFilter] = useState<any>([])
+
+
+  // const handleClose = () => setOpen(false);
+  const [casinoListAura, setCasinoListAura] = useState<any>([]);
+  const [casinoListSuperNowa, setCasinoListSuperNowa] = useState<any>([]);
+  const [casinoListPointType, setCasinoListPoinType] = useState<any>([]);
+  console.log(casinoListAura, casinoListSuperNowa, "sdfsdfsd");
+
+  const nav = useNavigate();
 
   const TokenId = localStorage.getItem("token");
   const TokenGame = localStorage.getItem("GameToken");
+  const [casionId, setCasionId] = useState("")
 
   // useEffect(() => {
   //   axios
@@ -79,9 +84,11 @@ const LiveCasino = () => {
         )
         .then((response) => {
           if (response) {
-            setCasinoList(response?.data?.data?.games)
-            console.log(response, "sdfsdfsdfsd");
+            setCasinoListAura([])
+            setCasinoListSuperNowa(response?.data?.data?.games)
 
+
+            setCasinoListPoinType("supernowa")
           }
         })
     } else {
@@ -100,17 +107,48 @@ const LiveCasino = () => {
         }
         )
         .then((res) => {
-          setCasinoList(res.data.data);
+          setCasinoListAura(res.data.data);
+          setCasinoListSuperNowa([])
         });
+      setCasinoListPoinType("aura")
     }
   }
-  console.log(casinoList, "jhgfdxcv");
+
 
   // useEffect(() => {
   //   handleOpen();
   // }, [])
+  const [confirmPopup, setConfirmPopup] = useState(false)
 
 
+  const handleNotAgree = () => {
+    setConfirmPopup(false)
+  }
+  const handleClose = () => setConfirmPopup(false);
+
+
+  const handleChangeaaSuperNowa = (val: any) => {
+    if (localStorage.getItem("token")) {
+    setConfirmPopup(true)
+    setCasionId(val)
+    }
+  };
+  const handleChangeaaAura = (val: any) => {
+    setConfirmPopup(true)
+    setCasionId(val)
+  };
+  const handleAgree = () => {
+    if (casinoListPointType === "supernowa") {
+
+      nav("/Live-Casino-play", { state: casionId })
+    } else {
+      nav("/Live-Casino-Aura", { state: casionId })
+
+    }
+    // setTrueee(true)
+    setConfirmPopup(false)
+
+  }
 
 
   return (
@@ -133,18 +171,34 @@ const LiveCasino = () => {
       </div>
       <div className="gamedetttttttt">
 
-        {casinoList && casinoList.map((item: any) => (
+        {casinoListSuperNowa && casinoListSuperNowa.map((item: any) => (
 
 
-          <div className="liveCasino-content__menu-games__allgames-items-item">
-            <div className="altBackgroundCasino"
-            // onClick={() => handleGamePage(item)}
-            >
+          <div className="liveCasino-content__menu-games__allgames-items-item"
+            onClick={() => handleChangeaaSuperNowa(item)}
+          >
+            <div className="altBackgroundCasino">
               <img
-                src={item?.thumb || item?.imageUrl}
+                src={item?.thumb}
                 alt=" "
               />
-              <div className="img-gamename">{item?.name || item?.gameName}</div>
+              <div className="img-gamename">{item?.name}</div>
+            </div>
+          </div>
+        )
+        )}
+        {casinoListAura && casinoListAura.map((item: any) => (
+
+
+          <div className="liveCasino-content__menu-games__allgames-items-item"
+            onClick={() => handleChangeaaAura(item)}
+          >
+            <div className="altBackgroundCasino">
+              <img
+                src={item?.imageUrl}
+                alt=" "
+              />
+              <div className="img-gamename">{item?.gameName}</div>
             </div>
           </div>
         )
@@ -152,13 +206,15 @@ const LiveCasino = () => {
       </div>
       <Modal
         className="modal_style"
-        open={open}
+        open={confirmPopup}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <CasinoPointPopup handleClose={handleClose} />
+          <CasinoPointPopup handleClose={handleClose} type={casinoListPointType} />
+          <button onClick={handleAgree} className='slotsCasino-pop-up__content-button'>OK, I AGREE !</button>
+
         </Box>
       </Modal>
     </div>

@@ -204,6 +204,8 @@ const GamesPage = ({ dattatata }: any) => {
             >
                 <Box sx={style}>
                     <CasinoPointPopup handleClose={handleClose} />
+                    {/* <button onClick={handleAgree} className='slotsCasino-pop-up__content-button'>OK, I AGREE !</button> */}
+
                 </Box>
             </Modal>
         </div >

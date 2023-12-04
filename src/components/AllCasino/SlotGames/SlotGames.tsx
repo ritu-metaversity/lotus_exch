@@ -4,9 +4,6 @@ import GamesPage from "./GamesPage";
 import HeaderPage from "./HeaderPage";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Box, Modal } from "@mui/material";
-
-import CasinoPointPopup from "../CasinoPointPopup";
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -112,17 +109,7 @@ const SlotGames = () => {
 
         <GamesPage slotGameDetail={slotGameDetail} />
       </div>
-      <Modal
-        className="modal_style"
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <CasinoPointPopup handleClose={handleClose} />
-        </Box>
-      </Modal>
+      
     </div>
   )
 }

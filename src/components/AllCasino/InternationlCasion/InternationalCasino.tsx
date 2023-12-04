@@ -101,11 +101,13 @@ const InternationalCasino = () => {
   const [datattaa, setDatattaa] = useState();
 
   console.log(state, "sdkjcguadjbclj");
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen(true);
+  const handleClose = () => setConfirmPopup(false);
   const [gameAllData, setGameAllData] = useState<any>([])
   const navigate = useNavigate();
+  const [confirmPopup, setConfirmPopup] = useState(false)
+  const [casionId, setCasionId] = useState("")
 
   const TokenId = localStorage.getItem("token");
   const TokenGame = localStorage.getItem("GameToken");
@@ -166,6 +168,15 @@ const InternationalCasino = () => {
 
     }
   }, [])
+  const handleGamePage = (vl: any) => {
+    if (localStorage.getItem("token")) {
+    setConfirmPopup(true)
+    setCasionId(vl)
+    }
+  }
+  const handleAgree = () => {
+    navigate("/Intergame-play", { state: casionId })
+  }
   return (
     <div className="AllCasinoGame_IN_onePage">
       {/* <p className="liveCasino-header"> */}
@@ -202,7 +213,7 @@ const InternationalCasino = () => {
 
             <div className="liveCasino-content__menu-games__allgames-items-item">
               <div className="altBackgroundCasino"
-              // onClick={() => handleGamePage(item)}
+                onClick={() => handleGamePage(item)}
               >
                 <img
                   src={item?.images[2]?.url}
@@ -216,13 +227,15 @@ const InternationalCasino = () => {
         </div>
         <Modal
           className="modal_style"
-          open={open}
+          open={confirmPopup}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <CasinoPointPopup handleClose={handleClose} />
+            <CasinoPointPopup handleClose={handleClose} type={"qtech"} />
+            <button onClick={handleAgree} className='slotsCasino-pop-up__content-button'>OK, I AGREE !</button>
+
           </Box>
         </Modal>
         {/* <GamesPage dattatata={datattaa} /> */}

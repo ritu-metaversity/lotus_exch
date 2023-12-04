@@ -41,6 +41,7 @@ import LotteryCasionListGamePage from './screens/Home/IndianCardGamesSection/Lot
 import GamePageInternational from './screens/Home/CasinoGamesSection/GamePageInternational';
 import InternationalCasino from './components/AllCasino/InternationlCasion/InternationalCasino';
 import GamePageMainInternational from './components/AllCasino/InternationlCasion/GamePageMain';
+import AuraGamePageMain from './components/AllCasino/LiveCasino/AuraGamePageMain';
 
 
 const App = () => {
@@ -103,6 +104,7 @@ const App = () => {
 					<Route path='/Game-play' element={<CasinoGamePage />} />
 					<Route path='/Intergame-play' element={<GamePageMainInternational />} />
 					<Route path='/Live-Casino-play' element={<GamePageMain />} />
+					<Route path='/Live-Casino-Aura' element={<AuraGamePageMain />} />
 					<Route path='/Fantasy-Game-play' element={<FantasyGamePage />} />
 					<Route path='/Lottery-Game-play' element={<LotteryCasionListGamePage />} />
 					<Route path='/International-Game-play' element={<GamePageInternational />} />
