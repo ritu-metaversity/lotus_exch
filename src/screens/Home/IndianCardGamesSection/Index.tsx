@@ -81,30 +81,30 @@ const IndianCardGamesSection = () => {
 	}
 
 	return (
-		<CardSectionContainer>
+		<CardSectionContainer id={'Lottery Games'.toUpperCase().replace(' ', '_')}>
 			<Section
 				heading='Lottery Games'
-				inplay="game"
-			// icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
+				inplay='game'
+				// icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
 			>
 				<CardGamesContainer>
 					<CardGamesGrid>
-
-						{lotteryprovidersList.map((game) => (
-							<div className="Lottery-Home-Page" onClick={() => handleGameFastasy(game)}>
-								<img
-									className='Lottery-Home-Page-img'
-									src={game?.logo}
-								/>
-								<span style={{
-									fontSize: "14px",
-									fontWeight: "700"
-								}}>
+						{lotteryprovidersList.map(game => (
+							<div
+								className='Lottery-Home-Page'
+								onClick={() => handleGameFastasy(game)}
+							>
+								<img className='Lottery-Home-Page-img' src={game?.logo} />
+								<span
+									style={{
+										fontSize: '14px',
+										fontWeight: '700',
+									}}
+								>
 									{game?.name}
 								</span>
 							</div>
 						))}
-
 					</CardGamesGrid>
 				</CardGamesContainer>
 			</Section>

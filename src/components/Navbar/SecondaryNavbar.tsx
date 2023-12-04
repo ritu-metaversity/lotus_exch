@@ -12,16 +12,16 @@ interface NavItem {
 	label: string;
 	link: string;
 	highlighted?: boolean;
+	onClick?: () => void;
 }
 
 const SecondaryNavbar = () => {
-
 	const SportsBook: Array<NavItem> = [
 		{
 			label: 'SportsBook',
-			link: localStorage.getItem("token") ? "/Sports_book" : "",
+			link: localStorage.getItem('token') ? '/Sports_book' : '',
 			highlighted: true,
-		}
+		},
 	];
 	const liveCasino: Array<NavItem> = [
 		{
@@ -36,7 +36,8 @@ const SecondaryNavbar = () => {
 		},
 		{
 			label: 'Fantasy Games',
-			link: '/',
+			link: '/home',
+			onClick: () => handleClick('Fantasy Games'),
 			highlighted: true,
 		},
 		{
@@ -46,9 +47,11 @@ const SecondaryNavbar = () => {
 		},
 		{
 			label: 'Lottery Games',
-			link: '/',
+			link: '/home',
+			onClick: () => handleClick('Lottery Games'),
+
 			highlighted: true,
-		}
+		},
 	];
 	// useEffect(() => {
 	// 	axios
@@ -59,20 +62,23 @@ const SecondaryNavbar = () => {
 	// 			//   setIsloading(false)
 	// 		});
 	// }, []);
-	const [triger, { data: leftMenuData }] = useLeftMenuDataOpenMutation()
-
+	const [triger, { data: leftMenuData }] = useLeftMenuDataOpenMutation();
+	const handleClick = (id: string) => {
+		document
+			.getElementById(id.toUpperCase().replace(' ', '_'))
+			?.scrollIntoView();
+	};
 	useEffect(() => {
-		triger({})
-	}, [])
-	console.log(leftMenuData, "leftMenuData");
+		triger({});
+	}, []);
+	console.log(leftMenuData, 'leftMenuData');
 
 	// https://api.247365.exchange/admin-new-apis/enduser/left-menu-data-open
-
 
 	return (
 		<SecondaryNavbarContainer>
 			<SecondaryNavbarList>
-				{SportsBook.map((navItem) => (
+				{SportsBook.map(navItem => (
 					<SecondaryNavbarItem
 						highlighted={navItem.highlighted}
 						key={navItem.label}
@@ -86,12 +92,15 @@ const SecondaryNavbar = () => {
 						key={navItem.sportName}
 					>
 						<>
-							<Link to={`/gameDetail/${navItem.sportId}`}>{navItem.sportName}</Link>
+							<Link to={`/gameDetail/${navItem.sportId}`}>
+								{navItem.sportName}
+							</Link>
 						</>
 					</SecondaryNavbarItem>
 				))}
-				{liveCasino.map((navItem) => (
+				{liveCasino.map(navItem => (
 					<SecondaryNavbarItem
+						onClick={navItem.onClick}
 						highlighted={navItem.highlighted}
 						key={navItem.label}
 					>

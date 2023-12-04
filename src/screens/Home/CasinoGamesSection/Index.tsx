@@ -109,27 +109,24 @@ const CasinoGamesSection = () => {
 	}
 
 	return (
-		<CasinoSectionContainer>
-			<Section
-				heading='International Casino'
-				inplay="game"
-			>
+		<CasinoSectionContainer
+			id={'International Casino'.toUpperCase().replace(' ', '_')}
+		>
+			<Section heading='International Casino' inplay='game'>
 				<CasinoGamesContainer>
 					<CardGamesGrid>
-
-						{casinoProviderList.map((item) => (
-							<div className="Lottery-Home-Page"
+						{casinoProviderList.map(item => (
+							<div
+								className='Lottery-Home-Page'
 								onClick={() => handleGameLobby(item)}
-
 							>
-								<img
-									className='Lottery-Home-Page-img'
-									src={item?.logo}
-								/>
-								<span style={{
-									fontSize: "14px",
-									fontWeight: "700"
-								}}>
+								<img className='Lottery-Home-Page-img' src={item?.logo} />
+								<span
+									style={{
+										fontSize: '14px',
+										fontWeight: '700',
+									}}
+								>
 									{item?.name}
 								</span>
 							</div>

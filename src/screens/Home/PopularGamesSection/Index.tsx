@@ -37,39 +37,41 @@ const IndianCardGamesSection = () => {
 		navigate("/Fantasy-Game-List", { state: game })
 	}
 	return (
-		<PopularGamesSectionContainer>
-			<Section
-				heading='Fantasy Game'
-				inplay="game"
-
-			>
+		<PopularGamesSectionContainer
+			id={'FANTASY GAMES'.toUpperCase().replace(' ', '_')}
+		>
+			<Section heading='Fantasy Game' inplay='game'>
 				<PopularGamesContainer>
 					<PopularGamesGrid>
-
-						{FantasyGamedata.map((game) => (
-							<div style={{
-								display: "flex",
-								alignItems: "center",
-								justifyContent: "center",
-								flexDirection: "column",
-								width: "179px",
-								backgroundColor: "#0000003b",
-								height: "109px",
-								borderRadius: "10px"
-							}} onClick={() => handleGameFastasy(game)}>
-								<GameImage
-									src={game?.logo}
-								/>
-								<span style={{
-									fontSize: "14px",
-									fontWeight: "700"
-								}}>{game?.name}</span>
+						{FantasyGamedata.map(game => (
+							<div
+								style={{
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+									flexDirection: 'column',
+									width: '179px',
+									backgroundColor: '#0000003b',
+									height: '109px',
+									borderRadius: '10px',
+								}}
+								onClick={() => handleGameFastasy(game)}
+							>
+								<GameImage src={game?.logo} />
+								<span
+									style={{
+										fontSize: '14px',
+										fontWeight: '700',
+									}}
+								>
+									{game?.name}
+								</span>
 							</div>
 						))}
 					</PopularGamesGrid>
 				</PopularGamesContainer>
 			</Section>
-		</PopularGamesSectionContainer >
+		</PopularGamesSectionContainer>
 	);
 };
 
