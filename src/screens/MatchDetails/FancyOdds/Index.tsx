@@ -11,8 +11,11 @@ import { BettingPopUpmobileViewShow } from '../../../components/MatchDataRow/Ind
 import BetingPopUpForMobile from '../../../components/MatchDataRow/BetingPopUpForMobile';
 import { selectProfits, selectSelectedSid, setBetData, setBetDataFancy, setSelectedSid } from '../../../state/features/client/clientSlice';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
-import { useState } from 'react';
-import { MinMax, TypoGraphy } from '../../../components/MatchOddsRow/Index.styled';
+import { useEffect, useState } from 'react';
+import {
+	MinMax,
+	TypoGraphy,
+} from '../../../components/MatchOddsRow/Index.styled';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 
 interface FancyOddsProps {
@@ -22,28 +25,29 @@ interface FancyOddsProps {
 
 const FancyOdds = (props: FancyOddsProps) => {
 	const { odd, title } = props;
-	const selectedSid = useAppSelector(selectSelectedSid)
+	const selectedSid = useAppSelector(selectSelectedSid);
 
-	const [mobileviewbettingPopUp, setMobileviewbettingPopUp] = useState('')
-	const [mobileviewbettingPopUpMatch, setMobileviewbettingPopUpMatch] = useState('')
-	const [mobileViewBettingData, setMobileViewBettingData] = useState<any>()
-	const [mobileViewFancyBetting, setMobileViewFancyBetting] = useState<any>()
-	const dispatch = useAppDispatch()
+	const [mobileviewbettingPopUp, setMobileviewbettingPopUp] = useState('');
+	const [mobileviewbettingPopUpMatch, setMobileviewbettingPopUpMatch] =
+		useState('');
+	const [mobileViewBettingData, setMobileViewBettingData] = useState<any>();
+	const [mobileViewFancyBetting, setMobileViewFancyBetting] = useState<any>();
+	const dispatch = useAppDispatch();
 	console.log(mobileviewbettingPopUp, mobileviewbettingPopUpMatch);
 
 	const OddsData = (vl: any) => {
-		console.log(vl, "sdfsdcsdwew");
+		console.log(vl, 'sdfsdcsdwew');
 
-		setMobileViewBettingData(vl)
-		setMobileViewFancyBetting("fancy")
-		dispatch(setBetData({ ...vl, isFancy: true }))
-		dispatch(setBetDataFancy("fancy"))
+		setMobileViewBettingData(vl);
+		setMobileViewFancyBetting('fancy');
+		dispatch(setBetData({ ...vl, isFancy: true }));
+		dispatch(setBetDataFancy('fancy'));
 
-		dispatch(setSelectedSid(vl.SelectionIdForAll))
+		dispatch(setSelectedSid(vl.SelectionIdForAll));
 
-		setMobileviewbettingPopUp(vl?.vl)
-		setMobileviewbettingPopUpMatch(vl?.vl)
-	}
+		setMobileviewbettingPopUp(vl?.vl);
+		setMobileviewbettingPopUpMatch(vl?.vl);
+	};
 
 	if (!odd.length)
 		return (
@@ -53,39 +57,72 @@ const FancyOdds = (props: FancyOddsProps) => {
 			</Box>
 		);
 
-	const profits = useAppSelector(selectProfits)
-	// console.log(profits,"sushant");
+	const profits = useAppSelector(selectProfits);
+	useEffect(() => {
+		console.log(profits, 'sushant2');
+	}, [profits]);
 
-	console.log(selectedSid === mobileViewBettingData?.SelectionIdForAll, "dvecvevrsdcxw");
+	console.log(
+		selectedSid === mobileViewBettingData?.SelectionIdForAll,
+		'dvecvevrsdcxw'
+	);
 
 	return (
 		<FancyOddsContainer>
 			<OddsHeader
-				type="yes-no"
+				type='yes-no'
 				name={title}
 				icon={<StarIcon fontSize='inherit' color='inherit' />}
 			/>
 
-			{odd.map((allData) => {
-				const { b1, l1, bs1, ls1, nation, gstatus, sid, betDelay } = allData
+			{odd.map(allData => {
+				const { b1, l1, bs1, ls1, nation, gstatus, sid, betDelay } = allData;
 				return (
 					<>
 						<MatchOddsRow
 							isFancy={true}
 							content={`${gstatus}`}
-							key={nation} title={nation}
+							key={nation}
+							title={nation}
 							pnl={profits?.Fancy?.find(profit => profit.sid == sid)?.value}
-							betDelay={betDelay}>
+							betDelay={betDelay}
+						>
 							<FancyOddsGrid
 								isBetOpened={isBetOpened(gstatus)}
 								className='bookmaker-odds__grid'
 							>
 								<>
 									{/* ----BACK---- */}
-									<OddCell isStandBy={true} type='drawback' color='red' odd={''} />
-									<OddCell isStandBy={true} type='team2back' color='red' odd={''} />
-									<OddCell allData={allData} SelectionIdForAll={sid} OddsData={OddsData} type='team1lay' color='red' odd={l1} size={ls1} />
-									<OddCell allData={allData} SelectionIdForAll={sid} OddsData={OddsData} type='team1back' color='blue' odd={b1} size={bs1} />
+									<OddCell
+										isStandBy={true}
+										type='drawback'
+										color='red'
+										odd={''}
+									/>
+									<OddCell
+										isStandBy={true}
+										type='team2back'
+										color='red'
+										odd={''}
+									/>
+									<OddCell
+										allData={allData}
+										SelectionIdForAll={sid}
+										OddsData={OddsData}
+										type='team1lay'
+										color='red'
+										odd={l1}
+										size={ls1}
+									/>
+									<OddCell
+										allData={allData}
+										SelectionIdForAll={sid}
+										OddsData={OddsData}
+										type='team1back'
+										color='blue'
+										odd={b1}
+										size={bs1}
+									/>
 									{/* ----LAY---- */}
 
 									{/* <OddCell isStandBy={true} type='drawlay' color='red' odd={''} />
@@ -95,8 +132,7 @@ const FancyOdds = (props: FancyOddsProps) => {
 										<TypoGraphy>Min: 100</TypoGraphy>
 										<TypoGraphy>Max: 1000</TypoGraphy>
 									</MinMax>
-									<MinMax>
-									</MinMax>
+									<MinMax></MinMax>
 								</>
 
 								{/* {isBetOpened(gstatus) ? (
@@ -106,23 +142,23 @@ const FancyOdds = (props: FancyOddsProps) => {
 									{gstatus}
 								</OddOverlayLabelContainer>
 							)} */}
-
 							</FancyOddsGrid>
 						</MatchOddsRow>
 
-
-						{sid === selectedSid && localStorage.getItem("token") ?
+						{sid === selectedSid && localStorage.getItem('token') ? (
 							<BettingPopUpmobileViewShow>
-								<BetingPopUpForMobile mobileViewBettingData={mobileViewBettingData} mobileViewFancyBetting={mobileViewFancyBetting} />
+								<BetingPopUpForMobile
+									mobileViewBettingData={mobileViewBettingData}
+									mobileViewFancyBetting={mobileViewFancyBetting}
+								/>
 							</BettingPopUpmobileViewShow>
-							:
-							""
-						}
+						) : (
+							''
+						)}
 					</>
-				)
+				);
 			})}
 			{/* selectedSid === sid  */}
-
 		</FancyOddsContainer>
 	);
 };

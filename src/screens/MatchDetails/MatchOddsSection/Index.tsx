@@ -58,7 +58,12 @@ const MatchOddsSection = () => {
 			pnl: pnlOddDtaa?.data || [],
 			setProfits,
 		});
-	}, [betDetails?.stake, pnlOddDtaa, data?.Odds[0]?.marketId]);
+	}, [
+		betDetails?.stake,
+		pnlOddDtaa?.data,
+		pnlFancytaa?.data,
+		data?.Odds[0]?.marketId,
+	]);
 
 	return (
 		<MatchOddsSectionContainer>

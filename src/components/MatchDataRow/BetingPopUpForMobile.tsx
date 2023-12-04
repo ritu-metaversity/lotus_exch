@@ -6,7 +6,12 @@ import { useAppSelector } from "../../hooks/useAppSelector";
 import { useParams } from "react-router-dom";
 // import toast from "react-hot-toast";
 import { usePlaceBetMutation, useGetStackDetailsQuery } from "../../state/apis/main/apiSlice";
-import { selectBetData, setBetData, setSelectedSid } from "../../state/features/client/clientSlice";
+import {
+	selectBetData,
+	setBetData,
+	setBetDataFancy,
+	setSelectedSid,
+} from '../../state/features/client/clientSlice';
 import { useDispatch } from "react-redux";
 import { CircularProgress, Dialog, DialogContent } from "@mui/material";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -118,7 +123,11 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
     console.log(mobileViewBettingData?.allData?.maxBet, "rrjfnwinwokdoews");
 
     useEffect(() => {
-        if (isSuccess || isError) dispatch(setSelectedSid(""))
+        if (isSuccess || isError) {
+					dispatch(setSelectedSid(''));
+					dispatch(setBetData(null));
+					dispatch(setBetDataFancy);
+				}
 
         return () => {
         }

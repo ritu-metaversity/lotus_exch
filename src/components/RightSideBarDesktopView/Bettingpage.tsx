@@ -3,7 +3,12 @@ import "./Bettingpage.css"
 // import axios from "axios";
 import { useGetStackDetailsQuery, usePlaceBetMutation } from "../../state/apis/main/apiSlice";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { selectBetData, selectBetDataFancy, setBetData } from "../../state/features/client/clientSlice";
+import {
+	selectBetData,
+	selectBetDataFancy,
+	setBetData,
+	setSelectedSid,
+} from '../../state/features/client/clientSlice';
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CircularProgress } from "@mui/material";
@@ -76,7 +81,10 @@ const Bettingpage = () => {
 
 
     useEffect(() => {
-        if (isSuccess || isError) dispatch(setBetData(""))
+        if (isSuccess || isError) {
+					dispatch(setBetData(null));
+					dispatch(setSelectedSid(''));
+				}
 
         return () => {
         }

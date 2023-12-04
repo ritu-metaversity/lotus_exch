@@ -7,7 +7,7 @@ export const createProfits = ({
 	fancyPnl,
 	setProfits,
 }: any) => {
-	console.log(pnl, betDetails, fancyOdds, 'sushant');
+	console.log(fancyPnl, betDetails, fancyOdds, 'sushant');
 	if (!fancyOdds) return;
 	const pnlsOdds = pnl?.find(
 		(element: any) => element?.marketId == betDetails?.marketId
@@ -199,6 +199,8 @@ export const createProfits = ({
 					return currentProfit;
 				}) || [],
 		};
+		console.log(newItem, 'newItemProfit');
+
 		setProfits(newItem);
 	}
 };
