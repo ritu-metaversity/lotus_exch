@@ -38,78 +38,117 @@ const LiveCasino = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleGameName = () => {
-
-  }
-
-  useEffect(() => {
-    handleOpen();
-  }, [])
-
+  const [casinoList, setCasinoList] = useState([]);
   const [gameFilter, setGameFilter] = useState<any>([])
 
   const TokenId = localStorage.getItem("token");
   const TokenGame = localStorage.getItem("GameToken");
 
-  useEffect(() => {
-    if (
-      TokenGame
-    ) {
-      let data = {
-        token: TokenGame, provider: "", gameCategory: "LIVECASINO"
-      }
-      axios.post(
-        "https://api.247idhub.com/api/qtech/gamelist", data,
-        {
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       "https://api.247365.exchange/admin-new-apis/api/supernowa/game-list", { providerCode: "SN" },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${TokenId}`,
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       if (response) {
+  //         setCasinoList(response?.data?.data?.games)
+  //         console.log(response, "sdfsdfsdfsd");
+
+  //       }
+  //     })
+  // }, [])
+  const handleGameName = (vl: any) => {
+    console.log(vl, "sdfwdfsdcsdc");
+
+    if (vl === "SuperNowa") {
+      axios
+        .post(
+          "https://api.247365.exchange/admin-new-apis/api/supernowa/game-list", { providerCode: "SN" },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${TokenId}`,
+            },
+          }
+        )
+        .then((response) => {
+          if (response) {
+            setCasinoList(response?.data?.data?.games)
+            console.log(response, "sdfsdfsdfsd");
+
+          }
+        })
+    } else {
+      const id = {
+        id: "323334",
+        appUrl: window.location.hostname,
+      };
+      axios
+        .post(
+          "https://api.247365.exchange/admin-new-apis/casino/casino-tables-by-types",
+          id, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${TokenId}`,
           },
         }
-      )
-        .then((response) => {
-          if (response?.data?.data?.items) {
-            const data: any = {};
-            for (const x of response.data.data.items as any) {
-              const cat = x.category.split('/');
-              for (const y of cat) {
-                if (data[y]) data[y].push(x);
-                else data[y] = [x];
-              }
-            }
-            setGameFilter(data)
-
-          }
-          // console.log(response?.data?.data?.items, "statestatestatestate");
-
-        })
-
-
-    } else {
-
+        )
+        .then((res) => {
+          setCasinoList(res.data.data);
+        });
     }
-  }, [])
+  }
+  console.log(casinoList, "jhgfdxcv");
+
+  // useEffect(() => {
+  //   handleOpen();
+  // }, [])
+
+
+
+
   return (
     <div className="AllCasinoGame_IN_onePage">
-      <p className="liveCasino-header">
-        <img src="https://lotus365.co/static/media/LiveCasinoMobileTop.6252968a.png" className="liveCasino-header__img mob_img" />
-        <img src="https://lotus365.co/static/media/livecasinoLobby.16d18b4a.svg" className="liveCasino-header__img desk_img" />
-        <div className="live_casino">
+      {/* <p className="liveCasino-header"> */}
+      <img src="https://lotus365.co/static/media/LiveCasinoMobileTop.6252968a.png" className="liveCasino-header__img mob_img" />
+      <img src="https://lotus365.co/static/media/livecasinoLobby.16d18b4a.svg" className="liveCasino-header__img desk_img" />
+      <div className="live_casino">
 
-          <HeaderPage />
-        </div>
+        <HeaderPage />
+      </div>
 
-      </p>
-      {/* <img src="../../../../public/assets/images/casinoGames/CaisnoNewImg/livecasinoLobby.16d18b4a.svg" style={{ width: "100%" }} /> */}
-      <div className="AllGameBTn_main_constainer">
-        <div className="AllGameBTn">
+      {/* </p> */}
+      <div className="gamebtnnnnsnnsns">
 
-          <button onClick={handleGameName} className="GameNameBtn_UI">All games</button>
-          {Object.keys(gameFilter).map((key: any) => (
-            <button onClick={handleGameName} className="GameNameBtn_UI">{key}</button>
-          ))}
-        </div >
-        <GamesPage />
+
+        <button onClick={() => handleGameName("SuperNowa")} className="GameNameBtn_UIiiii">Super nowa</button>
+        <button onClick={handleGameName} className="GameNameBtn_UIiiii">Aura</button>
+
+      </div>
+      <div className="gamedetttttttt">
+
+        {casinoList && casinoList.map((item: any) => (
+
+
+          <div className="liveCasino-content__menu-games__allgames-items-item">
+            <div className="altBackgroundCasino"
+            // onClick={() => handleGamePage(item)}
+            >
+              <img
+                src={item?.thumb || item?.imageUrl}
+                alt=" "
+              />
+              <div className="img-gamename">{item?.name || item?.gameName}</div>
+            </div>
+          </div>
+        )
+        )}
       </div>
       <Modal
         className="modal_style"

@@ -162,13 +162,18 @@
     }
 }
 
-
+@media screen and (min-width:1024px) {
+    .liveCasino-content__menu-games__allgames-items-item {
+        height: 203px;
+        width: 20%;
+        margin: 0 5px 19px;
+        cursor: pointer;
+        border-radius: 15px;
+    }
+}
 
 @media screen and (max-width: 500px) {
-    .liveCasino-content__menu-games__allgames-items-item {
-        width: calc(33.33333vw - 35px);
-        height: calc(42.73504vw - 44.87179px);
-    }
+
 
     .liveCasino-content__menu-games__allgames-items-item .altBackgroundCasino span {
         font-size: 14px;

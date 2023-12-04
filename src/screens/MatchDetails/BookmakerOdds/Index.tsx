@@ -57,9 +57,9 @@ const BookmakerOdds = (props: BookmakerOddProps) => {
 									<>
 										<OddCell allData={allData} SelectionIdForAll={sid} type='drawback' OddsData={OddsData} color='blue' odd={''} />
 										<OddCell allData={allData} SelectionIdForAll={sid} type='team2back' OddsData={OddsData} color='blue' odd={''} />
-										<OddCell allData={allData} SelectionIdForAll={sid} type='team1back' OddsData={OddsData} color='blue' odd={b1} size={bs1} />
+										<OddCell allData={allData} SelectionIdForAll={sid} type='team1back' OddsData={OddsData} color='blue' odd={b1} size={bs1} nation={nation} />
 
-										<OddCell allData={allData} SelectionIdForAll={sid} type='team1lay' OddsData={OddsData} color='red' odd={l1} size={ls1} />
+										<OddCell allData={allData} SelectionIdForAll={sid} type='team1lay' OddsData={OddsData} color='red' odd={l1} size={ls1} nation={nation} />
 										<OddCell allData={allData} SelectionIdForAll={sid} type='drawlay' OddsData={OddsData} color='red' odd={''} />
 										<OddCell allData={allData} SelectionIdForAll={sid} type='team2lay' OddsData={OddsData} color='red' odd={''} />
 									</>

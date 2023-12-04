@@ -1,0 +1,12 @@
+.Min_Max_betsss {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media screen and (max-width:1024px) {
+    .Min_Max_betsss {
+        display: none;
+    }
+}

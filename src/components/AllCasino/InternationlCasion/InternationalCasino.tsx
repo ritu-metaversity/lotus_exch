@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import "./LiveCasino.css"
 import GamesPage from "./GamesPage";
 import HeaderPage from "./HeaderPage";
@@ -69,19 +69,19 @@ export const casinoProviderList = [
   //   logo: "https://ebet.gg/wp-content/uploads/2022/05/EBET-logo.png",
   //   gameCode: "EBT-sicbo",
   //   filterType: "EBT",
+  // // },
+  // {
+  //   name: "AVIATOR",
+  //   logo: "https://sitethemedata.com/casino_icons/fantasy/aviator.png",
+  //   gameCode: "SPB-aviator",
+  //   filterType: "SPB",
   // },
-  {
-    name: "AVIATOR",
-    logo: "https://sitethemedata.com/casino_icons/fantasy/aviator.png",
-    gameCode: "SPB-aviator",
-    filterType: "SPB",
-  },
-  {
-    name: "Q Tech",
-    logo: QtechLogooo,
-    gameCode: "Qtech",
-    filterType: "SPB",
-  }
+  // {
+  //   name: "Q Tech",
+  //   logo: QtechLogooo,
+  //   gameCode: "Qtech",
+  //   filterType: "SPB",
+  // }
 ];
 const style = {
   position: 'absolute' as 'absolute',
@@ -98,22 +98,45 @@ const style = {
 const InternationalCasino = () => {
 
   const { state } = useLocation()
+  const [datattaa, setDatattaa] = useState();
+
   console.log(state, "sdkjcguadjbclj");
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleGameName = () => {
-
-  }
-
-  useEffect(() => {
-    handleOpen();
-  }, [])
-
-  // const [gameFilter, setGameFilter] = useState<any>([])
+  const [gameAllData, setGameAllData] = useState<any>([])
+  const navigate = useNavigate();
 
   const TokenId = localStorage.getItem("token");
   const TokenGame = localStorage.getItem("GameToken");
+  const handleGameName = (vl: any) => {
+    // setDatattaa(vl)
+    let data = {
+      token: TokenGame, provider: vl?.filterType, gameCategory: "LIVECASINO"
+    }
+    axios.post(
+      "https://api.247idhub.com/api/qtech/gamelist", data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${TokenId}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response?.data?.data?.items) {
+          console.log();
+          setGameAllData(response?.data?.data?.items)
+        }
+        // console.log(response?.data?.data?.items, "statestatestatestate");
+      })
+  }
+
+  // useEffect(() => {
+  //   handleOpen();
+  // }, [])
+
+  // const [gameFilter, setGameFilter] = useState<any>([])
 
   useEffect(() => {
     if (
@@ -132,18 +155,8 @@ const InternationalCasino = () => {
         }
       )
         .then((response) => {
-          if (response?.data?.data?.items) {
-            const data: any = {};
-            for (const x of response.data.data.items as any) {
-              const cat = x.category.split('/');
-              for (const y of cat) {
-                if (data[y]) data[y].push(x);
-                else data[y] = [x];
-              }
-            }
-            // setGameFilter(data)
+          setGameAllData(response?.data?.data?.items)
 
-          }
           // console.log(response?.data?.data?.items, "statestatestatestate");
 
         })
@@ -155,21 +168,24 @@ const InternationalCasino = () => {
   }, [])
   return (
     <div className="AllCasinoGame_IN_onePage">
-      <p className="liveCasino-header">
-        <img src="https://lotus365.co/static/media/LiveCasinoMobileTop.6252968a.png" className="liveCasino-header__img mob_img" />
-        <img src="https://lotus365.co/static/media/livecasinoLobby.16d18b4a.svg" className="liveCasino-header__img desk_img" />
-        <div className="live_casino">
+      {/* <p className="liveCasino-header"> */}
+      <img src="https://lotus365.co/static/media/LiveCasinoMobileTop.6252968a.png" className="liveCasino-header__img mob_img" />
+      <img src="https://lotus365.co/static/media/livecasinoLobby.16d18b4a.svg" className="liveCasino-header__img desk_img" />
+      <div className="InternantionalCsaion">
 
-          <HeaderPage />
+        <div className="liveCasino-header__text-name animate-charcter ">
+          International Casino
         </div>
+        <div className="liveCasino-header__text-credo">Play. Win. Enjoy.</div>
+      </div>
 
-      </p>
+      {/* </p> */}
       {/* <img src="../../../../public/assets/images/casinoGames/CaisnoNewImg/livecasinoLobby.16d18b4a.svg" style={{ width: "100%" }} /> */}
       <div className="AllGameBTn_main_constainer">
         <div className="AllGameBTn">
           {casinoProviderList && casinoProviderList.map((item: any) => (
 
-            <button onClick={handleGameName} className="GameNameBtn_UI">
+            <button onClick={() => handleGameName(item)} className="GameNameBtn_UI">
               {/* <img
                 src={item?.logo}
                 alt=" "
@@ -179,19 +195,39 @@ const InternationalCasino = () => {
           )
           )}
         </div >
-        <GamesPage />
+        <div className="gamedetttttttt">
+
+          {gameAllData && gameAllData.map((item: any) => (
+
+
+            <div className="liveCasino-content__menu-games__allgames-items-item">
+              <div className="altBackgroundCasino"
+              // onClick={() => handleGamePage(item)}
+              >
+                <img
+                  src={item?.images[2]?.url}
+                  alt=" "
+                />
+                <div className="img-gamename">{item?.name}</div>
+              </div>
+            </div>
+          )
+          )}
+        </div>
+        <Modal
+          className="modal_style"
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <CasinoPointPopup handleClose={handleClose} />
+          </Box>
+        </Modal>
+        {/* <GamesPage dattatata={datattaa} /> */}
       </div>
-      <Modal
-        className="modal_style"
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <CasinoPointPopup handleClose={handleClose} />
-        </Box>
-      </Modal>
+
     </div>
   )
 }

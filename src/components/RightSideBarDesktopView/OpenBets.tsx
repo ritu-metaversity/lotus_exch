@@ -45,16 +45,11 @@ const OpenBets = () => {
         <div className="betSlipDesktop__betMain">
             <div className="betSlipDesktop__topFilters">
                 <div className="betSlipDesktop__topFilters-item">
-                    {/* <div className="betSlipDesktop__topFilters-item-check"> */}
                     <input type="checkbox" />
-
-                    {/* </div> */}
                     <span className="betSlipDesktop__topFilters-item-title">Show bet Info</span>
                 </div>
                 <div className="betSlipDesktop__topFilters-item">
-                    {/* <div className="betSlipDesktop__topFilters-item-check"> */}
                     <input type="checkbox" />
-                    {/* </div> */}
                     <span className="betSlipDesktop__topFilters-item-title">
                         Show bets for this event</span>
                 </div>

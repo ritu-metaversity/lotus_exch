@@ -4,10 +4,10 @@ import "./Bettingpage.css"
 import { useGetStackDetailsQuery, usePlaceBetMutation } from "../../state/apis/main/apiSlice";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import {
-	selectBetData,
-	selectBetDataFancy,
-	setBetData,
-	setSelectedSid,
+    selectBetData,
+    selectBetDataFancy,
+    setBetData,
+    setSelectedSid,
 } from '../../state/features/client/clientSlice';
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -40,7 +40,7 @@ const Bettingpage = () => {
 
     const [triger, { data: bettingResult, isLoading, error, isSuccess, isError }] = usePlaceBetMutation()
     console.log(bettingResult, error, "ewfwecwe");
-    console.log(betData, "mpmkjibhct");
+    console.log(betData?.Gamename, "mpmkjibhct");
 
     const handleBetPalce = () => {
         let dataaaaa = {
@@ -82,9 +82,9 @@ const Bettingpage = () => {
 
     useEffect(() => {
         if (isSuccess || isError) {
-					dispatch(setBetData(null));
-					dispatch(setSelectedSid(''));
-				}
+            dispatch(setBetData(null));
+            dispatch(setSelectedSid(''));
+        }
 
         return () => {
         }
@@ -109,13 +109,13 @@ const Bettingpage = () => {
             <div className="DesktopBetPlacing__topMark">
                 <div className="DesktopBetPlacing__topMark-back" style={{ backgroundColor: betData?.color === "blue" ? "#a7d8fd" : "#F9C9D4" }}>
                 </div>
-                <span className="DesktopBetPlacing__topMark-title">Back</span>
+                <span className="DesktopBetPlacing__topMark-title"> {betData?.color === "blue" ? "Back" : "Lay"}</span>
             </div>
             <div className="DesktopBetPlacing__matchName">{betData?.allData?.eventTime}  {betData?.allData?.matchName}</div>
             <div className="DesktopBetPlacing DesktopBetPlacing--back" style={{ backgroundColor: betData?.color === "blue" ? "#a7d8fd" : "#F9C9D4" }}>
                 <div className="DesktopBetPlacing__betName">
-                    <span>{betData?.allData?.matchName}</span>
-                    <span style={{ fontSize: 10 }}>Max Market: 0</span>
+                    <span>{betData?.Gamename}</span>
+                    <span style={{ fontSize: 10 }}>Max Market: {betData?.allData?.maxBet}</span>
                 </div>
                 <div className="DesktopBetPlacing__row">
                     <div className="DesktopBetPlacing__col ">
@@ -199,7 +199,7 @@ const Bettingpage = () => {
                     </button>
                 </div> */}
             </div>
-            <div className="DesktopBetPlacing__matchName " style={{ fontWeight: "500" }}>Liability: 0</div>
+            <div className="DesktopBetPlacing__matchName " style={{ fontWeight: "500" }}></div>
             <div className="DesktopBetPlacing__bottomBtns">
                 {/* <button className="DesktopBetPlacing__bottomBtns-remove" type="button">Remove All</button> */}
                 {localStorage.getItem("token") ?

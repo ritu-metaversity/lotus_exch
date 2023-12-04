@@ -1,5 +1,5 @@
 .liveCasino-content__menu-games {
-    margin-top: 50px;
+    margin-top: 50px !important;
     max-width: 1220px;
     margin: auto;
 }
@@ -165,7 +165,7 @@
 
 
 @media screen and (max-width: 500px) {
-    .liveCasino-content__menu-games__allgames-items-item {
+    .liveCasino-content__menu-games__allgames-items-item{
         width: calc(33.33333vw - 35px);
         height: calc(42.73504vw - 44.87179px);
     }

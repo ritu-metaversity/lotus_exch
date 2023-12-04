@@ -1,8 +1,12 @@
 // import { useState } from "react"
 import "./GamesPage.css"
+import { Box, Modal } from "@mui/material";
+import CasinoPointPopup from "../CasinoPointPopup";
 
 import { useNavigate } from "react-router-dom";
 import QtechLogooo from "../../../../public/assets/images/qtechlogo.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const casinoProviderList = [
     {
@@ -80,55 +84,70 @@ export const casinoProviderList = [
     }
 ];
 
-const GamesPage = () => {
+const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
 
+const GamesPage = ({ dattatata }: any) => {
+    console.log(dattatata, "sdfsdfsdfsd");
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     // const [gameFilter, setGameFilter] = useState<any>([])
-    // const [gameAllData, setGameAllData] = useState<any>([])
+    const [gameAllData, setGameAllData] = useState<any>([])
     const navigate = useNavigate();
 
-    // const TokenId = localStorage.getItem("token");
-    // const TokenGame = localStorage.getItem("GameToken");
+    const TokenId = localStorage.getItem("token");
+    const TokenGame = localStorage.getItem("GameToken");
 
-    // useEffect(() => {
-    //     if (
-    //         TokenGame
-    //     ) {
-    //         let data = {
-    //             token: TokenGame, provider: "", gameCategory: "LIVECASINO"
-    //         }
-    //         axios.post(
-    //             "https://api.247idhub.com/api/qtech/gamelist", data,
-    //             {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     Authorization: `Bearer ${TokenId}`,
-    //                 },
-    //             }
-    //         )
-    //             .then((response) => {
-    //                 if (response?.data?.data?.items) {
-    //                     setGameAllData(response?.data?.data?.items)
-    //                     const data: any = {};
-    //                     for (const x of response.data.data.items as any) {
-    //                         const cat = x.category.split('/');
-    //                         for (const y of cat) {
-    //                             if (data[y]) data[y].push(x);
-    //                             else data[y] = [x];
-    //                         }
-    //                     }
-    //                     setGameFilter(data)
+    useEffect(() => {
+        if (
+            TokenGame
+        ) {
+            let data = {
+                token: TokenGame, provider: dattatata?.filterType, gameCategory: "LIVECASINO"
+            }
+            axios.post(
+                "https://api.247idhub.com/api/qtech/gamelist", data,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${TokenId}`,
+                    },
+                }
+            )
+                .then((response) => {
+                    if (response?.data?.data?.items) {
+                        console.log();
 
-    //                 }
-    //                 // console.log(response?.data?.data?.items, "statestatestatestate");
+                        setGameAllData(response?.data?.data?.items)
+                        // const data: any = {};
+                        // for (const x of response.data.data.items as any) {
+                        // const cat = x.category.split('/');
+                        //     for (const y of cat) {
+                        //         if (data[y]) data[y].push(x);
+                        //         else data[y] = [x];
+                        //     }
+                        // }
+                        // setGameFilter(data)
+                    }
+                    // console.log(response?.data?.data?.items, "statestatestatestate");
+                })
+        } else {
 
-    //             })
-
-
-    //     } else {
-
-    //     }
-    // }, [])
+        }
+    }, [dattatata])
+    console.log(gameAllData, "fsdfsdfkjbsjdfhj");
 
 
     // console.log(gameFilter, gameAllData, "jhgfcvbkjhgyhfc");
@@ -140,7 +159,7 @@ const GamesPage = () => {
     return (
         <div className="liveCasino-content__menu-games">
             <div className="liveCasino-content__menu-games__allgames">
-                <div className="liveCasino-content__menu-games__allgames-title">
+                {/* <div className="liveCasino-content__menu-games__allgames-title">
                     <span className="liveCasino-content__menu-games__allgames-title-ref" />
                     <div className="liveCasino-content__menu-games__allgames-title-name">
                         All games
@@ -148,16 +167,16 @@ const GamesPage = () => {
                     <div className="liveCasino-content__menu-games__allgames-title-seeAll">
                         See all
                     </div>
-                </div>
+                </div> */}
                 <div style={{ width: "100%", overflowX: "auto" }}>
                     <div className="liveCasino-content__menu-games__allgames-items">
-                        {casinoProviderList && casinoProviderList.map((item: any) => (
+                        {gameAllData && gameAllData.map((item: any) => (
 
 
                             <div className="liveCasino-content__menu-games__allgames-items-item">
                                 <div className="altBackgroundCasino" onClick={() => handleGamePage(item)}>
                                     <img
-                                        src={item?.logo}
+                                        src={item?.images[2]?.url}
                                         alt=" "
                                     />
                                     <div className="img-gamename">{item?.name}</div>
@@ -168,14 +187,25 @@ const GamesPage = () => {
                     </div>
                 </div>
 
-                <div
+                {/* <div
                     className="liveCasino-content__menu-games__allgames-title"
                     style={{ visibility: "hidden", marginBottom: 150 }}
                 >
                     <span className="liveCasino-content__menu-games__allgames-title-ref" />
                     <div className="liveCasino-content__menu-games__allgames-title-name" />
-                </div>
+                </div> */}
             </div>
+            <Modal
+                className="modal_style"
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <CasinoPointPopup handleClose={handleClose} />
+                </Box>
+            </Modal>
         </div >
 
     )

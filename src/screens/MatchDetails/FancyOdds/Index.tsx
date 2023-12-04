@@ -5,17 +5,17 @@ import OddsHeader from '../OddsHeader/Index';
 import { FancyOddsContainer, FancyOddsGrid } from './Index.styled';
 import { BaseFancy } from '../../../state/apis/betfair/apiSlice.types';
 import { Box } from '@mui/material';
-
+import "./FancyOdds.css"
 import { isBetOpened } from '../../../services/betUtil';
 import { BettingPopUpmobileViewShow } from '../../../components/MatchDataRow/Index.styled';
 import BetingPopUpForMobile from '../../../components/MatchDataRow/BetingPopUpForMobile';
 import { selectProfits, selectSelectedSid, setBetData, setBetDataFancy, setSelectedSid } from '../../../state/features/client/clientSlice';
 import { useAppDispatch } from '../../../hooks/useAppDispatch';
 import { useEffect, useState } from 'react';
-import {
-	MinMax,
-	TypoGraphy,
-} from '../../../components/MatchOddsRow/Index.styled';
+// import {
+// 	MinMax,
+// 	TypoGraphy,
+// } from '../../../components/MatchOddsRow/Index.styled';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 
 interface FancyOddsProps {
@@ -76,7 +76,7 @@ const FancyOdds = (props: FancyOddsProps) => {
 			/>
 
 			{odd.map(allData => {
-				const { b1, l1, bs1, ls1, nation, gstatus, sid, betDelay } = allData;
+				const { b1, l1, bs1, ls1, nation, gstatus, sid, betDelay, minBet, maxBet } = allData;
 				return (
 					<>
 						<MatchOddsRow
@@ -113,6 +113,7 @@ const FancyOdds = (props: FancyOddsProps) => {
 										color='red'
 										odd={l1}
 										size={ls1}
+										nation={nation}
 									/>
 									<OddCell
 										allData={allData}
@@ -122,17 +123,21 @@ const FancyOdds = (props: FancyOddsProps) => {
 										color='blue'
 										odd={b1}
 										size={bs1}
+										nation={nation}
 									/>
 									{/* ----LAY---- */}
 
 									{/* <OddCell isStandBy={true} type='drawlay' color='red' odd={''} />
 								<OddCell isStandBy={true} type='team2lay' color='red' odd={''} />  */}
 
-									<MinMax>
-										<TypoGraphy>Min: 100</TypoGraphy>
-										<TypoGraphy>Max: 1000</TypoGraphy>
-									</MinMax>
-									<MinMax></MinMax>
+									{/* <MinMax> */}
+									<div className='Min_Max_betsss'>
+
+										<span>Min: {minBet}</span>
+										<span>Max: {maxBet}</span>
+									</div>
+									{/* </MinMax> */}
+									{/* <MinMax></MinMax> */}
 								</>
 
 								{/* {isBetOpened(gstatus) ? (

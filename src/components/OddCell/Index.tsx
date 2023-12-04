@@ -15,15 +15,16 @@ interface OddCellProps {
 	allData?: any;
 	SelectionIdForAll?: any;
 	isStandBy?: boolean
+	nation?: any
 }
 
 const OddCell = (props: OddCellProps) => {
-	const { odd = 1.05, size, color, type, allData, SelectionIdForAll, isStandBy } = props;
+	const { odd = 1.05, size, color, type, allData, SelectionIdForAll, isStandBy ,nation} = props;
 
-	const handleOddsData = (vl: any, allData: any, SelectionIdForAll: any, color: any,size:any) => {
-		console.log(vl, allData, "kjuhygtfvb");
+	const handleOddsData = (vl: any, allData: any, SelectionIdForAll: any, color: any, size: any) => {
+		console.log(vl, allData, "sdfsdfsfsd");
 
-		props.OddsData({ vl, allData,marketName:allData?.mid?.includes("-BM")?"Bookmaker":"FANCY/ODDS", SelectionIdForAll, color ,size})
+		props.OddsData({ vl, allData, marketName: allData?.mid?.includes("-BM") ? "Bookmaker" : "FANCY/ODDS", SelectionIdForAll, color, size, "Gamename": nation })
 	}
 
 	console.log(size, "ccsdcdcfsdfsdfsdfs")
@@ -35,7 +36,7 @@ const OddCell = (props: OddCellProps) => {
 			className={`odd ${type}`}
 			color={color}
 			type={type}
-			onClick={() => handleOddsData(odd, allData, SelectionIdForAll, color,size)}
+			onClick={() => handleOddsData(odd, allData, SelectionIdForAll, color, size)}
 		>
 			{!isStandBy && <>
 				<OddValue className='odd__value' >{odd}</OddValue>

@@ -19,7 +19,9 @@
 
 .liveCasino-header__img {
     width: 100vw;
+
 }
+
 
 @media screen and (max-width:1024px) {
     .AllCasinoGame_IN_onePage {
@@ -67,4 +69,64 @@
     font-size: 12px;
     height: 40px;
     width: 30%;
+}
+
+.animate-charcter {
+    text-transform: uppercase;
+    background-image: linear-gradient(90deg, #6c23a9, #f8a0ef, #da9ef6, #a7b0ff, #afd2fd);
+    background-size: initial;
+    background-clip: initial;
+    background-size: 200% auto;
+    color: #fff;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: textclip 3s linear infinite;
+    display: inline-block;
+    font-size: 45px;
+}
+
+.InternantionalCsaion {
+    position: absolute;
+    top: 200px;
+    left: 250px;
+}
+
+@media screen and (max-width:1024px) {
+    .animate-charcter {
+        text-transform: uppercase;
+        background-image: linear-gradient(90deg, #6c23a9, #f8a0ef, #da9ef6, #a7b0ff, #afd2fd);
+        background-size: initial;
+        background-clip: initial;
+        background-size: 200% auto;
+        color: #fff;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: textclip 3s linear infinite;
+        display: inline-block;
+        font-size: 15px;
+    }
+
+    .liveCasino-header__img {
+        width: 100vw;
+        height: 40vh;
+    }
+
+    .InternantionalCsaion {
+        position: absolute;
+        top: 150px;
+        left: 100px;
+    }
+}
+
+
+.gamedetttttttt {
+    padding-top: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

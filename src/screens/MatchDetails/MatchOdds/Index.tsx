@@ -86,6 +86,7 @@ const MatchOdds = (props: MatchOddsProps) => {
 												OddsData={OddsData}
 												allData={props?.odd[0]}
 												SelectionIdForAll={runner}
+												nation={runner.name}
 
 											/>
 
@@ -98,6 +99,7 @@ const MatchOdds = (props: MatchOddsProps) => {
 												OddsData={OddsData}
 												allData={props?.odd[0]}
 												SelectionIdForAll={runner}
+												nation={runner.name}
 											/>
 											<OddCell
 												type='drawlay'

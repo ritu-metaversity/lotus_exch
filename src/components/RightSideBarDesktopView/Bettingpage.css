@@ -118,6 +118,7 @@
     width: 100%;
     max-width: 79px;
     overflow: hidden;
+    margin: auto;
 }
 
 .DesktopBetPlacing__col {
