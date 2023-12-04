@@ -22,7 +22,7 @@ export const MatchOddsRowTitle = styled('div')(({ theme }) => ({
 	width: "100%",
 
 	[theme.breakpoints.up(1024)]: {
-		margin: '1.8rem 0',
+		// margin: '1.8rem 0',
 	width: "50%",
 
 	},

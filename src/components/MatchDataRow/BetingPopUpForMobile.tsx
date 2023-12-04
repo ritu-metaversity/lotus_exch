@@ -47,7 +47,7 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
 
     const [triger, { data: bettingResult, error, isLoading, isError, isSuccess }] = usePlaceBetMutation()
     console.log(mobileViewBettingData?.size, "lnjohuiyguftychvgjbhjnl");
-    console.log(error,bettingResult, "betDatafssd");
+    console.log(error, bettingResult, "betDatafssd");
 
     useEffect(() => {
         // if (bettingResult?.status === true) {
@@ -193,7 +193,11 @@ const BetingPopUpForMobile = ({ mobileViewBettingData, mobileViewFancyBetting }:
                 </div>
                 <div className="BetPlacing_Upper_Head_Cancel_Done_Login">
 
-                    <button onClick={() => dispatch(setSelectedSid(""))} className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss_cancel btn-cancel">Cancel</button>
+                    <button onClick={() => {
+                        dispatch(setSelectedSid(""));
+                        dispatch(setBetData(null));
+                    }}
+                        className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss_cancel btn-cancel">Cancel</button>
                     {/* <button>Place Bet</button> */}
                     {user ?
                         <button className="BetPlacing_Upper_Head_Cancel_Done_Login_btnss btn-palce" style={{

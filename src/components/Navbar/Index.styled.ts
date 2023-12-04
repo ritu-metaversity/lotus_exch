@@ -10,16 +10,16 @@ export const NavbarContainer = styled('nav')({
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 	// padding: '1rem 1.5rem!important',
-    width: '100%',
-    // maxWidth: '1270px',
-    margin: '0 auto',
-	height:'61px',
+	width: '100%',
+	// maxWidth: '1270px',
+	margin: '0 auto',
+	height: '61px',
 	[theme.breakpoints.up(1024)]: {
 		justifyContent: 'space-between',
 		paddingTop: '3rem!important',
 		paddingBottom: '3rem!important',
 	},
-	justifyContent: "space-between"
+	justifyContent: 'space-between',
 }));
 
 export const HamburgerIconContainer = styled(Box)(({ theme }) => ({
@@ -40,8 +40,8 @@ export const LogoTitle = styled('div')(({ theme }) => ({
 	textTransform: 'uppercase',
 	flexGrow: 1,
 	cursor: 'pointer',
-    width: '105px',
-	height:'60px',
+	width: '105px',
+	height: '60px',
 	'& span': {
 		color: theme.palette.accent.main,
 		fontFamily: 'inherit',
@@ -51,19 +51,19 @@ export const LogoTitle = styled('div')(({ theme }) => ({
 		// flexGrow: 0,
 		// fontSize: '3.2rem',
 		display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row'
-		
-	},[theme.breakpoints.down(1024)]: {
+		alignItems: 'center',
+		justifyContent: 'flex-start',
+		flexDirection: 'row',
+	},
+	[theme.breakpoints.down(1024)]: {
 		// flexGrow: 0,
 		// fontSize: '3.2rem',
 		display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-		width:'105px',
-		height:'60px'
+		alignItems: 'center',
+		justifyContent: 'flex-start',
+		flexDirection: 'row',
+		width: '105px',
+		height: '60px',
 	},
 }));
 
@@ -73,14 +73,14 @@ export const ButtonContainer = styled(Box)({
 	alignItems: 'center',
 });
 export const MainWrapOne = styled(Box)({
-	width:'60%',
+	width: '60%',
 	display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row'
+	alignItems: 'center',
+	justifyContent: 'flex-start',
+	flexDirection: 'row',
 });
 export const MainWrapTwo = styled(Box)({
-	width:'40%'
+	width: '40%',
 });
 
 export const SearchIconContainer = styled(Box)(({ theme }) => ({
@@ -92,34 +92,34 @@ export const SearchIconContainer = styled(Box)(({ theme }) => ({
 export const AuthButtonContainer = styled('div')(({ theme }) => ({
 	display: 'flex',
 	gap: '0.6rem',
-    height: "40px",
-    marginRight: "10px",
+	height: '40px',
+	marginRight: '10px',
 	[theme.breakpoints.up(1024)]: {
 		gap: '3rem',
 	},
 }));
 
-export const AuthButtonContainerProfile = styled('div')(({ }) => ({
-	    display: 'flex',
-    border: '1px solid white',
-    backgroundColor: 'white',
-    color: 'black',
-	boxShadow:' 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12)',
-    borderRadius: "2px",
+export const AuthButtonContainerProfile = styled('div')(({}) => ({
+	display: 'flex',
+	border: '1px solid white',
+	backgroundColor: 'white',
+	color: 'black',
+	boxShadow:
+		' 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12)',
+	borderRadius: '2px',
 	alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    height: "40px",
-	width: "70px"
+	justifyContent: 'center',
+	flexDirection: 'column',
+	height: '40px',
+	width: '70px',
 }));
 export const ProfileLogo = styled('div')(() => ({
-    height: "20px"
+	height: '20px',
 }));
 export const AccountBalanceData = styled('div')(() => ({
-height:"20px",
-fontSize:"10px"
+	height: '20px',
+	fontSize: '10px',
 }));
-
 
 const authButtonDesktopViewStyles = {
 	display: 'none',
@@ -182,7 +182,7 @@ export const NavbarProfileContainer = styled('div')(({ theme }) => ({
 
 		[theme.breakpoints.up(768)]: {
 			display: 'flex',
-		}
+		},
 	},
 
 	'& .MuiIconButton-root': {
@@ -270,7 +270,7 @@ export const SecondaryNavbarContainer = styled('div')(({ theme }) => ({
 }));
 
 export const SecondaryNavbarList = styled('ul')(({ theme }) => ({
-	maxWidth: '117rem',
+	// maxWidth: '117rem',
 	margin: '0 auto',
 
 	[theme.breakpoints.up(1024)]: {
@@ -303,5 +303,3 @@ export const SecondaryNavbarItem = styled('li', {
 		color: theme.palette.grey[900],
 	},
 }));
-
-

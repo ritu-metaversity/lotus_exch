@@ -44,7 +44,7 @@ export const DefaultStaticContentContainer = styled('div')(({ theme }) => ({
 	// padding: '0 1.5rem',
 	maxWidth: '140px',
 	marginLeft: 'auto',
-    width: "87%",
+    width: "100%",
 	[theme.breakpoints.up(1024)]: {
 		maxWidth: '450px',
 	},

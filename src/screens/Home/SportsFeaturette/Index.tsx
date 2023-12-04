@@ -31,7 +31,8 @@ const SportsFeaturette = () => {
 			),
 			name: 'Sportsbook',
 			background: `${baseBgPath}/sportsbook.png`,
-			route: "/Sports_book",
+
+			route: localStorage.getItem("token") ? "/Sports_book" : "",
 			gameCode: casinoListData.code,
 			filterType: casinoListData?.providerCode,
 		},
@@ -76,6 +77,14 @@ const SportsFeaturette = () => {
 			filterType: "SPB",
 		},
 		{
+			icon: <Icon src={`${baseIconPath}/casino.svg#casino`} />,
+			name: 'International Casino',
+			background: `${baseBgPath}/casino.png`,
+			route: "/Internationl-casino",
+			gameCode: "LiveCasino",
+			filterType: "SPB",
+		},
+		{
 			icon: <Icon src={`${baseIconPath}/card.png`} />,
 			name: 'Card Games',
 			background: `${baseBgPath}/card.png`,
@@ -94,28 +103,31 @@ const SportsFeaturette = () => {
 	];
 	useEffect(() => {
 		const TokenId = localStorage.getItem("token");
-		axios
-			.post(
-				"https://api.247365.exchange/admin-new-apis/api/supernowa/game-list", { providerCode: "BT" },
+		if (localStorage.getItem("token")) {
 
-				{
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${TokenId}`,
-					},
-				}
-			)
-			.then((response) => {
-				if (response) {
-					setCasinoListData(response?.data?.data?.games[0])
-					//   setCasinoListName(response?.data?.data?.games[0]?.name)
-					//   setCasinoListImg(response?.data?.data?.games[0]?.thumb)
-				} else {
+			axios
+				.post(
+					"https://api.247365.exchange/admin-new-apis/api/supernowa/game-list", { providerCode: "BT" },
 
-				}
+					{
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${TokenId}`,
+						},
+					}
+				)
+				.then((response) => {
+					if (response) {
+						setCasinoListData(response?.data?.data?.games[0])
+						//   setCasinoListName(response?.data?.data?.games[0]?.name)
+						//   setCasinoListImg(response?.data?.data?.games[0]?.thumb)
+					} else {
+
+					}
 
 
-			})
+				})
+		}
 
 	}, [])
 	return (

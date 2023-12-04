@@ -230,13 +230,13 @@ export const mainApiSlice = createApi({
 			body:payload
 		})
 		}),
-		userOddsPnl: builder.mutation({
+		userOddsPnl: builder.query({
 			query: (payload) => ({url : `/enduser/user-odds-pnl`,
 			method:"post",
 			body:payload
 		})
 		}),
-		userFancyPnl: builder.mutation({
+		userFancyPnl: builder.query({
 			query: (payload) => ({url : `/enduser/user-fancy-pnl`,
 			method:"post",
 			body:payload
@@ -273,6 +273,8 @@ export const {
 	useGetJwtTokenQuery,
 	useGetStakeButtonQuery,
 	useWithdrawRequestClientQuery,
+	useUserFancyPnlQuery,
+	useUserOddsPnlQuery,
 
 	usePlaceBetMutation,
 	useAccountStatmentMutation,
@@ -285,9 +287,8 @@ export const {
 	useSearchBetMarketAndUserMutation,
 	useProfiteAndLossMatchWiseMutation,
 	useActiveSportsListMutation,
-	useUserOddsPnlMutation,
 	useBetHistoryMutation,
 	useDepositeRequestClientMutation,
 	useBetListByMatchIdMutation,
-	useUserFancyPnlMutation
+
 } = mainApiSlice;

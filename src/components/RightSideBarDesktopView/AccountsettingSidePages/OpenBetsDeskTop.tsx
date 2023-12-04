@@ -331,12 +331,14 @@ const OpenBetsDeskTop = () => {
                                                     <td style={{ height: "30px", width: "443px" }}
                                                         className="text-left withdraw-data">
                                                         {/* {item?.eventName} */}
-                                                        Adelaide Strikers WBBL v Sydney Sixers WBBL
+                                                        {item?.eventName}
+                                                        {"   "}
+                                                        {"   "}
+                                                        {item?.marketname}
+                                                        {"   "}
+                                                        {"   "}
 
-                                                        Adelaide Strikers WBBL BOOKMAKER
-
-                                                        Bet ID 2311031202285863Matched 3/11/2023 12:02:26
-                                                    </td>
+                                                        Match ID {item?.matchId}                                                    </td>
                                                     {/* <td style={{ height: "30px" }}
                                                         className="text-left withdraw-data">
                                                         N/A

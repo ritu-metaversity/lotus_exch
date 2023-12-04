@@ -20,13 +20,13 @@ const Home = () => {
 			<SportsButtons />
 			<SportsFeaturette />
 			<InPlaySection />
-			<IndianCardGamesSection />
-			<PopularGamesSection />
 			<CasinoGamesSection />
+			<PopularGamesSection />
+			<IndianCardGamesSection />
 			<UpcommingEvents />
 
 			{
-				window.location.pathname === "/home" ?
+				window.location.pathname === "/home" && window.innerWidth < 1024 ?
 					<div style={{ padding: "25px 0px 0px" }}>
 
 						<Footer expanded={rightSidebarExpanded} />

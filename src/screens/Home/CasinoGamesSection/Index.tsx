@@ -134,26 +134,6 @@ const CasinoGamesSection = () => {
 								</span>
 							</div>
 						))}
-
-						{/* {casinoProviderList.map((item: any) => (
-							<div style={{
-								width: "129px",
-								backgroundColor: "#00000021",
-								height: "63px",
-								borderRadius: "8px"
-							}}>
-
-								<img style={{
-									maxWidth: "100%",
-									height: "58px",
-									padding: "10px"
-								}}
-									src={item?.logo}
-									alt=''
-								/>
-							</div>
-
-						))} */}
 					</CardGamesGrid>
 				</CasinoGamesContainer>
 			</Section>

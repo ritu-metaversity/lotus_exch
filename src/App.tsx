@@ -39,6 +39,8 @@ import FantasyGamePage from './screens/Home/PopularGamesSection/FantasyGamePage'
 import LotteryGameList from './screens/Home/IndianCardGamesSection/LotteryGameList';
 import LotteryCasionListGamePage from './screens/Home/IndianCardGamesSection/LotteryCasionListGamePage';
 import GamePageInternational from './screens/Home/CasinoGamesSection/GamePageInternational';
+import InternationalCasino from './components/AllCasino/InternationlCasion/InternationalCasino';
+import GamePageMainInternational from './components/AllCasino/InternationlCasion/GamePageMain';
 
 
 const App = () => {
@@ -70,6 +72,7 @@ const App = () => {
 						<Route path='Responsible-Gambling' element={<ResponsibleGambling />} />
 						<Route path='Privacy-policy' element={<Privacypolicy />} />
 						<Route path='/live-casino' element={<LiveCasino />} />
+						<Route path='/Internationl-casino' element={<InternationalCasino />} />
 						<Route path='/Slot-Games' element={<SlotGames />} />
 						<Route path='/Slot-Games-play' element={<GamePlayPage />} />
 						<Route path='/Card-Games-play' element={<CardGamePlay />} />
@@ -98,6 +101,7 @@ const App = () => {
 					</Route>
 					<Route path='/signin' element={<SignIn />} />
 					<Route path='/Game-play' element={<CasinoGamePage />} />
+					<Route path='/Intergame-play' element={<GamePageMainInternational />} />
 					<Route path='/Live-Casino-play' element={<GamePageMain />} />
 					<Route path='/Fantasy-Game-play' element={<FantasyGamePage />} />
 					<Route path='/Lottery-Game-play' element={<LotteryCasionListGamePage />} />

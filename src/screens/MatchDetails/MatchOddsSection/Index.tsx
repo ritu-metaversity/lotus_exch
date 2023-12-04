@@ -4,7 +4,7 @@ import MatchOdds from '../MatchOdds/Index';
 import { useGetMatchDetailsQuery } from '../../../state/apis/betfair/apiSlice';
 import BookmakerOdds from '../BookmakerOdds/Index';
 import FancySection from '../FancySection/Index';
-import { useUserFancyPnlMutation, useUserOddsPnlMutation } from '../../../state/apis/main/apiSlice';
+import { useUserFancyPnlQuery, useUserOddsPnlQuery } from '../../../state/apis/main/apiSlice';
 import { useEffect, useState } from 'react';
 import { createProfits } from '../utils';
 import { useAppSelector } from '../../../hooks/useAppSelector';
@@ -18,18 +18,21 @@ const MatchOddsSection = () => {
 		pollingInterval: 500,
 	});
 	const dispatch = useAppDispatch()
-	const [Triger, { data: pnlOddDtaa }] = useUserOddsPnlMutation();
-	const [TrigerFancy, { data: pnlFancytaa }] = useUserFancyPnlMutation();
+	const { data: pnlOddDtaa } = useUserOddsPnlQuery({ "matchId": matchId }, { pollingInterval: 5000 });
+	const { data: pnlFancytaa } = useUserFancyPnlQuery({ "matchId": matchId }, { pollingInterval: 5000 });
 	console.log(pnlFancytaa, "pnlOddDtaa");
-	useEffect(() => {
-		Triger({ "matchId": matchId })
-		TrigerFancy({ "matchId": matchId })
-	}, [])
+	// useEffect(() => {
+	// 	Triger({ "matchId": matchId })
+	// 	// TrigerFancy({ "matchId": matchId })
+	// }, [])
 	const [profitState, setProfits] = useState({
 		Odds: {},
 		Bookmaker: [],
 		Fancy: [],
 	})
+
+	console.log(profitState, "profitState");
+
 	useEffect(() => {
 		dispatch(setProfitsRedux(profitState))
 	}, [profitState])

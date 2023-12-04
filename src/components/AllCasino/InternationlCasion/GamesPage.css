@@ -1,0 +1,188 @@
+.liveCasino-content__menu-games {
+    margin-top: 50px;
+    max-width: 1220px;
+    margin: auto;
+}
+
+.liveCasino-content__menu-games__allgames {
+    height: 100%;
+}
+
+.liveCasino-content__menu-games__allgames-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 15px 20px 10px;
+    position: relative;
+}
+
+.liveCasino-content__menu-games__allgames-title-ref {
+    position: absolute;
+    top: -170px;
+}
+
+.liveCasino-content__menu-games__allgames-title-name {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    /* font-size: 30px; */
+    line-height: 36px;
+    letter-spacing: .09em;
+    color: #fff;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+}
+
+.liveCasino-content__menu-games__allgames-title-seeAll {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: .09em;
+    color: #fff;
+    cursor: pointer;
+}
+
+.liveCasino-content__menu-games__allgames-items {
+    display: flex;
+    flex-wrap: wrap;
+    height: 440px;
+    overflow: hidden;
+}
+
+.liveCasino-content__menu-games__allgames-items-item {
+    height: 203px;
+    width: 163px;
+    margin: 0 5px 19px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.altBackgroundCasino {
+    background: linear-gradient(#000, 85%, #6c23e0);
+    opacity: .95;
+    color: #f1efea;
+    height: 100%;
+    border-radius: 8px;
+    position: relative;
+}
+
+.altBackgroundCasino span {
+    position: absolute;
+    font-family: "Poppins";
+    font-weight: 500;
+    color: #fff;
+    left: 20%;
+    right: 20%;
+    top: 40%;
+    z-index: 1;
+    text-align: center;
+}
+
+.altBackgroundCasino img {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    border-radius: 15px;
+}
+
+.altBackgroundCasino .img-gamename {
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    bottom: 29px;
+    left: 11px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Lato";
+}
+
+
+@media screen and (max-width: 1024px) {
+    .liveCasino-content__menu-games__allgames {
+        margin-top: -25px;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    .liveCasino-content__menu-games__allgames-title {
+        position: relative;
+        margin: 15px 10px 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .liveCasino-content__menu-games__allgames-title-ref {
+        position: absolute;
+        top: -15px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .liveCasino-content__menu-games__allgames-title-name {
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: center;
+        letter-spacing: .09em;
+        color: #fff;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .liveCasino-content__menu-games__allgames-title-seeAll {
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        letter-spacing: .09em;
+        color: #fff;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .liveCasino-content__menu-games__allgames-items {
+        height: calc(85.47009vw - 34.74359px);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .liveCasino-content__menu-games__allgames-items {
+        display: flex;
+        flex-wrap: wrap;
+        height: 470px;
+        overflow-x: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .liveCasino-content__menu-games__allgames-items-item {
+        width: calc(33.33333vw - 35px);
+        height: calc(42.73504vw - 44.87179px);
+    }
+
+    .liveCasino-content__menu-games__allgames-items-item .altBackgroundCasino span {
+        font-size: 14px;
+        top: 50%;
+        left: 50%;
+        right: unset;
+        -webkit-transform: translate(-50%, -65%);
+        transform: translate(-50%, -65%);
+        line-height: 1.1;
+    }
+
+    .liveCasino-content__menu-games__allgames-items-item .altBackgroundCasino .img-gamename {
+        bottom: 5px;
+        left: 5px;
+        font-size: 10px;
+    }
+}

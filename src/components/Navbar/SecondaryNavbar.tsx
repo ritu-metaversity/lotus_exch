@@ -19,21 +19,36 @@ const SecondaryNavbar = () => {
 	const SportsBook: Array<NavItem> = [
 		{
 			label: 'SportsBook',
-			link: '/',
+			link: localStorage.getItem("token") ? "/Sports_book" : "",
 			highlighted: true,
 		}
 	];
 	const liveCasino: Array<NavItem> = [
 		{
 			label: 'Live Casino',
+			link: '/live-casino',
+			highlighted: true,
+		},
+		{
+			label: 'International Casino',
+			link: '/Internationl-casino',
+			highlighted: true,
+		},
+		{
+			label: 'Fantasy Games',
 			link: '/',
 			highlighted: true,
 		},
 		{
 			label: 'Slots Games',
-			link: '/',
+			link: '/Slot-Games',
 			highlighted: true,
 		},
+		{
+			label: 'Lottery Games',
+			link: '/',
+			highlighted: true,
+		}
 	];
 	// useEffect(() => {
 	// 	axios

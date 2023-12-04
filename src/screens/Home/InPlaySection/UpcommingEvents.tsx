@@ -108,7 +108,7 @@ const UpcommingEvents = () => {
 
   const OddsData = (vl: any) => {
     console.log(vl);
-    
+
     // dispatch(setSelectedSid(vl.SelectionIdForAll.selectionId))
     // dispatch(setBetData({ ...vl, }))
 
@@ -171,10 +171,10 @@ const UpcommingEvents = () => {
                             className='match-odds-grid-container'>
                             <MatchOddsGrid className='match-odds-grid'>
                               <OddCell odd={match?.runners[0]?.back1 || '-'} color='blue' type='team1back' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[0]} />
-                              <OddCell odd={match?.runners[2]?.back1 || '-'} color='blue' type='drawback' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[2]} />
-                              <OddCell odd={match?.runners[1]?.back1 || '-'} color='blue' type='team2back' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[1]} />
                               <OddCell odd={match?.runners[0]?.lay1 || '-'} color='red' type='team1lay' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[0]} />
+                              <OddCell odd={match?.runners[2]?.back1 || '-'} color='blue' type='drawback' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[2]} />
                               <OddCell odd={match?.runners[2]?.lay1 || '-'} color='red' type='drawlay' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[2]} />
+                              <OddCell odd={match?.runners[1]?.back1 || '-'} color='blue' type='team2back' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[1]} />
                               <OddCell odd={match?.runners[1]?.lay1 || '-'} color='red' type='team2lay' allData={match} OddsData={OddsData} SelectionIdForAll={match?.runners[1]} />
                             </MatchOddsGrid>
                           </MatchOddsGridContainer>

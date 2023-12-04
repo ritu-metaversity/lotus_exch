@@ -15,7 +15,7 @@ const AccountPopup = ({ popupclose }: any) => {
             <Link to="/Account-Statement-Details" className="div_account_btnnnn" onClick={handlRoute}>Account Statement</Link>
             <Link to="/Deposite-amount" className="div_account_btnnnn" onClick={handlRoute}>Deposit</Link>
             <Link to="/Withdraw-amount" className="div_account_btnnnn" onClick={handlRoute}>Withdraw</Link>
-            <Link to="" className="div_account_btnnnn" onClick={handlRoute}>Transfer Statement</Link>
+            {/* <Link to="" className="div_account_btnnnn" onClick={handlRoute}>Transfer Statement</Link> */}
             <Link to="/Change-Password" className="div_account_btnnnn" onClick={handlRoute}>Change Password</Link>
         </div>
 

@@ -7,8 +7,8 @@ export const LayoutWrapper = styled(Box)<{pathname:any}>(({ theme,pathname }) =>
 
 	[theme.breakpoints.up(1024)]: {
 		display: 'flex',
-    maxWidth:["/Card-Game", "/Slot-Games", "/live-casino"].includes(pathname) ? '100%':'1280px',
-      width:["/Card-Game", "/Slot-Games", "/live-casino"].includes(pathname) ? '100%':'77%',
+    maxWidth:["/Card-Game", "/Slot-Games", "/live-casino","/Internationl-casino"].includes(pathname) ? '100%':'1280px',
+      width:["/Card-Game", "/Slot-Games", "/live-casino","/Internationl-casino"].includes(pathname) ? '100%':'77%',
     minHeight: 'calc(100% - 195px)',
     margin: '0 auto 15px',
 	// height:"80vh"

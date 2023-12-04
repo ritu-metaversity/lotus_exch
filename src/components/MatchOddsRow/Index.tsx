@@ -27,7 +27,7 @@ const MatchOddsRow = (props: MatchOddsRowProps) => {
 			<MatchOddsRowTitle className='match-odds-row__title'>
 				<NameLedgerAndPnl>
 					<span style={{ width: "100%", fontWeight: "700" }}>{title}</span>
-					<span style={{ width: "100%", color: pnl < 0 ? "red" : "green" }}>{pnl ? "»" : ""}{pnl}</span>
+					<span style={{ width: "100%", color: pnl < 0 ? "red" : "green" }}>{pnl ? "»" : ""} {pnl && Number(pnl).toFixed(2)}</span>
 
 				</NameLedgerAndPnl>
 				{isFancy ?

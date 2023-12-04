@@ -130,10 +130,10 @@ const MatchDataRow = (props: MatchDataRowProps) => {
 							className='match-odds-grid-container'>
 							<MatchOddsGrid className='match-odds-grid'>
 								<OddCell odd={props?.runners[0]?.back1 || '-'} color='blue' type='team1back' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[0]} />
-								<OddCell odd={props?.runners[2]?.back1 || '-'} color='blue' type='drawback' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[2]} />
-								<OddCell odd={props?.runners[1]?.back1 || '-'} color='blue' type='team2back' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[1]} />
 								<OddCell odd={props?.runners[0]?.lay1 || '-'} color='red' type='team1lay' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[0]} />
+								<OddCell odd={props?.runners[2]?.back1 || '-'} color='blue' type='drawback' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[2]} />
 								<OddCell odd={props?.runners[2]?.lay1 || '-'} color='red' type='drawlay' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[2]} />
+								<OddCell odd={props?.runners[1]?.back1 || '-'} color='blue' type='team2back' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[1]} />
 								<OddCell odd={props?.runners[1]?.lay1 || '-'} color='red' type='team2lay' allData={props} OddsData={OddsData} SelectionIdForAll={props?.runners[1]} />
 							</MatchOddsGrid>
 						</MatchOddsGridContainer>

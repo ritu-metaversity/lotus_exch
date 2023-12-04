@@ -3,6 +3,8 @@ import "./OpenBets.css"
 import MatchBetData from "./MatchBetData"
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useUnsettledBetMutation } from "../../state/apis/main/apiSlice";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { selectUser } from "../../state/features/auth/authSlice";
 const OpenBets = () => {
     const [showUnmatched, setShowUnmatchedBet] = useState(true)
 
@@ -19,19 +21,19 @@ const OpenBets = () => {
 
 
 
+    const authSelect = useAppSelector(selectUser);
     useEffect(() => {
         let data = {
-            "betType": 1,
-            "index": 0,
-            "noOfRecords": 5,
-            "sportType": 1,
-            "isDeleted": "false"
-        }
+            betType: 1,
+            index: 0,
+            noOfRecords: 5,
+            sportType: 1,
+            isDeleted: false,
+        };
         if (localStorage.getItem("token")) {
-
-            triger(data)
+            triger(data);
         }
-    }, [])
+    }, [authSelect?.token]);
     useEffect(() => {
         if (unSettledBet?.data?.dataList === false) {
 
