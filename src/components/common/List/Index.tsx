@@ -54,7 +54,7 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 			logo: 'https://11bet24.com/slots.png',
 		},
 		{
-			label: 'Lottery Games2',
+			label: 'Lottery Games',
 			link: '/home',
 			highlighted: true,
 			logo: 'https://11bet24.com/lottery.png',

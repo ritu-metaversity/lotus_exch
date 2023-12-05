@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import FancyOdds from '../FancyOdds/Index';
 import { useGetMatchDetailsQuery } from '../../../state/apis/betfair/apiSlice';
 import { useParams } from 'react-router-dom';
-import FancyAllOdds from '../FancyOdds/FancyAllOdds';
+// import FancyAllOdds from '../FancyOdds/FancyAllOdds';
 
 const FancySection = () => {
 	const { matchId } = useParams();

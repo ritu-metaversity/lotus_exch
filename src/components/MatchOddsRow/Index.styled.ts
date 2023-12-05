@@ -59,6 +59,7 @@ export const NameLedgerAndPnl = styled('div')({
 	alignItems: 'center',
 	width: '70%',
 	flexDirection: 'column',
+	cursor: 'pointer',
 });
 export const LedgerAndPnl = styled('div')({
 	display: 'flex',

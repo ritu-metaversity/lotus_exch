@@ -326,7 +326,7 @@ const OpenBetsDeskTop = () => {
 											className='text-left'
 											style={{ fontWeight: '700' }}
 										>
-											Odds
+											Rate
 										</th>
 
 										<th
