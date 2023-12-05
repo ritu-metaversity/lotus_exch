@@ -43,18 +43,26 @@ const MatchOdds = (props: MatchOddsProps) => {
 
 	return (
 		<>
-
 			<MatchOddsContainer>
 				<OddsHeader
-					type="back-lay"
-					name={odd[0]?.Name === "Match Odds" ? "Match Odds" : "Tied Match"}
+					type='back-lay'
+					name={odd[0]?.Name === 'Match Odds' ? 'Match Odds' : 'Tied Match'}
 					icon={<StarIcon fontSize='inherit' color='inherit' />}
 				/>
 
 				{odd[0].runners.map(runner => {
 					return (
 						<>
-							<MatchOddsRow content="" key={runner.selectionId} pnl={profits.Odds[odd[0].marketId]?.find(profit => profit.sid == runner.selectionId)?.value} title={runner.name} >
+							<MatchOddsRow
+								content=''
+								key={runner.selectionId}
+								pnl={
+									profits.Odds[odd[0].marketId]?.find(
+										profit => profit.sid == runner.selectionId
+									)?.value
+								}
+								title={runner.name}
+							>
 								<MatchOddsGrid
 									isBetOpened={isBetOpened(odd[0].status)}
 									className='match-odds__grid'
@@ -88,9 +96,7 @@ const MatchOdds = (props: MatchOddsProps) => {
 												allData={props?.odd[0]}
 												SelectionIdForAll={runner}
 												nation={runner.name}
-
 											/>
-
 
 											<OddCell
 												type='team1lay'
@@ -126,15 +132,22 @@ const MatchOdds = (props: MatchOddsProps) => {
 									)}
 								</MatchOddsGrid>
 							</MatchOddsRow>
-							{selectedSid === runner.selectionId && localStorage.getItem("token") ?
+							{selectedSid === runner.selectionId &&
+							localStorage.getItem('token') ? (
 								<BettingPopUpmobileViewShow>
-									<BetingPopUpForMobile mobileViewBettingData={mobileViewBettingData} />
+									<BetingPopUpForMobile
+										mobileViewBettingData={mobileViewBettingData}
+									/>
 								</BettingPopUpmobileViewShow>
-								:
-								""
-							}
-						</>)
+							) : (
+								''
+							)}
+						</>
+					);
 				})}
+				{!(odd[0].runners.length > 0) && (
+					<div style={{ textAlign: 'center' }}>No Records Found!!</div>
+				)}
 			</MatchOddsContainer>
 			{/* {mobileviewbettingPopUp !== "" && mobileviewbettingPopUp === mobileviewbettingPopUpMatch ?
 				<BettingPopUpmobileViewShow>

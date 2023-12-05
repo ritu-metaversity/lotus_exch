@@ -27,9 +27,6 @@ const OddCell = (props: OddCellProps) => {
 		props.OddsData({ vl, allData, marketName: allData?.mid?.includes("-BM") ? "Bookmaker" : "FANCY/ODDS", SelectionIdForAll, color, size, "Gamename": nation })
 	}
 
-	console.log(size, "ccsdcdcfsdfsdfsdfs")
-
-
 	return (
 		<OddCellContainer
 			data-odd-type={type}

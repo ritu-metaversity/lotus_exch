@@ -32,7 +32,6 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 			link: '/live-casino',
 			highlighted: true,
 			logo: 'https://11bet24.com/indian-casino.png',
-
 		},
 		{
 			label: 'Intl. Casino',
@@ -46,7 +45,6 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 			logo: 'https://11bet24.com/fantasy-game.png',
 			onClick: () => handleClick('Fantasy Games'),
 
-
 			highlighted: true,
 		},
 		{
@@ -54,16 +52,13 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 			link: '/Slot-Games',
 			highlighted: true,
 			logo: 'https://11bet24.com/slots.png',
-
 		},
 		{
-			label: 'Lottery Games',
+			label: 'Lottery Games2',
 			link: '/home',
 			highlighted: true,
 			logo: 'https://11bet24.com/lottery.png',
 			onClick: () => handleClick('Lottery Games'),
-
-
 		},
 	];
 	const handleClick = (id: string) => {
@@ -72,78 +67,85 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 			?.scrollIntoView();
 	};
 	useEffect(() => {
-		triger({})
-	}, [])
+		triger({});
+	}, []);
 	const handleGamePage = (vl: any) => {
-		closeLefySideBar(false)
-		navigate(`/gameDetail/${vl?.sportId}`, { state: vl?.sportName })
-	}
+		closeLefySideBar(false);
+		navigate(`/gameDetail/${vl?.sportId}`, { state: vl?.sportName });
+	};
 
 	const handleGameMyMarketPage = () => {
-		closeLefySideBar(false)
-		navigate("/My-Market")
-	}
+		closeLefySideBar(false);
+		navigate('/My-Market');
+	};
 	const handleHomee = (vl: any) => {
-		console.log(vl, "ytresdfxc");
-		closeLefySideBar(false)
+		console.log(vl, 'ytresdfxc');
+		closeLefySideBar(false);
 
-		navigate(vl?.link)
-	}
+		navigate(vl?.link);
+	};
 	return (
 		<ListContainer className='list'>
-			<ListItemContainerWrapper className='list-item-container' onClick={handleGameMyMarketPage}>
-				<ListItemContainer
-					hover={hover}
-					className='list-item'
-				>
-					<RemoveRedEyeIcon style={{
-						fontSize: "20px",
-						color: "black"
-					}} />
+			<ListItemContainerWrapper
+				className='list-item-container'
+				onClick={handleGameMyMarketPage}
+			>
+				<ListItemContainer hover={hover} className='list-item'>
+					<RemoveRedEyeIcon
+						style={{
+							fontSize: '20px',
+							color: 'black',
+						}}
+					/>
 					<ListItemLabel className='list__label'>My Market</ListItemLabel>
 				</ListItemContainer>
 			</ListItemContainerWrapper>
-			{leftMenuData?.data && leftMenuData?.data.map((item: any, i: any) => (
-				<ListItem
-					onClick={() => handleGamePage(item)}
-					key={i}
-					selected={i === activeItem}
-					hover={hover}
-					icon={item?.sportId}
-					label={item.sportName}
-				/>
-			))}
-			{liveCasino && liveCasino.map((item: any) => (
-				<ListItemContainerWrapper className='list-item-container' onClick={() => handleHomee(item)}>
-					<ListItemContainer
-
+			{leftMenuData?.data &&
+				leftMenuData?.data.map((item: any, i: any) => (
+					<ListItem
+						onClick={() => handleGamePage(item)}
+						key={i}
+						selected={i === activeItem}
 						hover={hover}
-						className='list-item'
+						icon={item?.sportId}
+						label={item.sportName}
+					/>
+				))}
+			{liveCasino &&
+				liveCasino.map((item: any) => (
+					<ListItemContainerWrapper
+						className='list-item-container'
+						onClick={() => {
+							handleHomee(item);
+							item.onClick && item.onClick();
+						}}
 					>
+						<ListItemContainer hover={hover} className='list-item'>
+							<ListItemLabelsdsdfsdfsd className='list__label'>
+								<img style={{ width: '22px' }} src={item?.logo} />
+								<span>{item?.label}</span>
+							</ListItemLabelsdsdfsdfsd>
+						</ListItemContainer>
+					</ListItemContainerWrapper>
+				))}
 
-						<ListItemLabelsdsdfsdfsd className='list__label'><img style={{ width: "22px" }} src={item?.logo} /><span>{item?.label}</span></ListItemLabelsdsdfsdfsd>
-					</ListItemContainer>
-				</ListItemContainerWrapper>
-			))}
-
-			<div className="socials">
-				<span className="left-side-menu-item__label_Whatsapp sc-ion-label-md-h sc-ion-label-md-s md hydrated">
+			<div className='socials'>
+				<span className='left-side-menu-item__label_Whatsapp sc-ion-label-md-h sc-ion-label-md-s md hydrated'>
 					Get Instant ID on whatsapp
 				</span>
-				<a href="" target="_blank">
-					<div className="whatsapp-button" />
+				<a href='' target='_blank'>
+					<div className='whatsapp-button' />
 				</a>
-				<a href="https://instagram.com" target="_blank">
-					<div className="instagram-button" />
+				<a href='https://instagram.com' target='_blank'>
+					<div className='instagram-button' />
 				</a>
-				<a href="https://telegram.me" target="_blank">
-					<div className="telegram-button" />
+				<a href='https://telegram.me' target='_blank'>
+					<div className='telegram-button' />
 				</a>
-				<a href="" target="_blank">
-					<div className="whatsapp-care-button" />
+				<a href='' target='_blank'>
+					<div className='whatsapp-care-button' />
 				</a>
 			</div>
-
 		</ListContainer>
 	);
 };
