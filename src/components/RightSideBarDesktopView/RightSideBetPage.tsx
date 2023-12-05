@@ -3,9 +3,10 @@ import "./RightSideBetPage.css"
 import Bettingpage from "./Bettingpage"
 import OpenBets from "./OpenBets"
 import { useAppSelector } from "../../hooks/useAppSelector"
-import { selectBetData } from "../../state/features/client/clientSlice"
+import { selectBetData, setBetData } from "../../state/features/client/clientSlice"
 import { useGetBalanceUpdateQuery } from "../../state/apis/main/apiSlice"
 import StakeEditPopup from "./StakeEdit/StakeEditPopup"
+import { useDispatch } from "react-redux"
 
 const RightSideBetPage = () => {
     const [show, setShow] = useState("")
@@ -45,11 +46,15 @@ const RightSideBetPage = () => {
             setShowBalance(false)
         }
     }
+    const dispatch = useDispatch()
     const handleEditStake = () => {
         if (showStake === false && localStorage.getItem("token")) {
             setShoeStake(true)
+            dispatch(setBetData(""))
+            setShow("1")
         } else {
             setShoeStake(false)
+            setShow("1")
         }
     }
     const closePopup = () => {
@@ -118,10 +123,6 @@ const RightSideBetPage = () => {
                 </div>
                 <button type="button" className="betSlipDesktop__betTop-editStakesBtn" onClick={handleEditStake}>Edit Stakes</button>
             </div>
-            <div className="outer_layout_stake">
-
-                {showStake && localStorage.getItem("token") && <StakeEditPopup closePopup={closePopup} />}
-            </div>
 
             {
                 show === "1" ?
@@ -142,6 +143,11 @@ const RightSideBetPage = () => {
                     <OpenBets />
 
             }
+            <div className="outer_layout_stake">
+
+                {showStake && localStorage.getItem("token") && <StakeEditPopup closePopup={closePopup} />}
+            </div>
+
 
 
         </>
