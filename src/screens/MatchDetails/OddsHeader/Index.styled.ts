@@ -57,7 +57,7 @@ export const OddsHeaderContentContainer = styled('div')(({ theme }) => ({
 	[theme.breakpoints.up(1024)]: {
 		width: '34.2rem',
 		gap: '1px',
-		marginRight: '45px',
+		marginRight: '25px',
 		gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
 		gridTemplateAreas: '". . label1 label2 . ."',
 	},

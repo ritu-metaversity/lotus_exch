@@ -73,6 +73,7 @@
     align-items: center;
     justify-content: space-evenly;
     margin-top: 31px;
+    cursor: pointer;
 }
 
 .tableprofit-loss-table {
@@ -182,9 +183,11 @@
 .my_bet tr:nth-child(odd) {
     background: #f0f0f0;
 }
+
 .my_bet tr {
     background: #fff;
 }
+
 /* .You-have-no-matched-bets{
         display: flex;
         align-items: center;

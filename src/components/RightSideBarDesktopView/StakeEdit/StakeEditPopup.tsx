@@ -31,6 +31,8 @@ const StakeEditPopup = ({ closePopup }: any) => {
     const handleSave = () => {
         // setShowEditSave(true)
         triger(buttonValue)
+        closePopup(false)
+
     }
     const handleClose = () => {
         // setShowEditSave(true)
@@ -38,8 +40,8 @@ const StakeEditPopup = ({ closePopup }: any) => {
     }
     return (<>
         <div
-        
-        className="eddit-stake-wrapper"></div>
+
+            className="eddit-stake-wrapper"></div>
         <div className="main_layout_for_desk_stake">
             <div className="inner_for_desk_stake">
 

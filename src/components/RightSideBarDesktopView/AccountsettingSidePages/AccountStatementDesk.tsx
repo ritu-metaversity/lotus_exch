@@ -20,8 +20,8 @@ const AccountStatementDesk = () => {
   const [radiobtnnnn, setRadiobtnnnn] = useState("1")
   const [accountResult, setAccountResult] = useState([])
 
-  const [accountResultDatatotalWin, setAccountResultDatatotalWin] = useState()
-  const [accountResultDatatotalBets, setAccountResultDatatotalBets] = useState()
+  // const [accountResultDatatotalWin, setAccountResultDatatotalWin] = useState()
+  // const [accountResultDatatotalBets, setAccountResultDatatotalBets] = useState()
   console.log();
 
   const defaultValue = moment().subtract(7, "days").format("YYYY-MM-DD");
@@ -35,8 +35,8 @@ const AccountStatementDesk = () => {
   }, [BetMarket])
   useEffect(() => {
     setAccountResult(BetMarket?.data?.betList)
-    setAccountResultDatatotalBets(BetMarket?.data?.totalBets)
-    setAccountResultDatatotalWin(BetMarket?.data?.totalStake)
+    // setAccountResultDatatotalBets(BetMarket?.data?.totalBets)
+    // setAccountResultDatatotalWin(BetMarket?.data?.totalStake)
   }, [])
   const [triger, { data: AccountStatementRespone }] = useAccountStatmentMutation()
   console.log(AccountStatementRespone?.data?.dataList, "AccountStatementRespone");

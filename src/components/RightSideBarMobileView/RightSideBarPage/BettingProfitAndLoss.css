@@ -1014,6 +1014,7 @@ div#radios2 {
     font-size: 15px;
     color: #000;
     border-color: #000;
+    cursor: pointer;
     /* background-color: #317383; */
 }
 

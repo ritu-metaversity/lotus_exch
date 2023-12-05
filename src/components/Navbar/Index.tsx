@@ -22,6 +22,8 @@ import { useIsSelfByAppUrlMutation } from '../../state/apis/main/apiSlice';
 import SignIn from '../../screens/SignIn/Index';
 import AccountPopup from './AccountPopup';
 import { useDispatch } from 'react-redux';
+import ammount from "../../../public/assets/icons/settingAcount.svg"
+import ammountLog from "../../../public/assets/icons/login.svg"
 // interface NavbarProps {
 // 	sidebarExpanded: boolean;
 // 	rightSidebarExpanded: boolean;
@@ -157,14 +159,14 @@ const NavbarDesktop = () => {
 							{localStorage?.getItem("token") ?
 								<div className='header_Signup_login_btn'>
 									<span onClick={handleAccountPopup}>
-										<img src='.././../../public/assets/icons/settingAcount.svg' style={{ padding: "0px 5px" }} />
+										<img src={ammount} style={{ padding: "0px 5px" }} />
 										Account</span>
 									{showPopup &&
 
 										<AccountPopup popupclose={popupclose} />
 									}
 									<span onClick={handleLogout}>
-										<img src='.././../../public/assets/icons/login.svg' style={{ padding: "0px 5px" }} />
+										<img src={ammountLog} style={{ padding: "0px 5px" }} />
 										LogOut</span>
 								</div>
 								:

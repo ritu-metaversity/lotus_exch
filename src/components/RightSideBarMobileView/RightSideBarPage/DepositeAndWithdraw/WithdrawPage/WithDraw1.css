@@ -1,7 +1,7 @@
 .withdrow_coin {
     display: flex;
     justify-content: space-between;
-    margin: 12px 55px;
+    margin: 12px 35px;
     align-items: center;
 }
 
@@ -210,6 +210,7 @@ p.lodder.depositLoading.withloading.withdraw_deposit i {
 
     .withdrow_coin {
         margin-top: 99px;
+        width: 100%;
     }
 }
 

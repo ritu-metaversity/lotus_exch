@@ -1,6 +1,6 @@
 import "./OpenBetsDeskTop.css"
 import { useEffect, useState } from "react";
-import moment, { Moment } from "moment";
+import moment from "moment";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import { useActiveSportsListMutation, useBetHistoryMutation, useUnsettledBetMutation } from "../../../state/apis/main/apiSlice";
@@ -51,13 +51,13 @@ const OpenBetsDeskTop = () => {
 	}, [unSettledBet]);
 	console.log(unsettledbetmatchdata, 'unsettledbetmatchdata');
 
-	const StartDateValue = (prop:Moment) => {
-		console.log( prop,prop.format(dateFormat), 'dffssdfsdfsd');
+	const StartDateValue = (prop: any) => {
+		console.log(prop, prop.format(dateFormat), 'dffssdfsdfsd');
 
 		setStartDate(prop.format(dateFormat));
 	};
 
-	const EndDateValue = (prop: Moment) => {
+	const EndDateValue = (prop: any) => {
 		// console.log(date, dateString, 'dffssdfsdfsd');
 		setEndDate(prop.format(dateFormat));
 	};
@@ -195,17 +195,15 @@ const OpenBetsDeskTop = () => {
 					) : (
 						<>
 							<div
-								className={`Past_Current ${
-									gameSportCasion === 'Sport' ? 'selecteddddd' : ''
-								}`}
+								className={`Past_Current ${gameSportCasion === 'Sport' ? 'selecteddddd' : ''
+									}`}
 								onClick={() => handleSeleteGame('Sport')}
 							>
 								Sports
 							</div>
 							<div
-								className={`Past_Current ${
-									gameSportCasion === 'Casion' ? 'selecteddddd' : ''
-								}`}
+								className={`Past_Current ${gameSportCasion === 'Casion' ? 'selecteddddd' : ''
+									}`}
 								onClick={() => handleSeleteGame('Casion')}
 							>
 								{' '}
@@ -225,10 +223,10 @@ const OpenBetsDeskTop = () => {
 
 							{activeSportsListData?.data?.length > 0
 								? activeSportsListData?.data.map((item: any) => {
-										return (
-											<option value={item?.sportId}>{item?.sportName}</option>
-										);
-								  })
+									return (
+										<option value={item?.sportId}>{item?.sportName}</option>
+									);
+								})
 								: ''}
 						</select>
 					) : (

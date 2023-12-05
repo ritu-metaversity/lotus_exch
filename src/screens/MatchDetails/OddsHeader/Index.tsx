@@ -8,6 +8,10 @@ import {
 type OddsHeaderProps = ComponentProps<typeof SportsHeader>;
 
 const OddsHeader = (props: OddsHeaderProps) => {
+
+console.log(props,"jkhygutresdfx");
+
+
 	return (
 		<OddsHeaderContainer className='odds-header'>
 			<SportsHeader

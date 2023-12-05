@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import {
 	LedgerAndPnl,
 	MatchOddsRowContainer,
@@ -8,6 +8,17 @@ import {
 	// MinMax,
 	// TypoGraphy,
 } from './Index.styled';
+import {
+
+	Dialog,
+	DialogContent,
+	DialogTitle,
+
+} from "@mui/material";
+import "./PnlModal.css"
+import PnlModal from './PnlModal';
+import { useParams } from 'react-router-dom';
+
 // import AccessTimeIcon from '@mui/icons-material/AccessTime';
 interface MatchOddsRowProps {
 	title: ReactNode;
@@ -16,16 +27,73 @@ interface MatchOddsRowProps {
 	isFancy?: boolean;
 	betDelay?: any;
 	pnl?: any;
+	sid?: any;
+
 }
 
 const MatchOddsRow = (props: MatchOddsRowProps) => {
-	const { title, children, content, isFancy, betDelay, pnl } = props;
-	console.log(pnl, "hgtfyrtdesrdxcv");
+	const { matchId } = useParams();
 
+	const { title, children, content, isFancy, betDelay, pnl, sid } = props;
+	console.log(pnl, "hgtfyrtdesrdxcv");
+	const [selectedPnlMarketId, setSelectedPnlMarketId] = useState("");
+
+
+	const handlePopUpOpn = () => {
+		isFancy && pnl !== undefined && setSelectedPnlMarketId("open")
+		console.log(pnl, "ewfwefwewcZ");
+
+	}
 	return (
 		<MatchOddsRowContainer isFancy={isFancy} className='match-odds-row'>
 			<MatchOddsRowTitle className='match-odds-row__title'>
-				<NameLedgerAndPnl>
+
+
+				<Dialog
+					title="Run Amount"
+					open={Boolean(selectedPnlMarketId)}
+					onClose={() => setSelectedPnlMarketId("")}
+					fullWidth
+
+					sx={{
+						'& .MuiDialog-paper': {
+							overflow: 'unset !important'
+						}
+					}}
+				>
+					<DialogTitle>
+						<span onClick={() => setSelectedPnlMarketId("")} style={{ cursor: "pointer" }}>
+							<span onClick={() => setSelectedPnlMarketId("")} style={{
+								position: "absolute",
+								right: '4px',
+								top: "1px"
+							}} >X</span>
+
+
+						</span>
+						<div className="main_RunandAmount">
+							<span >Run and Amount</span>
+
+
+
+						</div>
+
+					</DialogTitle>
+					<DialogContent sx={{
+						width: '100%',
+						// '&.MuiDialogContent-root': {
+						//   overflowY: 'hidden !important'
+						// }
+					}}>
+
+						<PnlModal
+							fancyId={sid}
+							matchId={matchId}
+							dadadada={() => setSelectedPnlMarketId("")}
+						/>
+					</DialogContent>
+				</Dialog>
+				<NameLedgerAndPnl onClick={handlePopUpOpn}>
 					<span style={{ width: "100%", fontWeight: "700" }}>{title}</span>
 					<span style={{ width: "100%", color: pnl < 0 ? "red" : "green" }}>{pnl ? "»" : ""} {pnl && Number(pnl).toFixed(2)}</span>
 

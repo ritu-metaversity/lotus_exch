@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import FancyOdds from '../FancyOdds/Index';
 import { useGetMatchDetailsQuery } from '../../../state/apis/betfair/apiSlice';
 import { useParams } from 'react-router-dom';
+import FancyAllOdds from '../FancyOdds/FancyAllOdds';
 
 const FancySection = () => {
 	const { matchId } = useParams();
@@ -14,6 +15,10 @@ const FancySection = () => {
 	});
 
 	const tabs: ComponentProps<typeof Tab>['tabs'] = [
+		{
+			label: 'All Section',
+			content: <FancyAllOdds title='All Section' oddall={data || []} />,
+		},
 		{
 			label: 'Fancy 2',
 			content: <FancyOdds title='Fancy 2' odd={data?.Fancy2 || []} />,

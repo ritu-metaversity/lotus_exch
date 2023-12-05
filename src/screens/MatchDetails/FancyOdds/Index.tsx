@@ -79,6 +79,7 @@ const FancyOdds = (props: FancyOddsProps) => {
 				const { b1, l1, bs1, ls1, nation, gstatus, sid, betDelay, minBet, maxBet } = allData;
 				return (
 					<>
+						{console.log(odd, "wfcsdscsdw")}
 						<MatchOddsRow
 							isFancy={true}
 							content={`${gstatus}`}
@@ -86,6 +87,7 @@ const FancyOdds = (props: FancyOddsProps) => {
 							title={nation}
 							pnl={profits?.Fancy?.find(profit => profit.sid == sid)?.value}
 							betDelay={betDelay}
+							sid={sid}
 						>
 							<FancyOddsGrid
 								isBetOpened={isBetOpened(gstatus)}

@@ -19,6 +19,8 @@ interface ListProps {
 		index: number
 	) => void;
 	closeLefySideBar: any
+	onClick?: () => void;
+
 }
 
 const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
@@ -33,7 +35,7 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 
 		},
 		{
-			label: 'International Casino',
+			label: 'Intl. Casino',
 			link: '/Internationl-casino',
 			logo: 'https://11bet24.com/international-casinoletest.png',
 			highlighted: true,
@@ -42,6 +44,8 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 			label: 'Fantasy Games',
 			link: '/home',
 			logo: 'https://11bet24.com/fantasy-game.png',
+			onClick: () => handleClick('Fantasy Games'),
+
 
 			highlighted: true,
 		},
@@ -57,9 +61,16 @@ const List = ({ activeItem, hover, closeLefySideBar }: ListProps) => {
 			link: '/home',
 			highlighted: true,
 			logo: 'https://11bet24.com/lottery.png',
+			onClick: () => handleClick('Lottery Games'),
+
 
 		},
 	];
+	const handleClick = (id: string) => {
+		document
+			.getElementById(id.toUpperCase().replace(' ', '_'))
+			?.scrollIntoView();
+	};
 	useEffect(() => {
 		triger({})
 	}, [])

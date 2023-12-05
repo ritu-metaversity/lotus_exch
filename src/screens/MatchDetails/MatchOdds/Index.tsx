@@ -38,6 +38,7 @@ const MatchOdds = (props: MatchOddsProps) => {
 		setMobileviewbettingPopUpMatch(vl?.vl)
 	}
 	const profits = useAppSelector(selectProfits);
+	// console.log(odd?.runners, "sdghdfgsdsa");
 
 
 	return (

@@ -33,7 +33,12 @@ const ListItem = (props: ListItemProps) => {
 				hover={hover}
 				className='list-item'
 			>
-				<ListItemIcon className='list__icon'><img style={{ width: "22px" }} src={`https://d1arlbwbznybm5.cloudfront.net/v1/static/mobile/images/gicons/${icon}.png`} /></ListItemIcon>
+				{icon === 77 ?
+
+					<ListItemIcon className='list__icon'><img style={{ width: "22px" }} src={"https://247lordsexch.com/static/media/sideBarHorse.6c8a9ff3.404cbe68857d2d9721462949c4df0f80.svg"} /></ListItemIcon>
+					:
+					<ListItemIcon className='list__icon'><img style={{ width: "22px" }} src={`https://d1arlbwbznybm5.cloudfront.net/v1/static/mobile/images/gicons/${icon === 14 ? 52 : icon}.png`} /></ListItemIcon>
+				}
 				<ListItemLabel className='list__label'>{label}</ListItemLabel>
 			</ListItemContainer>
 		</ListItemContainerWrapper>
