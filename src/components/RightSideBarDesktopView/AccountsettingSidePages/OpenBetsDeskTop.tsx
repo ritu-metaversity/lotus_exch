@@ -299,6 +299,7 @@ const OpenBetsDeskTop = () => {
                                             style={{ fontWeight: "700" }}>
                                             Odds
                                         </th>
+
                                         <th
                                             role="columnheader"
                                             className="text-left"
@@ -314,7 +315,8 @@ const OpenBetsDeskTop = () => {
                                             role="columnheader"
                                             className="text-left"
                                             style={{ fontWeight: "700" }}>
-                                            Potential Profit
+                                            {current ? "Potential Profit" : "Pnl"}
+
                                         </th>
                                     </tr>
                                 </thead>
@@ -362,7 +364,15 @@ const OpenBetsDeskTop = () => {
                                                     </td> */}
                                                     <td style={{}}
                                                         className="text-left withdraw-data">
-                                                        {item?.pnl}
+                                                        {item?.pnl < 0 ? <span style={{ color: "red" }}>
+                                                            {item?.pnl}
+                                                        </span>
+                                                            :
+                                                            <span style={{ color: "green" }}>
+                                                                {item?.pnl}
+                                                            </span>
+                                                        }
+
                                                     </td>
                                                 </tr>
                                             )

@@ -364,8 +364,9 @@ const BettingProfitAndLoss = () => {
 
                         className="box_selection_time"
                         value={1}
+
                         onClick={() => handleActive(1, "Sports")}
-                        style={{ backgroundColor: Active === 1 ? "#1f8067" : "#074938" }}
+                        style={{ backgroundColor: Active === 1 ? "#1f8067" : "#074938",color:"white" }}
                       >
                         Sport
                       </button>
@@ -374,7 +375,7 @@ const BettingProfitAndLoss = () => {
                         className="box_selection_time"
                         value={2}
                         onClick={() => handleActive(2, "casino")}
-                        style={{ backgroundColor: Active === 2 ? "#1f8067" : "#074938" }}
+                        style={{ backgroundColor: Active === 2 ? "#1f8067" : "#074938",color:"white" }}
                       >
                         casino
                       </button>
@@ -562,7 +563,7 @@ const BettingProfitAndLoss = () => {
                                 color: "#bf311c"
                               }}>
 
-                              -{resposeProfiteAndLossMatchWiseData?.data?.totalPnl}
+                              {resposeProfiteAndLossMatchWiseData?.data?.totalPnl}
                             </span>
                             :
                             <span className="negative-amount betting-profit-and-loss-page__filters-total-amount"

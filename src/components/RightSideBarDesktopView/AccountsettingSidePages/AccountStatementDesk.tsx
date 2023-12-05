@@ -22,6 +22,7 @@ const AccountStatementDesk = () => {
 
   const [accountResultDatatotalWin, setAccountResultDatatotalWin] = useState()
   const [accountResultDatatotalBets, setAccountResultDatatotalBets] = useState()
+  console.log();
 
   const defaultValue = moment().subtract(7, "days").format("YYYY-MM-DD");
   const currentValue = moment().format("YYYY-MM-DD");
@@ -157,7 +158,7 @@ const AccountStatementDesk = () => {
         </div>
       </div>
       <div className="total_amount_amount">
-        <div className="total_amount_amount_pnl">Total P&L: <span className="total_PandL"> 0.00</span></div>
+        {/* <div className="total_amount_amount_pnl">Total P&L: <span className="total_PandL"> 0.00</span></div> */}
       </div>
       <section className="OpenBetsTable">
         <div className="OpenBetsTable__table">
@@ -222,11 +223,11 @@ const AccountStatementDesk = () => {
                             height: "30px"
                           }}
                           className="text-left withdraw-data">
-                          {item?.credit >= 0 ?
+                          {item?.debit < 0 ?
 
-                            <span style={{ color: "green" }}>{item?.credit}</span>
+                            <span style={{ color: "red" }}>{item?.debit}</span>
                             :
-                            <span style={{ color: "red" }}>{item?.credit}</span>
+                            <span style={{ color: "green" }}>{item?.credit}</span>
                           }
 
                         </td>
@@ -238,7 +239,15 @@ const AccountStatementDesk = () => {
                         <td
                           style={{ color: "green" }}
                           className="text-left withdraw-data">
-                          {item?.pts}
+                          {item?.pts < 0 ?
+                            <span style={{ color: "red" }}>
+                              {item?.pts}
+                            </span>
+                            :
+                            <span style={{ color: "green" }}>
+                              {item?.pts}
+                            </span>
+                          }
                         </td>
                       </tr>
                     )
@@ -261,10 +270,10 @@ const AccountStatementDesk = () => {
             </table>
           </div>
         </div>
-      </section>
+      </section >
       <Dialog
-        onClose={() => {
-          setOpen(false)
+        onClose={() => {{
+          setOpen(false),setRadiobtnnnn("1")}
         }}
         open={open}
         fullWidth
@@ -293,8 +302,8 @@ const AccountStatementDesk = () => {
               <label>Deleted</label> */}
             </div>
             <div className="modalll_bodyyy_title">
-              <span>Total Bets: <span style={{ color: "green" }}>{accountResultDatatotalBets}</span></span>
-              <span>Total Amount: <span style={{ color: "green" }}>{accountResultDatatotalWin}</span></span>
+              <span>Total Bets: <span style={{ color: "green" }}>{BetMarket?.data?.totalBets}</span></span>
+              <span>Total Amount: <span style={{ color: "green" }}>{BetMarket?.data?.totalStake}</span></span>
             </div>
           </div>
           <div className="modal_table_container">
@@ -351,7 +360,7 @@ const AccountStatementDesk = () => {
                     )
                   }) :
                   <tr>
-                    <td colSpan={8} className="ldg-tbl-td match-value-box-color" style={{ color: "red" }}>
+                    <td colSpan={8} className="ldg-tbl-td match-value-box-color" style={{ color: "red", textAlign: "center" }}>
 
                       No data found
                     </td>

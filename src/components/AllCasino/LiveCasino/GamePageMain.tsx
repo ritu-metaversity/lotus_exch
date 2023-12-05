@@ -6,9 +6,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const GamePageMain = () => {
     const { state } = useLocation()
-    const token = localStorage.getItem("token");
     // const token = localStorage.getItem("token");
-    const [gameLobbyUrl, setGameLobbyUrl] = useState("")
+    // const token = localStorage.getItem("token");
+    // const [gameLobbyUrl, setGameLobbyUrl] = useState("")
     const [casionUrl, setCasionUrl] = useState();
 
     const navigate = useNavigate();
@@ -53,7 +53,7 @@ console.log(state,"sdfdghgrfsa");
 
 
 
-    const TokenGame = localStorage.getItem("GameToken");
+    // const TokenGame = localStorage.getItem("GameToken");
 
 
     return (

@@ -101,7 +101,7 @@ const GamesPage = ({ dattatata }: any) => {
     console.log(dattatata, "sdfsdfsdfsd");
 
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
+    // const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     // const [gameFilter, setGameFilter] = useState<any>([])
     const [gameAllData, setGameAllData] = useState<any>([])

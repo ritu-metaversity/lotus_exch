@@ -8,6 +8,7 @@
     font-weight: 600;
     flex-direction: row;
     background-color: #1e8067;
+    cursor: pointer;
 }
 
 .toolbar__tabs__bar__tab {

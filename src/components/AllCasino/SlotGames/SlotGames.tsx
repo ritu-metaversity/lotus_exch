@@ -5,17 +5,17 @@ import HeaderPage from "./HeaderPage";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: 'absolute' as 'absolute',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   width: 400,
+//   bgcolor: 'background.paper',
+//   border: '2px solid #000',
+//   boxShadow: 24,
+//   p: 4,
+// };
 // const modalStyle = {
 //   position: "relative",
 //   width: "320px",
@@ -34,9 +34,9 @@ const SlotGames = () => {
 
   const { state } = useLocation()
   console.log(state, "sdkjcguadjbclj");
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   // const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const handleClose = () => setOpen(false);
   // const handleGameName = () => {
   // }
 

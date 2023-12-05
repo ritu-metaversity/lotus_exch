@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import "./LiveCasino.css"
-import GamesPage from "./GamesPage";
+// import GamesPage from "./GamesPage";
 import HeaderPage from "./HeaderPage";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, Modal } from "@mui/material";
 // import { Typography } from "antd";
 import CasinoPointPopup from "../CasinoPointPopup";
@@ -46,7 +46,7 @@ const LiveCasino = () => {
   const nav = useNavigate();
 
   const TokenId = localStorage.getItem("token");
-  const TokenGame = localStorage.getItem("GameToken");
+  // const TokenGame = localStorage.getItem("GameToken");
   const [casionId, setCasionId] = useState("")
 
   // useEffect(() => {
@@ -121,16 +121,16 @@ const LiveCasino = () => {
   const [confirmPopup, setConfirmPopup] = useState(false)
 
 
-  const handleNotAgree = () => {
-    setConfirmPopup(false)
-  }
+  // const handleNotAgree = () => {
+  //   setConfirmPopup(false)
+  // }
   const handleClose = () => setConfirmPopup(false);
 
 
   const handleChangeaaSuperNowa = (val: any) => {
     if (localStorage.getItem("token")) {
-    setConfirmPopup(true)
-    setCasionId(val)
+      setConfirmPopup(true)
+      setCasionId(val)
     }
   };
   const handleChangeaaAura = (val: any) => {
@@ -153,15 +153,15 @@ const LiveCasino = () => {
 
   return (
     <div className="AllCasinoGame_IN_onePage">
-      {/* <p className="liveCasino-header"> */}
-      <img src="https://lotus365.co/static/media/LiveCasinoMobileTop.6252968a.png" className="liveCasino-header__img mob_img" />
-      <img src="https://lotus365.co/static/media/livecasinoLobby.16d18b4a.svg" className="liveCasino-header__img desk_img" />
-      <div className="live_casino">
+      <div className="liveCasino-headerrrrrr">
+        <img src="https://lotus365.co/static/media/LiveCasinoMobileTop.6252968a.png" className="liveCasino-header__img mob_img" />
+        <img src="https://lotus365.co/static/media/livecasinoLobby.16d18b4a.svg" className="liveCasino-header__img desk_img" />
+        <div className="live_casino">
 
-        <HeaderPage />
+          <HeaderPage />
+        </div>
+
       </div>
-
-      {/* </p> */}
       <div className="gamebtnnnnsnnsns">
 
 

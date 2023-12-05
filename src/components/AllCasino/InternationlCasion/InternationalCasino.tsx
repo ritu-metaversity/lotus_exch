@@ -1,12 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import "./LiveCasino.css"
-import GamesPage from "./GamesPage";
-import HeaderPage from "./HeaderPage";
+// import GamesPage from "./GamesPage";
+// import HeaderPage from "./HeaderPage";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Box, Modal } from "@mui/material";
 // import { Typography } from "antd";
-import QtechLogooo from "../../../../public/assets/images/qtechlogo.png";
+// import QtechLogooo from "../../../../public/assets/images/qtechlogo.png";
 import CasinoPointPopup from "../CasinoPointPopup";
 export const casinoProviderList = [
   {
@@ -98,7 +98,7 @@ const style = {
 const InternationalCasino = () => {
 
   const { state } = useLocation()
-  const [datattaa, setDatattaa] = useState();
+  // const [datattaa, setDatattaa] = useState();
 
   console.log(state, "sdkjcguadjbclj");
   // const [open, setOpen] = useState(false);

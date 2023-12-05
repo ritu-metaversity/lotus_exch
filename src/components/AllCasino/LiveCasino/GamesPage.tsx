@@ -67,7 +67,7 @@ const GamesPage = () => {
                         All games
                     </div>
                     <div className="liveCasino-content__menu-games__allgames-title-seeAll">
-                        See all
+                        {/* See all */}
                     </div>
                 </div>
                 <div style={{ width: "100%", overflowX: "auto" }}>

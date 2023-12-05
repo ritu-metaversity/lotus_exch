@@ -1,6 +1,6 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import "./GamesPage.css"
 
@@ -53,7 +53,7 @@ const AuraGamePageMain = () => {
 
 
 
-    const TokenGame = localStorage.getItem("GameToken");
+    // const TokenGame = localStorage.getItem("GameToken");
 
 
     return (

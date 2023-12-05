@@ -6,8 +6,8 @@ export const OddsHeaderContainer = styled('div')(({ theme }) => ({
 		borderTop: 'none',
 		borderBottom: 'none',
 		marginRight: '0.6rem',
-		height: "38px",
-		alignItem:"center"
+		height: '38px',
+		alignItem: 'center',
 	},
 
 	'& .sports-header__description': {
@@ -32,7 +32,7 @@ export const OddsHeaderContainer = styled('div')(({ theme }) => ({
 	[theme.breakpoints.up(1512)]: {
 		'& .sports-header': {
 			paddingLeft: 0,
-			alignItems:"center"
+			alignItems: 'center',
 		},
 	},
 }));
@@ -47,8 +47,8 @@ export const OddsHeaderContentContainer = styled('div')(({ theme }) => ({
 	textAlign: 'center',
 	alignItems: 'center',
 
-	'& .odds-header-content':{
-		fontSize:"1.2rem"
+	'& .odds-header-content': {
+		fontSize: '1.2rem',
 	},
 
 	'& p:first-of-type': { gridArea: 'label1' },
@@ -57,8 +57,8 @@ export const OddsHeaderContentContainer = styled('div')(({ theme }) => ({
 	[theme.breakpoints.up(1024)]: {
 		width: '34.2rem',
 		gap: '1px',
+		marginRight: '45px',
 		gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
 		gridTemplateAreas: '". . label1 label2 . ."',
 	},
-	
 }));
