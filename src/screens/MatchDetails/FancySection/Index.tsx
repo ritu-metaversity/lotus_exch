@@ -17,7 +17,20 @@ const FancySection = () => {
 	const tabs: ComponentProps<typeof Tab>['tabs'] = [
 		{
 			label: 'All Section',
-			content: <FancyAllOdds title='All Section' oddall={data || []} />,
+			content: (
+				<FancyOdds
+					title='All Section'
+					odd={
+						(data &&
+							Object.keys(data).reduce((accu, curr) => {
+								if (!['Odds', 'Bookmaker'].includes(curr))
+									return [...accu, ...data[curr as keyof typeof data]];
+								else return accu;
+							}, [] as any[])) ||
+						[]
+					}
+				/>
+			),
 		},
 		{
 			label: 'Fancy 2',
