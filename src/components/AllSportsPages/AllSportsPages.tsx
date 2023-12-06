@@ -31,6 +31,8 @@ const AllSportsPages = () => {
                 setAllMatchInSport(res?.data?.data);
 
                 //   setIsloading(false)
+                console.log(res?.data?.data, "frgetyrutioiukytjrt");
+
             });
     }, [id]);
     useEffect(() => {
@@ -55,8 +57,10 @@ const AllSportsPages = () => {
 
 
     const handleInput = (e: any) => {
-        navigate(`/match-details/${e}`)
+        navigate(`/match-details/${e}?sportid=${id}`)
     }
+
+    
     const handleDataTransfer = (vl: any) => {
         if (vl <= 0) {
         } else {
@@ -68,8 +72,8 @@ const AllSportsPages = () => {
     return (
 
         <div>
-           
-                <MobileGamePage allMatchInSport={allMatchInSport}/>
+
+            <MobileGamePage allMatchInSport={allMatchInSport} id={id} />
 
             <div className="desktop_game_dtails_page">
                 <div className="favourites-header">

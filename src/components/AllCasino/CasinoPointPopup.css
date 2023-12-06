@@ -37,6 +37,7 @@
     position: absolute;
     left: 26%;
     top: -83px;
+    border: unset;
 }
 
 .slotsCasino-pop-up__content-title {
@@ -100,21 +101,21 @@
     align-items: center;
     margin: 52px auto 0px;
 }
-    
+
 .modal_style .MuiBox-root {
-        position: relative;
+    position: relative;
 
-        width: 320px !important;
-        padding: 0 0 20px;
-        background-color: #fff;
-        font-size: 16px;
-        font-weight: 500;
-        color: #000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, .25), inset -3px 4px 6px rgba(0, 0, 0, .25);
-        border-radius: 30px;    
-    }
+    width: 320px !important;
+    padding: 0 0 20px;
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, .25), inset -3px 4px 6px rgba(0, 0, 0, .25);
+    border-radius: 30px;
+}
 
-.slotsCasino-pop-up__content-closeButton{
+.slotsCasino-pop-up__content-closeButton {
     position: absolute;
     top: -13px;
     right: -13px;

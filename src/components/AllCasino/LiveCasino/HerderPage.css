@@ -131,7 +131,9 @@
     display: inline-block;
     font-size: 45px;
 }
-.blob2, .blob3 {
+
+.blob2,
+.blob3 {
     bottom: 0;
     left: 0;
     -webkit-transform-origin: 50% 50%;
@@ -144,9 +146,11 @@
     height: 125px;
     animation: wobble 8s ease-in-out infinite alternate, move 30s ease-in-out infinite;
 }
+
 svg:not(:root) {
     overflow: hidden;
 }
+
 .blob3 {
     width: 93px;
     height: 93px;
@@ -156,7 +160,7 @@ svg:not(:root) {
 .live_casino_data {
     position: absolute;
     left: 28%;
-    top: -317px;
+    top: -216px;
     font-size: 18px;
 }
 
@@ -183,33 +187,38 @@ svg:not(:root) {
     .liveCasino-header__img {
         width: 100%;
     }
-    .liveCasino-header{
+
+    .liveCasino-header {
         height: 30vh;
         position: relative;
     }
-    .live_casino{
+
+    .live_casino {
         position: absolute;
         top: 60%;
         left: 6%;
         width: 40%;
     }
+
     .live_casino_data .liveCasino-header__text-name {
         font-size: 45px;
     }
 }
-.mob_img{
+
+.mob_img {
     display: none;
-  }
-  .desk_img{
-    display: block;
-  }
-@media screen and (max-width: 800px) {
-  .mob_img{
-    display: block;
-  }
-  .desk_img{
-    display: none;
-  }
 }
 
+.desk_img {
+    display: block;
+}
 
+@media screen and (max-width: 800px) {
+    .mob_img {
+        display: block;
+    }
+
+    .desk_img {
+        display: none;
+    }
+}

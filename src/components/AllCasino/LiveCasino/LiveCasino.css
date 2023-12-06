@@ -71,8 +71,27 @@
     transition: .5s;
     color: white;
     font-weight: 800;
-    font-size: 15px;
-    width: 27%;
+    font-size: 15px;    width: 40%;
+}
+
+@media screen and (min-width:1024px) {
+    .GameNameBtn_UIiiii {
+        display: block;
+        text-decoration: none;
+        overflow: hidden;
+        border-radius: 40px;
+        cursor: pointer;
+        /* padding: 9px 58px; */
+        padding: 0.7% 4%;
+        background: #6d0cb4;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+        transition: .5s;
+        color: white;
+        font-weight: 800;
+        font-size: 15px;
+        width: 25%;
+    }
+
 }
 
 .gamebtnnnnsnnsns {

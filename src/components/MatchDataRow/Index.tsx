@@ -26,9 +26,9 @@ import {
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import Icon from '../common/Icon/Index';
 import BetingPopUpForMobile from './BetingPopUpForMobile';
-interface MatchDataRowProps extends Match { type?: any, runners?: any }
+interface MatchDataRowProps extends Match { type?: any, runners?: any ,sportid?:any}
 
-const MatchDataRow = (props: MatchDataRowProps) => {
+const MatchDataRow = ( props: MatchDataRowProps) => {
 	const retrieveTeamsForMatch = (matchName: string) => {
 		const delimiterRegex = /\s+(?:vs|v[/\\]s|v[/\\]|v)\s+/i;
 		const [team1, team2] = matchName.split(delimiterRegex);
@@ -38,13 +38,14 @@ const MatchDataRow = (props: MatchDataRowProps) => {
 			team2: team2.trim() || 'Team 2',
 		};
 	};
-
+	
 	const selectedSid = useAppSelector(selectSelectedSid)
-
+	
 	const {
 		matchId,
 		openDate,
 		matchName,
+		sportid
 		// team1Back,
 		// team1Lay,
 		// drawBack,
@@ -62,7 +63,10 @@ const MatchDataRow = (props: MatchDataRowProps) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const lastTouchXRef = useRef<number | null>(null);
 
-	const navigateToMatchDetails = () => navigate(`/match-details/${matchId}`);
+	const navigateToMatchDetails = () =>{
+
+
+		 navigate(`/match-details/${matchId}?sportid=${sportid}`) };
 
 	const handleTouchStart = (e: TouchEvent<HTMLDivElement>) =>
 		(lastTouchXRef.current = e.touches[0].clientX);

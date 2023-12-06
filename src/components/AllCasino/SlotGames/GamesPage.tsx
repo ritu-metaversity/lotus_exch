@@ -89,8 +89,8 @@ const GamesPage = ({ slotGameDetail }: any) => {
 
     const handleGamePage = (vl: any) => {
         if (localStorage.getItem("token")) {
-        setConfirmPopup(true)
-        setCasionId(vl)
+            setConfirmPopup(true)
+            setCasionId(vl)
         }
     }
     const handleAgree = () => {
@@ -178,7 +178,7 @@ const GamesPage = ({ slotGameDetail }: any) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <CasinoPointPopup handleClose={handleClose} />
+                    <CasinoPointPopup handleClose={handleClose} type="qtech" />
                     <button onClick={handleAgree} className='slotsCasino-pop-up__content-button'>OK, I AGREE !</button>
 
                 </Box>

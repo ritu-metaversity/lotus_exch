@@ -2,13 +2,13 @@
 import { useNavigate } from "react-router-dom";
 import inplay from "../../../public/assets/icons/inplay-logo-iconSport.bb6548ae.svg"
 import "./AllSportsPage.css"
-const MobileGamePage = ({ allMatchInSport }: any) => {
+const MobileGamePage = ({ allMatchInSport, id }: any) => {
     console.log(allMatchInSport, "nhjgfgdfxcvh");
     const navigate = useNavigate();
 
 
     const handleInput = (e: any) => {
-        navigate(`/match-details/${e}`)
+        navigate(`/match-details/${e}?sportid=${id}`)
     }
 
 
@@ -28,7 +28,7 @@ const MobileGamePage = ({ allMatchInSport }: any) => {
 
 
             <span className="main_wrapper_for_gameoage" >
-                Cricket
+                {/* Cricket */}
             </span>
 
             <div className="MenuEvent__lisin-mdlist-mdhydrated">
@@ -36,7 +36,7 @@ const MobileGamePage = ({ allMatchInSport }: any) => {
 
                 <div className="MenuEvent__list__header__green">
                     <img src={inplay} />
-                    <span className="MenuEvent__list__header__green__name"> In play (3)
+                    <span className="MenuEvent__list__header__green__name"> In play
                     </span>
                 </div>
                 {allMatchInSport && allMatchInSport?.length > 0 ? (

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import Collapse from '@mui/material/Collapse';
 import PlayIcon from '@mui/icons-material/PlayCircleOutlined';
 import Section from '../../../components/Section/Index';
@@ -16,8 +16,12 @@ const MatchStats = () => {
 
 	const { matchId } = useParams();
 	const { data } = useGetMatchDetailsQuery(matchId ?? '');
+	const [searchParams] = useSearchParams();
 
-	const iframeUrl = `http://15.207.182.173:3050/event/${matchId}?theme=crazy-diamond`;
+
+	const sportsid = searchParams.get("sportid");
+	// const iframeUrl = `http://15.207.182.173:3050/event/${matchId}?theme=crazy-diamond`;
+	const iframeUrl = `https://score.247idhub.com/go-score/template/${sportsid}/${matchId}`
 
 	const handleExpand = () => setExpanded(!expanded);
 

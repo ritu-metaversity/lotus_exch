@@ -62,7 +62,7 @@ const OpenbetsForMobile = () => {
 
                 <div className="OpenBetUnamteData" >
                   <div className="OpenBetUnamteData_Firts">
-                    <span className="OpenBetUnamteData_Back" style={{ color: item?.isback === true ? "#2d8ad1" : "#ef819a" }} onClick={() => navigate(`/match-details/${item?.matchId}`)}> {item?.isback === true ? "Back" : "Lay"} {item?.isback === true ? "Yes" : "No"}  for {item?.amount} @ {item?.rate} to Win {item?.pnl}</span>
+                    <span className="OpenBetUnamteData_Back" style={{ color: item?.isback === true ? "#2d8ad1" : "#ef819a" }} onClick={() => navigate(`/match-details/${item?.matchId}?sportid${item?.sportId}`)}> {item?.isback === true ? "Back" : "Lay"} {item?.isback === true ? "Yes" : "No"}  for {item?.amount} @ {item?.rate} to Win {item?.pnl}</span>
                   </div>
 
                   <div className="OpenBetUnamteData_Second">
