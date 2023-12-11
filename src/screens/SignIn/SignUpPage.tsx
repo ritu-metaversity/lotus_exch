@@ -287,13 +287,33 @@ const SignUpPage = ({ loginRegisterrrrr, closeLoginModal, loginRegisterButtonSwi
                     />
                     <label style={{ color: "red", fontSize: "15px" }}>{confirmPasswordError}</label>
 
+                    <div className='comm-data-new'>
+                        {IsSelfByAppUrl?.data?.oddsComm === 0 ?
+                            "" :
+                            <span>
+                                <label style={{ color: "white", fontSize: "12px" }}>Odds Comm..</label>
+                                <input value={IsSelfByAppUrl?.data?.oddsComm} disabled style={{ width: "100%" }} />
+                            </span>
+                        }
+
+                        {IsSelfByAppUrl?.data?.fancyComm === 0 ?
+                            "" :
+                            <span>
+                                <label style={{ color: "white", fontSize: "12px" }}>Fancy Comm..</label>
+                                <input placeholder={IsSelfByAppUrl?.data?.fancyComm} disabled style={{ width: "100%" }} />
+                            </span>
+                        }
+
+                        {IsSelfByAppUrl?.data?.casinoComm === 0 ?
+                            "" :
+                            <span>
+                                <label style={{ color: "white", fontSize: "12px" }}>Casino Comm..</label>
+                                <input placeholder={IsSelfByAppUrl?.data?.casinoComm} disabled style={{ width: "100%" }} />
+                            </span>
+                        }
+                    </div>
 
 
-                    {/* <button onClick={handlePasswordVisibility} type='button' className='eyscloseeyelcoe' >
-                                {showPassword ?
-                                    <EyeClose style={{ fontSize: "20px" }} /> :
-                                    <EyeOpen style={{ fontSize: "20px" }} />}
-                            </button> */}
                 </div>
 
                 <div className='pop-up-content__buttons' >

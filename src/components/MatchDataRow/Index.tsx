@@ -34,8 +34,8 @@ const MatchDataRow = ( props: MatchDataRowProps) => {
 		const [team1, team2] = matchName.split(delimiterRegex);
 
 		return {
-			team1: team1.trim() || 'Team 1',
-			team2: team2.trim() || 'Team 2',
+			team1: team1?.trim() || 'Team 1',
+			team2: team2?.trim() || 'Team 2',
 		};
 	};
 	

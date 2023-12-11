@@ -256,6 +256,13 @@ export const mainApiSlice = createApi({
 				body: payload,
 			}),
 		}),
+		demoUserlogin: builder.mutation({
+			query: payload => ({
+				url: '/login/demo-user-creation-login',
+				method: 'POST',
+				body: payload,
+			}),
+		}),
 	}),
 });
 
@@ -286,5 +293,6 @@ export const {
 	useBetHistoryMutation,
 	useDepositeRequestClientMutation,
 	useBetListByMatchIdMutation,
-	useBetFancyBookMutation
+	useBetFancyBookMutation,
+	useDemoUserloginMutation
 } = mainApiSlice;
