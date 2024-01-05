@@ -48,3 +48,7 @@ export const { login, logout } = authSlice.actions;
 const authSelector = (state: RootState) => state.auth;
 
 export const selectUser = createSelector(authSelector, auth => auth.user);
+export const selectIsLoggedIn = createSelector(
+	authSelector,
+	auth => auth.isLoggedIn
+);

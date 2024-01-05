@@ -43,3 +43,20 @@ export type ChangePasswordReq = {
 	confirmNewPassword?: string;
 	userid: string;
 };
+
+export type AllocatedCasinoKey =
+	| 'Aura'
+	| 'Super Nova'
+	| 'QTech'
+	| 'Virtual'
+	| 'SportBook';
+
+export type AllocatedCasino = {
+	[x in AllocatedCasinoKey]?: CasinoAllocItem;
+};
+
+export interface CasinoAllocItem {
+	name: string;
+	casinoId: number;
+	active: boolean;
+}

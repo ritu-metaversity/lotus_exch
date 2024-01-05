@@ -6,6 +6,8 @@ import {
 	SignInRes,
 	ChangePasswordRes,
 	ChangePasswordReq,
+	AllocatedCasino,
+	CasinoAllocItem,
 } from './apiSlice.types';
 import toast from 'react-hot-toast';
 import { navGlobalRef } from '../../../screens/Layout/Index';
@@ -67,7 +69,7 @@ export const mainApiSlice = createApi({
 					} else {
 						toast.error(data?.data?.message);
 					}
-					console.log(error?.error, 'mhkjhk');
+					//console.log(error?.error, 'mhkjhk');
 				});
 			},
 		}),
@@ -93,14 +95,14 @@ export const mainApiSlice = createApi({
 			onQueryStarted: async (_, { queryFulfilled }) => {
 				try {
 					const data = await queryFulfilled;
-					console.log(data, 'huihiu');
+					//console.log(data, 'huihiu');
 					if (data?.data?.status === true) {
 						toast.success(data?.data?.message);
 					} else {
 						toast.error(data?.data?.message);
 					}
 				} catch (data: any) {
-					console.log(data, 'error-error');
+					//console.log(data, 'error-error');
 
 					toast.error(data?.error?.data?.message);
 				}
@@ -137,14 +139,14 @@ export const mainApiSlice = createApi({
 			onQueryStarted: async (_, { queryFulfilled }) => {
 				try {
 					const data = await queryFulfilled;
-					console.log(data, 'huihiu');
+					//console.log(data, 'huihiu');
 					if (data?.data?.status === true) {
 						toast.success(data?.data?.message);
 					} else {
 						toast.error(data?.data?.message);
 					}
 				} catch (data: any) {
-					console.log(data, 'error-error');
+					//console.log(data, 'error-error');
 
 					toast.error(data?.error?.data?.message);
 				}
@@ -159,7 +161,7 @@ export const mainApiSlice = createApi({
 			}),
 			onQueryStarted: async (_, { queryFulfilled }) => {
 				const data = await queryFulfilled;
-				console.log(data, 'huihiu');
+				//console.log(data, 'huihiu');
 				if (data?.data?.status === true) {
 					localStorage.clear();
 				} else {
@@ -173,18 +175,17 @@ export const mainApiSlice = createApi({
 				method: 'post',
 				body: payload,
 			}),
-			onQueryStarted: async (_, { queryFulfilled }) => {
-				const data = await queryFulfilled;
-				console.log(data, 'huihiu');
-				// if(data?.data?.status === true){
-				// 	navGlobalRef&&	navGlobalRef("/signin");
-				// 	localStorage.clear();
-				// 	toast.success(data?.data?.message)
-
-				// }else{
-				// 	toast.error(data?.data?.message)
-				// }
-			},
+			// onQueryStarted: async (_, { queryFulfilled }) => {
+			// 	const data = await queryFulfilled;
+			// 	console.log(data, 'huihiu');
+			// 	if (data?.data?.status === true) {
+			// 		navGlobalRef && navGlobalRef('/signin');
+			// 		localStorage.clear();
+			// 		toast.success(data?.data?.message);
+			// 	} else {
+			// 		toast.error(data?.data?.message);
+			// 	}
+			// },
 		}),
 		LeftMenuDataOpen: builder.mutation({
 			query: payload => ({
@@ -220,6 +221,14 @@ export const mainApiSlice = createApi({
 				method: 'post',
 				body: payload,
 			}),
+		}),
+		allotedCasino: builder.query<AllocatedCasino, void>({
+			query: () => ({
+				url: 'user/alloted-casino-list',
+				method: 'POST',
+			}),
+			transformResponse: (raw: { data: CasinoAllocItem[] }) =>
+				raw.data?.reduce((acc, cur) => ({ ...acc, [cur.name]: cur }), {}) || {},
 		}),
 		userFancyPnl: builder.query({
 			query: payload => ({
@@ -294,5 +303,6 @@ export const {
 	useDepositeRequestClientMutation,
 	useBetListByMatchIdMutation,
 	useBetFancyBookMutation,
-	useDemoUserloginMutation
+	useDemoUserloginMutation,
+	useAllotedCasinoQuery,
 } = mainApiSlice;

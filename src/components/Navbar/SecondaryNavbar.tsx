@@ -6,8 +6,13 @@ import {
 } from './Index.styled';
 import { useEffect, useState } from 'react';
 // import axios from 'axios';
-import { useLeftMenuDataOpenMutation } from '../../state/apis/main/apiSlice';
+import {
+	useAllotedCasinoQuery,
+	useLeftMenuDataOpenMutation,
+} from '../../state/apis/main/apiSlice';
 import axios from 'axios';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { selectIsLoggedIn } from '../../state/features/auth/authSlice';
 
 interface NavItem {
 	label: string;
@@ -17,9 +22,6 @@ interface NavItem {
 }
 
 const SecondaryNavbar = () => {
-
-
-
 	// const SportsBook: Array<NavItem> = [
 	// 	{
 	// 		label: 'SportsBook',
@@ -33,8 +35,8 @@ const SecondaryNavbar = () => {
 			label: 'Live Casino',
 			link: '/live-casino',
 			highlighted: true,
-		}
-	]
+		},
+	];
 	const interNationalCasino: Array<NavItem> = [
 		{
 			label: 'International Casino',
@@ -81,30 +83,10 @@ const SecondaryNavbar = () => {
 	console.log(leftMenuData, 'leftMenuData');
 
 	// https://api.247365.exchange/admin-new-apis/enduser/left-menu-data-open
-	const token = localStorage.getItem("token");
-	const [gameQtech, setGameQTech] = useState<any>()
-	const [gameAura, setGameAura] = useState<any>()
-	const [gameSuperNova, setGameSuperNova] = useState<any>()
-	const [gameSportBook, setGameSportBook] = useState<any>()
-	useEffect(() => {
-
-		axios.post(
-			"https://api.247365.exchange/admin-new-apis/user/alloted-casino-list", {},
-			{
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${token}`,
-				},
-			}
-		)
-			.then((response: any) => {
-				setGameQTech(response?.data?.data.find((item: any) => item?.name === "QTech"))
-				setGameAura(response?.data?.data.find((item: any) => item?.name === "Aura"))
-				setGameSuperNova(response?.data?.data.find((item: any) => item?.name === "Super Nova"))
-				setGameSportBook(response?.data?.data.find((item: any) => item?.name === "SportBook"))
-			})
-
-	}, [])
+	const isLoggedIn = useAppSelector(selectIsLoggedIn);
+	const { data } = useAllotedCasinoQuery(undefined, {
+		skip: !isLoggedIn,
+	});
 	return (
 		<SecondaryNavbarContainer>
 			<SecondaryNavbarList>
@@ -130,20 +112,10 @@ const SecondaryNavbar = () => {
 						</>
 					</SecondaryNavbarItem>
 				))}
-				{gameAura?.active === true ?
-
-					(liveCasino.map(navItem => (
-						<SecondaryNavbarItem
-							onClick={navItem.onClick}
-							highlighted={navItem.highlighted}
-							key={navItem.label}
-						>
-							<Link to={navItem.link}>{navItem.label}</Link>
-						</SecondaryNavbarItem>
-					)))
-					: gameSuperNova?.active === true ?
-
-						(liveCasino.map(navItem => (
+				{!isLoggedIn ||
+				data?.Aura?.active === true ||
+				data?.['Super Nova']?.active === true
+					? liveCasino.map(navItem => (
 							<SecondaryNavbarItem
 								onClick={navItem.onClick}
 								highlighted={navItem.highlighted}
@@ -151,23 +123,20 @@ const SecondaryNavbar = () => {
 							>
 								<Link to={navItem.link}>{navItem.label}</Link>
 							</SecondaryNavbarItem>
-						))) : ""}
+					  ))
+					: ''}
 
-
-
-				{gameQtech?.active === true ?
-					interNationalCasino.map(navItem => (
-						<SecondaryNavbarItem
-							onClick={navItem.onClick}
-							highlighted={navItem.highlighted}
-							key={navItem.label}
-						>
-							<Link to={navItem.link}>{navItem.label}</Link>
-						</SecondaryNavbarItem>
-					))
-
-					: ""
-				}
+				{!isLoggedIn || data?.QTech?.active === true
+					? interNationalCasino.map(navItem => (
+							<SecondaryNavbarItem
+								onClick={navItem.onClick}
+								highlighted={navItem.highlighted}
+								key={navItem.label}
+							>
+								<Link to={navItem.link}>{navItem.label}</Link>
+							</SecondaryNavbarItem>
+					  ))
+					: ''}
 			</SecondaryNavbarList>
 		</SecondaryNavbarContainer>
 	);

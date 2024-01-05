@@ -14,6 +14,7 @@ interface FeaturesSportsProps {
 	gameCode: string;
 	filterType: string;
 	type: string;
+	show?: boolean;
 }
 
 const FeaturedSports = (props: FeaturesSportsProps) => {
