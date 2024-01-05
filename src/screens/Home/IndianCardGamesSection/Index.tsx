@@ -85,7 +85,7 @@ const IndianCardGamesSection = () => {
 			<Section
 				heading='Lottery Games'
 				inplay='game'
-				// icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
+			// icon={<Icon src='/assets/icons/ace.svg#ace' isSvgIcon />}
 			>
 				<CardGamesContainer>
 					<CardGamesGrid>

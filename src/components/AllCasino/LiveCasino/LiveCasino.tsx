@@ -3,7 +3,7 @@ import "./LiveCasino.css"
 // import GamesPage from "./GamesPage";
 import HeaderPage from "./HeaderPage";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Modal } from "@mui/material";
 // import { Typography } from "antd";
 import CasinoPointPopup from "../CasinoPointPopup";
@@ -125,17 +125,88 @@ const LiveCasino = () => {
   //   setConfirmPopup(false)
   // }
   const handleClose = () => setConfirmPopup(false);
+  //   const [casionValue, setCasionValue] = useState()
 
+  //   useEffect(() => {
+  //     const token = localStorage.getItem("token");
+  //     axios.post(
+  //         "https://api.247365.exchange/admin-new-apis/api/getOneUserBetResult", {},
+  //         {
+  //             headers: {
+  //                 "Content-Type": "multipart/form-data",
+  //                 Authorization: `Bearer ${token}`,
+  //             },
 
+  //         }
+  //     ).then((res) => {
+  //         setCasionValue(res?.data?.data[type])
+  //         console.log(res?.data?.data[type], "sdfsdfsdfsd");
+  //     })
+  // }, [])
   const handleChangeaaSuperNowa = (val: any) => {
     if (localStorage.getItem("token")) {
-      setConfirmPopup(true)
-      setCasionId(val)
+
+      axios.post(
+        "https://api.247365.exchange/admin-new-apis/api/getOneUserBetResult", {},
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+
+        }
+      ).then((res) => {
+        // setCasionValue(res?.data?.data)
+        console.log(res?.data?.data, "sdfsdfsdfsd");
+        if (res?.data?.data?.supernowa === 1) {
+          if (casinoListPointType === "supernowa") {
+
+            nav("/Live-Casino-play", { state: val })
+          } else {
+            nav("/Live-Casino-Aura", { state: val })
+
+          }
+        } else {
+
+
+          setConfirmPopup(true)
+          setCasionId(val)
+        }
+      })
+
     }
   };
   const handleChangeaaAura = (val: any) => {
-    setConfirmPopup(true)
-    setCasionId(val)
+    if (localStorage.getItem("token")) {
+
+      axios.post(
+        "https://api.247365.exchange/admin-new-apis/api/getOneUserBetResult", {},
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+
+        }
+      ).then((res) => {
+        // setCasionValue(res?.data?.data)
+        console.log(res?.data?.data, "sdfsdfsdfsd");
+        if (res?.data?.data?.aura === 1) {
+          if (casinoListPointType === "supernowa") {
+
+            nav("/Live-Casino-play", { state: val })
+          } else {
+            nav("/Live-Casino-Aura", { state: val })
+
+          }
+        } else {
+
+
+          setConfirmPopup(true)
+          setCasionId(val)
+        }
+      })
+    }
   };
   const handleAgree = () => {
     if (casinoListPointType === "supernowa") {
@@ -150,6 +221,28 @@ const LiveCasino = () => {
 
   }
 
+  const token = localStorage.getItem("token");
+  const [gameQtech, setGameQTech] = useState<any>()
+  const [gameAura, setGameAura] = useState<any>()
+  const [gameSuperNova, setGameSuperNova] = useState<any>()
+  useEffect(() => {
+
+    axios.post(
+      "https://api.247365.exchange/admin-new-apis/user/alloted-casino-list", {},
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response: any) => {
+        setGameQTech(response?.data?.data.find((item: any) => item?.name === "QTech"))
+        setGameAura(response?.data?.data.find((item: any) => item?.name === "Aura"))
+        setGameSuperNova(response?.data?.data.find((item: any) => item?.name === "Super Nova"))
+      })
+
+  }, [])
 
   return (
     <div className="AllCasinoGame_IN_onePage">
@@ -164,9 +257,15 @@ const LiveCasino = () => {
       </div>
       <div className="gamebtnnnnsnnsns">
 
+        {gameSuperNova?.active === true ?
+          <button onClick={() => handleGameName("SuperNowa")} className="GameNameBtn_UIiiii">Super nowa</button>
+          : ""
+        }
 
-        <button onClick={() => handleGameName("SuperNowa")} className="GameNameBtn_UIiiii">Super nowa</button>
-        <button onClick={handleGameName} className="GameNameBtn_UIiiii">Aura</button>
+        {gameAura?.active === true ?
+          <button onClick={handleGameName} className="GameNameBtn_UIiiii">Aura</button>
+          : ""
+        }
 
       </div>
       <div className="gamedetttttttt">

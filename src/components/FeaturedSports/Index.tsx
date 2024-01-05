@@ -13,6 +13,7 @@ interface FeaturesSportsProps {
 	route: string;
 	gameCode: string;
 	filterType: string;
+	type: string;
 }
 
 const FeaturedSports = (props: FeaturesSportsProps) => {
@@ -29,6 +30,7 @@ const FeaturedSports = (props: FeaturesSportsProps) => {
 		navigate(route, { state: data })
 	}
 	return (
+		
 		<FeaturedSportsContainer
 			bgImage={background}
 			className='featured-sports-container'

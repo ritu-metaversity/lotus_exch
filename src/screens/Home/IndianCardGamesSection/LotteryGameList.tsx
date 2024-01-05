@@ -61,9 +61,33 @@ const LotteryGameList = () => {
     const handleChangeaa = (val: any) => {
         if (localStorage.getItem("token")) {
 
-            setConfirmPopup(true)
-            setCasionId(val)
+            axios.post(
+                "https://api.247365.exchange/admin-new-apis/api/getOneUserBetResult", {},
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+
+                }
+            ).then((res) => {
+                // setCasionValue(res?.data?.data)
+                console.log(res?.data?.data, "sdfsdfsdfsd");
+                if (res?.data?.data?.qtech === 1) {
+                    navigate("/Lottery-Game-play", { state: { "Game": val, "filterType": state?.filterType } })
+
+                    // navigate("/Card-Games-play", { state: vl })
+                } else {
+                    setConfirmPopup(true)
+                    setCasionId(val)
+                }
+            })
         }
+        // if (localStorage.getItem("token")) {
+
+        //     setConfirmPopup(true)
+        //     setCasionId(val)
+        // }
     }
     console.log(gameFilter, "jhygtfrdeszd");
     const handleAgree = () => {

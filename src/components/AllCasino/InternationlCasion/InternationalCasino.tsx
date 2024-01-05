@@ -169,10 +169,31 @@ const InternationalCasino = () => {
     }
   }, [])
   const handleGamePage = (vl: any) => {
+
+
     if (localStorage.getItem("token")) {
-    setConfirmPopup(true)
-    setCasionId(vl)
+
+      axios.post(
+        "https://api.247365.exchange/admin-new-apis/api/getOneUserBetResult", {},
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+
+        }
+      ).then((res) => {
+        // setCasionValue(res?.data?.data)
+        console.log(res?.data?.data, "sdfsdfsdfsd");
+        if (res?.data?.data?.qtech === 1) {
+          navigate("/Intergame-play", { state: vl })
+        } else {
+          setConfirmPopup(true)
+          setCasionId(vl)
+        }
+      })
     }
+
   }
   const handleAgree = () => {
     navigate("/Intergame-play", { state: casionId })

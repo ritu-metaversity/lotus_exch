@@ -12,6 +12,7 @@ import { CardGamesGrid } from '../IndianCardGamesSection/Index.styled';
 import CasinoPointPopup from '../../../components/AllCasino/CasinoPointPopup';
 import { Box, Modal } from "@mui/material";
 import { useState } from 'react';
+import axios from 'axios';
 
 const style = {
 	position: 'absolute' as 'absolute',
@@ -122,12 +123,38 @@ const CasinoGamesSection = () => {
 	const handleClose = () => setConfirmPopup(false);
 
 	const handleGameLobby = (vl: any) => {
+
 		if (localStorage.getItem("token")) {
 
-			console.log(vl, "Sdvkhgyuftcgv");
-			setConfirmPopup(true)
-			setCasionId(vl)
+			axios.post(
+				"https://api.247365.exchange/admin-new-apis/api/getOneUserBetResult", {},
+				{
+					headers: {
+						"Content-Type": "multipart/form-data",
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
+					},
+
+				}
+			).then((res: any) => {
+				// setCasionValue(res?.data?.data)
+				console.log(res?.data?.data, "sdfsdfsdfsd");
+				if (res?.data?.data?.qtech === 1) {
+					navigate("/International-Game-play", { state: vl })
+
+					// navigate("/Card-Games-play", { state: vl })
+				} else {
+					setConfirmPopup(true)
+					setCasionId(vl)
+				}
+			})
 		}
+
+		// if (localStorage.getItem("token")) {
+
+		// 	console.log(vl, "Sdvkhgyuftcgv");
+		// 	setConfirmPopup(true)
+		// 	setCasionId(vl)
+		// }
 	}
 	const handleAgree = () => {
 		navigate("/International-Game-play", { state: casionId })

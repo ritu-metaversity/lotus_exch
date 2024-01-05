@@ -4,9 +4,10 @@ import {
 	SecondaryNavbarItem,
 	SecondaryNavbarList,
 } from './Index.styled';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // import axios from 'axios';
 import { useLeftMenuDataOpenMutation } from '../../state/apis/main/apiSlice';
+import axios from 'axios';
 
 interface NavItem {
 	label: string;
@@ -16,19 +17,25 @@ interface NavItem {
 }
 
 const SecondaryNavbar = () => {
-	const SportsBook: Array<NavItem> = [
-		{
-			label: 'SportsBook',
-			link: localStorage.getItem('token') ? '/Sports_book' : '',
-			highlighted: true,
-		},
-	];
+
+
+
+	// const SportsBook: Array<NavItem> = [
+	// 	{
+	// 		label: 'SportsBook',
+	// 		link: localStorage.getItem('token') ? '/Sports_book' : '',
+	// 		highlighted: true,
+	// 	},
+	// ];
+
 	const liveCasino: Array<NavItem> = [
 		{
 			label: 'Live Casino',
 			link: '/live-casino',
 			highlighted: true,
-		},
+		}
+	]
+	const interNationalCasino: Array<NavItem> = [
 		{
 			label: 'International Casino',
 			link: '/Internationl-casino',
@@ -74,18 +81,43 @@ const SecondaryNavbar = () => {
 	console.log(leftMenuData, 'leftMenuData');
 
 	// https://api.247365.exchange/admin-new-apis/enduser/left-menu-data-open
+	const token = localStorage.getItem("token");
+	const [gameQtech, setGameQTech] = useState<any>()
+	const [gameAura, setGameAura] = useState<any>()
+	const [gameSuperNova, setGameSuperNova] = useState<any>()
+	const [gameSportBook, setGameSportBook] = useState<any>()
+	useEffect(() => {
 
+		axios.post(
+			"https://api.247365.exchange/admin-new-apis/user/alloted-casino-list", {},
+			{
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		)
+			.then((response: any) => {
+				setGameQTech(response?.data?.data.find((item: any) => item?.name === "QTech"))
+				setGameAura(response?.data?.data.find((item: any) => item?.name === "Aura"))
+				setGameSuperNova(response?.data?.data.find((item: any) => item?.name === "Super Nova"))
+				setGameSportBook(response?.data?.data.find((item: any) => item?.name === "SportBook"))
+			})
+
+	}, [])
 	return (
 		<SecondaryNavbarContainer>
 			<SecondaryNavbarList>
-				{SportsBook.map(navItem => (
-					<SecondaryNavbarItem
-						highlighted={navItem.highlighted}
-						key={navItem.label}
-					>
-						<Link to={navItem.link}>{navItem.label}</Link>
-					</SecondaryNavbarItem>
-				))}
+				{/* {gameSportBook?.active === true ?
+					SportsBook.map(navItem => (
+						<SecondaryNavbarItem
+							highlighted={navItem.highlighted}
+							key={navItem.label}
+						>
+							<Link to={navItem.link}>{navItem.label}</Link>
+						</SecondaryNavbarItem>
+					)) : ""} */}
+
 				{leftMenuData?.data.map((navItem: any) => (
 					<SecondaryNavbarItem
 						// highlighted={navItem.highlighted}
@@ -98,15 +130,44 @@ const SecondaryNavbar = () => {
 						</>
 					</SecondaryNavbarItem>
 				))}
-				{liveCasino.map(navItem => (
-					<SecondaryNavbarItem
-						onClick={navItem.onClick}
-						highlighted={navItem.highlighted}
-						key={navItem.label}
-					>
-						<Link to={navItem.link}>{navItem.label}</Link>
-					</SecondaryNavbarItem>
-				))}
+				{gameAura?.active === true ?
+
+					(liveCasino.map(navItem => (
+						<SecondaryNavbarItem
+							onClick={navItem.onClick}
+							highlighted={navItem.highlighted}
+							key={navItem.label}
+						>
+							<Link to={navItem.link}>{navItem.label}</Link>
+						</SecondaryNavbarItem>
+					)))
+					: gameSuperNova?.active === true ?
+
+						(liveCasino.map(navItem => (
+							<SecondaryNavbarItem
+								onClick={navItem.onClick}
+								highlighted={navItem.highlighted}
+								key={navItem.label}
+							>
+								<Link to={navItem.link}>{navItem.label}</Link>
+							</SecondaryNavbarItem>
+						))) : ""}
+
+
+
+				{gameQtech?.active === true ?
+					interNationalCasino.map(navItem => (
+						<SecondaryNavbarItem
+							onClick={navItem.onClick}
+							highlighted={navItem.highlighted}
+							key={navItem.label}
+						>
+							<Link to={navItem.link}>{navItem.label}</Link>
+						</SecondaryNavbarItem>
+					))
+
+					: ""
+				}
 			</SecondaryNavbarList>
 		</SecondaryNavbarContainer>
 	);

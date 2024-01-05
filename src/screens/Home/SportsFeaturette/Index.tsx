@@ -24,18 +24,18 @@ const SportsFeaturette = () => {
 			route: "/Game-play",
 			gameCode: "SPB-aviator",
 			filterType: "SPB",
+			type: "qtech"
 		},
-		{
-			icon: (
-				<Icon src={`${baseIconPath}/sportsbook.svg#sportsbook`} isSvgIcon />
-			),
-			name: 'Sportsbook',
-			background: `${baseBgPath}/sportsbook.png`,
+		// {
+		// 	icon: <Icon src={`${baseIconPath}/sportsbook.svg#sportsbook`} isSvgIcon />,
+		// 	name: 'Sportsbook',
+		// 	background: `${baseBgPath}/sportsbook.png`,
 
-			route: localStorage.getItem("token") ? "/Sports_book" : "",
-			gameCode: casinoListData.code,
-			filterType: casinoListData?.providerCode,
-		},
+		// 	route: localStorage.getItem("token") ? "/Sports_book" : "",
+		// 	gameCode: casinoListData.code,
+		// 	filterType: casinoListData?.providerCode,
+		// 	type: "qtech"
+		// },
 		{
 			icon: <Icon src={`${baseIconPath}/ecricket.svg#ecricket`} isSvgIcon />,
 			name: 'E-Cricket',
@@ -43,6 +43,7 @@ const SportsFeaturette = () => {
 			route: "",
 			gameCode: "SPB-aviator",
 			filterType: "SPB",
+			type: "qtech"
 		},
 		{
 			icon: <Icon src={`${baseIconPath}/slot.png`} />,
@@ -51,6 +52,7 @@ const SportsFeaturette = () => {
 			route: "/Slot-Games",
 			gameCode: "SPB-aviator",
 			filterType: "SPB",
+			type: "qtech"
 		},
 		{
 			icon: <Icon src={`${baseIconPath}/fishing.png`} />,
@@ -59,6 +61,7 @@ const SportsFeaturette = () => {
 			route: "/live-casino",
 			gameCode: "FishingGames",
 			filterType: "SPB",
+			type: "qtech"
 		},
 		{
 			icon: <Icon src={`${baseIconPath}/evolution.svg#evolution`} isSvgIcon />,
@@ -67,6 +70,7 @@ const SportsFeaturette = () => {
 			route: "/Game-play",
 			gameCode: "EVO-dhp",
 			filterType: "EVO",
+			type: "qtech"
 		},
 		{
 			icon: <Icon src={`${baseIconPath}/casino.svg#casino`} />,
@@ -75,6 +79,7 @@ const SportsFeaturette = () => {
 			route: "/live-casino",
 			gameCode: "LiveCasino",
 			filterType: "SPB",
+			type: "live"
 		},
 		{
 			icon: <Icon src={`${baseIconPath}/casino.svg#casino`} />,
@@ -83,6 +88,7 @@ const SportsFeaturette = () => {
 			route: "/Internationl-casino",
 			gameCode: "LiveCasino",
 			filterType: "SPB",
+			type: "qtech"
 		},
 		{
 			icon: <Icon src={`${baseIconPath}/card.png`} />,
@@ -91,6 +97,7 @@ const SportsFeaturette = () => {
 			route: "/Card-Game",
 			gameCode: "CardGame",
 			filterType: "SPB",
+			type: "qtech"
 		},
 		{
 			icon: <Icon src={`${baseIconPath}/multiplayer.png`} />,
@@ -99,8 +106,16 @@ const SportsFeaturette = () => {
 			route: "/live-casino",
 			gameCode: "multiplayerGame",
 			filterType: "SPB",
+			type: "qtech"
 		},
 	];
+
+	const token = localStorage.getItem("token");
+	const [gameQtech, setGameQTech] = useState<any>()
+	const [gameAura, setGameAura] = useState<any>()
+	const [gameSuperNova, setGameSuperNova] = useState<any>()
+	const [gameSportBook, setGameSportBook] = useState<any>()
+
 	useEffect(() => {
 		const TokenId = localStorage.getItem("token");
 		if (localStorage.getItem("token")) {
@@ -128,11 +143,31 @@ const SportsFeaturette = () => {
 
 				})
 		}
+		axios.post(
+			"https://api.247365.exchange/admin-new-apis/user/alloted-casino-list", {},
+			{
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		)
+			.then((response: any) => {
+				setGameQTech(response?.data?.data.find((item: any) => item?.name === "QTech"))
+				setGameAura(response?.data?.data.find((item: any) => item?.name === "Aura"))
+				setGameSuperNova(response?.data?.data.find((item: any) => item?.name === "Super Nova"))
+				setGameSportBook(response?.data?.data.find((item: any) => item?.name === "SportBook"))
+			})
 
 	}, [])
+
+	console.log(featuredSports.find((item: any) => item?.type === "qtech", "dushyantneisnfdjs"))
+
+	// {/* {gameQtech?.active === true && ["Slot Games", "Lottery", "Fantasy Games", "Internation Casino"].includes(key) */}
 	return (
 		<SportsFeaturetteContainer>
 			<SportsFeaturetteGrid>
+
 				{featuredSports.map(sports => (
 					<FeaturedSports key={sports.background} {...sports} />
 				))}

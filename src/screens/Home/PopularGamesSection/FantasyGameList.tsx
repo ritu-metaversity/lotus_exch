@@ -3,6 +3,7 @@ import "./FantasyGameList.css"
 import { useEffect, useState } from "react";
 import { Box, Modal } from "@mui/material";
 import CasinoPointPopup from "../../../components/AllCasino/CasinoPointPopup";
+import axios from "axios";
 
 
 const style = {
@@ -227,10 +228,35 @@ const FanctasyGameList = () => {
   // navigate("/home")
 
   const handleGameFastasy = (vl: any) => {
+
     if (localStorage.getItem("token")) {
-    setConfirmPopup(true)
-    setCasionId(vl)
+
+      axios.post(
+        "https://api.247365.exchange/admin-new-apis/api/getOneUserBetResult", {},
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+
+        }
+      ).then((res: any) => {
+        // setCasionValue(res?.data?.data)
+        console.log(res?.data?.data, "sdfsdfsdfsd");
+        if (res?.data?.data?.qtech === 1) {
+          navigate("/Fantasy-Game-play", { state: { "Game": vl, "filterType": state } })
+        } else {
+          setConfirmPopup(true)
+          setCasionId(vl)
+        }
+      })
     }
+
+    // if (localStorage.getItem("token")) {
+    // setConfirmPopup(true)
+    // setCasionId(vl)
+    // }
+
   }
   const handleAgree = () => {
     navigate("/Fantasy-Game-play", { state: { "Game": casionId, "filterType": state } })
