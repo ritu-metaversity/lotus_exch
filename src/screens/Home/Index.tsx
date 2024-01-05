@@ -8,9 +8,8 @@ import IndianCardGamesSection from './IndianCardGamesSection/Index';
 import CasinoGamesSection from './CasinoGamesSection/Index';
 
 import Footer from '../../components/Footer/Index';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import UpcommingEvents from './InPlaySection/UpcommingEvents';
-import axios from 'axios';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAllotedCasinoQuery } from '../../state/apis/main/apiSlice';
 import { selectIsLoggedIn } from '../../state/features/auth/authSlice';

@@ -3,7 +3,7 @@ import "./LiveCasino.css"
 // import GamesPage from "./GamesPage";
 import HeaderPage from "./HeaderPage";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from 'react';
 import { Box, Modal } from "@mui/material";
 // import { Typography } from "antd";
 import CasinoPointPopup from "../CasinoPointPopup";

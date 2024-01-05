@@ -4,13 +4,12 @@ import {
 	SecondaryNavbarItem,
 	SecondaryNavbarList,
 } from './Index.styled';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 // import axios from 'axios';
 import {
 	useAllotedCasinoQuery,
 	useLeftMenuDataOpenMutation,
 } from '../../state/apis/main/apiSlice';
-import axios from 'axios';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { selectIsLoggedIn } from '../../state/features/auth/authSlice';
 
