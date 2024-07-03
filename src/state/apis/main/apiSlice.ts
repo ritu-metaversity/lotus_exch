@@ -13,7 +13,7 @@ import toast from 'react-hot-toast';
 import { navGlobalRef } from '../../../screens/Layout/Index';
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: import.meta.env.VITE_APP_API_URL,
+	baseUrl: "https://adminapi.247idhub.com/admin-new-apis",
 	prepareHeaders: headers => {
 		headers.set('Authorization', `Bearer ${localStorage.getItem('token')}`);
 	},

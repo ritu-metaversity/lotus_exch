@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { MatchDetails, GetMatchesBySports } from './apiSlice.types';
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: import.meta.env.VITE_BETFAIR_BASE_API_URL,
+	baseUrl: "https://oddsapi.247idhub.com/betfair_api",
 });
 
 export const betfairApiSlice = createApi({

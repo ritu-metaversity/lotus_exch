@@ -17,13 +17,13 @@ import {
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { logout, selectUser } from '../../state/features/auth/authSlice';
 import SecondaryNavbar from './SecondaryNavbar';
-import "./Header.css"
-import { useIsSelfByAppUrlMutation } from '../../state/apis/main/apiSlice';
+import './Header.css';
+// import { useIsSelfByAppUrlMutation } from '../../state/apis/main/apiSlice';
 import SignIn from '../../screens/SignIn/Index';
 import AccountPopup from './AccountPopup';
 import { useDispatch } from 'react-redux';
-import ammount from "../../../public/assets/icons/settingAcount.svg"
-import ammountLog from "../../../public/assets/icons/login.svg"
+import ammount from '../../../public/assets/icons/settingAcount.svg';
+import ammountLog from '../../../public/assets/icons/login.svg';
 // interface NavbarProps {
 // 	sidebarExpanded: boolean;
 // 	rightSidebarExpanded: boolean;
@@ -34,46 +34,40 @@ import ammountLog from "../../../public/assets/icons/login.svg"
 const NavbarDesktop = () => {
 	const [open, setOpen] = React.useState(false);
 	const handleClose = () => setOpen(false);
-	const [loginRegister, setLoginRegister] = React.useState("")
-	const dispatch = useDispatch()
+	const [loginRegister, setLoginRegister] = React.useState('');
+	const dispatch = useDispatch();
 	const loginRegisterButtonSwitch = (val: any) => {
-		setLoginRegister(val)
-		console.log(val, "adfsdffsdfsd");
-
-	}
-
+		setLoginRegister(val);
+		console.log(val, 'adfsdffsdfsd');
+	};
 
 	const loginRegisterButtonSwitchNew = (val: any) => {
-		setLoginRegister(val)
-		console.log(val, "adfsdffsdfsd");
-
-	}
+		setLoginRegister(val);
+		console.log(val, 'adfsdffsdfsd');
+	};
 
 	const navigate = useNavigate();
 	const user = useAppSelector(selectUser);
-	console.log(user, "dfbvfbdbdgbwr");
+	console.log(user, 'dfbvfbdbdgbwr');
 
 	const handleLogout = () => {
-		navigate('/home')
+		navigate('/home');
 		localStorage.clear();
-		dispatch(logout())
+		dispatch(logout());
 	};
 
 	useEffect(() => {
 		// `${REACT_APP_API_URL}/util/validate-jwt-token`
-	}, [])
+	}, []);
 	const handleSignInClick = () => {
-		setOpen(true)
-		setLoginRegister("login")
-
+		setOpen(true);
+		setLoginRegister('login');
 	};
-
 
 	const handleSignUpClick = () => {
 		// navigate('/signup')
-		setOpen(true)
-		setLoginRegister("register")
-
+		setOpen(true);
+		setLoginRegister('register');
 	};
 	// <img src="../../../public/assets/icons/Logo-lotus365.png" style={{ width: "105px" }} />
 	//<IconButton
@@ -81,7 +75,7 @@ const NavbarDesktop = () => {
 	//							onBlur={() => setSidebarExpanded(false)}
 	//							color='inherit'
 	//							aria-label='menu'
-	//						></IconButton> 
+	//						></IconButton>
 	// <MenuIcon fontSize='inherit' />
 	// <SignInButton variant='accent' onClick={handleSignInClick}>
 	// 									Log In
@@ -90,43 +84,38 @@ const NavbarDesktop = () => {
 	// 								<SignInLink onClick={handleSignInClick}>Log In</SignInLink>
 	// 								<SignUpLink onClick={handleSignUpClick}>Sign Up</SignUpLink>
 
-	const [triger, { data: IsSelfByAppUrl }] = useIsSelfByAppUrlMutation();
+	// const [triger, { data: IsSelfByAppUrl }] = useIsSelfByAppUrlMutation();
 
-	useEffect(() => {
-		triger({ appUrl: window.location.hostname.replace("www.", "") })
-	}, [])
-	const [showPopup, setShowPopup] = useState(false)
+	// useEffect(() => {
+	// 	triger({ appUrl: window.location.hostname.replace('www.', '') });
+	// }, []);
+	const [showPopup, setShowPopup] = useState(false);
 	const handleAccountPopup = () => {
 		if (showPopup === false) {
-			setShowPopup(true)
+			setShowPopup(true);
 		} else {
-			setShowPopup(false)
-
+			setShowPopup(false);
 		}
-	}
+	};
 	const popupclose = () => {
-		setShowPopup(false)
-		console.log("lkjhgrttry657");
-
-	}
+		setShowPopup(false);
+		console.log('lkjhgrttry657');
+	};
 	const handleHomee = () => {
-		navigate('/home')
-
-	}
+		navigate('/home');
+	};
 	return (
 		<NavbarContainer>
-			<AppBar
-				position={'static'}
-			>
+			<AppBar position={'static'}>
 				{/* <StyledToolbar> */}
 				<div className='wrapppor_for_both_view'>
-					<div className="wrapppor_for_Mobile_view">
+					<div className='wrapppor_for_Mobile_view'>
 						{/* <div className='left_side_logo_menu'>
 							<MenuIcon style={{ fontSize: "26px" }} onClick={() => setSidebarExpanded(!sidebarExpanded)} />
 							<img src="../../../public/assets/icons/Logo-lotus365.png" style={{ width: "105px" }} onClick={handleLogoClick} />
 
 						</div> */}
-						{localStorage?.getItem("token") ?
+						{localStorage?.getItem('token') ? (
 							<div className='right_side_menu_pnl'>
 								{/* <SearchIcon style={{ fontSize: "26px" }} />
 								<div onClick={() => setRightSideBarExpanded(o => !o)} className='profile_btn_andRightMenu'>
@@ -135,57 +124,67 @@ const NavbarDesktop = () => {
 									<span className='profit_data'>1,000</span>
 								</div> */}
 							</div>
-							:
+						) : (
 							<AuthButtonContainer>
-
 								<SignInButton variant='accent' onClick={handleSignInClick}>
 									Log In
 								</SignInButton>
 								<SingUpButton onClick={handleSignUpClick}>Sign Up</SingUpButton>
 							</AuthButtonContainer>
-						}
-
+						)}
 					</div>
-					<div className="wrapppor_for_Desktop_view">
-						<div className='wrappor_inner_header' >
-							<img src={IsSelfByAppUrl?.data?.logo} style={{ width: "144px", height: "37px" }} onClick={handleHomee} />
+					<div className='wrapppor_for_Desktop_view'>
+						<div className='wrappor_inner_header'>
+							<img
+								src="./assets/logo.png"
+								style={{ width: '144px', height: '37px' }}
+								onClick={handleHomee}
+							/>
 							<NavbarDateTime />
 							<NavbarSearch />
-							{localStorage?.getItem("token") ?
+							{localStorage?.getItem('token') ? (
 								<div className='header_last_login_details'>
 									<span>Logged in as {user?.userId}</span>
 									{/* <span>Last logged in: 09/09/2023 22:25</span> */}
-								</div> : ""}
-							{localStorage?.getItem("token") ?
+								</div>
+							) : (
+								''
+							)}
+							{localStorage?.getItem('token') ? (
 								<div className='header_Signup_login_btn'>
 									<span onClick={handleAccountPopup}>
-										<img src={ammount} style={{ padding: "0px 5px" }} />
-										Account</span>
-									{showPopup &&
-
-										<AccountPopup popupclose={popupclose} />
-									}
+										<img src={ammount} style={{ padding: '0px 5px' }} />
+										Account
+									</span>
+									{showPopup && <AccountPopup popupclose={popupclose} />}
 									<span onClick={handleLogout}>
-										<img src={ammountLog} style={{ padding: "0px 5px" }} />
-										LogOut</span>
+										<img src={ammountLog} style={{ padding: '0px 5px' }} />
+										LogOut
+									</span>
 								</div>
-								:
+							) : (
 								<div className='header_Signup_login_btn'>
 									{/* <img src='.././../../public/assets/icons/login.svg' /> */}
 									{/* <img src='.././../../public/assets/settingAcount.svg' /> */}
 									<span onClick={handleSignInClick}>Log In</span>
-									<span onClick={handleSignUpClick}>
-										Sign Up</span>
-								</div>}
+									<span onClick={handleSignUpClick}>Sign Up</span>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
 				{/* </StyledToolbar> */}
 			</AppBar>
 			<SecondaryNavbar />
-			<SignIn open={open} handleClose={handleClose} closeLoginModal={() => setOpen(false)} loginRegister={loginRegister} loginRegisterButtonSwitch={loginRegisterButtonSwitch} loginRegisterButtonSwitchNew={loginRegisterButtonSwitchNew} />
+			<SignIn
+				open={open}
+				handleClose={handleClose}
+				closeLoginModal={() => setOpen(false)}
+				loginRegister={loginRegister}
+				loginRegisterButtonSwitch={loginRegisterButtonSwitch}
+				loginRegisterButtonSwitchNew={loginRegisterButtonSwitchNew}
+			/>
 			{/* <SignUp signUpopen={signUpopen} handleClose={handleCloseSignUp} /> */}
-
 		</NavbarContainer>
 	);
 };

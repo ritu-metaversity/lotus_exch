@@ -92,7 +92,7 @@ const NavbarMobile = (props: NavbarProps) => {
 								:
 								(<ArrowBackIcon style={{ fontSize: "25px" }}  onClick={()=>handleBackBtn()}/>)
 							}
-							<img src={IsSelfByAppUrl?.data?.logo} style={{ width: "133px", height: "60px" }} onClick={handleLogoClick} />
+							<img src="./assets/logo.png" style={{ width: "133px", height: "60px" }} onClick={handleLogoClick} />
 						</div>
 						{localStorage.getItem("token") ?
 							<div className='right_side_menu_pnl'>

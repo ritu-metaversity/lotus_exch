@@ -3,17 +3,19 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { yupResolver } from '@hookform/resolvers/yup';
-import "./SignIn.css"
+import './SignIn.css';
 import EyeOpen from '@mui/icons-material/RemoveRedEye';
-import EyeClose from '@mui/icons-material/VisibilityOff'; import {
-	SignInWrapper,
-} from './Index.styled';
+import EyeClose from '@mui/icons-material/VisibilityOff';
+import { SignInWrapper } from './Index.styled';
 import { signInSchema, SignInFormData } from '../../validations/schemas/signIn';
-import { useIsSelfByAppUrlMutation, useSingInMutation } from '../../state/apis/main/apiSlice';
+import {
+	// useIsSelfByAppUrlMutation,
+	useSingInMutation,
+} from '../../state/apis/main/apiSlice';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { login } from '../../state/features/auth/authSlice';
 import { Modal } from '@mui/material';
-import CloseBtnnLogin from "../../../public/assets/icons/CloseBtnnLogin.svg"
+import CloseBtnnLogin from '../../../public/assets/icons/CloseBtnnLogin.svg';
 import SignUpPage from './SignUpPage';
 import axios from 'axios';
 const initialFormValues: SignInFormData = {
@@ -21,20 +23,23 @@ const initialFormValues: SignInFormData = {
 	password: '',
 };
 
-const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitch, loginRegisterButtonSwitchNew }: any) => {
-
+const SignIn = ({
+	open,
+	closeLoginModal,
+	loginRegister,
+	loginRegisterButtonSwitch,
+	loginRegisterButtonSwitchNew,
+}: any) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const [triger, { data: IsSelfByAppUrl }] = useIsSelfByAppUrlMutation();
-	useEffect(() => {
-		triger({ appUrl: window.location.hostname.replace("www.", "") })
-	}, [])
+	// const [triger, { data: IsSelfByAppUrl }] = useIsSelfByAppUrlMutation();
+	// useEffect(() => {
+	// 	triger({ appUrl: window.location.hostname.replace('www.', '') });
+	// }, []);
 	const [showPassword, setShowPassword] = useState(false);
 
 	const [signIn, { data, error }] = useSingInMutation();
-	const {
-
-	} = useForm<SignInFormData>({
+	const {} = useForm<SignInFormData>({
 		defaultValues: initialFormValues,
 		resolver: yupResolver(signInSchema),
 	});
@@ -43,22 +48,22 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 		if (data?.userId) {
 			dispatch(login(data));
 			let navigationUrl = '/home';
-			handleCloseModal()
+			handleCloseModal();
 			axios
 				.post(
-					"https://api.247idhub.com/api/qtech/authentication",
+					'https://api.247idhub.com/api/qtech/authentication',
 					{},
 					{
 						headers: {
-							"Content-Type": "application/json",
+							'Content-Type': 'application/json',
 							Authorization: `Bearer ${data?.token}`,
 						},
 					}
 				)
-				.then((response) => {
-					localStorage.setItem("GameToken", response?.data?.data?.access_token);
-				})
-			console.log(data?.token, "erbbqeevbqeve");
+				.then(response => {
+					localStorage.setItem('GameToken', response?.data?.data?.access_token);
+				});
+			console.log(data?.token, 'erbbqeevbqeve');
 
 			if (data.passwordtype === 'old') navigationUrl = '/change-password';
 			navigate(navigationUrl);
@@ -74,15 +79,14 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 			toast.error(message);
 		}
 	}, [data, error]);
-	const [loginRegisterrrrr, setLoginRegisterrrrrr] = useState<string>("")
+	const [loginRegisterrrrr, setLoginRegisterrrrrr] = useState<string>('');
 	useEffect(() => {
-		setLoginRegisterrrrrr(loginRegister)
-	}, [loginRegister])
-
+		setLoginRegisterrrrrr(loginRegister);
+	}, [loginRegister]);
 
 	const handlePasswordVisibility = () => {
-		console.log("dsfsdfsdfc")
-		setShowPassword(!showPassword)
+		console.log('dsfsdfsdfc');
+		setShowPassword(!showPassword);
 	};
 
 	// const navigateToSignUp = () => navigate('/signup');
@@ -93,33 +97,28 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 	// 	signIn({ ...data, appUrl: window.location.hostname });
 	// };
 
-	const [userId, setLogin] = useState("");
-	const [password, setPassword] = useState("");
-	const host = window.location.hostname.replace("www.", "");
+	const [userId, setLogin] = useState('');
+	const [password, setPassword] = useState('');
+	const host = window.location.hostname.replace('www.', '');
 
-	const [loadinLogin, setLoadingLogin] = useState(false)
+	const [loadinLogin, setLoadingLogin] = useState(false);
 
-	console.log(data, loadinLogin, "mjhygtfrdxcvb");
-
+	console.log(data, loadinLogin, 'mjhygtfrdxcvb');
 
 	const handleClick = async (e: any) => {
 		e.preventDefault();
-		setLoadingLogin(true)
+		setLoadingLogin(true);
 
-		if (password === "" && userId === "") {
-
-			setLoadingLogin(false)
-			return toast.error("All fields are mandatory")
-
+		if (password === '' && userId === '') {
+			setLoadingLogin(false);
+			return toast.error('All fields are mandatory');
 		} else {
-
-
 			const data = {
 				userId,
 				password,
-				appUrl: host === "localhost" ? "localhost" : host,
+				appUrl: host === 'localhost' ? 'localhost' : host,
 			};
-			signIn(data)
+			signIn(data);
 			// axios
 			// 	.post(
 			// 		"https://api.247365.exchange/admin-new-apis/login/client-login",
@@ -207,116 +206,153 @@ const SignIn = ({ open, closeLoginModal, loginRegister, loginRegisterButtonSwitc
 	// 			})
 	// }
 	const handleChange = (e: any) => {
-		if (e.target.name === "login") {
+		if (e.target.name === 'login') {
 			setLogin(e.target.value);
-		} else if (e.target.name === "password") {
+		} else if (e.target.name === 'password') {
 			setPassword(e.target.value);
 		}
 	};
 
 	const handleCloseModal = () => {
-		closeLoginModal(false)
-	}
+		closeLoginModal(false);
+	};
 
 	const handleRegisterBtn = () => {
-		setLoginRegisterrrrrr("register")
-	}
+		setLoginRegisterrrrrr('register');
+	};
 
 	const handleSwitchLoginReg = (val: any) => {
-		loginRegisterButtonSwitchNew(val)
-	}
+		loginRegisterButtonSwitchNew(val);
+	};
 	return (
-
 		<SignInWrapper>
-
 			<Modal
-
 				open={open}
-				aria-labelledby="modal-modal-title"
-				aria-describedby="modal-modal-description"
+				aria-labelledby='modal-modal-title'
+				aria-describedby='modal-modal-description'
 				className='signin_popup_forlogin'
 			>
-				{loginRegisterrrrr === "login" ?
-
-					< div className='login-step-wrapper '>
+				{loginRegisterrrrr === 'login' ? (
+					<div className='login-step-wrapper '>
 						<div className='login_tabs'>
-							<div className={`sign_up  ${loginRegisterrrrr === "login" ? "inActiveRight" : ""}`} onClick={() => handleSwitchLoginReg("register")} style={{ cursor: "pointer" }}>Sign Up</div>
-							<div className={`login_in`} onClick={() => handleSwitchLoginReg("login")}     >Login In</div>
+							<div
+								className={`sign_up  ${
+									loginRegisterrrrr === 'login' ? 'inActiveRight' : ''
+								}`}
+								onClick={() => handleSwitchLoginReg('register')}
+								style={{ cursor: 'pointer' }}
+							>
+								Sign Up
+							</div>
+							<div
+								className={`login_in`}
+								onClick={() => handleSwitchLoginReg('login')}
+							>
+								Login In
+							</div>
 						</div>
 
 						<div className='pop-up-content_title'>
-							<img src={IsSelfByAppUrl?.data?.logo} className='pop-up-content_title-logo' />
-							<img onClick={handleCloseModal} src={CloseBtnnLogin} className='desk_modal' style={{ cursor: "pointer" }} />
+							<img
+								// src={IsSelfByAppUrl?.data?.logo}
+								src='./assets/logo.png'
+								className='pop-up-content_title-logo'
+							/>
+							<img
+								onClick={handleCloseModal}
+								src={CloseBtnnLogin}
+								className='desk_modal'
+								style={{ cursor: 'pointer' }}
+							/>
 
-							<img onClick={handleCloseModal} src="https://lotus365.co/static/media/closeLogin.3968ed62.svg" className='crossBtnLogog' style={{ cursor: "pointer" }} />
-
-
-
+							<img
+								onClick={handleCloseModal}
+								src='https://lotus365.co/static/media/closeLogin.3968ed62.svg'
+								className='crossBtnLogog'
+								style={{ cursor: 'pointer' }}
+							/>
 						</div>
 						<form className='login-step-content' onSubmit={handleClick}>
 							<div className='login-step-content__title'>Log in</div>
-							<div className='loginInput_div' >
+							<div className='loginInput_div'>
 								<input
 									autoComplete='off'
 									className='loginInput'
-									placeholder="Username"
+									placeholder='Username'
 									value={userId}
-									name="login"
+									name='login'
 									onChange={handleChange}
 								/>
 								<input
 									autoComplete='off'
 									className='loginInput input_show'
-									name="password"
-									placeholder="Password"
+									name='password'
+									placeholder='Password'
 									value={password}
 									onChange={handleChange}
 									type={showPassword ? 'text' : 'password'}
 								/>
 
-
-
-								<button onClick={handlePasswordVisibility} type='button' className='eyscloseeyelcoe' >
-									{showPassword ? <EyeClose style={{ fontSize: "20px" }} /> : <EyeOpen style={{ fontSize: "20px" }} />}
+								<button
+									onClick={handlePasswordVisibility}
+									type='button'
+									className='eyscloseeyelcoe'
+								>
+									{showPassword ? (
+										<EyeClose style={{ fontSize: '20px' }} />
+									) : (
+										<EyeOpen style={{ fontSize: '20px' }} />
+									)}
 								</button>
 							</div>
 
-							<div className='pop-up-content__buttons' >
+							<div className='pop-up-content__buttons'>
 								{/* #979797 */}
 								{/* background-color: #f4d820; */}
-								<button className='log_in_btn_btn' type='submit' style={{ backgroundColor: password && userId !== "" ? "#f4d820" : "#979797" }} disabled={password && userId !== "" ? false : true}>
-									<div className="_shadow"></div>
+								<button
+									className='log_in_btn_btn'
+									type='submit'
+									style={{
+										backgroundColor:
+											password && userId !== '' ? '#f4d820' : '#979797',
+									}}
+									disabled={password && userId !== '' ? false : true}
+								>
+									<div className='_shadow'></div>
 									Log in
 								</button>
 							</div>
-							<div className='pop-up-content__buttons-mobileView ' >
+							<div className='pop-up-content__buttons-mobileView '>
 								{/* #979797 */}
 								{/* background-color: #f4d820; */}
-								<button className='log_in_btn_btn' type='submit' style={{ backgroundColor: "#f4d820" }} disabled={password && userId !== "" ? false : true}>
-									<div className="_shadow"></div>
+								<button
+									className='log_in_btn_btn'
+									type='submit'
+									style={{ backgroundColor: '#f4d820' }}
+									disabled={password && userId !== '' ? false : true}
+								>
+									<div className='_shadow'></div>
 									Log in
 								</button>
 							</div>
-							<div className='pop-up-content__buttons registerBtnHide' onClick={handleRegisterBtn}>
-
-								<button className='register-button-link'>
-									Register now
-								</button>
+							<div
+								className='pop-up-content__buttons registerBtnHide'
+								onClick={handleRegisterBtn}
+							>
+								<button className='register-button-link'>Register now</button>
 							</div>
 						</form>
 						{/* </div> */}
-
 					</div>
-
-					:
-					<SignUpPage loginRegisterrrrr={loginRegisterrrrr} closeLoginModal={closeLoginModal} loginRegisterButtonSwitch={loginRegisterButtonSwitch} />
-				}
-			</Modal >
-
-
-
-
-		</SignInWrapper >
+				) : (
+					<SignUpPage
+						loginRegisterrrrr={loginRegisterrrrr}
+						closeLoginModal={closeLoginModal}
+						loginRegisterButtonSwitch={loginRegisterButtonSwitch}
+					/>
+				)}
+			</Modal>
+		</SignInWrapper>
 	);
 };
 
