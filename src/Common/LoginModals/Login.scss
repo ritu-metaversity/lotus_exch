@@ -1,0 +1,55 @@
+.input-login{
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    outline: none;
+    font-size: 12px;
+    margin-bottom: 25px;
+    padding: 10px;
+    width: 100%;
+}
+
+.pass_div{
+    position: relative;
+}
+
+.input-password{
+    width: 100%;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    outline: none;
+    font-size: 12px;
+    margin-bottom: 25px;
+    padding: 10px;
+   
+}
+
+.show-password{
+    cursor: pointer;
+    border: none;
+    background: none;
+    position: absolute;
+    font-size: 20px;
+    top: 6px;
+    right: 0;
+    color: #9b9b9b;
+}
+
+
+.button[disabled], .button[disabled]:focus, .button[disabled]:hover {
+    background: #777777 !important;
+    opacity: 1;
+    color: #ffffff !important;
+    cursor: default;
+}
+
+.logo_login{
+    height: 60px;
+    @media screen and (max-width:"800px") {
+        height: 100px;
+    }
+}
+
+.login-form{
+    width: 100%;
+    overflow: hidden;
+}

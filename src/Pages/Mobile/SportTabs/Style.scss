@@ -1,0 +1,32 @@
+.live_tab-group-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    background: #000000;
+    position: relative;
+    .live_tab {
+        flex-grow: 1;
+        flex-basis: 0;
+        border-bottom: 3px solid #000000;
+        padding: 16px  0;
+        text-align: center;
+        color: #737373;
+        text-transform: uppercase;
+        white-space: nowrap;
+        font-size: 11px;
+        font-weight: normal;
+    }
+    .live_tab.active {
+        color: #fff;
+        font-weight: normal;
+    }
+}
+
+.live_tab-group-container .active-tab-indicator {
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    background: #ffc629;
+    transition: left .2s;
+   
+}

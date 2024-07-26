@@ -1,0 +1,183 @@
+.event_details {
+    .market-listing-table {
+        width: 100%;
+        margin-bottom: 20px;
+        color: #000;
+        border-collapse: collapse;
+        border-spacing: 0;
+        .title {
+            text-align: left;
+            padding: 4px 8px !important;
+            line-height: 1.42857143;
+            vertical-align: middle;
+        }
+        .two-cells-header {
+            width: 126px;
+        }
+        tbody {
+            border: 1px solid #ddd;
+            tr {
+                transition: background-color ease 0.5s;
+                background-color: #fff;
+                text-align: left;
+                .event-row {
+                    padding: 4px 8px !important;
+                    border-bottom: 1px solid #ddd;
+                    height: 33px;
+                    .event-flex-row {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        .event-col {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            &:nth-child(1) {
+                                width: calc(100% - 72px);
+                            }
+                            svg{
+                                font-size: 16px;
+                                color: #e4c41e;
+                            }
+                            .favourite-icon {
+                                height: 18px;
+                                flex: 0 0 20px;
+                                cursor: pointer;
+                            }
+                            .event-name {
+                                color: #000;
+                                font-weight: bold;
+                                line-height: 22px;
+                                text-decoration: none;
+                                margin-left: 4px;
+                            }
+                            .event-time {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-end;
+                                width: 50px;
+                                line-height: 14px;
+                                text-align: right;
+                            }
+                            small {
+                                font-size: 80%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .inner-table {
+            border-collapse: collapse;
+            margin-bottom: 0;
+            position: absolute;
+            height: 100%;
+            top: -1px;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            right: 0;
+            td.back {
+                cursor: pointer;
+                text-align: center;
+                background-color: #a7d8fd;
+                position: relative;
+            }
+            td.lay {
+                cursor: pointer;
+                text-align: center;
+                background-color: #f9c9d4;
+                position: relative;
+            }
+            td.empty {
+                text-align: center;
+            }
+        }
+        .status-label-more {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+            text-decoration: none;
+            height: 33px;
+            text-align: center;
+            width: 380px;
+        }
+        .status-label-more-text {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .status.more {
+            padding: 0;
+            color: #000;
+            background: #a7d8fd;
+        }
+    }
+}
+
+.market-listing-table > thead th,
+.market-listing-table > tbody td {
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.market-listing-table > thead > tr > th {
+    padding-top: 0;
+}
+.market-listing-table > thead > tr > th,
+.market-listing-table > tbody tr td {
+    padding: 4px 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+.market-listing-table > thead > tr > th {
+    text-align: center;
+}
+
+.sport-wrapper .icon-star-empty,
+.sport-wrapper .icon-star {
+    width: 20px;
+    font-size: 14px;
+    display: inline-block;
+    color: #e4c41e;
+}
+
+.market-listing-table > tbody tr td:not(.event-row) {
+    border: 1px solid #ddd;
+}
+
+.market-listing-table .inner-table-container {
+    border-collapse: collapse;
+    position: relative;
+}
+.market-listing-table > tbody tr td {
+    height: 33px;
+}
+
+.market-listing-table > tbody tr {
+    transition: background-color ease 0.5s;
+    background-color: #fff;
+}
+
+.market-listing-table th.back,
+.market-listing-table td.back,
+.market-listing-table th.lay,
+.market-listing-table td.lay,
+.market-listing-table th.empty,
+.market-listing-table td.empty,
+.market-listing-table .bet-button-wrapper {
+    width: 60px;
+}
+
+.bet-button-wrapper {
+    width: calc(63px - 2px);
+}
+.odds {
+    font-weight: normal;
+    font-family: Lato, Avenir, Verdana, Nunito;
+}
+.size {
+    display: none;
+}

@@ -1,0 +1,164 @@
+.inplay-upcoming-container {
+    box-sizing: border-box;
+    padding: 8px;
+    color: #000000;
+    .sport-events-group-container {
+        .sport-group-header {
+            background: #ffffff;
+            display: flex;
+            padding: 12px 0 4px 8px;
+            .group-title {
+                flex: 1;
+                color: #000000;
+                font-size: 12px;
+                font-weight: 700;
+            }
+        }
+    }
+    .group-odds-title {
+        --odds-size: 138px;
+        width: max(20%, var(--odds-size));
+        flex-shrink: 1;
+        display: flex;
+        justify-content: stretch;
+        text-align: center;
+        align-items: flex-end;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 10px;
+        color: #000000;
+        @media screen and (max-width: 600px) {
+            --odds-size: 146px;
+        }
+        div {
+            width: 100%;
+        }
+    }
+    .event-item.first {
+        border-top: 1px solid #f2f2f2;
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .market {
+        position: relative;
+        display: flex;
+        gap: 2px;
+        align-items: stretch !important;
+        justify-content: space-between;
+        color: #000000;
+        padding: 2px 2px 0 4px;
+        margin: 0 !important;
+        min-height: 43px;
+        .market-title {
+            flex: 1;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+            font-size: 10px;
+            cursor: pointer;
+            
+        }
+
+        .info-box {
+            display: flex;
+            flex: 0 0 64px;
+            flex-direction: row;
+            align-items: center;
+            background-color: unset;
+            .info {
+                font-size: 10px;
+                color: #cc5f36;
+                background-color: #ffffff;
+                display: flex;
+                flex: 0 0 65px;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 39px;
+                margin: 0px;
+                .label {
+                    background: #257b23;
+                    border-radius: 8px;
+                    width: 45px;
+                    height: 16px;
+                    color: #fff;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-style: italic;
+                    font-weight: 500;
+                    font-size: 10px;
+                }
+            }
+        }
+        .competitors{
+            position: relative;
+            flex: 1 1 auto;
+            overflow: hidden;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: nowrap;
+            &::before {
+                    content: "";
+                    width: 1px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: calc(100% - 2px);
+                    background: #f2f2f2;
+                }
+                .width-wrapper {
+                    width: 100%;
+                }
+                .line {
+                    padding: 2px 0px 2px 5px;
+                }
+                .name {
+                    overflow: hidden;
+                    padding-right: 0;
+                    padding-left: 8px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    font-weight: 700;
+                    color: #000000;
+                }
+        }
+    }
+     .more {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 42px;
+        color: #000000;
+        background: #a7d8fd;
+        z-index: 1;
+        font-size: 14px;
+    }
+}
+
+.title-item:not(:last-child):after {
+    content: " | ";
+}
+
+@media screen and (max-width: 599px) {
+    .hidden-on-short-screen {
+        display: none !important;
+    }
+}
+
+
+
+@media screen and (max-width: 599px) {
+    .odds {
+        width: 144px;
+        overflow: hidden;
+    }
+}
