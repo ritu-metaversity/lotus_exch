@@ -1,0 +1,110 @@
+.wrapppor_for_both_view {
+    width: 100%;
+}
+
+/* Mobile View csss */
+
+@media screen and (max-width: 1024px) {
+    .wrapppor_for_Desktop_view {
+        display: none !important;
+        height: 61px;
+    }
+}
+
+.wrapppor_for_Mobile_view {
+    height: 61px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+
+.menu_Icon {
+    font-size: 26px;
+}
+
+.profile_btn_andRightMenu {
+    display: flex;
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+    box-Shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 40px;
+    width: 70px
+}
+
+.left_side_logo_menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 45%;
+}
+
+.right_side_menu_pnl {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 38%;
+}
+
+.profit_data {
+    margin-top: -2px;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* Desktop  view Css */
+
+@media screen and (min-width: 1024px) {
+    .wrapppor_for_Mobile_view {
+        display: none;
+        /* height: 61px; */
+    }
+}
+
+.wrapppor_for_Desktop_view {
+    height: 95x;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 30px 13%;
+    flex-direction: row;
+}
+
+.wrappor_inner_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.header_last_login_details {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+
+}
+
+.header_Signup_login_btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    width: 15%;
+    color: #fcecca;
+    font-size: 12px;
+    font-weight: 800;
+
+}

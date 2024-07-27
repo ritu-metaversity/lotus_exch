@@ -1,0 +1,262 @@
+.betSlipDesktop__topSection {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #99a0a2;
+}
+
+.betSlipDesktop__topSection-title {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1;
+    color: #142326;
+}
+
+.betSlipDesktop__betTop {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #142326;
+}
+
+.betSlipDesktop__betTop-slip.active {
+    background: #fff;
+}
+
+.betSlipDesktop__betTop-slip {
+    /* padding: 8px 20px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 73px;
+    height: 27px;
+    background: #dedbd7;
+}
+
+.betSlipDesktop__betTop-openBets.active {
+    background: #fff;
+}
+
+.betSlipDesktop__betTop-openBets {
+    /* padding: 8px 20px;
+     */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 96px;
+    height: 28px;
+    background: #dedbd7;
+}
+
+.betSlipDesktop__betTop-editStakesBtn {
+    width: 80px;
+    height: 28px;
+    background-color: #026b4f;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 3px;
+    border: unset;
+    cursor: pointer;
+}
+
+.DesktopBetPlacing-container {
+    overflow: hidden;
+    margin-top: -2px;
+    /* z-index: 2; */
+    position: relative;
+    background-color: #fff;
+    padding: 3px;
+}
+
+.DesktopBetPlacing-container .DesktopBetPlacing__empty-message {
+    font-size: 12px;
+    text-align: center;
+    padding: 25px 10px;
+    color: #000;
+}
+
+.balanceInformation {
+    /* margin: 0 10px; */
+    min-height: 27px;
+    margin-bottom: 10px;
+}
+
+.balanceInformationHeader {
+    display: flex;
+    position: relative;
+    /* z-index: 3; */
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 27px;
+    background-color: #016b4f;
+}
+
+.balanceInformation__title {
+    align-items: center;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.balanceInformation__title {
+    align-items: center;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.balanceInformation__downButton {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.balanceInformation__downButton.upImg svg {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.balanceInformation__downButton svg {
+    width: 8px;
+    position: relative;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.detailedBalance {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 10px;
+    transition: .4s;
+}
+
+.detailedBalance__title {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000;
+    margin-left: 10px;
+    margin-bottom: 3px;
+}
+
+.detailedBalance__title-sub {
+    font-weight: 500;
+}
+
+.OpenBetsList {
+    margin-bottom: 20px;
+    font-size: 14px;
+
+}
+
+.OpenBetsList__title {
+    color: var(--white);
+    background: var(--cta-primary-darken);
+    padding: 8px 6px 8px 34%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.OpenBetsList__title__text {
+    color: #fff;
+}
+
+
+.OpenBetsList__downButton {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.OpenBetsList__downButton.upImg svg {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.OpenBetsList__downButton svg {
+    width: 8px;
+    position: relative;
+    transition: all .3s linear;
+}
+
+.OpenBetsList__content {
+    position: relative;
+}
+
+.OpenBetsItem {
+    padding: 16px 12px;
+    background: var(--white);
+    margin: 0 0 4px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.noBetsItem {
+    font-family: "Lato";
+    font-style: normal;
+    text-align: center;
+}
+
+.OpenBetsList__contentttttt {
+    color: black;
+    background: white;
+    width: 100%;
+    /* margin-top: 5px; */
+    /* padding: 4px 6px 8px 4%; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.outer_layout_stake {
+    position: relative;
+    width: 100%;
+}

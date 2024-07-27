@@ -1,0 +1,195 @@
+.betHeading {
+    font-size: 18px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 6px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.betHeading_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 70%;
+}
+
+.betHeading_pastcurrnt {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 30%;
+    gap: 10px 17px;
+}
+
+.betHeading_datepicker {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.Past_Current {
+    padding: 5px 25px;
+    border: 1px solid;
+    width: 44%;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.mybets {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 44px;
+}
+
+.date_piker_from_to {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 17px;
+
+}
+
+.MyOpenBets__page-menu-date-search-button {
+    background-color: #026b4f;
+    border-right: 2px solid rgba(0, 0, 0, .25);
+    border-bottom: 2px solid rgba(0, 0, 0, .25);
+    border-radius: 3px;
+    width: 73px;
+    height: 29px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+    padding: 0 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 31px;
+    cursor: pointer;
+}
+
+.tableprofit-loss-table {
+    padding: 53px 0px;
+    width: 100%;
+}
+
+.tableprofit-loss-table_thead {
+    height: 15px;
+    background-color: #ddd;
+    width: 100%;
+}
+
+.tableprofit-loss-table_theadtrrrrrr {
+    padding: 9px 0px;
+    width: 15%;
+
+}
+
+.tableExplai {
+    padding: 9px 10px;
+
+    background-color: #f0f0f0;
+}
+
+.tableExplainorecord {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 16px 415px;
+    font-size: 12px;
+    color: red;
+}
+
+.selected {
+    background-color: #0f2327;
+    color: #fff;
+}
+
+.selecteddddd {
+    background-color: #cae0e8;
+}
+
+.OpenBetsTable {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: Lato;
+}
+
+.OpenBetsTable li,
+.OpenBetsTable p,
+.OpenBetsTable ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.OpenBetsTable__table-header {
+    background-color: #ddd;
+    display: grid;
+    grid-template-columns: 3.7fr 7fr 1.3fr 1.2fr 1.5fr 1.5fr 2.2fr 2.2fr;
+    height: 33px;
+    align-items: center;
+}
+
+.OpenBetsTable__table-header li {
+    color: #0f2327;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.OpenBetsTable__table-body-no-bets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.OpenBetsTable__table-body ul {
+    background-color: #f0f0f0;
+}
+
+.lowercase {
+    font-size: 13px;
+
+}
+
+.betting_page_table_data {
+    padding: 52px 0px;
+}
+
+.OpenBetsTable__table-header_datata {
+    background-color: #f0f0f0;
+    display: grid;
+    grid-template-columns: 3.7fr 7fr 1.3fr 1.2fr 1.5fr 1.5fr 2.2fr 2.2fr;
+    height: 33px;
+    align-items: center;
+}
+
+.OpenBetsTable__table-header_datata li {
+    color: #0f2327;
+    padding-left: 10px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.my_bet tr:nth-child(odd) {
+    background: #f0f0f0;
+}
+
+.my_bet tr {
+    background: #fff;
+}
+
+/* .You-have-no-matched-bets{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+} */

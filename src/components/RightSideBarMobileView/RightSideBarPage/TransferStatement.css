@@ -1,0 +1,98 @@
+.page-TransferStatement-wrapper {
+    padding: 13px;
+}
+
+.page-headerT-S {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+@media screen and (max-width: 1023px) {
+    .transfer-statement-page__content {
+        padding-left: unset;
+    }
+}
+
+.transfer-statement-page__content {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    color: var(--text-color);
+    margin: 0 4px 0 0;
+    /* padding-left: 15px; */
+}
+
+.transfer-statement-page__content-header {
+    display: flex;
+    background: #1f8067;
+    font-style: normal;
+    font-weight: 400;
+    align-items: center;
+    background-color: #1f8067;
+    color: var(--accordion-color);
+    padding: 1.5px 10px 5px 13px;
+}
+
+.transfer-statement-page__content-row-date {
+    color: #333333;
+    width: 25%;
+}
+
+.transfer-statement-page__content-row-description {
+    color: #333333;
+    width: 30%;
+}
+
+.transfer-statement-page__content-row-amount {
+    color: #333333;
+    width: 45%;
+    text-align: right;
+}
+
+.transfer-statement-page__content-row-header {
+    display: flex;
+    align-items: center;
+    background-color: var(--group-header);
+    color: var(--transfer-header-color);
+    padding: 3.5px 13px;
+}
+
+.transfer-statement-page__content-group {
+    padding: 5px 10px 13px 13px;
+}
+
+.transfer-statement-page__row {
+    padding: 3px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.transfer-statement-page__list-row .transfer-statement-page__content-row-date,
+.transfer-statement-page__list-row .transfer-statement-page__content-row-description {
+    display: flex;
+    align-items: center;
+}
+
+.transfer-statement-page__content-row-date {
+    color: #333333;
+    width: 25%;
+}
+
+.transfer-statement-page__content-row-description {
+    color: #333333;
+    width: 30%;
+}
+
+.transfer-statement-page__content-row-amount {
+    color: #333333;
+    width: 45%;
+    text-align: right;
+    font-weight: 700;
+}
+
+.green {
+    color: #1f8067;
+
+}
