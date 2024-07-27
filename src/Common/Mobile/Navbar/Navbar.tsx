@@ -6,6 +6,7 @@ import {
   useMediaQuery,
   Modal,
   IconButton,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { FaSearch } from "react-icons/fa";
@@ -13,21 +14,30 @@ import logo from "../../../img/logo.svg";
 import LoginModals from "../../LoginModals/LoginModals";
 import { useState } from "react";
 import { AppBar } from "../../Mainlayout/Mainlayout";
+import PersonIcon from '@mui/icons-material/Person';
 
 interface Props {
   openApp: boolean;
+  openRight: boolean;
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;
+  handleDrawerOpenRight: () => void
 }
 
-const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen }) => {
+const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRight, openRight }) => {
   const isSmallScreen = useMediaQuery("(max-width:1000px)");
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const isLogin = false;
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1,
+      marginLeft:openRight?"-260px":"0",
+      width:"100%"
+     }}>
       <AppBar
         position="sticky"
         open={openApp}
@@ -68,6 +78,8 @@ const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen }) => {
 
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Box><FaSearch className="font_searchs" /></Box>
+            {
+              isLogin ?
             <Button
               onClick={handleOpen}
               color="inherit"
@@ -89,8 +101,41 @@ const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen }) => {
                 },
               }}
             >
-              Login
-            </Button>
+             Login
+            </Button>:
+            <Button
+            onClick={handleDrawerOpenRight}
+              color="inherit"
+              sx={{
+                bgcolor: "#ffc629",
+                border: "1px solid #ffc629",
+                color: "#000000",
+                fontSize: "12px",
+                textTransform: "capitalize",
+                padding: { sx: "4px 4px", md: "4px 10px" },
+                minHeight: "35px",
+                minWidth: "unset",
+                fontFamily: "Lato",
+                "&:hover": {
+                  backgroundColor: "#ffc629",
+                },
+                "&:active": {
+                  backgroundColor: "#ffc629",
+                },
+              }}
+            >
+             <Typography sx={{
+              display:"flex",
+              justifyContent:"space-between",
+              alignItems:"center",
+              gap:"2px",
+              fontSize:"14px",
+              fontWeight:600
+             }}>
+             <PersonIcon /> 
+             <span> 61.0</span>
+             </Typography>
+            </Button>   }
           </Box>
         </Toolbar>
       </AppBar>

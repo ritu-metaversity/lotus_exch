@@ -45,3 +45,7 @@ html {
   color: #fff;
   text-shadow: none;
 }
+
+.account-item{
+  width: 100%;
+}

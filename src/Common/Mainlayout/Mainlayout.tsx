@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Sidebar from "../Mobile/Sidebar/Sidebar";
 import Navbar from "../Mobile/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import RightsideBar from "../Mobile/RightsideBar/RightsideBar";
 
 const drawerWidth = 260;
 
@@ -65,21 +66,29 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
 const Mainlayout = () => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [openRight, setOpenRight] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+  const handleDrawerOpenRight = () => {
+    setOpenRight(!openRight);
+  };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    setOpenRight(false);
   };
   return (
     <Box sx={{ background: "#fff", minHeight: "100vh", overflowX: "hidden" }}>
       {open && <div className="overlay" onClick={handleDrawerClose}></div>}
+      {openRight && <div className="overlay" onClick={handleDrawerClose}></div>}
       <Navbar
         openApp={open}
         handleDrawerOpen={handleDrawerOpen}
         handleDrawerClose={handleDrawerClose}
+        handleDrawerOpenRight={handleDrawerOpenRight}
+        openRight={openRight}
       />
 
       <Sidebar
@@ -88,14 +97,34 @@ const Mainlayout = () => {
         handleDrawerClose={handleDrawerClose}
         theme={theme}
       />
-      <Main
-        open={open}
-        sx={{
-          p: 0,
-        }}
-      >
-        <Outlet />
-      </Main>
+      <RightsideBar
+        openRight={openRight}
+        handleDrawerClose={handleDrawerClose}
+        theme={theme}
+        drawerWidth={drawerWidth}
+      />
+      {openRight ? (
+        <Main
+          open={openRight}
+          sx={{
+            width: "100%",
+            p: 0,
+            marginLeft: openRight ? "-260px" : "0",
+          }}
+        >
+          <Outlet />
+        </Main>
+      ) : (
+        <Main
+          open={open}
+          sx={{
+            width: "100%",
+            p: 0,
+          }}
+        >
+          <Outlet />
+        </Main>
+      )}
     </Box>
   );
 };
