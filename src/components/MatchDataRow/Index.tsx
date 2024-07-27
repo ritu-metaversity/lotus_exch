@@ -9,7 +9,6 @@ import {
 	MatchOddsWrapper,
 	MatchTimeAndFavouriteContainer,
 	MatchTiming,
-	BettingPopUpmobileViewShow
 } from './Index.styled';
 import OddCell from '../OddCell/Index';
 import FlexBetween from '../common/FlexBetween/Index';
@@ -25,7 +24,6 @@ import {
 } from '../../state/features/client/clientSlice';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import Icon from '../common/Icon/Index';
-import BetingPopUpForMobile from './BetingPopUpForMobile';
 interface MatchDataRowProps extends Match { type?: any, runners?: any ,sportid?:any}
 
 const MatchDataRow = ( props: MatchDataRowProps) => {
@@ -90,8 +88,6 @@ const MatchDataRow = ( props: MatchDataRowProps) => {
 		}
 	};
 	const [mobileViewBettingData, setMobileViewBettingData] = useState<any>()
-	// const [mobileviewbettingPopUp, setMobileviewbettingPopUp] = useState('')
-	// const [mobileviewbettingPopUpMatch, setMobileviewbettingPopUpMatch] = useState('')
 	const OddsData = (vl: any) => {
 		dispatch(setSelectedSid(vl.SelectionIdForAll.selectionId))
 		dispatch(setBetData({ ...vl, }))
@@ -145,13 +141,7 @@ const MatchDataRow = ( props: MatchDataRowProps) => {
 				</FlexBetween>
 			</MatchDataRowContainer>
 
-			{selectedSid === mobileViewBettingData?.SelectionIdForAll?.selectionId && localStorage.getItem("token") ?
-				<BettingPopUpmobileViewShow>
-					<BetingPopUpForMobile mobileViewBettingData={mobileViewBettingData} />
-				</BettingPopUpmobileViewShow>
-				:
-				""
-			}
+			
 		</>
 	);
 };

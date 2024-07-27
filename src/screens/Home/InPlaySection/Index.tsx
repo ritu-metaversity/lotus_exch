@@ -12,7 +12,7 @@ type SportIds = {
 };
 
 const InPlaySection = () => {
-	const { data } = useGetMatchesBySportsQuery(undefined, { pollingInterval: 3000 });
+	const { data } = useGetMatchesBySportsQuery();
 
 	const sportsIds: SportIds = useMemo(() => {
 		const sportsIds: SportIds = {};

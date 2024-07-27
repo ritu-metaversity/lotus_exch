@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import RightSideBar from '../../components/RightSideBarMobileView/RightSideBar';
-import Footer from '../../components/Footer/Index';
 import {
     LayoutWrapper,
     LayoutOutletContainer,
@@ -11,13 +10,10 @@ import { StyledToolbar } from '../../components/Navbar/Index.styled';
 import { Drawer } from '@mui/material';
 import SidebarMobile from '../../components/Sidebar/SidebarMobile';
 import NavbarMobile from '../../components/Navbar/NavbarMobile';
-// import { useGetJwtTokenQuery } from '../../state/apis/main/apiSlice';
 const MobileLayout = () => {
     const [sidebarExpanded, setSidebarExpanded] = useState(false);
     const [rightSidebarExpanded, setRightSidebarExpanded] = useState(false);
-    // const isDesktop = useMediaQuery('(min-width: 1024px)');
-    // const { data: jwtTokenRespone, error: jwtTokenResponeError } = useGetJwtTokenQuery(undefined, { pollingInterval: 3000 })
-    // console.log(jwtTokenResponeError, "jwtTokenRespone");
+    
 
 
     const closeRightMenu = (vl: any) => {
@@ -33,7 +29,7 @@ const MobileLayout = () => {
                         slotProps: {
                             backdrop: {
                                 sx: {
-                                    //Your style here....
+                                  
                                     backgroundColor: 'transparent'
                                 },
                             },

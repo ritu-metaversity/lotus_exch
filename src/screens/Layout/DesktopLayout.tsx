@@ -1,6 +1,4 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import Box from '@mui/material/Box';
-import Footer from '../../components/Footer/Index';
 import {
     LayoutWrapper,
     LayoutOutletContainer,
@@ -42,9 +40,7 @@ const DesktopLayout = () => {
                 }
 
             </LayoutWrapper>
-            <Box>
-                <Footer expanded={false} />
-            </Box>
+            
         </>
     );
 };
