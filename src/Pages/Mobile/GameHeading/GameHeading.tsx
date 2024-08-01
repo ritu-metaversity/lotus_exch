@@ -1,11 +1,15 @@
 import './style.scss';
-import img from '../../../img/cricket.png'
+import type { FC } from 'react';
+interface Props{
+  icon:any,
+  name:string
+}
 
-const GameHeading = () => {
+const GameHeading:FC<Props> = ({icon, name}) => {
   return (
     <div  className="sport-name-wrap ignore-content-spacing">
-    <img alt='' src={img}  style={{marginRight: "14px"}}/>
-    <span >Cricket</span>
+    <img alt='' src={icon}  style={{marginRight: "14px"}}/>
+    <span >{name}</span>
   </div>
   )
 }

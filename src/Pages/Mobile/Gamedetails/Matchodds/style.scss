@@ -1,0 +1,249 @@
+.market-group {
+  margin-bottom: 16px;
+  .heading {
+    display: flex;
+    padding: 0 0 8px;
+    background-color: transparent;
+    border-radius: 0;
+    margin-bottom: 0;
+    .title {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      .header {
+        font-weight: 700;
+        color: #000000;
+        width: calc(100% - 90px);
+        text-wrap: wrap;
+        white-space: normal;
+        font-size: 14px;
+      }
+    }
+    .icon_box {
+      display: flex;
+      flex-wrap: nowrap;
+      margin: 0 -3px;
+      color: #0d0d0d;
+      .block {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin: 0 4px;
+        font-size: 0.55em;
+      }
+    }
+  }
+  .right-title-box {
+    flex-basis: calc(74px * 6);
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 14px;
+    @media screen and (max-width: "800px") {
+      flex-basis: calc(74px * 2);
+    }
+  }
+  .markets__action {
+    color: #000000;
+    flex: 0 0 74px;
+    font-size: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .market-wrap {
+    // margin-bottom: 4px;
+    .list-item {
+      background: #ffffff;
+      display: block;
+    }
+    .market {
+      position: relative;
+      display: flex;
+      gap: 2px;
+      align-items: stretch !important;
+      justify-content: space-between;
+      color: #000000;
+      padding: 2px 2px 0 4px;
+      margin: 0 !important;
+      min-height: 43px;
+    }
+    .market-title {
+      padding-left: 7px;
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: pointer;
+    }
+    .runner-details {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-right: 4px;
+      min-height: 41px;
+      width: 100%;
+      box-sizing: border-box;
+      .runner-name {
+        font-weight: bold;
+        font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        color: #000000;
+        padding-left: 0;
+      }
+      .pnl {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        float: left;
+        clear: both;
+        gap: 4px;
+      }
+    }
+  }
+ 
+  .price {
+    font-weight: 800;
+}
+}
+
+
+.list-body.distinct.market-wrap {
+  margin-bottom: 4px;
+}
+
+
+.stroke-group{
+  .nav-tabs-group-container{
+    margin-bottom: 8px;
+    border-bottom: 1px solid #666666;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  .nav-tab.active{
+    border-bottom: 3px solid #000000;
+    color: #000000;
+  }
+  .nav-tab{
+    flex-grow: 0;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    padding: 16px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
+
+
+.selected {
+  position: relative;
+  z-index: 2;
+  height: 42px;
+  display: block;
+    width: 66px;
+    margin-left: 2px;
+    cursor: pointer;
+    .bet-button.back {
+      border-color: #a7d8fd;
+      color: #000000;
+      background-color: #f8fcff;
+  }
+  .bet-button{
+    position: relative;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    box-sizing: border-box;
+  }
+  .bet-button.lay {
+    border-color: #f9c9d4;
+    background-color: #fefafb;
+    color: #000000;
+}
+}
+
+
+
+.odds {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: unset;
+  @media screen and (max-width: "800px") {
+    width: 144px;
+  }
+  .odds-wrap {
+    flex: 1;
+    display: flex;
+  }
+  .odds-line {
+    flex: 1;
+    width: 100%;
+  }
+  .market-odds__container {
+    display: flex;
+    flex-direction: row;
+    height: 41px;
+    gap: 2px;
+  }
+  .not-selected {
+    display: block;
+    width: 69px;
+    height: 41px;
+    margin-left: 2px;
+    cursor: pointer;
+    flex: 1;
+    @media screen and (min-width:"800px") {
+      width: 95px !important;
+    }
+  }
+  .more-odds {
+    @media screen and (max-width: "800px") {
+      display: none;
+    }
+  }
+  .bet-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #000000;
+    font-size: 12px;
+    overflow: hidden;
+  }
+  .back {
+    background: #a7d8fd;
+  }
+  .lay {
+    background: #f9c9d4;
+  }
+}
+
+
+.runner-info-label {
+  width: 144px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+}

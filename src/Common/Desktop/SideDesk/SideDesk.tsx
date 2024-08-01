@@ -19,7 +19,7 @@ import './side.scss';
 
 const menuItems = [
   // { href: '#/display/FAVORITES', icon: 'star_border', text: 'Favourites' },
-  { icon: casino, text: 'Live Casino', className: 'exchangegame' },
+  { icon: casino, text: 'Live Casino', className: 'exchangegame', href:"/d/super-casino" },
   { icon: bat, text: 'Cricket', className: 'cricket' },
   { icon: football, text: 'Football', className: 'football' },
   { icon: tennis, text: 'Tennis', className: 'tennis' },

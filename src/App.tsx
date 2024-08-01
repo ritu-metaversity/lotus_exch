@@ -1,6 +1,6 @@
 
 import { RouterProvider } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import RouteDesk from "./RouteDesk";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

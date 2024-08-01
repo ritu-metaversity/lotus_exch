@@ -280,36 +280,6 @@ const HomeDesk = () => {
             </Slider>
           </Box>
 
-          {/* Uncomment and adjust for Swiper */}
-          {/* 
-        <Box sx={{ marginTop: 4 }}>
-          <Swiper 
-            spaceBetween={8} 
-            slidesPerView={4} 
-            navigation 
-            pagination={{ clickable: true }}
-          >
-            {sliderItems.map((item, index) => (
-              <SwiperSlide key={index}>
-                <Card sx={{ maxWidth: 278 }}>
-                  <CardActionArea href="#/super-casino">
-                    <CardMedia
-                      component="img"
-                      image={item.image}
-                      alt={item.title}
-                    />
-                    <CardContent>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.title}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </Box>
-        */}
         </Box>
       </Box>
     </>

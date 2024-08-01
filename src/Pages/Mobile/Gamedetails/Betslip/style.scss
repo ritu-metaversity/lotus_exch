@@ -1,0 +1,203 @@
+.single-bet.lay {
+  --betslip-border-color: #f9c9d4;
+  --bet-form-background: #fefafb;
+}
+.single-bet {
+  display: block;
+  border: 1.5px solid var(--betslip-border-color);
+  padding-bottom: 10px;
+  margin-top: -2px;
+  border-radius: 0;
+  background: var(--bet-form-background);
+
+  .event-group {
+    padding-left: 1px;
+    padding-right: 1px;
+    .bet {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      border-radius: 0;
+
+      .controls {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        .odds-group {
+          flex-basis: 0;
+          flex-grow: 4;
+          .odds-group-title {
+            height: 15px;
+            .label {
+              color: #000000;
+              text-transform: uppercase;
+              font-size: 10px;
+              display: block;
+              margin-bottom: 3px;
+              font-weight: 400;
+            }
+          }
+          .odds {
+            height: 34px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #000000;
+            border-radius: 2px;
+            border: none;
+            text-align: center;
+            width: 100%;
+            font-weight: normal;
+            .pre-match-label {
+              font-size: 10px;
+              text-transform: uppercase;
+            }
+          }
+          .lay {
+            background: #f9c9d4;
+          }
+        }
+        .stake-group {
+          flex-basis: 0;
+          flex-grow: 6;
+          .stake-title {
+            display: flex;
+            justify-content: space-between;
+            height: 15px;
+            .label {
+              color: #000000;
+              text-transform: uppercase;
+              font-size: 10px;
+              display: block;
+              margin-bottom: 3px;
+              font-weight: 400;
+            }
+            .limit-label {
+              color: #666666;
+              font-size: 10px;
+              font-weight: 400;
+            }
+            .info-stake-value {
+              color: #000000;
+            }
+          }
+          .input-stake {
+            border-radius: 4px;
+            border: 1px solid #aaa;
+            text-align: center;
+            width: 91%;
+            padding: 8px;
+            font-size: 12px;
+            background: #ffffff;
+            color: #000000;
+            font-family: inherit;
+          }
+          .stake-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            min-height: 11px;
+            flex-direction: row-reverse;
+            .limit-label {
+              color: #666666;
+              font-size: 10px;
+              font-weight: 400;
+            }
+            .info-stake-value {
+              color: #000000;
+            }
+          }
+        }
+      }
+      .stake-buttons-box {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 8px;
+        .stake-button {
+          position: relative;
+          background-color: #ffc629;
+          color: #ffffff;
+          flex: 2 2 auto;
+          margin-left: 2px;
+          margin-right: 2px;
+          border-right: none;
+          border-bottom: none;
+          height: 28px;
+          border-radius: 2px;
+          padding: 0 16px;
+          cursor: pointer;
+          font-weight: 400;
+          border: 0;
+          font-size: 13px;
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .confirmation-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column-gap: 8px;
+    margin: 0 16px;
+    .cancel {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: none;
+      font-weight: 700;
+      border: 1px solid #000000;
+      border-radius: 4px;
+    }
+    .button {
+      flex: 1;
+      cursor: pointer;
+      font-size: 13px;
+      padding: 0 16px;
+      -webkit-tap-highlight-color: transparent;
+      text-transform: none;
+    }
+    .button.-middle {
+      height: 45px;
+    }
+    .submit {
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      line-height: 13px;
+    }
+  }
+  .btn-pnl {
+    font-size: 10px;
+  }
+
+
+  .preferences {
+    margin: 16px 16px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    .confirmation-control {
+        display: flex;
+        justify-content: space-between;
+        color: #000000;
+        align-items: center;
+        font-weight: 500;
+        font-size: 14px;
+        .toggle{
+            height: 27px;
+            display: inline-block;
+        }
+    }
+}
+}

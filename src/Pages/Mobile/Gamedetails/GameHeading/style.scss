@@ -1,0 +1,49 @@
+.event-details {
+  .other-event-details {
+    background: #0d0d0d;
+    color: #ffffff;
+    display: grid;
+    grid-template-columns: auto 16px;
+    grid-column-gap: 8px;
+    vertical-align: middle;
+    align-items: center;
+    padding: 8px 16px;
+    .main-detail-header {
+      display: flex;
+      flex-direction: row;
+      margin: 6px 0;
+      justify-content: space-between;
+      .clock-title-box {
+        display: flex;
+        width:unset
+      }
+      .event-title-box {
+        display: flex;
+        flex-direction: column;
+        .event-title {
+          color: #ffffff;
+          word-break: break-word;
+          font-size: 18px;
+          font-weight: 700;
+        }
+        .competition {
+          color: rgb(255 255 255 / 60%);
+          font-weight: 600;
+          font-size: 12px;
+          padding-bottom: 2px;
+        }
+      }
+      .icon {
+        margin-right: 16px;
+      }
+    }
+    .match-stats-info[_ngcontent-kcn-c201] {
+        padding-left: 22px;
+        margin-top: 2px;
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+}

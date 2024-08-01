@@ -1,24 +1,22 @@
 import { useState } from "react";
 import type { Theme } from "@mui/material";
 import { Box, Drawer, ListItemButton, Typography } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import type { FC } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import casino from "../../../img/casino.png";
-import bat from "../../../img/cricket.png";
-import football from "../../../img/football.png";
+import Setting from "../../../img/settings-sliders.png";
+import bat from "../../../img/coupon.png";
+import batting from "../../../img/value.png";
 import tennis from "../../../img/tennis-ball.png";
-import sports_basketball from "../../../img/basketball.png";
-import sports_golf from "../../../img/golf-ball.png";
-import sports_horse from "../../../img/horse-head.png";
-import sports_mma from "../../../img/greyhound.png";
-import esports from "../../../img/multiplayer.png";
-import public_p from "../../../img/documents.png";
-import whatshot from "../../../img/genie.png";
+import time from "../../../img/clock.png";
+import lock from "../../../img/lock.png";
+import doc from "../../../img/document1.png";
+import kyc from "../../../img/information.png";
+import gamming from "../../../img/file-check.png";
+import policy from "../../../img/error.png";
+import download from "../../../img/down-arrow.png";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 
 interface Props {
@@ -29,33 +27,18 @@ interface Props {
 }
 
 const menuItems = [
-  { link: "", icon: "star_border", text: "Home" },
-  { link: "", icon: casino, text: "Live Casino", className: "exchangegame" },
-  { link: "", icon: bat, text: "Cricket", className: "cricket" },
-  { link: "", icon: football, text: "Football", className: "football" },
-  { link: "", icon: tennis, text: "Tennis", className: "tennis" },
-  {
-    link: "",
-    icon: sports_basketball,
-    text: "Basketball",
-    className: "basketball",
-  },
-  { link: "", icon: sports_golf, text: "Golf", className: "golf" },
-  {
-    link: "",
-    icon: sports_horse,
-    text: "Horse Racing",
-    className: "horseracing",
-  },
-  {
-    link: "",
-    icon: sports_mma,
-    text: "Greyhound Racing",
-    className: "greyhoundracing",
-  },
-  { link: "", icon: esports, text: "E-Sports", className: "esports" },
-  { link: "", icon: public_p, text: "Politics", className: "politics" },
-  { link: "", icon: whatshot, text: "Genie Bet" },
+  { link: "", icon: Setting, text: "Setting"},
+  { link: "", icon: bat, text: "Open Bet",  },
+  { link: "", icon: batting, text: "Betting P&L"},
+  { link: "", icon: tennis, text: "Transfer Statement" },
+  {link: "",icon: time,text: "Time Setting"},
+  { link: "", icon: lock, text: "Change Password"},
+  {link: "",icon: doc,text: "Rule & Regulation"},
+  {link: "",icon: kyc,text: "KYC"},
+  { link: "", icon: gamming, text: "Responsive Gamming"},
+  { link: "", icon: policy, text: "Exclusion Policy"},
+  { link: "", icon: download, text: "Download App"},
+  { link: "", icon: AccountBalanceIcon, text: "Sign Out"},
 ];
 
 const RightsideBar: FC<Props> = ({
@@ -257,17 +240,17 @@ const RightsideBar: FC<Props> = ({
             key={item.text}
             disablePadding
             onClick={() => handleListItemClick(index)}
-            className={selectedIndex === index ? "selected" : ""}
+           
           >
             <ListItemButton
               sx={{
-                padding: "10px 16px !important",
+                padding: "5px 16px !important",
                 borderTop: "1px solid #f2f2f2",
               }}
             >
               <ListItemIcon
                 sx={{
-                  color: selectedIndex === index ? "#fff" : "#000",
+                 
                   minWidth: "30px",
                 }}
               >

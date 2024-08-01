@@ -1,24 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 @font-face {
-  font-family: 'apollo';
-  src: url('./assets/fonts/apollo/apollo-font.woff') format('woff')
+  font-family: "apollo";
+  src: url("./assets/fonts/apollo/apollo-font.woff") format("woff");
 }
 
-
-.font_searchs{
+.font_searchs {
   width: 20px;
   height: 20.5px;
   margin-top: 2px;
 }
-
 
 ::placeholder {
   color: #9b9b9b !important;
   opacity: 1; /* Firefox */
 }
 
-::-ms-input-placeholder { 
+::-ms-input-placeholder {
   color: #9b9b9b;
 }
 
@@ -29,15 +27,17 @@ html {
   line-height: 17px;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  background: #fff;
   color: #000;
   letter-spacing: 0;
   box-sizing: border-box;
-  background: url('./img/backimg.png') no-repeat 0 -300px;
+  background: url("./img/backimg.png") no-repeat 0 -300px;
   overflow-y: auto;
-    
-    background-size: cover;
-    height: 100%;
+
+  background-size: cover;
+  height: 100%;
+  @media screen and (max-width:"800px") {
+    background-size: inherit;
+  }
 }
 
 ::selection {
@@ -46,6 +46,10 @@ html {
   text-shadow: none;
 }
 
-.account-item{
+.account-item {
   width: 100%;
+}
+
+::-webkit-scrollbar{
+  width: 0;
 }

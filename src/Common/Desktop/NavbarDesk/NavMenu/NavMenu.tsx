@@ -32,7 +32,7 @@ const NavMenu = () => {
         <Box className="sport-menu__item casino ng-scope">
           <Link
             className="sport-menu__item  sport-menu__link sport-menu__link--casino "
-            to="#/super-casino"
+            to="/d/super-casino"
           >
             Live Casino
           </Link>

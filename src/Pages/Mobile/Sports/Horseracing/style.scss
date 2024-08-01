@@ -1,0 +1,173 @@
+.horse_racing {
+    padding: 8px;
+  .market-header {
+    margin-bottom: 1px;
+    .market-title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background: #0d0d0d;
+      color: #ffffff;
+      height: 40px;
+      border-radius: 4px 4px 0 0;
+      padding-left: 15px;
+      .market-title-text {
+        font-weight: 700;
+        font-size: 14px;
+      }
+    }
+    .market-alt-name {
+      background: #ffffff;
+      height: 30px;
+      line-height: 30px;
+      color: #000000;
+      padding-left: 15px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  .race-market {
+    background: #ffffff;
+    display: block;
+    .bet-panel {
+      border-top: 1px solid #f2f2f2;
+    }
+    .market {
+      position: relative;
+      display: flex;
+      gap: 2px;
+      align-items: stretch !important;
+      justify-content: space-between;
+      color: #000000;
+      padding: 2px 2px 0 4px;
+      margin: 0 !important;
+      min-height: 43px;
+      .market-title {
+        padding-left: 7px;
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
+      .runner-details {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-right: 4px;
+        min-height: 41px;
+        width: 100%;
+        box-sizing: border-box;
+        .full-width-racing-title {
+          margin-bottom: -5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          .float-container {
+            float: left;
+            margin-right: 8px;
+            &:last-child {
+              margin-right: 0;
+            }
+            .number-ids {
+              font-size: 11px;
+              text-align: center;
+              min-width: 19px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+          .race-symbol {
+            float: left;
+          }
+          .symbol-img,
+          .race-symbol .symbol-box {
+            width: 29px;
+            height: 20px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+  .runner-name {
+    font-weight: bold;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    color: #000000;
+    padding-left: 0;
+    .title {
+      position: relative;
+      max-width: calc(100% - 14px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      .runner-name {
+        font-weight: bold;
+        font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        color: #000000;
+        padding-left: 0;
+      }
+    }
+    .jockey-name{
+        font-size: 10px;
+    }
+  }
+}
+
+
+.race-upcoming-wrapper{
+    margin-top: 10px;
+    .upcoming-races__wrapper {
+        background: #ffffff;
+        color: #000;
+        .upcoming-races__header-wrapper {
+            display: flex;
+            align-items: baseline;
+            font-size: 14px;
+            padding: 14px;
+            border-bottom: 2px solid black;
+            background-color: #ffffff;
+        }
+        .upcoming-races__header-event-name {
+            font-weight: 700;
+            margin: 0 5px;
+        }
+    }
+    .upcoming-races__menu {
+        font-size: 14px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        .upcoming-races__item {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            background-position: center;
+            transition: background .8s;
+        }
+        .upcoming-races__item-buttons {
+            width: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+

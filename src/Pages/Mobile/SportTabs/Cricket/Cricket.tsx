@@ -1,8 +1,15 @@
 import { Box } from "@mui/material";
 import "./style.scss";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import { useNavigate } from "react-router-dom";
+
 
 const Cricket = () => {
+  const nav = useNavigate();
+  const handleNav = () => {
+    nav("/sport/4/e/33450249");
+  };
+
   return (
     <section className="inplay-upcoming-container app-content ignore-content-spacing">
       <section className="section in-play">
@@ -72,7 +79,7 @@ const Cricket = () => {
                                 </Box>
                               </div>
                             </div>
-                            <div className="competitors">
+                            <div className="competitors" onClick={handleNav}>
                               <div className="width-wrapper">
                                 <div className="line">
                                   <div className="name">

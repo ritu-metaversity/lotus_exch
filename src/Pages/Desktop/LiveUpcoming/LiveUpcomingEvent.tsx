@@ -94,7 +94,7 @@ const LiveUpcomingEvent = () => {
                             <CiStar />
                             <Link
                               className="event-name ng-binding"
-                              to="#/display/EVENT/4/33433288"
+                              to="/d/display/EVENT/4/33433288"
                             >
                               {items?.name}
                             </Link>

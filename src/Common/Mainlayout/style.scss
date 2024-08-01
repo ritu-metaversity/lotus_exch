@@ -12,7 +12,6 @@
 .MuiListItemText-primary{
     font-family: Lato, sans-serif !important;
     font-weight: 500 !important;
-    color: #000 !important;
 }
 .selected {
     position: relative;
@@ -21,3 +20,7 @@
     background-color: #0d0d0d;
 }
 
+
+.change_color{
+    filter: invert(100%) sepia(0%) saturate(7484%) hue-rotate(109deg) brightness(106%) contrast(100%);
+}

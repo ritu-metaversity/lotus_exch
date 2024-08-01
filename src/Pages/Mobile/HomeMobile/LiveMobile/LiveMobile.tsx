@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
-import './style.scss';
+import "./style.scss";
+import { useNavigate } from "react-router-dom";
 
 // Component for displaying event information
 const EventInfo = ({ date, competitors }) => (
@@ -44,14 +45,6 @@ const Odds = ({ odds }) => (
 );
 
 // Component for a market item
-const MarketItem = ({ date, competitors, odds }) => (
-  <div className="market-list-item">
-    <div className="market">
-      <EventInfo date={date} competitors={competitors} />
-      <Odds odds={odds} />
-    </div>
-  </div>
-);
 
 // Main component
 const LiveMobile = () => {
@@ -62,11 +55,19 @@ const LiveMobile = () => {
       odds: [
         { className: "not-selected scrollable", type: "back", price: "3" },
         { className: "", type: "has-no-runner disabled back", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "back", price: "2,500" },
+        {
+          className: "not-selected more-odds scrollable",
+          type: "back",
+          price: "2,500",
+        },
         { className: "not-selected scrollable", type: "lay", price: "4" },
         { className: "", type: "has-no-runner disabled lay", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "lay", price: "3,334" }
-      ]
+        {
+          className: "not-selected more-odds scrollable",
+          type: "lay",
+          price: "3,334",
+        },
+      ],
     },
     {
       date: "Today 15:30",
@@ -74,11 +75,19 @@ const LiveMobile = () => {
       odds: [
         { className: "not-selected scrollable", type: "back", price: "82" },
         { className: "", type: "has-no-runner disabled back", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "back", price: "104" },
+        {
+          className: "not-selected more-odds scrollable",
+          type: "back",
+          price: "104",
+        },
         { className: "not-selected scrollable", type: "lay", price: "96" },
         { className: "", type: "has-no-runner disabled lay", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "lay", price: "122" }
-      ]
+        {
+          className: "not-selected more-odds scrollable",
+          type: "lay",
+          price: "122",
+        },
+      ],
     },
     {
       date: "Today 15:30",
@@ -86,11 +95,19 @@ const LiveMobile = () => {
       odds: [
         { className: "not-selected scrollable", type: "back", price: "70" },
         { className: "", type: "has-no-runner disabled back", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "back", price: "121" },
+        {
+          className: "not-selected more-odds scrollable",
+          type: "back",
+          price: "121",
+        },
         { className: "not-selected scrollable", type: "lay", price: "82" },
         { className: "", type: "has-no-runner disabled lay", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "lay", price: "143" }
-      ]
+        {
+          className: "not-selected more-odds scrollable",
+          type: "lay",
+          price: "143",
+        },
+      ],
     },
     {
       date: "Today 19:00",
@@ -98,13 +115,35 @@ const LiveMobile = () => {
       odds: [
         { className: "not-selected scrollable", type: "back", price: "2.25" },
         { className: "", type: "has-no-runner disabled back", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "back", price: "2,666" },
+        {
+          className: "not-selected more-odds scrollable",
+          type: "back",
+          price: "2,666",
+        },
         { className: "not-selected scrollable", type: "lay", price: "3.75" },
         { className: "", type: "has-no-runner disabled lay", price: "-" },
-        { className: "not-selected more-odds scrollable", type: "lay", price: "4,445" }
-      ]
-    }
+        {
+          className: "not-selected more-odds scrollable",
+          type: "lay",
+          price: "4,445",
+        },
+      ],
+    },
   ];
+
+  const nav = useNavigate();
+  const handleNav = () => {
+    nav("/m/sport/4/e/33450249");
+  };
+
+  const MarketItem = ({ date, competitors, odds }: any) => (
+    <div className="market-list-item" onClick={handleNav}>
+      <div className="market">
+        <EventInfo date={date} competitors={competitors} />
+        <Odds odds={odds} />
+      </div>
+    </div>
+  );
 
   return (
     <section className="section in-play">

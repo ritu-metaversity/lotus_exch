@@ -1,0 +1,26 @@
+.sport_leagues{
+    color: #000000;
+    padding: 8px;
+    .menu {
+        list-style: none;
+        cursor: default;
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
+        line-height: 18px;
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 16px;
+            margin-bottom: 1px;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 0;
+        }
+        .menu-number {
+            font-weight: 300;
+        }
+    }
+
+}
