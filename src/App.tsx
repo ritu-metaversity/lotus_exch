@@ -1,9 +1,11 @@
 
 import { RouterProvider } from "react-router-dom";
 import "./App.scss";
-import RouteDesk from "./RouteDesk";
+// import RouteDesk from "./RouteDesk";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import React from "react";
+import AppRoutes from "./RouteDesk";
 
 
 const App = () => {
@@ -13,7 +15,7 @@ const App = () => {
   
   return (
     <div className="App">
-      <RouterProvider router={RouteDesk()} />
+      <AppRoutes/>
     </div>
   );
 };

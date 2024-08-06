@@ -161,15 +161,7 @@
     background-color: #fff;
 }
 
-.market-listing-table th.back,
-.market-listing-table td.back,
-.market-listing-table th.lay,
-.market-listing-table td.lay,
-.market-listing-table th.empty,
-.market-listing-table td.empty,
-.market-listing-table .bet-button-wrapper {
-    width: 60px;
-}
+
 
 .bet-button-wrapper {
     width: calc(63px - 2px);
@@ -180,4 +172,20 @@
 }
 .size {
     display: none;
+}
+
+
+.in-play-content {
+    color: #1d7f1e !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    svg{
+    color: #1d7f1e !important;
+
+    }
+}
+
+.cricket_status_lable{
+    width: 100% !important;
 }

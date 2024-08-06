@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import BetplacedDesk from "./BetplacedDesk";
 
 const BetList = () => {
   const [active, setActive] = useState<number>(0);
@@ -95,7 +96,8 @@ const BetList = () => {
           <li id="tab-betslip" className="tab-betslip" style={{ height: 469 }}>
             <div className="bets betslip ng-isolate-scope has-empty-message">
               <div className="empty-list-info ng-scope">
-                Click on the odds to add selections to the betslip.
+                {/* Click on the odds to add selections to the betslip. */}
+                <BetplacedDesk />
               </div>
             </div>
           </li>

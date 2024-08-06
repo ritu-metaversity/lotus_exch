@@ -4,6 +4,7 @@ import MenuHeading from "../../../Common/Desktop/ManuHeading/MenuHeading";
 import { Link } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
 import { IoIosArrowForward } from "react-icons/io";
+import React from "react";
 
 const events = [
   {
@@ -74,10 +75,10 @@ const LiveUpcomingEvent = () => {
                   <th className="_align-center col-first-player" colSpan={2}>
                     <Box className="two-cells-header">1</Box>
                   </th>
-
+{/* 
                   <th className="_align-center player-draw " colSpan={2}>
                     <Box className="two-cells-header">X</Box>
-                  </th>
+                  </th> */}
 
                   <th className="_align-center col-second-player" colSpan={2}>
                     <Box className="two-cells-header">2</Box>
@@ -137,7 +138,7 @@ const LiveUpcomingEvent = () => {
                                     </Box>
                                   </td>
 
-                                  <td className="empty betting-disabled">
+                                  {/* <td className="empty betting-disabled">
                                     <Box className="bet-button-wrapper">
                                       <strong className="odds ng-binding">-</strong>
                                       <Box className="size">
@@ -153,7 +154,7 @@ const LiveUpcomingEvent = () => {
                                         <span className="ng-binding"></span>
                                       </Box>
                                     </Box>
-                                  </td>
+                                  </td> */}
 
                                   <td className="back">
                                     <Box className="bet-button-wrapper">
@@ -208,7 +209,7 @@ const LiveUpcomingEvent = () => {
                       </td>
 
                       <td colSpan={6} className="status more ">
-                        <Link to="#/display/EVENT/4/9.33076_1" className="status-label-more">
+                        <Link to="#/display/EVENT/4/9.33076_1" className="status-label-more cricket_status_lable">
                         <span className="status-label-more-text">See more markets</span>
                         <IoIosArrowForward  style={{
                                 fontSize: "18px"

@@ -10,14 +10,17 @@ const DeskMainLayout = () => {
   return (
     <>
       <NavbarDesk />
-      <div className="boxed-layout-wrapper">
-        <div className="left-pane">
+      <div className={pathname.includes("home")?"":"boxed-layout-wrapper"}>
+        {
+          (!pathname.includes("home")) &&   <div className="left-pane">
           <SideDesk />
         </div>
-        <div className={pathname.includes("super-casino")?"mid-pane-casino ":"mid-pane"}>
+        }
+      
+        <div className={pathname.includes("super-casino")?"mid-pane-casino ": pathname.includes("home")?"":"mid-pane"}>
           <Outlet />
         </div>
-        {!pathname.includes("super-casino") && (
+        {(!pathname.includes("super-casino") && !pathname.includes("home")) && (
           <div className="right-pane">
             <RightSide />
           </div>

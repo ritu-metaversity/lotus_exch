@@ -3,6 +3,7 @@ import "./style.scss";
 import stopwatch from ".././../../../../img/stop_watch.png";
 import zero from ".././../../../../img/zero.png";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import React from "react";
 
 const Upcomming = () => {
   return (
@@ -25,7 +26,7 @@ const Upcomming = () => {
           <li className="upcoming-races__item">
             <span className="upcoming-races__item-time">16:45</span>
             <span className="upcoming-races__item-buttons">
-              <img src={stopwatch} alt="fast" width={"20px"} width={"20px"}/>
+              <img src={stopwatch} alt="fast" width={"20px"} />
               <img src={zero} alt="fast" width={"20px"} />
               <KeyboardArrowRightIcon />
             </span>

@@ -1,0 +1,106 @@
+.horse_data {
+  .market-listing-table {
+    width: 100%;
+    margin-bottom: 20px;
+    color: #000;
+    border-collapse: collapse;
+    border-spacing: 0;
+    .title {
+      text-align: left;
+      padding: 4px 8px !important;
+      line-height: 1.42857143;
+      vertical-align: middle;
+      width: 100%;
+    }
+    th {
+      padding-top: 0;
+      padding: 4px 8px;
+      line-height: 1.42857143;
+      vertical-align: middle;
+      text-align: center;
+      line-height: 1.42857143;
+      vertical-align: middle;
+    }
+    tbody {
+      border: 1px solid #ddd;
+      tr {
+        transition: background-color ease 0.5s;
+        background-color: #fff;
+        text-align: left;
+        .event-row {
+          padding: 4px 8px !important;
+          border-bottom: 1px solid #ddd;
+          height: 43px;
+        }
+      }
+      .runner-numbers {
+        width: 25px;
+        text-align: center;
+        span {
+          display: block;
+        }
+      }
+      .column {
+        float: left;
+        margin-right: 8px;
+      }
+    }
+  }
+  .race-symbol {
+    float: left;
+  }
+  .symbol-img.race-symbol .symbol-box {
+    width: 29px;
+    height: 20px;
+    display: inline-block;
+  }
+  .column:last-child {
+    margin-right: 0;
+  }
+  span.main {
+    font-weight: bold;
+  }
+
+  td.back.unhighlighted {
+    background-color: #e3f3fe;
+  }
+  tr td.back {
+    cursor: pointer;
+    text-align: center;
+    background-color: #a7d8fd;
+    position: relative;
+  }
+  tr td.show-size {
+    height: 43px;
+  }
+
+  tr td:not(.event-row) {
+    border: 1px solid #ddd;
+  }
+  td.back,
+  th.lay,
+  td.lay,
+  th.empty,
+  td.empty,
+  .bet-button-wrapper {
+    width: 63px;
+  }
+  .bet-button-wrapper {
+    width: 63px;
+  }
+  .odds {
+    font-weight: bold;
+  }
+  .size {
+    display: block;
+  }
+  td.lay {
+    cursor: pointer;
+    text-align: center;
+    background-color: #f9c9d4;
+    position: relative;
+  }
+  tr td.lay.unhighlighted {
+    background-color: #fdeef2;
+  }
+}

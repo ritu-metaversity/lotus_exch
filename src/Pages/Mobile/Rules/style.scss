@@ -1,0 +1,50 @@
+.regulations-text{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 16px;
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    h3 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    p{
+        font-weight: 500;
+        font-size: 14px;
+    }
+    ul, ol{
+        font-size: 14px;
+        font-weight: 500;
+        li {
+            margin-bottom: 10px;
+        }
+    }
+   h4 {
+        font-size: 16px;
+    }
+    h6 {
+        font-size: 12px;
+        margin-left: 14px;
+    }
+    h5 {
+        font-size: 14px;
+        margin-left: 7px;
+    }
+}
+
+.regulations-text .intro, .regulations-text .general, .regulations-text .specific {
+    counter-reset: rules;
+}
+.regulations-text .intro h3::before, .regulations-text .general h3::before, .regulations-text .specific h3::before {
+    counter-increment: rules;
+    content: counter(rules) ". ";
+}
+.regulations-text .intro .example,.regulations-text .general .example,.regulations-text .specific .example {
+    display: block;
+    font-style: italic;
+    color: #666;
+    margin: 13px 0
+}

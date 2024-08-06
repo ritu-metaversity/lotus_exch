@@ -5,7 +5,8 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import type React from "react";
+import type { ReactNode } from "react";
+import React from "react";
 import { useState } from "react";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DoneIcon from '@mui/icons-material/Done';
@@ -28,7 +29,7 @@ const MobileBetList = () => {
     title: string;
     content: string;
     bcolor:string;
-    icon: React.ReactNode;
+    icon: ReactNode;
   }) => (
     <Box sx={{ p: "5px 0px" }}>
       <Accordion

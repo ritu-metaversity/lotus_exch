@@ -1,0 +1,89 @@
+.change-password {
+  padding: 8px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .password-requirements {
+    margin-bottom: 1em;
+    p{
+        font-size: 13px;
+        font-weight: 500;
+    }
+  }
+
+  .password-requirements ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .password-requirements li {
+    margin-bottom: 0.5em;
+  }
+
+  .password-requirements .error {
+    color: red;
+  }
+
+  .password-requirements .valid {
+    color: green;
+  }
+
+  button {
+    width: 48%;
+  }
+
+ 
+  .form-group{
+    position: relative;
+  }
+
+  
+  .password-input {
+    display: block;
+    width: 100%;
+    border: solid 1px #AAAAAA;
+    border-radius: 4px;
+    margin: 8px 0;
+    height: 36px;
+    // font-size: .9em;
+    box-sizing: border-box;
+}
+.form_btn{
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 15.6px;
+    text-transform: capitalize;
+    height: 36px;
+    padding: 0 16px;
+}
+.cancel_btn{
+    background: #ffffff;
+    color: #777777;
+    border: 1px solid #777777;
+    font-weight: 600;
+}
+.save_btn{
+    background: #000000;
+}
+button[disabled], .button[disabled]:focus, .button[disabled]:hover {
+    background: #777777 !important;
+    opacity: 1;
+    color: #ffffff !important;
+    cursor: default;
+}
+}
+
+
+.iconView{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    position: absolute;
+    top: 53%;
+    bottom: 50%;
+    right: -8px;
+    transform: translate(-50%, -50%);
+}

@@ -4,6 +4,7 @@ import "./index.css"
 import { ThemeProvider, createTheme } from "@mui/material"
 import { Provider } from "react-redux"
 import store from "./utils/store/store"
+import React from "react"
 
 const container = document.getElementById("root")
 

@@ -25,6 +25,7 @@ import img11 from "../../../img/blackjack-vivo-gaming-live.webp";
 
 import "./home.scss";
 import { Link } from "react-router-dom";
+import React from "react";
 
 function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
@@ -109,12 +110,7 @@ let settings = {
   ],
 };
 let settings2 = {
-  //   dots: false,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 2,
-  //   slidesToScroll: 1,
-  //   autoplay: false,
+
   prevArrow: <SamplePrevArrow />,
   responsive: [
     // {
@@ -186,7 +182,6 @@ const swiperData = [
 const HomeDesk = () => {
   return (
     <>
-      <NavbarDesk />
       <Box sx={{ py: 0 }}>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: "7.2px" }}>

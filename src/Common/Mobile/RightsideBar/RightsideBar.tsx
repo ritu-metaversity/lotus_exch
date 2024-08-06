@@ -18,6 +18,8 @@ import gamming from "../../../img/file-check.png";
 import policy from "../../../img/error.png";
 import download from "../../../img/down-arrow.png";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   openRight: boolean;
@@ -27,17 +29,17 @@ interface Props {
 }
 
 const menuItems = [
-  { link: "", icon: Setting, text: "Setting"},
-  { link: "", icon: bat, text: "Open Bet",  },
-  { link: "", icon: batting, text: "Betting P&L"},
-  { link: "", icon: tennis, text: "Transfer Statement" },
-  {link: "",icon: time,text: "Time Setting"},
-  { link: "", icon: lock, text: "Change Password"},
-  {link: "",icon: doc,text: "Rule & Regulation"},
-  {link: "",icon: kyc,text: "KYC"},
-  { link: "", icon: gamming, text: "Responsive Gamming"},
-  { link: "", icon: policy, text: "Exclusion Policy"},
-  { link: "", icon: download, text: "Download App"},
+  { link: "/m/settings", icon: Setting, text: "Setting"},
+  { link: "/m/open-bets", icon: bat, text: "Open Bet",  },
+  { link: "/m/betting-pnl", icon: batting, text: "Betting P&L"},
+  { link: "/m/transfer", icon: tennis, text: "Transfer Statement" },
+  {link: "/m/time-settings", icon: time,text: "Time Setting"},
+  { link: "/m/change-password", icon: lock, text: "Change Password"},
+  {link: "/m/rules-regs",icon: doc,text: "Rule & Regulation"},
+  {link: "/m/kyc",icon: kyc,text: "KYC"},
+  { link: "/m/responsible-gambling", icon: gamming, text: "Responsive Gamming"},
+  { link: "/m/exclusion-policy", icon: policy, text: "Exclusion Policy"},
+  { link: "#", icon: download, text: "Download App"},
   { link: "", icon: AccountBalanceIcon, text: "Sign Out"},
 ];
 
@@ -48,10 +50,12 @@ const RightsideBar: FC<Props> = ({
   theme,
 }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const nav  = useNavigate();
 
-  const handleListItemClick = (index: number) => {
+  const handleListItemClick = (index: number, link:string) => {
     setSelectedIndex(index);
     handleDrawerClose();
+    nav(link)
   };
 
   return (
@@ -239,7 +243,7 @@ const RightsideBar: FC<Props> = ({
           <ListItem
             key={item.text}
             disablePadding
-            onClick={() => handleListItemClick(index)}
+            onClick={() => handleListItemClick(index, item?.link)}
            
           >
             <ListItemButton
@@ -258,6 +262,7 @@ const RightsideBar: FC<Props> = ({
               </ListItemIcon>
               <ListItemText
                 className="font_change"
+               
                 primary={item.text}
                 sx={{
                   "& .MuiTypography-root": {

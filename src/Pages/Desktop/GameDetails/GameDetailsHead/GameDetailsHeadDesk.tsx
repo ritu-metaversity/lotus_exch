@@ -3,9 +3,10 @@ import React from "react";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Link } from "react-router-dom";
-import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
-import FeaturedPlayListOutlinedIcon from '@mui/icons-material/FeaturedPlayListOutlined';
-import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
+import PlayCircleFilledWhiteOutlinedIcon from "@mui/icons-material/PlayCircleFilledWhiteOutlined";
+import FeaturedPlayListOutlinedIcon from "@mui/icons-material/FeaturedPlayListOutlined";
+import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 const GameDetailsHeadDesk = () => {
   return (
@@ -22,8 +23,8 @@ const GameDetailsHeadDesk = () => {
                   }}
                 />
                 <div className="title-competition-box">
-                  {" "}
-                  London Spirit Women v Welsh Fire Women{" "}
+                  
+                  London Spirit Women v Welsh Fire Women
                   <div className="competition">The Hundred - Womens</div>
                 </div>
               </h1>
@@ -39,23 +40,36 @@ const GameDetailsHeadDesk = () => {
               />
               <div className="header-tabs">
                 <Link to="#" className="tab selected">
-                  <FeaturedPlayListOutlinedIcon sx={{
-                    marginRight:"5px"
-                  }}/> Scores{" "}
-                </Link>
-                <Link  to="#" className="tab">
-                  <PlayCircleFilledWhiteOutlinedIcon sx={{
-                    marginRight:"5px"
-                  }} /> Live Video{" "}
+                  <FeaturedPlayListOutlinedIcon
+                    sx={{
+                      marginRight: "5px",
+                    }}
+                  />
+                  Scores
                 </Link>
                 <Link to="#" className="tab">
-                  <OndemandVideoOutlinedIcon sx={{
-                    marginRight:"5px"
-                  }}/> Scores & Live{" "}
+                  <PlayCircleFilledWhiteOutlinedIcon
+                    sx={{
+                      marginRight: "5px",
+                    }}
+                  />
+                  Live Video
+                </Link>
+                <Link to="#" className="tab">
+                  <OndemandVideoOutlinedIcon
+                    sx={{
+                      marginRight: "5px",
+                    }}
+                  />
+                  Scores & Live
                 </Link>
                 <Box className="rules-wrapper">
                   <span className="rules ">
-                    <span className="rules__icon icon-outline-info" />
+                    <InfoOutlinedIcon
+                      sx={{
+                        marginRight: "5px",
+                      }}
+                    />
                     <span className="rules__text ng-binding">Rules</span>
                   </span>
                 </Box>

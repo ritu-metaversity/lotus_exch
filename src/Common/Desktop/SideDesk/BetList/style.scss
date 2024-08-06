@@ -1,0 +1,408 @@
+.bet_slip_desk {
+  .bets {
+    h6 {
+      margin-bottom: 0;
+    }
+  }
+  .bet-type-info {
+    line-height: 12px;
+    font-size: 12px;
+    margin: 10px;
+    text-align: left;
+    &::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      margin-right: 4px;
+      float: left;
+    }
+  }
+  .bet-type-info.back {
+    &::before {
+      background: #a7d8fd;
+    }
+  }
+  .market-list {
+    padding: 5px 3px;
+  }
+  .event-name {
+    display: block;
+    font-weight: bold;
+    margin: 6px 0 1px 10px;
+    color: #000;
+    text-decoration: none;
+    text-align: left;
+  }
+  .bets-list {
+    li {
+      margin-top: 3px;
+    }
+  }
+  li:last-child .bet {
+    margin-bottom: 5px;
+    border-radius: 0 0 2px 2px;
+  }
+  .bet {
+    margin-top: 0;
+    padding: 5px 10px 2px 10px;
+    font-size: 10px;
+    position: relative;
+    .bet-header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      .section-name-label {
+        max-width: 65%;
+        .selection-name {
+          margin: 0;
+          display: inline-block;
+          vertical-align: middle;
+          word-break: break-word;
+          font-size: 12px;
+        }
+        .pre-match-label {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 7px;
+          line-height: 7px;
+          text-transform: uppercase;
+          color: #666;
+          border: 1px solid #666;
+          border-radius: 3px;
+          padding: 2px 7px;
+          margin-left: 5px;
+        }
+      }
+      .max-market {
+        display: inline-flex;
+        position: absolute;
+        right: 10px;
+      }
+    }
+    .bet-fields {
+      margin-bottom: 9px;
+      &::after{
+        display: block;
+    content: '';
+    clear: both;
+      }
+    }
+  }
+  .bet.back {
+    background-color: #a7d8fd;
+  }
+  .bets .bet-fields .placeholder-wrapper {
+    float: left;
+    top: 19px;
+    margin-right: 4px;
+    width: 70px;
+  }
+  .bets .bet-fields .session-runs,
+  .bets .bet-fields .line-market {
+    float: left;
+    top: 0;
+  }
+  .bets .bet-fields .odds-field {
+    text-align: left;
+  }
+  .placeholder-wrapper {
+    position: relative;
+  }
+  .placeholder {
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #666;
+  }
+  .info-field {
+    display: inline-block;
+    margin: 0 4px;
+    .line-value {
+      float: left;
+      width: 51px;
+      padding-top: 7px;
+      text-align: center;
+    }
+    .title{
+        display: block;
+    }
+  }
+  .placeholder-wrapper {
+    float: left;
+    top: 19px;
+    margin-right: 4px;
+    width: 70px;
+  }
+  .betslip__input.placeholder-wrapper .placeholder {
+    left: 9px;
+  }
+  .bets .bet-fields input[type="text"],
+  .bets .bet-fields input[type="number"] {
+    border-radius: 3px;
+    width: 85px;
+    font-size: 12px;
+  }
+  .apl-form input:not([type="radio"]):not([type="checkbox"]),
+  .apl-form select {
+    vertical-align: middle;
+  }
+  input[type="number"].ng-invalid,
+  input[type="text"].ng-invalid {
+    border-color: #b71601;
+    outline: none;
+    width: 70px;
+    height: 27px;
+  }
+  .apl-form select,
+  .apl-form textarea,
+  .apl-form input:not([type]),
+  .apl-form input[type="text"],
+  .apl-form input[type="password"],
+  .apl-form input[type="datetime"],
+  .apl-form input[type="datetime-local"],
+  .apl-form input[type="date"],
+  .apl-form input[type="month"],
+  .apl-form input[type="time"],
+  .apl-form input[type="week"],
+  .apl-form input[type="number"],
+  .apl-form input[type="email"],
+  .apl-form input[type="url"],
+  .apl-form input[type="search"],
+  .apl-form input[type="tel"],
+  .apl-form input[type="color"] {
+    height: 27px;
+    padding: 4px 6px;
+  }
+  .apl-form select,
+  .apl-form textarea,
+  .apl-form input:not([type]),
+  .apl-form input[type="text"],
+  .apl-form input[type="password"],
+  .apl-form input[type="datetime"],
+  .apl-form input[type="datetime-local"],
+  .apl-form input[type="date"],
+  .apl-form input[type="month"],
+  .apl-form input[type="time"],
+  .apl-form input[type="week"],
+  .apl-form input[type="number"],
+  .apl-form input[type="email"],
+  .apl-form input[type="url"],
+  .apl-form input[type="search"],
+  .apl-form input[type="tel"],
+  .apl-form input[type="color"] {
+    height: 27px;
+    max-width: 100%;
+    padding: 4px 6px;
+    border: 2px solid #dddddd;
+    background: #ffffff;
+    color: #666666;
+    -webkit-transition: linear 0.2s;
+    transition: linear 0.2s;
+    border-radius: 3px;
+  }
+  .betslip__placeholder {
+    position: absolute;
+    top: 0;
+    font-size: 0.8em;
+    pointer-events: none;
+    height: 100%;
+    width: 100%;
+    line-height: 1.24em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 10px;
+    transition: opacity 0.2s ease;
+    color: #666;
+    opacity: 1;
+  }
+  .betslip__placeholder-label {
+    position: absolute;
+    top: -18px;
+    left: 9px;
+  }
+  .control-fields {
+    float: right;
+    margin-top: 22px;
+  }
+  .apl-btn:not(:disabled).apl-btn-cancel,
+  .apl-btn:not(:disabled).apl-btn-remove {
+    background-color: #b71601;
+    color: #ffffff;
+    border-bottom-color: #841001;
+    border-right-color: #841001;
+  }
+  .apl-btn.apl-btn-mini,
+  html button.apl-btn-mini,
+  html [type="button"].apl-btn-mini {
+    min-height: 17px;
+    padding: 0 5px;
+    line-height: 17px;
+    font-size: 8px;
+  }
+  .bets .bet-fields:after,
+  .sport-wrapper .markets > h1:after,
+  .sport-wrapper .markets > .group-sport > .content > .header:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+  .fail-messages .error {
+    color: #b71601;
+    font-weight: bold;
+  }
+  .bets .six-stakes.back {
+    border: 5px solid #a7d8fd;
+  }
+  .six-stakes {
+    margin: 16px -3px 7px;
+    padding: 5px;
+    background: #fff;
+    font-size: 10px;
+  }
+  .first-row {
+    margin-bottom: 2px;
+  }
+
+  .apl-btn {
+   
+    appearance: none;
+    margin: 0;
+    border: none;
+    overflow: visible;
+    font: inherit;
+    color: #ffffff;
+    text-transform: none;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 10px;
+    background: #c0c0c0;
+    vertical-align: middle;
+    line-height: 26px;
+    min-height: 26px;
+    font-size: 12px;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 2px solid #a7a7a7;
+    border-right: 2px solid #a7a7a7;
+    border-radius: 3px;
+  }
+  .apl-btn:not(:disabled).apl-btn-secondary-alt {
+    background-color: #ffc629;
+    color: #ffffff;
+    border-bottom-color: #f5b400;
+    border-right-color: #f5b400;
+  }
+  
+  .apl-btn,
+  html button,
+  html [type="button"] {
+    padding: 0 10px;
+    line-height: 26px;
+    min-height: 26px;
+    font-size: 12px;
+  }
+  .apl-btn:not(:disabled) {
+    cursor: pointer;
+  }
+  .session-runs{
+    top:5px;
+  }
+
+  
+}
+
+
+.bets .six-stakes .first-row,
+  .bets .six-stakes .second-row {
+    display: flex;
+  }
+  .bets .six-stakes .first-row button,
+  .bets .six-stakes .second-row button {
+    flex-grow: 1;
+  }
+
+  .bets .six-stakes button {
+    width: 65px ;
+    margin-right: 2px;
+    font-size: 10px;
+  }
+
+
+  .clear_btn{
+    background: unset;
+    outline: unset;
+    border: unset;
+    color: #ffc629;
+    text-align: right;
+  }
+
+
+
+  .summary-info{
+    margin: 0 10px 10px;
+    text-align: left;
+  }
+  .summary-buttons{
+    margin-right: 20px;
+    margin-bottom: 8px;
+    text-align: right;
+    .btn_btn_primary{
+        margin-left: 10px;    background-color: #F5F5F5;
+        color: #999999;
+        border-color: #F5F5F5;
+        box-shadow: none;
+        padding: 8px 10px;
+        border: unset;
+        overflow: unset;
+    }
+    .apl-btn-remove {
+        position: absolute;
+        right: 108px;
+        background-color: #b71601;
+        color: #FFFFFF;
+        border-bottom-color: #841001;
+        border-right-color: #841001;
+        cursor: pointer;
+        padding: 8px 10px;
+        border: unset;
+        overflow: unset;
+    }
+  }
+
+
+
+  .confirmation-checkbox-wrapper, .confirmation-ng-scope{
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .confirmation-checkbox {
+    padding: 0 10px;
+    cursor: pointer;
+}
+apl-form input[type="checkbox"]:not(:disabled), .apl-form input[type="radio"]:not(:disabled) {
+    cursor: pointer;
+}
+.check_box {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    border: 2px solid #ddd;
+    overflow: hidden;
+    margin-top: -4px;
+    vertical-align: middle;
+    outline: 0;
+    background: transparent;
+}
+.check_box:checked::before, .check_box:indeterminate::before {
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    line-height: 12px;
+    color: #ffc629;
+    font-weight: 800;
+}

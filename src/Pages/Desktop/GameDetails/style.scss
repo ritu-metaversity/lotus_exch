@@ -45,7 +45,7 @@
       color: #fff;
       border: solid 1px rgb(250 250 250 / 30%);
       min-width: 126px !important;
-      height: unset; 
+      height: unset;
     }
     .tab {
       min-width: 126px;
@@ -65,7 +65,7 @@
       text-decoration: none;
     }
   }
-  .rules-wrapper{
+  .rules-wrapper {
     color: #fff;
     font-size: 12px;
     margin-right: 10px;
@@ -74,13 +74,267 @@
     display: block;
     text-align: right;
     .rules {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      cursor: pointer;
+      .rules__text {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .market-group {
+    .market-listing-table {
+      width: 100%;
+      margin-bottom: 20px;
+      color: #000;
+      border-collapse: collapse;
+      border-spacing: 0;
+      th.title {
+        text-align: left;
         display: flex;
         align-items: center;
-        white-space: nowrap;
-        cursor: pointer;
-        .rules__text {
-            vertical-align: middle;
+        flex-direction: row;
+        line-height: 1.42857143;
+        vertical-align: middle;
+        width: 100%;
+        svg {
+          width: 20px;
+          font-size: 20px;
+          display: inline-block;
+          color: #e4c41e;
+          vertical-align: bottom;
         }
+      }
+      .market-indicators-container {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+      }
+      .icon-box {
+        width: 20px;
+        height: 20px;
+        float: right;
+        margin-left: 10px;
+        position: relative;
+        cursor: pointer;
+        img {
+          width: 100%;
+        }
+        .popover {
+          display: none;
+          box-sizing: border-box;
+          position: absolute;
+          bottom: 100%;
+          left: 100%;
+          background-color: #fff;
+          padding: 8px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          font-weight: normal;
+          font-size: 12px;
+          color: #000;
+          white-space: nowrap;
+          font-family: Lato, Avenir, Verdana, Nunito;
+        }
+      }
     }
+  }
+  .market-listing-table th.back,
+  .market-listing-table td.back,
+  .market-listing-table th.lay,
+  .market-listing-table td.lay,
+  .market-listing-table th.empty,
+  .market-listing-table td.empty,
+  .market-listing-table .bet-button-wrapper {
+    width: 63px;
+  }
+  .market-listing-table > thead > tr > th {
+    padding-top: 0;
+  }
+  ._markets-cell,
+  .market-listing-table > thead > tr > th,
+  .market-listing-table > tbody tr td {
+    padding: 4px 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+  }
+  ._align-center,
+  .market-listing-table > thead > tr > th {
+    text-align: center;
+  }
+  .market-listing-table > thead th,
+  .market-listing-table > tbody td {
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  tbody {
+    border: 1px solid #ddd;
+    tr {
+      transition: background-color ease 0.5s;
+      background-color: #fff;
+      text-align: left;
+      .event-row {
+        padding: 4px 8px !important;
+        border-bottom: 1px solid #ddd;
+      }
+      .event-name {
+        font-weight: bold;
+        line-height: 22px;
+        color: #000;
+      }
+    }
+    tbody tr td {
+      height: 43px;
+      line-height: 1.42857143;
+      vertical-align: middle;
+    }
+  }
+  tbody tr td.back.empty-price.betting-disabled {
+    cursor: not-allowed;
+  }
+
+  tbody tr td.back.betting-disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+  }
+  .market-listing-table > tbody tr td.back {
+    cursor: pointer;
+    text-align: center;
+    background-color: #a7d8fd;
+    position: relative;
+  }
+  tbody tr td.back.unhighlighted {
+    background-color: #e3f3fe;
+    opacity: 0.5;
+  }
+  body tr td.show-size {
+    height: 43px;
+  }
+  tbody tr td:not(.event-row) {
+    border: 1px solid #ddd;
+  }
+  tbody tr td.lay {
+    cursor: pointer;
+    text-align: center;
+    background-color: #f9c9d4;
+    position: relative;
+  }
+  tbody tr td.lay.unhighlighted {
+    background-color: #fdeef2;
+    opacity: 0.5;
+  }
+}
+
+.icon-box:hover .popover {
+  display: block !important;
+}
+
+.fancy_group {
+  .nav-tabs-group-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin-bottom: 15px;
+    .nav-tab {
+      cursor: pointer;
+      background: transparent;
+      border-bottom: none;
+      padding: 0 22px 5px;
+      text-align: center;
+      color: #000;
+      font-size: 14px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .nav-tab.active {
+      border-bottom: 3px solid #000;
+    }
+  }
+  tbody > tr td.market-name:first-child {
+    position: relative;
+  }
+  tr td.market-name {
+    font-weight: bold;
+    padding: 0;
+    vertical-align: top;
+    border-right: none !important;
+  }
+  tr td.main-container {
+    position: relative;
+    width: 383px;
+    padding: 0;
+  }
+  .odds-container {
+    width: 383px;
+    table {
+      margin-bottom: 0 !important;
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      tbody {
+        border: 0;
+      }
+    }
+    .odds-placeholder {
+      width: 126px;
+      background: #f9f7f9;
+      color: #565457;
+      text-align: left;
+      padding: 4px 8px !important;
+      border-left: none;
+      border-top: none;
+      border-bottom: none;
+      border: 1px solid #ddd;
+      height: 43px;
+    }
+    table tbody > tr > td {
+      border-left: none;
+      border-top: none;
+      border-bottom: none;
+    }
+    .odds {
+      font-weight: bold;
+    }
+    .size {
+      display: block;
+    }
+    .max-liability:first-child {
+      margin-bottom: 3px;
+    }
+    .max-liability {
+      font-size: 11px;
+      display: block;
+    }
+  }
+   tbody tr td {
+    padding: 0px 8px !important;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border:unset
+}
+tbody tr td:not(.event-row) {
+  border: 1px solid #ddd;
+}
+tbody {
+  border: unset;
+}
+.market-name{
+  .container{
+    padding: 0px 8px;
+    img{
+      position: absolute;
+      right: 0;
+      top: 50%;
+      bottom: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+.market-listing-table{
+margin-bottom: 8px !important;
 }
 }
