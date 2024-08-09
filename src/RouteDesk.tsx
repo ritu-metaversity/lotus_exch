@@ -36,6 +36,12 @@ import Rulesmob from "./Pages/Mobile/Rules/Rulesmob";
 import KycMob from "./Pages/Mobile/kyc/KycMob";
 import ResponsibleGamblingMob from "./Pages/Mobile/ResponsibleGambling/ResponsibleGamblingMob";
 import ExclusionpolicyMob from "./Pages/Mobile/Exclusionpolicy/ExclusionpolicyMob";
+import OrderList from "./Pages/Desktop/orderList/OrderList";
+import BettingPL from "./Pages/Desktop/BettingPL/BettingPL";
+import AccountStatementDesk from "./Pages/Desktop/AccountStatement/AccountStatementDesk";
+import TransferStatementDesk from "./Pages/Desktop/TransferStatement/TransferStatementDesk";
+import SecurityDesk from "./Pages/Desktop/Security/SecurityDesk";
+import SettingsDesk from "./Pages/Desktop/Settings/SettingsDesk";
 
 const MobileRoutes = () => (
   <Routes>
@@ -75,6 +81,13 @@ const DesktopRoutes = () => (
       <Route path="horseracing/:id" element={<HorseRacingDesk />} />
       <Route path="super-casino" element={<LiveCasinoDesk />} />
       <Route path="display/EVENT/:id/:matchedId" element={<GameDetailsDesk />} />
+      <Route path="display/EVENT/:id/:matchedId" element={<GameDetailsDesk />} />
+      <Route path="orderList" element={<OrderList />} />
+      <Route path="betProfitLoss" element={<BettingPL />} />
+      <Route path="accountStatement" element={<AccountStatementDesk />} />
+      <Route path="transferStatement" element={<TransferStatementDesk />} />
+      <Route path="security" element={<SecurityDesk />} />
+      <Route path="settings" element={<SettingsDesk />} />
     </Route>
   </Routes>
 );

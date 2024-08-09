@@ -1,0 +1,37 @@
+.footer_desk{
+    text-align: center;
+    background: #000;
+    color: #fff;
+    line-height: 20px;
+    padding: 21px 20px;
+    margin-top: 0;
+    a {
+        color: #fff;
+        text-decoration: unset;
+
+    }
+    img{
+        width: 40px;
+        height: 40px;
+
+    vertical-align: middle;
+    }
+    .regulatory-links {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 10px;
+        
+    }
+    .label {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    a, .copy {
+        vertical-align: middle;
+        margin: 0 10px;
+    }
+    
+}

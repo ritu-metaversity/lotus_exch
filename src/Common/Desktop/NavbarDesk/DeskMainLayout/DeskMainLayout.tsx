@@ -4,28 +4,44 @@ import RightSide from "../../SideDesk/RightSide";
 import NavbarDesk from "../NavbarDesk";
 import "./style.scss";
 import { Outlet, useLocation } from "react-router-dom";
+import FooterDesk from "../../Footer/FooterDesk";
 
 const DeskMainLayout = () => {
   const { pathname } = useLocation();
+
+  const isHome = pathname.includes("home");
+  const isCasinoOrSettings = [
+    "super-casino",
+    "orderList",
+    "betProfitLoss",
+    "accountStatement",
+    "transferStatement",
+    "security",
+    "settings",
+  ].some((path) => pathname.includes(path));
+
   return (
     <>
       <NavbarDesk />
-      <div className={pathname.includes("home")?"":"boxed-layout-wrapper"}>
-        {
-          (!pathname.includes("home")) &&   <div className="left-pane">
-          <SideDesk />
-        </div>
-        }
-      
-        <div className={pathname.includes("super-casino")?"mid-pane-casino ": pathname.includes("home")?"":"mid-pane"}>
+      <div className={isHome ? "" : "boxed-layout-wrapper"}>
+        {!isHome && (
+          <div className="left-pane">
+            <SideDesk />
+          </div>
+        )}
+
+        <div className={isCasinoOrSettings ? "mid-pane-casino" : isHome ? "" : "mid-pane"}>
           <Outlet />
         </div>
-        {(!pathname.includes("super-casino") && !pathname.includes("home")) && (
+
+        {!isCasinoOrSettings && !isHome && (
           <div className="right-pane">
             <RightSide />
           </div>
         )}
       </div>
+      <FooterDesk />
+
     </>
   );
 };

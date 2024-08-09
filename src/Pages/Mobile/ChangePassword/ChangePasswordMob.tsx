@@ -6,7 +6,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 
 const ChangePasswordMob = () => {
     const [showOldPassword, setShowOldPassword] = useState(false);
@@ -21,6 +21,7 @@ const ChangePasswordMob = () => {
         number: true,
         match: true,
     });
+    const matches = useMediaQuery('(max-width:800px)');
 
     const validatePassword = (password, confirmPassword) => {
         const length = password.length >= 8 && password.length <= 255;
@@ -96,11 +97,24 @@ const ChangePasswordMob = () => {
 
     return (
         <>
-            <Box sx={{ paddingInline: "12px", paddingTop: "12px" }}>
-                <PageHeading name="Change Password" />
-            </Box>
+            {
+                matches && <Box sx={{ paddingInline: "12px", paddingTop: "12px" }}>
+                    <PageHeading name="Change Password" />
+                </Box>
+            }
+
             <div>
                 <form onSubmit={handleSubmit} className="change-password">
+                    {
+                        !matches && <Typography sx={{
+                            color: "#000",
+                            fontSize: "16px",
+                            margin: "3px 0px -10px"
+                        }}>
+                            Change Password
+                        </Typography>
+                    }
+
                     <div className="form-group">
                         <input
                             type={showOldPassword ? "text" : "password"}
@@ -112,15 +126,15 @@ const ChangePasswordMob = () => {
                         />
                         {
                             oldPassword?.length > 0 && <div className="iconView">
-                            <div onClick={() => togglePasswordVisibility('old')}>{!showOldPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}</div>
-                            <div onClick={()=>setOldPassword("")}><CloseOutlinedIcon /></div>
-                        </div>
+                                <div onClick={() => togglePasswordVisibility('old')}>{!showOldPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}</div>
+                                <div onClick={() => setOldPassword("")}><CloseOutlinedIcon /></div>
+                            </div>
                         }
-                        
+
                     </div>
                     <div className="form-group">
                         <input
-                           type={showNewPassword ? "text" : "password"}
+                            type={showNewPassword ? "text" : "password"}
                             name="newPassword"
                             value={newPassword}
                             placeholder="New Password"
@@ -130,15 +144,15 @@ const ChangePasswordMob = () => {
                         />
                         {
                             newPassword?.length > 0 && <div className="iconView">
-                            <div onClick={() => togglePasswordVisibility('new')}>{!showNewPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}</div>
-                            <div onClick={()=>setNewPassword("")}><CloseOutlinedIcon /></div>
-                        </div>
+                                <div onClick={() => togglePasswordVisibility('new')}>{!showNewPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}</div>
+                                <div onClick={() => setNewPassword("")}><CloseOutlinedIcon /></div>
+                            </div>
                         }
-                         
+
                     </div>
                     <div className="form-group">
                         <input
-                             type={showConfirmPassword ? "text" : "password"}
+                            type={showConfirmPassword ? "text" : "password"}
                             name="confirmPassword"
                             value={confirmPassword}
                             placeholder="Repeat New Password"
@@ -147,12 +161,12 @@ const ChangePasswordMob = () => {
                             required
                         />
                         {
-                            confirmPassword?.length > 0 &&  <div className="iconView">
-                            <div onClick={() => togglePasswordVisibility('confirm')}>{!showConfirmPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}</div>
-                            <div onClick={()=>setConfirmPassword("")}><CloseOutlinedIcon /></div>
-                        </div>
+                            confirmPassword?.length > 0 && <div className="iconView">
+                                <div onClick={() => togglePasswordVisibility('confirm')}>{!showConfirmPassword ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}</div>
+                                <div onClick={() => setConfirmPassword("")}><CloseOutlinedIcon /></div>
+                            </div>
                         }
-                        
+
                     </div>
                     <div className="password-requirements">
                         <p>Password Should:</p>
@@ -168,7 +182,6 @@ const ChangePasswordMob = () => {
                         justifyContent: "space-between",
                         alignContent: "center"
                     }}>
-
                         <Button className="form_btn cancel_btn" type="button" onClick={resetForm}>Cancel</Button>
                         <Button className="form_btn save_btn" type="submit" disabled>Save</Button>
                     </Box>
