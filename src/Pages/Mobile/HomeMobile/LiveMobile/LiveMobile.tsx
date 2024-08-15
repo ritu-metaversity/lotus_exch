@@ -1,149 +1,153 @@
+/* eslint-disable @typescript-eslint/no-restricted-imports */
+import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
 import { Box } from "@mui/material";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
+import type { FC, TouchEvent } from "react";
+import { useAppSelector } from "../../../../hooks/useAppSelector";
+import { selectHomeSwipe, setHomeSwipe } from "../../../../utils/slice/homeSlice";
 
 // Component for displaying event information
-const EventInfo = ({ date, competitors }) => (
-  <Box className="market-title">
-    <div className="info-box">
-      <div className="icon-fire-wrapper" />
-      <div className="info">
-        <div className="line date">
-          <span className="date-info__item date-info__item--open-date">
-            {date}
-          </span>
+const EventInfo = ({ date, competitors, matchName }) => {
+
+  return (
+    <Box className="market-title">
+      <div className="info-box">
+        <div className="icon-fire-wrapper" />
+        <div className="info">
+          {
+            matchName?.data?.marketDefinition?.inPlay ? <div className="inplay_label"> In Play
+            </div> : <div className="line date">
+              <span className="date-info__item date-info__item--open-date">
+                {date}
+              </span>
+            </div>
+          }
+
         </div>
       </div>
-    </div>
-    <div className="competitors">
-      <div className="width-wrapper">
-        {competitors.map((name, index) => (
-          <div className="line" key={index}>
-            <div className="name">{name}</div>
+      <div className="competitors">
+        <div className="width-wrapper">
+          {/* {competitors.map((name, index) => ( */}
+          <div className="line" >
+            <div className="name">{matchName?.matchName}</div>
           </div>
-        ))}
+          {/* ))} */}
+        </div>
       </div>
-    </div>
-  </Box>
-);
+    </Box>
+  )
+};
 
-// Component for displaying odds
-const Odds = ({ odds }) => (
-  <div className="odds market-odds custom-width">
-    <div className="odds-wrap scrollable">
-      <div className="market-odds__container">
-        {odds.map((odd, index) => (
-          <Box className={odd.className} key={index}>
-            <div className={`bet-button ${odd.type}`}>
-              <div className="price">{odd.price}</div>
+const Odds = ({ date }) => {
+  const dispatch = useDispatch();
+  const isSwiped = useAppSelector(selectHomeSwipe);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lastTouchXRef = useRef<number | null>(null);
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    lastTouchXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    lastTouchXRef.current = null;
+  };
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    const shouldApplyAnimation = window.innerWidth < 1024;
+
+
+    if (!shouldApplyAnimation) return;
+
+    if (lastTouchXRef.current !== null) {
+      const diffX = e.touches[0].clientX - lastTouchXRef.current;
+
+      const threshold = 70;
+      if (Math.abs(diffX) > threshold) {
+        if (diffX > 0) {
+          dispatch(setHomeSwipe({ isSwiped: false }));
+        } else {
+          dispatch(setHomeSwipe({ isSwiped: true }));
+        }
+      }
+    }
+  };
+  return (
+    <div className="odds market-odds custom-width">
+      <div ref={containerRef} onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd} className={`odds-wrap ${isSwiped ? "scrollable" : ""}`}>
+        {
+          date?.data !== null ?
+            <div className="market-odds__container">
+                  <Box className="not-selected scrollable" >
+                    <div className={`bet-button back`}>
+                      <div className="price">{date?.data?.rc[0]?.batb[0][1]}</div>
+                    </div>
+                  </Box>
+                  <Box className="not-selected scrollable" >
+                    <div className={`bet-button back`}>
+                      <div className="price">-</div>
+                    </div>
+                  </Box>
+                  <Box className="not-selected scrollable" >
+                    <div className={`bet-button back`}>
+                      <div className="price">{date?.data?.rc[1]?.batb[0][1]}</div>
+                    </div>
+                  </Box>
+              
+                  <Box className="not-selected scrollable" >
+                    <div className={`bet-button lay`}>
+                      <div className="price">{date?.data?.rc[0]?.batl[0][1]}</div>
+                    </div>
+                  </Box>
+                  <Box className="not-selected scrollable" >
+                    <div className={`bet-button lay`}>
+                      <div className="price">-</div>
+                    </div>
+                  </Box>
+                  <Box className="not-selected scrollable" >
+                    <div className={`bet-button lay`}>
+                      <div className="price">{date?.data?.rc[1]?.batl[0][1]}</div>
+                    </div>
+                  </Box>
+                
+            </div> :
+            <div  className="more full-width">
+              <div  className="inner">
+                See more markets
+              </div>
+              <i  className="icon icon-angle-right" />
             </div>
-          </Box>
-        ))}
+        }
+
       </div>
     </div>
-  </div>
-);
+  )
+};
 
-// Component for a market item
+interface Props {
+  activeData: any
+}
 
 // Main component
-const LiveMobile = () => {
-  const events = [
-    {
-      date: "Today 14:00",
-      competitors: ["Bangladesh Women", "Malaysia Women"],
-      odds: [
-        { className: "not-selected scrollable", type: "back", price: "3" },
-        { className: "", type: "has-no-runner disabled back", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "back",
-          price: "2,500",
-        },
-        { className: "not-selected scrollable", type: "lay", price: "4" },
-        { className: "", type: "has-no-runner disabled lay", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "lay",
-          price: "3,334",
-        },
-      ],
-    },
-    {
-      date: "Today 15:30",
-      competitors: ["Essex", "Warwickshire"],
-      odds: [
-        { className: "not-selected scrollable", type: "back", price: "82" },
-        { className: "", type: "has-no-runner disabled back", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "back",
-          price: "104",
-        },
-        { className: "not-selected scrollable", type: "lay", price: "96" },
-        { className: "", type: "has-no-runner disabled lay", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "lay",
-          price: "122",
-        },
-      ],
-    },
-    {
-      date: "Today 15:30",
-      competitors: ["Lancashire", "Durham"],
-      odds: [
-        { className: "not-selected scrollable", type: "back", price: "70" },
-        { className: "", type: "has-no-runner disabled back", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "back",
-          price: "121",
-        },
-        { className: "not-selected scrollable", type: "lay", price: "82" },
-        { className: "", type: "has-no-runner disabled lay", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "lay",
-          price: "143",
-        },
-      ],
-    },
-    {
-      date: "Today 19:00",
-      competitors: ["Sri Lanka Women", "Thailand Women"],
-      odds: [
-        { className: "not-selected scrollable", type: "back", price: "2.25" },
-        { className: "", type: "has-no-runner disabled back", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "back",
-          price: "2,666",
-        },
-        { className: "not-selected scrollable", type: "lay", price: "3.75" },
-        { className: "", type: "has-no-runner disabled lay", price: "-" },
-        {
-          className: "not-selected more-odds scrollable",
-          type: "lay",
-          price: "4,445",
-        },
-      ],
-    },
-  ];
-
+const LiveMobile: FC<Props> = ({ activeData }) => {
   const nav = useNavigate();
   const handleNav = () => {
     nav("/m/sport/4/e/33450249");
   };
 
-  const MarketItem = ({ date, competitors, odds }: any) => (
-    <div className="market-list-item" onClick={handleNav}>
-      <div className="market">
-        <EventInfo date={date} competitors={competitors} />
-        <Odds odds={odds} />
+  const MarketItem = ({ date, competitors, odds }: any) => {
+    return (
+      <div className="market-list-item" onClick={handleNav}>
+        <div className="market">
+          <EventInfo date={date?.MstDate} matchName={date} competitors={competitors} />
+          <Odds date={date} />
+        </div>
       </div>
-    </div>
-  );
+    )
+  };
 
   return (
     <section className="section in-play">
@@ -157,34 +161,53 @@ const LiveMobile = () => {
       </div>
       <div className="events-list">
         <Box>
-          <Box>
-            <div className="consolidated-events-group-title">
-              <div className="title">
-                <i className="icon-sport-cricket sport-icon" title="Cricket" />
-                <span>Cricket</span>
-              </div>
-              <div className="odds-header">
-                <div className="odds-col">1</div>
-                <div className="odds-col">X</div>
-                <div className="odds-col">2</div>
-                <div className="odds-col visible-on-wide-screen">1</div>
-                <div className="odds-col visible-on-wide-screen">X</div>
-                <div className="odds-col visible-on-wide-screen">2</div>
-              </div>
-            </div>
-            <div className="consolidated-events">
-              <div className="app-list">
-                {events.map((event, index) => (
-                  <MarketItem
-                    key={index}
-                    date={event.date}
-                    competitors={event.competitors}
-                    odds={event.odds}
-                  />
-                ))}
-              </div>
-            </div>
-          </Box>
+          {
+            Object.keys(activeData)?.map((sportName) => {
+              const dataLength = activeData[sportName]?.filter((item)=>{
+                if(item?.data !== null && item?.data?.marketDefinition?.inPlay ) return  item
+              })
+              return (
+                <>
+                {dataLength?.length > 1 && 
+                <Box>
+                  <div className="consolidated-events-group-title">
+                    <div className="title">
+                      <i className="icon-sport-cricket sport-icon" title="Cricket" />
+                      <span>{sportName}</span>
+                    </div>
+                    <div className="odds-header">
+                      <div className="odds-col">1</div>
+                      <div className="odds-col">X</div>
+                      <div className="odds-col">2</div>
+                      <div className="odds-col visible-on-wide-screen">1</div>
+                      <div className="odds-col visible-on-wide-screen">X</div>
+                      <div className="odds-col visible-on-wide-screen">2</div>
+                    </div>
+                  </div>
+                  <div className="consolidated-events">
+                    <div className="app-list">
+                      {activeData[sportName]?.map((event, index) => {
+                        const competitors = JSON.parse(event?.runner_json);
+                        if (!event?.data?.marketDefinition?.inPlay) return null
+                        return (
+                          <MarketItem
+                            key={index}
+                            date={event}
+                            competitors={competitors}
+
+                          />
+                        )
+                      })}
+                    </div>
+                  </div>
+                </Box>
+                }
+                </>
+              )
+            }
+            )
+          }
+
         </Box>
       </div>
     </section>

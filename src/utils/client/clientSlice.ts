@@ -48,7 +48,7 @@ export default clientSlice.reducer;
 export const { setHomeSwipe,setBetData,setBetDataFancy,setSelectedSid,setProfits } = clientSlice.actions;
 
 /* SELECTORS */
-const swipeSelector = (state: RootState) => state.client.swipeView;
+const swipeSelector = (state: RootState) => state.client?.swipeView;
 const betDataSelector = (state: RootState) => state.client.betData;
 const betDataSelectorFancy = (state: RootState) => state.client.betDataFancy;
 const selectedSidSelector = (state: RootState) => state.client.selectedSid;
@@ -56,7 +56,7 @@ const profitsSelector = (state: RootState) => state.client.profits;
 
 export const selectHomeSwipe = createSelector(
 	swipeSelector,
-	swipe => swipe.home
+	swipe => swipe?.home
 );
 export const selectBetData = createSelector(
 	betDataSelector,

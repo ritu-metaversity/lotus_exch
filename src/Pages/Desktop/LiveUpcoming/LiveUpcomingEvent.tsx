@@ -138,23 +138,6 @@ const LiveUpcomingEvent = () => {
                                     </Box>
                                   </td>
 
-                                  {/* <td className="empty betting-disabled">
-                                    <Box className="bet-button-wrapper">
-                                      <strong className="odds ng-binding">-</strong>
-                                      <Box className="size">
-                                        <span className="ng-binding"></span>
-                                      </Box>
-                                    </Box>
-                                  </td>
-
-                                  <td className="empty betting-disabled">
-                                    <Box className="bet-button-wrapper">
-                                      <strong className="odds ng-binding">-</strong>
-                                      <Box className="size">
-                                        <span className="ng-binding"></span>
-                                      </Box>
-                                    </Box>
-                                  </td> */}
 
                                   <td className="back">
                                     <Box className="bet-button-wrapper">
@@ -184,39 +167,7 @@ const LiveUpcomingEvent = () => {
                     </tr>
                   );
                 })}
-                <tr  >
-                      <td className="event-row">
-                        <Box className="event-flex-row">
-                          <Box className="event-col">
-                          <CiStar />
-                            <Link
-                              className="event-name ng-binding"
-                              to="#/display/EVENT/4/33433288"
-                            >
-                              Who will win The Hundred Womens 2024?
-                            </Link>
-                          </Box>
-                          <Box className="event-col">
-                            <small className="event-time ">
-                              <Box className="">
-                                <time className="ng-binding ">
-                                  23/07/24 19:15
-                                </time>
-                              </Box>
-                            </small>
-                          </Box>
-                        </Box>
-                      </td>
-
-                      <td colSpan={6} className="status more ">
-                        <Link to="#/display/EVENT/4/9.33076_1" className="status-label-more cricket_status_lable">
-                        <span className="status-label-more-text">See more markets</span>
-                        <IoIosArrowForward  style={{
-                                fontSize: "18px"
-                        }}/>
-                        </Link>
-                      </td>
-                    </tr>
+                
               </tbody>
             </table>
           </Box>

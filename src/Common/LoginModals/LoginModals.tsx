@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -8,6 +8,12 @@ import { Visibility, VisibilityOff, Close } from "@mui/icons-material";
 import { styled, useTheme } from "@mui/material/styles";
 import logo from "../../img/logo.svg";
 import "./Login.scss";
+import React from "react";
+import { useLoginMutation } from "../../utils/Services/authService/authApi";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { setLoginData } from "../../utils/slice/loginSlice";
+import { useNavigate } from "react-router-dom";
 
 const FormBlock = styled(Box)(({ theme }) => ({
   marginTop: "18px",
@@ -25,26 +31,52 @@ const style = {
   boxShadow: 24,
   p: 4,
   borderRadius: "10px"
-  
+
 };
 
-interface Props{
-  handleClose: () => void
+interface Props {
+  handleClose: () => void,
+  locationData: any
 }
 
-function LoginModals({handleClose}:Props) {
+function LoginModals({ handleClose, locationData }: Props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const dispatch = useDispatch();
+  const nav = useNavigate();
+
+  const [getLogin, { data: loginData }] = useLoginMutation();
 
 
   const handleShowPassword = () => setShowPassword(!showPassword);
 
   const handleSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
+    if (locationData)
+      getLogin({
+        username,
+        password,
+        device_info: "Mobile",
+        browser_info: "Android | Chrome",
+        dom: "/",
+        city: locationData?.city,
+        region: locationData?.region,
+        org: locationData?.org,
+      })
   };
+
+
+  useEffect(() => {
+    if (loginData) {
+      localStorage.setItem("token", loginData?.token)
+      dispatch(setLoginData({ loginData, isLogin: true }))
+      nav('sport/inplay-upcoming');
+      handleClose();
+    }
+  }, [loginData])
 
   return (
     <Box sx={{ ...style, width: isMobile ? "71%" : 310 }}>
@@ -54,8 +86,8 @@ function LoginModals({handleClose}:Props) {
           color: "#ddd",
           right: "6px",
           top: "9px",
-          cursor:"pointer"
-      }
+          cursor: "pointer"
+        }
         }
         />
         <img
@@ -66,7 +98,7 @@ function LoginModals({handleClose}:Props) {
           style={{
             display: "block",
             margin: "auto",
-            marginTop:"20px"
+            marginTop: "20px"
           }}
         />
         <FormBlock>
@@ -122,11 +154,11 @@ function LoginModals({handleClose}:Props) {
                 backgroundColor: "#ffc629",
                 color: "#fff",
               },
-              "&:disabled": {  
+              "&:disabled": {
                 backgroundColor: "#777777",
-                color: "#fff", 
-                borderBottom: "2px solid #777777",  
-                borderRight: "2px solid #777777", 
+                color: "#fff",
+                borderBottom: "2px solid #777777",
+                borderRight: "2px solid #777777",
                 cursor: "default",
               },
             }}

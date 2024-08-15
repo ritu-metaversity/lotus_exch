@@ -1,4 +1,4 @@
-import type React from "react";
+import   React, { useEffect } from "react";
 import {
   Toolbar,
   Button,
@@ -12,9 +12,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { FaSearch } from "react-icons/fa";
 import logo from "../../../img/logo.svg";
 import LoginModals from "../../LoginModals/LoginModals";
+import type { FC} from "react";
 import { useState } from "react";
 import { AppBar } from "../../Mainlayout/Mainlayout";
 import PersonIcon from '@mui/icons-material/Person';
+import axios from "axios";
+import { loginSelector } from "../../../utils/slice/loginSlice";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+import { useSelector } from "react-redux";
 
 interface Props {
   openApp: boolean;
@@ -24,14 +29,26 @@ interface Props {
   handleDrawerOpenRight: () => void
 }
 
-const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRight, openRight }) => {
+const Navbar: FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRight, openRight }) => {
+  const [locationData, setLocationData] = useState(null);
   const isSmallScreen = useMediaQuery("(max-width:1000px)");
+
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const isLogin = false;
+  const loginData = useSelector(loginSelector);
+
+  useEffect(() => {
+    axios.get('https://ipapi.co/json')
+      .then(response => {
+        setLocationData(response.data);
+      })
+  }, []);
+
+
+
 
   return (
     <Box sx={{ flexGrow: 1,
@@ -79,7 +96,7 @@ const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRig
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Box><FaSearch className="font_searchs" /></Box>
             {
-              isLogin ?
+              !loginData?.isLogin ?
             <Button
               onClick={handleOpen}
               color="inherit"
@@ -133,7 +150,7 @@ const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRig
               fontWeight:600
              }}>
              <PersonIcon /> 
-             <span> 61.0</span>
+             <span> {loginData?.data?.loginData?.user?.balance}</span>
              </Typography>
             </Button>   }
           </Box>
@@ -146,7 +163,7 @@ const Navbar: React.FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRig
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <LoginModals handleClose={handleClose} />
+        <LoginModals handleClose={handleClose} locationData={locationData}/>
       </Modal>
     </Box>
   );

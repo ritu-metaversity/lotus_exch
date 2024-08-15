@@ -20,6 +20,9 @@ import download from "../../../img/down-arrow.png";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { loginSelector } from "../../../utils/slice/loginSlice";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+import { useSelector } from "react-redux";
 
 interface Props {
   openRight: boolean;
@@ -51,12 +54,14 @@ const RightsideBar: FC<Props> = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const nav  = useNavigate();
+  const loginData = useSelector(loginSelector);
 
   const handleListItemClick = (index: number, link:string) => {
     setSelectedIndex(index);
     handleDrawerClose();
     nav(link)
   };
+
 
   return (
     <Drawer
@@ -148,7 +153,7 @@ const RightsideBar: FC<Props> = ({
                     fontFamily: "Lato, sans-serif",
                   }}
                 >
-                  <strong>0.0</strong>
+                  <strong>{loginData?.data?.loginData?.user?.balance}</strong>
                 </Typography>
               </Box>
 
@@ -202,11 +207,11 @@ const RightsideBar: FC<Props> = ({
                   sx={{
                     textAlign: "right",
                     fontSize: "14px",
-                    color: "red",
+                    color: loginData?.data?.loginData?.user?.profit_loss>0?"green":"red",
                     fontFamily: "Lato, sans-serif",
                   }}
                 >
-                  <strong>0.0</strong>
+                  <strong>{loginData?.data?.loginData?.user?.profit_loss}</strong>
                 </Typography>
               </Box>
               <Box
@@ -233,7 +238,7 @@ const RightsideBar: FC<Props> = ({
                     fontFamily: "Lato, sans-serif",
                   }}
                 >
-                  <strong>0.0</strong>
+                  <strong>{loginData?.data?.loginData?.user?.liability}</strong>
                 </Typography>
               </Box>
             </div>

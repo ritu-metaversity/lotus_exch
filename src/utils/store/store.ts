@@ -1,18 +1,24 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query/react';
-import clientReducer from '../client/clientSlice'
+import { configureStore } from "@reduxjs/toolkit"
+import { authApi } from "../Services/authService/authApi"
+import login from '../slice/loginSlice'
+import home from '../slice/homeSlice'
+import { sportApi } from "../Services/authService/sportApi"
+import { setupListeners } from "@reduxjs/toolkit/query"
 
-const store = configureStore({
+export const store = configureStore({
 	reducer: {
-		client: clientReducer,
+		login,
+		home,
+		[authApi.reducerPath]: authApi.reducer,
+		[sportApi.reducerPath]: sportApi.reducer,
 	},
-	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware()
-});
+	middleware: defaultMiddleware =>
+		defaultMiddleware()
+			.concat(authApi.middleware)
+			.concat(sportApi.middleware)
+})
 
 setupListeners(store.dispatch);
-
-export default store;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

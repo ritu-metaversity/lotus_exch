@@ -3,8 +3,8 @@ import App from "./App"
 import "./index.css"
 import { ThemeProvider, createTheme } from "@mui/material"
 import { Provider } from "react-redux"
-import store from "./utils/store/store"
 import React from "react"
+import { store } from "./utils/store/store"
 
 const container = document.getElementById("root")
 
@@ -21,11 +21,11 @@ if (container) {
   });
 
   root.render(
-      <Provider store={store}>
+    <Provider store={store}>
       <ThemeProvider theme={darkTheme}>
         <App />
-        </ThemeProvider>
-      </Provider>,
+      </ThemeProvider>
+    </Provider>,
   )
 } else {
   throw new Error(

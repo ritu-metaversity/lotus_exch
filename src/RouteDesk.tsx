@@ -47,9 +47,9 @@ const MobileRoutes = () => (
   <Routes>
     <Route path="/m" element={<Mainlayout />}>
       <Route path="" element={<HomeMobile />} />
-      <Route path="sport/inplay-upcoming" element={<Sports icon={crickt} name="Cricket" />} />
-      <Route path="sport/football" element={<Sports icon={football} name="Football" />} />
-      <Route path="sport/tennis" element={<Sports icon={tenis} name="Tennis" />} />
+      <Route path="sport/:id" element={<Sports />} />
+      {/* <Route path="sport/football" element={<Sports icon={football} name="Football" />} /> */}
+      {/* <Route path="sport/tennis" element={<Sports icon={tenis} name="Tennis" />} /> */}
       <Route path="sport/basketball" element={<Sports icon={basktball} name="Basketball" />} />
       <Route path="sport/golf" element={<Sports icon={golf} name="Golf" />} />
       <Route path="sport/horse" element={<Horseracing icon={horse} name="Horse Racing" />} />
@@ -69,6 +69,7 @@ const MobileRoutes = () => (
       <Route path="responsible-gambling" element={<ResponsibleGamblingMob />} />
       <Route path="exclusion-policy" element={<ExclusionpolicyMob />} />
     </Route>
+    <Route path="*" element={<Mainlayout />} />
   </Routes>
 );
 
@@ -76,8 +77,8 @@ const DesktopRoutes = () => (
   <Routes>
     <Route path="/d" element={<DeskMainLayout />}>
       <Route path="home" element={<HomeDesk />} />
-      <Route path="cricket/:id" element={<LiveUpcomingEvent />} />
-      <Route path="football/:id" element={<FootballDesk />} />
+      <Route path="sport/:id" element={<LiveUpcomingEvent />} />
+      <Route path="sport/:id" element={<FootballDesk />} />
       <Route path="horseracing/:id" element={<HorseRacingDesk />} />
       <Route path="super-casino" element={<LiveCasinoDesk />} />
       <Route path="display/EVENT/:id/:matchedId" element={<GameDetailsDesk />} />
@@ -89,6 +90,7 @@ const DesktopRoutes = () => (
       <Route path="security" element={<SecurityDesk />} />
       <Route path="settings" element={<SettingsDesk />} />
     </Route>
+    <Route path="*" element={<DeskMainLayout />} />
   </Routes>
 );
 

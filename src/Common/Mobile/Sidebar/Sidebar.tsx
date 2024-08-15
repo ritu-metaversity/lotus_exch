@@ -30,9 +30,9 @@ interface Props {
 const menuItems = [
   { link: "/m", icon: home, text: 'Home' },
   { link: "/m/casino/super-casino/tab", icon: casino, text: "Live Casino", className: "exchangegame" },
-  { link: "/m/sport/inplay-upcoming", icon: bat, text: "Cricket", className: "cricket" },
-  { link: "/m/sport/football", icon: football, text: "Football", className: "football" },
-  { link: "/m/sport/tennis", icon: tennis, text: "Tennis", className: "tennis" },
+  { link: "/m/sport/4", icon: bat, text: "Cricket", className: "cricket" },
+  { link: "/m/sport/1", icon: football, text: "Football", className: "football" },
+  { link: "/m/sport/2", icon: tennis, text: "Tennis", className: "tennis" },
   { link: "/m/sport/basketball", icon: sports_basketball, text: "Basketball", className: "basketball" },
   { link: "/m/sport/golf", icon: sports_golf, text: "Golf", className: "golf" },
   { link: "/m/sport/horse", icon: sports_horse, text: "Horse Racing", className: "horseracing" },

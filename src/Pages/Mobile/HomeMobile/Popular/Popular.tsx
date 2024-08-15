@@ -1,544 +1,214 @@
 import { Box } from "@mui/material";
 import WhatshotRoundedIcon from '@mui/icons-material/WhatshotRounded';
 import img from '../../../../img/genie.png'
+import type { FC, TouchEvent } from "react";
+import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../../../hooks/useAppSelector";
+import { selectHomeSwipe, setHomeSwipe } from "../../../../utils/slice/homeSlice";
+import moment from "moment";
+interface Props {
+  activeData: any
+}
 
-const Popular = () => {
+const Popular: FC<Props> = ({ activeData }) => {
+  const dispatch = useDispatch();
+  const isSwiped = useAppSelector(selectHomeSwipe);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const lastTouchXRef = useRef<number | null>(null);
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    lastTouchXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    lastTouchXRef.current = null;
+  };
+
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    const shouldApplyAnimation = window.innerWidth < 1024;
+
+
+    if (!shouldApplyAnimation) return;
+
+    if (lastTouchXRef.current !== null) {
+      const diffX = e.touches[0].clientX - lastTouchXRef.current;
+
+      const threshold = 70;
+      if (Math.abs(diffX) > threshold) {
+        if (diffX > 0) {
+          dispatch(setHomeSwipe({ isSwiped: false }));
+        } else {
+          dispatch(setHomeSwipe({ isSwiped: true }));
+        }
+      }
+    }
+  };
   return (
     <section className="section popular in-play">
       <div className="section-title">
         <WhatshotRoundedIcon sx={{
-                color: "#cc5f36"
-        }}/>
+          color: "#cc5f36"
+        }} />
         <span className="label">Most Popular</span>
         <span></span>
       </div>
-      <div className="events-list">
-        <Box>
-          <Box>
-            <div className="consolidated-events-group-title">
-              <div className="title">
-                {/* <i className="icon-sport-cricket sport-icon" title="Cricket" /> */}
-                {/* <img src={popularImg} alt=""/> */}
-                
-                <span> Cricket </span>
-              </div>
-              <div className="odds-header">
-                <div className="odds-col">1</div>
-                <div className="odds-col">X</div>
-                <div className="odds-col">2</div>
-                <div className="odds-col visible-on-wide-screen">1</div>
-                <div className="odds-col visible-on-wide-screen">X</div>
-                <div className="odds-col visible-on-wide-screen">2</div>
-              </div>
+      {
+        Object.keys(activeData)?.map((items) => {
+
+          // const dataLength = activeData[items]?.filter((item)=>{
+          //   if(!item?.data?.marketDefinition?.inPlay ) return  item
+          // })
+          return (
+            <div className="events-list">
+              <Box>
+                <Box>
+                  <div className="consolidated-events-group-title">
+                    <div className="title">
+                      <span> {items} </span>
+                    </div>
+                    <div className="odds-header">
+                      <div className="odds-col">1</div>
+                      <div className="odds-col">X</div>
+                      <div className="odds-col">2</div>
+                      <div className="odds-col visible-on-wide-screen">1</div>
+                      <div className="odds-col visible-on-wide-screen">X</div>
+                      <div className="odds-col visible-on-wide-screen">2</div>
+                    </div>
+                  </div>
+                  <div className="consolidated-events">
+                    <div className="app-list">
+                      {
+                        activeData[items]?.map((matches) => {
+                          const date = moment(matches?.MstDate).local();
+
+                          let formattedDate;
+                          const startOfDay = moment().startOf('day');
+                          const endOfEarlyMorning = moment().startOf('day').add(5, 'hours').add(30, 'minutes');
+
+                          if (date.isSame(moment(), 'day')) {
+                            if (date.isBetween(startOfDay, endOfEarlyMorning, null, '[)')) {
+                              formattedDate = date.format('Today ');
+                            } else {
+                              formattedDate ="Today" + date.format(' HH:mm');
+                            }
+                          } else if (date.isSame(moment().add(1, 'day'), 'day')) {
+                            formattedDate ="Tomorrow " + date.format('HH:mm');
+                          } else {
+                            formattedDate = date.format('DD/MM/YYYY HH:mm');
+                          }
+
+                          
+                          if(matches?.data?.marketDefinition?.inPlay) return null
+
+                          return (
+                            <div className="market-list-item">
+                              <Box>
+                                <div>
+                                  <div>
+                                    <Box _nghost-oho-c171="">
+                                      <Box _nghost-oho-c164="">
+                                        <div className="market" id="selection-9.2151049">
+                                          <Box className="market-title">
+                                            <div className="info-box">
+                                              <div className="icon-fire-wrapper"></div>
+
+                                              <div className="info">
+                                                <div className="line date">
+                                                  <span className="date-info__item date-info__item--open-date">
+                                                    {formattedDate}
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div className="competitors">
+                                              <div className="width-wrapper">
+                                                <div className="line">
+                                                  <div className="name">{matches?.matchName}</div>
+                                                </div>
+                                                {/* <div className="line">
+                                                  <div className="name">
+                                                    Northamptonshire
+                                                  </div>
+                                                </div> */}
+                                              </div>
+                                            </div>
+                                          </Box>
+                                          <div className="odds market-odds custom-width">
+                                            <div ref={containerRef} onTouchStart={handleTouchStart}
+                                              onTouchMove={handleTouchMove}
+                                              onTouchEnd={handleTouchEnd} className={`odds-wrap ${isSwiped ? "scrollable" : ""}`}>
+                                              <Box>
+                                                {
+                                                  matches?.data === null ? <div className="more full-width">
+                                                    <div className="inner">
+                                                      See more markets
+                                                    </div>
+                                                    <i className="icon icon-angle-right" />
+                                                  </div> :
+
+                                                    <div className="market-odds__container">
+                                                      <Box className="not-selected scrollable">
+                                                        <div className="bet-button back">
+                                                          <div className="price">{matches?.data?.rc[0]?.batb[0][1]}</div>
+                                                        </div>
+                                                      </Box>
+                                                      <Box>
+                                                        <div className="bet-button has-no-runner disabled back">
+                                                          -
+                                                        </div>
+                                                      </Box>
+
+                                                      <Box className="not-selected more-odds scrollable">
+                                                        <div className="bet-button back">
+                                                          <div className="price">{matches?.data?.rc[1]?.batb[0][1]}</div>
+                                                        </div>
+                                                      </Box>
+
+                                                      <Box className="not-selected scrollable">
+                                                        <div className="bet-button lay">
+                                                          <div className="price">{matches?.data?.rc[0]?.batl[0][1]}</div>
+                                                        </div>
+                                                      </Box>
+
+                                                      <Box>
+                                                        <div className="bet-button has-no-runner disabled lay">
+                                                          -
+                                                        </div>
+                                                      </Box>
+
+                                                      <Box className="not-selected more-odds scrollable">
+                                                        <div className="bet-button lay">
+                                                          <div className="price">{matches?.data?.rc[1]?.batl[0][1]}</div>
+                                                        </div>
+                                                      </Box>
+                                                    </div>}
+                                              </Box>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </Box>
+                                    </Box>
+
+                                  </div>
+                                </div>
+                              </Box>
+                            </div>
+                          )
+                        })
+                      }
+
+
+                    </div>
+                  </div>
+                </Box>
+              </Box>
             </div>
-            <div className="consolidated-events">
-              <div className="app-list">
-                <div className="market-list-item">
-                  <Box>
-                    <div>
-                      <div>
-                        <Box _nghost-oho-c171="">
-                          <Box _nghost-oho-c164="">
-                            <div className="market" id="selection-9.2151049">
-                              <Box className="market-title">
-                                <div className="info-box">
-                                  <div className="icon-fire-wrapper"></div>
+          )
+        })
+      }
 
-                                  <div className="info">
-                                    <div className="line date">
-                                      <span className="date-info__item date-info__item--open-date">
-                                        Today 15:30
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="competitors">
-                                  <div className="width-wrapper">
-                                    <div className="line">
-                                      <div className="name">Hampshire</div>
-                                    </div>
-                                    <div className="line">
-                                      <div className="name">
-                                        Northamptonshire
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Box>
-
-                              <div className="odds market-odds custom-width">
-                                <div className="odds-wrap scrollable">
-                                  <Box>
-                                    <div className="market-odds__container">
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">82</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled back">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">104</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">96</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled lay">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">122</div>
-                                        </div>
-                                      </Box>
-                                    </div>
-                                  </Box>
-                                </div>
-                              </div>
-                            </div>
-                          </Box>
-                        </Box>
-                        
-                      </div>
-                    </div>
-                  </Box>
-                </div>
-                <div className="market-list-item">
-                  <Box>
-                    <div>
-                      <div>
-                        <Box _nghost-oho-c171="">
-                          <Box _nghost-oho-c164="">
-                            <div className="market" id="selection-9.2157286">
-                              <Box className="market-title">
-                                <div className="info-box">
-                                  <div className="icon-fire-wrapper"></div>
-
-                                  <div className="info">
-                                    <div className="line date">
-                                      <span className="date-info__item date-info__item--open-date">
-                                        Today 15:30
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="competitors">
-                                  <div className="width-wrapper">
-                                    <div className="line">
-                                      <div className="name">Leicestershire</div>
-                                    </div>
-                                    <div className="line">
-                                      <div className="name">Warwickshire</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Box>
-
-                              <div className="odds market-odds custom-width">
-                                <div className="odds-wrap scrollable">
-                                  <Box>
-                                    <div className="market-odds__container">
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">72</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled back">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">119</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">84</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled lay">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">139</div>
-                                        </div>
-                                      </Box>
-                                    </div>
-                                  </Box>
-                                </div>
-                              </div>
-                            </div>
-                          </Box>
-                        </Box>
-                        
-                      </div>
-                    </div>
-                  </Box>
-                </div>
-                <div className="market-list-item">
-                  <Box>
-                    <div>
-                      <div>
-                        <Box _nghost-oho-c171="">
-                          <Box _nghost-oho-c164="">
-                            <div className="market" id="selection-9.2157285">
-                              <Box className="market-title">
-                                <div className="info-box">
-                                  <div className="icon-fire-wrapper"></div>
-
-                                  <div className="info">
-                                    <div className="line date">
-                                      <span className="date-info__item date-info__item--open-date">
-                                        Today 15:30
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="competitors">
-                                  <div className="width-wrapper">
-                                    <div className="line">
-                                      <div className="name">
-                                        Nottinghamshire
-                                      </div>
-                                    </div>
-                                    <div className="line">
-                                      <div className="name">Sussex</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Box>
-
-                              <div className="odds market-odds custom-width">
-                                <div className="odds-wrap scrollable">
-                                  <Box>
-                                    <div className="market-odds__container">
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">74</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled back">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">113</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">88</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled lay">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">136</div>
-                                        </div>
-                                      </Box>
-                                    </div>
-                                  </Box>
-                                </div>
-                              </div>
-                            </div>
-                          </Box>
-                        </Box>
-                        
-                      </div>
-                    </div>
-                  </Box>
-                </div>
-                <div className="market-list-item">
-                  <Box>
-                    <div>
-                      <div>
-                        <Box _nghost-oho-c171="">
-                          <Box _nghost-oho-c164="">
-                            <div className="market" id="selection-9.2154294">
-                              <Box className="market-title">
-                                <div className="info-box">
-                                  <div className="icon-fire-wrapper"></div>
-
-                                  <div className="info">
-                                    <div className="line date">
-                                      <span className="date-info__item date-info__item--open-date">
-                                        Today 15:30
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="competitors">
-                                  <div className="width-wrapper">
-                                    <div className="line">
-                                      <div className="name">Scotland</div>
-                                    </div>
-                                    <div className="line">
-                                      <div className="name">Namibia</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Box>
-
-                              <div className="odds market-odds custom-width">
-                                <div className="odds-wrap scrollable">
-                                  <Box>
-                                    <div className="market-odds__container">
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">46</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled back">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">181</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">55</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled lay">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">218</div>
-                                        </div>
-                                      </Box>
-                                    </div>
-                                  </Box>
-                                </div>
-                              </div>
-                            </div>
-                          </Box>
-                        </Box>
-                        
-                      </div>
-                    </div>
-                  </Box>
-                </div>
-                <div className="market-list-item">
-                  <Box>
-                    <div>
-                      <div>
-                        <Box _nghost-oho-c171="">
-                          <Box _nghost-oho-c164="">
-                            <div className="market" id="selection-9.2157284">
-                              <Box className="market-title">
-                                <div className="info-box">
-                                  <div className="icon-fire-wrapper"></div>
-
-                                  <div className="info">
-                                    <div className="line date">
-                                      <span className="date-info__item date-info__item--open-date">
-                                        Today 18:30
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="competitors">
-                                  <div className="width-wrapper">
-                                    <div className="line">
-                                      <div className="name">Somerset</div>
-                                    </div>
-                                    <div className="line">
-                                      <div className="name">Kent</div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Box>
-
-                              <div className="odds market-odds custom-width">
-                                <div className="odds-wrap scrollable">
-                                  <Box>
-                                    <div className="market-odds__container">
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">82</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled back">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">104</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">96</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled lay">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">122</div>
-                                        </div>
-                                      </Box>
-                                    </div>
-                                  </Box>
-                                </div>
-                              </div>
-                            </div>
-                          </Box>
-                        </Box>
-                        
-                      </div>
-                    </div>
-                  </Box>
-                </div>
-                <div className="market-list-item">
-                  <Box>
-                    <div>
-                      <div>
-                        <Box _nghost-oho-c171="">
-                          <Box _nghost-oho-c164="">
-                            <div className="market" id="selection-9.2149258">
-                              <Box className="market-title">
-                                <div className="info-box">
-                                  <div className="icon-fire-wrapper"></div>
-
-                                  <div className="info">
-                                    <div className="line date">
-                                      <span className="date-info__item date-info__item--open-date">
-                                        Today 20:30
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="competitors">
-                                  <div className="width-wrapper">
-                                    <div className="line">
-                                      <div className="name">
-                                        Mississauga Bangla Tigers
-                                      </div>
-                                    </div>
-                                    <div className="line">
-                                      <div className="name">
-                                        Montreal Tigers
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Box>
-
-                              <div className="odds market-odds custom-width">
-                                <div className="odds-wrap scrollable">
-                                  <Box>
-                                    <div className="market-odds__container">
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">76</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled back">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button back">
-                                          <div className="price">111</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">90</div>
-                                        </div>
-                                      </Box>
-
-                                      <Box>
-                                        <div className="bet-button has-no-runner disabled lay">
-                                          -
-                                        </div>
-                                      </Box>
-
-                                      <Box className="not-selected more-odds scrollable">
-                                        <div className="bet-button lay">
-                                          <div className="price">132</div>
-                                        </div>
-                                      </Box>
-                                    </div>
-                                  </Box>
-                                </div>
-                              </div>
-                            </div>
-                          </Box>
-                        </Box>
-                        
-                      </div>
-                    </div>
-                  </Box>
-                </div>
-              </div>
-            </div>
-          </Box>
-        </Box>
-      </div>
-      <div className="events-list">
+      {/* <div className="events-list">
         <Box>
           <Box>
             <div className="consolidated-events-group-title">
@@ -2558,7 +2228,7 @@ const Popular = () => {
             </div>
           </Box>
         </Box>
-      </div>
+      </div> */}
     </section>
   );
 };

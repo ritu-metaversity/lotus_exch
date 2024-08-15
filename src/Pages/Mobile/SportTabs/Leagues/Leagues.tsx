@@ -1,32 +1,29 @@
 import { Box } from "@mui/material";
 import './style.scss';
+import type { FC } from "react";
+import React from "react";
 
-const Leagues = () => {
+interface Props {
+  activeData: any
+}
+
+const Leagues: FC<Props> = ({ activeData }) => {
   return (
     <div className="sport_leagues">
       <div>
         <Box>
           <ul className="menu">
-            <li className="menu-item">
-              <span> The Hundred</span>
-              <span className="menu-number">5</span>
-            </li>
-            <li className="menu-item">
-              <span> The Hundred - Womens</span>
-              <span className="menu-number">5</span>
-            </li>
-            <li className="menu-item">
-              <span> Global T20 Canada</span>
-              <span className="menu-number">3</span>
-            </li>
-            <li className="menu-item">
-              <span> Metro Bank One Day Cup</span>
-              <span className="menu-number">6</span>
-            </li>
-            <li className="menu-item">
-              <span> Tamil Nadu Premier League</span>
-              <span className="menu-number">1</span>
-            </li>
+            {
+              Object.keys(activeData)?.map((items) => {
+                return (
+                  <li className="menu-item">
+                    <span>{items}</span>
+                    <span className="menu-number">{activeData[items]?.length}</span>
+                  </li>
+                )
+              })
+            }
+
           </ul>
         </Box>
       </div>
