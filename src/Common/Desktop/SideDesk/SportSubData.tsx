@@ -1,17 +1,27 @@
-import { Box } from "@mui/material";
 import type { FC } from "react";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Box } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useNavigate } from "react-router-dom";
+import { setSportName } from "../../../utils/slice/sportSlice";
 
 interface Props {
     activeData: any;
+    id: string
 }
 
-const SportSubData: FC<Props> = ({ activeData }) => {
-    const [active, setActive] = useState(0);
-    const handleSetActive = (val: number) => {
-        setActive(val)
+const SportSubData: FC<Props> = ({ activeData, id }) => {
+    const [active, setActive] = useState(null);
+    const dispatch = useDispatch();
+    const nav = useNavigate();
+    const handleSetActive = (val: number, keys: string) => {
+        setActive(val);
+        dispatch(setSportName({
+            matchName: keys
+        }))
+        nav(`/d/sport/${id}`);
     }
     return (
         <ul className="sport-type-child">
@@ -19,7 +29,7 @@ const SportSubData: FC<Props> = ({ activeData }) => {
                 <li
                     key={id}
                     className={`not-last-child `}
-                    onClick={() => handleSetActive(id)}
+                    onClick={() => handleSetActive(id, items)}
                 >
                     <div className={`group-name ${active === id ? "active" : ""} championship-type`}>
                         <div className="name">

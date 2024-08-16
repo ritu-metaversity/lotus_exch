@@ -44,7 +44,11 @@
 
 .logo_login{
     height: 60px;
+    display: block;
+    margin: auto;
+    margin-bottom: 44px;
     @media screen and (max-width:"800px") {
+        margin-top: 20px;
         height: 100px;
     }
 }
@@ -52,4 +56,11 @@
 .login-form{
     width: 100%;
     overflow: hidden;
+}
+
+.btn-login{
+    text-transform: capitalize !important;
+    @media screen and (min-width:"800px") {
+        font-weight: 500 !important;
+    }
 }

@@ -5,11 +5,15 @@ import NavbarDesk from "../NavbarDesk";
 import "./style.scss";
 import { Outlet, useLocation } from "react-router-dom";
 import FooterDesk from "../../Footer/FooterDesk";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+import { useSelector } from "react-redux";
+import { loginSelector } from "../../../../utils/slice/loginSlice";
 
 const DeskMainLayout = () => {
   const { pathname } = useLocation();
 
   const isHome = pathname.includes("home");
+  const loginData = useSelector(loginSelector);
   const isCasinoOrSettings = [
     "super-casino",
     "orderList",
@@ -30,11 +34,10 @@ const DeskMainLayout = () => {
           </div>
         )}
 
-        <div className={isCasinoOrSettings ? "mid-pane-casino" : isHome ? "" : "mid-pane"}>
+        <div className={isCasinoOrSettings || !loginData?.isLogin ? "mid-pane-casino" : isHome ? "" : "mid-pane"}>
           <Outlet />
         </div>
-
-        {!isCasinoOrSettings && !isHome && (
+        {!isCasinoOrSettings && !isHome && loginData?.isLogin && (
           <div className="right-pane">
             <RightSide />
           </div>

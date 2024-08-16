@@ -1,13 +1,242 @@
 import { Box } from "@mui/material";
 import "./style.scss";
 import GameDetailsHeadDesk from "./GameDetailsHead/GameDetailsHeadDesk";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MatchedOddsDesk from "./MatchedOddsDesk/MatchedOddsDesk";
-import BookmakerDesk from "./Bookmaker/BookmakerDesk";
-import { CiStar } from "react-icons/ci";
 import FancyDesk from "./FancyDesk/FancyDesk";
+import { useGetBetsDetailsMutation, useGetDashboardDataQuery, useGetFancyMarketMutation, useGetMatchedMarketMutation } from "../../../utils/Services/authService/sportApi";
+import { useParams } from "react-router-dom";
+import { socket } from "./socket";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+import { useSelector } from "react-redux";
+import { loginSelector } from "../../../utils/slice/loginSlice";
 
 const GameDetailsDesk = () => {
+  const [moduleOpen, setModuleOpen] = useState<boolean>(false);
+  const [isFavAndMatchIds, setisFavAndMatchIds] = useState<any>([]);
+  const [filterSportData, setFilterSportData] = useState<any[]>([]);
+  const [marketData, setMarketData] = useState<any[]>([]);
+  const [bookMakerData, setBookmakerData] = useState<any>(null);
+  const [fancyData, setFancyData] = useState<any>(null);
+  const [betData, setBetData] = useState<any>({
+    isBack: 0,
+    marketId: "",
+    matchName: "",
+    matchId: 0,
+    runnerName: "",
+    price: 0,
+    selectionId: "",
+    stake: 0,
+    sportId: "",
+    isCashout: false,
+    inPlay: true,
+    profit: 0,
+    deviceInfo: "",
+    minStack: 0,
+    maxStack: 0,
+  });
+  const moduleFancyOpenHandler = (
+    price: number,
+    typeId: number,
+    matchId: string,
+    fancyId: number,
+    selectionId: string,
+    fHeadName: string,
+    sessInpYes: number,
+    sessInpNo: number,
+    sportId: number,
+    pointDiff: string,
+    sessSizeYes: number,
+    sessSizeNo: number,
+    side: number,
+    isFancy: boolean,
+    minStack: string,
+    maxStack: string
+  ) => {
+    setFancyBetData((prev: any) => ({
+      ...prev,
+      price,
+      typeId,
+      matchId,
+      fancyId,
+      selectionId,
+      fHeadName,
+      sessInpYes,
+      sessInpNo,
+      sportId,
+      pointDiff,
+      sessSizeYes,
+      sessSizeNo,
+      marketId: eid?.marketid,
+      side,
+      isFancy,
+      minStack,
+      maxStack,
+    }));
+    setModuleOpen((prev) => !prev);
+  };
+  const {matchedId, id} = useParams();
+  const [getBetDetails, {data: betDetails}] = useGetBetsDetailsMutation();
+  const [getMatchedMarket, {data: matchedMarket}] = useGetMatchedMarketMutation();
+  const {data: dashboard} = useGetDashboardDataQuery("");
+  const [getFancyMarket, {data: fancyMarket}] = useGetFancyMarketMutation();
+
+  const loginData = useSelector(loginSelector);
+
+  useEffect(()=>{
+    getBetDetails(matchedId)
+    getMatchedMarket(matchedId)
+    getFancyMarket(matchedId)
+  }, [matchedId])
+
+  // const dashboardData = async () => {
+  //   if (response) {
+  //     const updatedIsFavAndMatchIds = response?.data?.map((item) => ({
+  //       isFav: item.isFav,
+  //       matchid: item.matchid,
+  //     }));
+  //     const filteredData = response?.data?.filter(
+  //       (item) =>
+  //         item?.sportid === Number(sport_Id) && item?.matchid !== Number(id)
+  //     );
+  //     setFilterSportData(filteredData);
+  //     setisFavAndMatchIds(updatedIsFavAndMatchIds); 
+  //   }
+  // };
+
+  // const activeMatchesHandler = (arg: any) => {
+  //   setActiveMatchesSlider(arg);
+  // };
+
+ 
+
+  useEffect(() => {
+    if (dashboard) {
+      const updatedIsFavAndMatchIds = dashboard?.data?.map((item) => ({
+        isFav: item.isFav,
+        matchid: item.matchid,
+      }));
+      const filteredData = dashboard?.data?.filter(
+        (item) =>
+          item?.sportid === Number(id) && item?.matchid !== Number(id)
+      );
+      setFilterSportData(filteredData);
+      setisFavAndMatchIds(updatedIsFavAndMatchIds); 
+    }
+  }, [dashboard]);
+
+
+
+
+  useEffect(() => {
+    const initSocket = () => {
+      socket.connect();
+
+      socket.on("connect", () => {
+        const roomEvents = [
+          `BETS_UPDATE_DATA:${loginData?.data?.loginData?.user?.mstrid}_${matchedId}`,
+          `MATCH_UPDATE_DATA:${matchedId}`,
+          `UPDATE_MATCH_EVENT:${matchedId}`,
+          `MARKET_UPDATE_DATA:${matchedId}`,
+          `UPDATE_MARKETS:${matchedId}`,
+          `UPDATE_FANCY:${matchedId}`,
+          `FANCY${matchedId}`,
+        ];
+
+        if (matchedMarket) {
+          matchedMarket?.data?.forEach((market) => {
+            console.log(market, "marketmarketmarket")
+            if (market.marketid) {
+              roomEvents.push(`EID${market.marketid}`);
+            }
+          });
+        }
+
+        roomEvents.forEach((event) => socket.emit("room", { name: event }));
+      });
+
+      socket.on("message", (data) => {
+        console.log(data, "sdfsdfsdfsdfsdfdsfs")
+        const oddsData = JSON.parse(data);
+        // if (!oddsData?.id?.includes("BM")) {
+          setMarketData((prevMarketData) => {
+            const updatedMarketData = [...prevMarketData];
+            const existingIndex = updatedMarketData.findIndex(
+              (item) => item.id === oddsData.id
+            );
+
+            if (existingIndex !== -1) {
+              updatedMarketData[existingIndex] = oddsData;
+            } else {
+              updatedMarketData.push(oddsData);
+            }
+
+            return updatedMarketData;
+          });
+        // } else {
+        //   setBookmakerData(oddsData);
+        // }
+      });
+
+      socket.on(`FANCY${matchedId}`, (data) => {
+        const oddsData = JSON.parse(data);
+        setFancyData(oddsData);
+      });
+
+      socket.on("disconnect", () => console.log("WebSocket disconnected."));
+    };
+
+    initSocket();
+
+    return () => {
+      socket.off("message");
+
+      if (matchedMarket) {
+        matchedMarket?.data?.forEach((market) => {
+          if (market.marketid) {
+            socket.emit("leave-room", { name: `EID${market.marketid}` });
+          }
+        });
+      }
+
+      socket.disconnect();
+    };
+  }, [matchedId, matchedMarket]);
+
+  const moduleOpenHandler = (
+    isBack: number,
+    marketId: string,
+    matchName: string,
+    runnerName: string,
+    odds: string,
+    selectionId: string,
+    matchId: number,
+    sportId: number,
+    minStack: number,
+    maxStack: number
+  ) => {
+    setBetData((prev: any) => ({
+      ...prev,
+      isBack,
+      marketId,
+      matchName,
+      runnerName,
+      price: Number(odds),
+      selectionId: selectionId,
+      matchId,
+      sportId,
+      minStack,
+      maxStack,
+    }));
+    // setFancyBetData((prev) => ({ ...prev, isFancy: false }));
+    setModuleOpen((prev) => !prev);
+  };
+
+
+
+
+console.log(fancyMarket, "er35yhfgbfdgdfgvdfgvdg")
+
   return (
     <div className="group-event">
       <GameDetailsHeadDesk />
@@ -15,206 +244,25 @@ const GameDetailsDesk = () => {
         <div className="market-group ">
           <div className="markets-rows ">
             <div>
-              <MatchedOddsDesk />
+              <MatchedOddsDesk 
+              // isFavAndMatchIds={isFavAndMatchIds}
+            // handleFav={handleFav}
+              
+              state={matchedMarket?.data}
+              marketData={marketData}
+              sportId={id}
+              
+              betData={betData}
+              bets={betDetails?.data}
+              moduleOpenHandler={moduleOpenHandler}/>
             </div>
           </div>
         </div>
-       <BookmakerDesk />
-       
-        <div className="market-group ">
-          <div>
-            <Box className="ng-isolate-scope">
-              <div className="markets-rows ">
-                <div>
-                  <Box className="ng-isolate-scope">
-                    <table
-                      className="market-listing-table apl-table"
-                      ng-className="{'hide-border': vm.isPinnacle && !vm.isMatchOddsSportsBookFootball}"
-                    >
-                      <thead>
-                        <tr>
-                          <th className="market-name title">
-                            <span className="ng-binding">
-                              <CiStar /> 1 to 5 Ball Runs Odd/Even WFW
-                            </span>
-                            <span className="market-indicators-container">
-                              <Box
-                                className="market-indicators"
-                                ng-version="14.3.0"
-                              >
-                                <div className="icon-box">
-                                  <i className="icon icon-fast" />
-                                  <div className="popover">
-                                    Faster bet acceptance
-                                  </div>
-                                </div>
-                                <div className="icon-box">
-                                  <i className="icon icon-zero" />
-                                  <div className="popover">No commission</div>
-                                </div>
-                                <div className="icon-box">
-                                  <i className="icon icon-going" />
-                                  <div className="popover">Going in-play</div>
-                                </div>
-                              </Box>
-                            </span>
-                          </th>
-                          <th className="back " colSpan={2}>
-                            <div className="two-cells-header" />
-                          </th>
-                          <th className="back ">
-                            <div className="one-cells-header ">Back</div>
-                          </th>
-                          <th
-                            className="lay "
-                            ng-if="!vm.isSuspended && !isBetSideEmpty('lay')"
-                          >
-                            <div className="one-cells-header ">Lay</div>
-                          </th>
-                          <th
-                            className="lay "
-                            colSpan={2}
-                            ng-if="!vm.isSuspended && !vm.isMatchOddsSportsBookFootball() && !isBetSideEmpty('lay')"
-                          >
-                            <div className="two-cells-header" />
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr ng-repeat="runner in vm.market.runners | orderBy: 'sort' track by runner.id">
-                          <td className="event-row -with-pnl">
-                            <div className="event-name ng-binding">Odd</div>
-                            <Box className="ng-isolate-scope">
-                              <div
-                                className="selection-pnl"
-                                ng-className="{'racing-pnl': vm.isRacing}"
-                                ng-switch="vm.isDiscrete"
-                              >
-                                <span ng-switch-default=""></span>
-                              </div>
-                            </Box>
-                          </td>
-                          <td className="back unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="back unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="back show-size">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding">90</strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="lay show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="lay unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="lay unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr ng-repeat="runner in vm.market.runners | orderBy: 'sort' track by runner.id">
-                          <td className="event-row -with-pnl">
-                            <div className="event-name ng-binding">Even</div>
-                            <Box className="ng-isolate-scope">
-                              <div
-                                className="selection-pnl"
-                                ng-className="{'racing-pnl': vm.isRacing}"
-                                ng-switch="vm.isDiscrete"
-                              >
-                                <span ng-switch-default=""></span>
-                              </div>
-                            </Box>
-                          </td>
-                          <td className="back unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="back unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="back show-size">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding">90</strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="lay show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="lay unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="lay unhighlighted empty-price show-size betting-disabled">
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding"></strong>
-                              <div className="size">
-                                <span className="ng-binding"></span>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </Box>
-                </div>
-              </div>
-            </Box>
-          </div>
-        </div>
-        
-        <FancyDesk />
+       {/* <BookmakerDesk /> */} 
+        <FancyDesk fancyData={fancyData}
+                fancyDataTabs={fancyMarket}
+                bets={betDetails?.data}
+                moduleFancyOpenHandler={moduleFancyOpenHandler}/>
         
        
       </Box>

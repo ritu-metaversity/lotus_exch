@@ -73,13 +73,20 @@ function LoginModals({ handleClose, locationData }: Props) {
     if (loginData) {
       localStorage.setItem("token", loginData?.token)
       dispatch(setLoginData({ loginData, isLogin: true }))
-      nav('sport/inplay-upcoming');
+      if(isMobile){
+
+        nav('sport/inplay-upcoming');
+      }else{
+        nav('/d/home');
+      }
       handleClose();
     }
   }, [loginData])
 
+  console.log(isMobile, "isMobileisMobile")
+
   return (
-    <Box sx={{ ...style, width: isMobile ? "71%" : 310 }}>
+    <Box sx={{ ...style, width: isMobile ? "71%" : 375 }}>
       <form onSubmit={handleSubmit} noValidate className="login-form">
         <Close onClick={handleClose} sx={{
           position: "absolute",
@@ -96,9 +103,7 @@ function LoginModals({ handleClose, locationData }: Props) {
           className="logo_login"
           // height={55}
           style={{
-            display: "block",
-            margin: "auto",
-            marginTop: "20px"
+            
           }}
         />
         <FormBlock>

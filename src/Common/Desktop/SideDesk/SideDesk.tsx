@@ -3,7 +3,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import casino from "../../../img/casino.png";
 import bat from "../../../img/cricket.png";
 import football from "../../../img/football.png";
@@ -18,9 +18,11 @@ import whatshot from "../../../img/genie.png";
 import "./side.scss";
 import { useGetDashboardDataQuery } from "../../../utils/Services/authService/sportApi";
 import SportSubData from "./SportSubData";
+import { useDispatch } from "react-redux";
+import { setSportName } from "../../../utils/slice/sportSlice";
 
 const menuItems = [
-  // { href: '#/display/FAVORITES', icon: 'star_border', text: 'Favourites' },
+  
   {
     icon: casino,
     text: "Live Casino",
@@ -63,6 +65,7 @@ const iconHome = {
 const SideDesk = () => {
   const [isActive, setIsActive] = useState<number>(0);
   const [showSportList, setShowSportList] = useState(true);
+  const dispatch = useDispatch()
 
   const { id } = useParams();
 
@@ -94,6 +97,18 @@ const SideDesk = () => {
     setIsActive(index);
     setShowSportList(false);
   };
+
+  const handleShowSport = ()=>{
+    setShowSportList(true);
+    dispatch(setSportName({
+      matchName:null
+    }))
+  }
+  const handleCricket = ()=>{
+    dispatch(setSportName({
+      matchName:null
+    }))
+  }
 
   return (
     <>
@@ -132,9 +147,9 @@ const SideDesk = () => {
           <List className="left-menu-container">
             <Link
               to="#"
-              // className={`group-name sport-type  ${isActive === index ? item.className : ''}`}
+              
               className={`group-name sport-type `}
-              onClick={() => setShowSportList(true)}
+              onClick={() =>handleShowSport()}
             >
               <ListItem
                 button={true}
@@ -153,11 +168,12 @@ const SideDesk = () => {
               </ListItem>
             </Link>
             <Link
-              to="/d/"
+              to="#"
               className={`group-name sport-type  ${colorName[id]}`}
               style={{
                 minHeight: "40px",
               }}
+              onClick={()=>handleCricket()}
             >
               <ListItem button={true}>
                 <ListItemIcon sx={{ minWidth: 0 }}>
@@ -166,7 +182,7 @@ const SideDesk = () => {
                 <ListItemText primary={colorName[id]} />
               </ListItem>
             </Link>
-            <SportSubData activeData={activeData}/>
+            <SportSubData activeData={activeData} id={id}/>
           </List>
         </>
       )}

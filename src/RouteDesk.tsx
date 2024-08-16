@@ -78,7 +78,7 @@ const DesktopRoutes = () => (
     <Route path="/d" element={<DeskMainLayout />}>
       <Route path="home" element={<HomeDesk />} />
       <Route path="sport/:id" element={<LiveUpcomingEvent />} />
-      <Route path="sport/:id" element={<FootballDesk />} />
+      {/* <Route path="sport/:id" element={<FootballDesk />} /> */}
       <Route path="horseracing/:id" element={<HorseRacingDesk />} />
       <Route path="super-casino" element={<LiveCasinoDesk />} />
       <Route path="display/EVENT/:id/:matchedId" element={<GameDetailsDesk />} />

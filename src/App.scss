@@ -57,3 +57,8 @@ html {
 .-positive{
   color: #2aa033;
 }
+
+
+*, ::after, ::before{
+  box-sizing: border-box;
+}

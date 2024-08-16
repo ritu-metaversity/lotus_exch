@@ -1,179 +1,336 @@
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import "./LiveUpcoming.scss";
 import MenuHeading from "../../../Common/Desktop/ManuHeading/MenuHeading";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
-import { IoIosArrowForward } from "react-icons/io";
-import React from "react";
+import { useGetDashboardDataQuery } from "../../../utils/Services/authService/sportApi";
+import { RiArrowRightSLine } from "react-icons/ri";
+import moment from "moment";
+import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite';
+import { sportSelector } from "../../../utils/slice/sportSlice";
 
-const events = [
-  {
-    name: "Pakistan Women v United Arab Emirates Women",
-    time: "23/07/24 14:00",
-    odds: [
-      { back: "5.75", lay: "6.75" },
-      { back: "", lay: "" },
-      { back: "1,481", lay: "1,740" },
-    ],
-  },
-  {
-    name: "India Women v Nepal Women",
-    time: "23/07/24 19:00",
-    odds: [
-      { back: "0.5", lay: "1.5" },
-      { back: "", lay: "" },
-      { back: "6,666", lay: "20,000" },
-    ],
-  },
-  {
-    name: "Oval Invincibles Women v Birmingham Phoenix Women",
-    time: "23/07/24 19:15",
-    odds: [
-      { back: "78", lay: "84" },
-      { back: "", lay: "" },
-      { back: "119", lay: "129" },
-    ],
-  },
-  {
-    name: "Who will win The Hundred Womens 2024?",
-    time: "23/07/24 19:15",
-    odds: [],
-    moreMarkets: true,
-  },
-  {
-    name: "Madurai Panthers v Lyca Kovai Kings",
-    time: "23/07/24 19:15",
-    odds: [
-      { back: "161", lay: "189" },
-      { back: "", lay: "" },
-      { back: "53", lay: "62" },
-    ],
-  },
-  {
-    name: "Oval Invincibles v Birmingham Phoenix",
-    time: "23/07/24 23:00",
-    odds: [
-      { back: "88", lay: "93" },
-      { back: "", lay: "" },
-      { back: "107", lay: "114" },
-    ],
-  },
-];
+const teamName = {
+  4: "Cricket",
+  1: "Football",
+  2: "Tennis",
+};
 
 const LiveUpcomingEvent = () => {
+  const { id } = useParams();
+  const { data } = useGetDashboardDataQuery(id, {
+    refetchOnMountOrArgChange: true,
+  });
+
+  const [activeData, setActiveData] = useState<any>({})
+
+  const groupMatchesBySportAndSeries = (matches: any[]): any => {
+    const groupedMatches: any = {};
+    matches?.forEach((match) => {
+      const seriesName = match.series_name;
+      if (!groupedMatches[seriesName]) {
+        groupedMatches[seriesName] = [];
+      }
+      groupedMatches[seriesName].push({ ...match });
+    });
+
+
+    return groupedMatches;
+  };
+  const { matchName } = useSelector(sportSelector);
+
+
+  useEffect(() => {
+    const groupedMatches = groupMatchesBySportAndSeries(data?.data);
+    setActiveData(groupedMatches);
+  }, [data]);
+
   return (
-    <Box className="event_details">
-      <Box className="sport-wrapper ">
-        <Box className="events  ">
-          <MenuHeading name="Cricket" />
+    <>
+      {
+        matchName ? <Box className="event_details">
+          <Box className="sport-wrapper ">
+            <Box className="events  ">
+              <MenuHeading name={matchName} />
 
-          <Box className="event_data">
-            <table className="market-listing-table ">
-              <thead>
-                <tr>
-                  <th className="title ng-binding">Live &amp; Upcoming</th>
-                  <th className="_align-center col-first-player" colSpan={2}>
-                    <Box className="two-cells-header">1</Box>
-                  </th>
-{/* 
-                  <th className="_align-center player-draw " colSpan={2}>
-                    <Box className="two-cells-header">X</Box>
-                  </th> */}
-
-                  <th className="_align-center col-second-player" colSpan={2}>
-                    <Box className="two-cells-header">2</Box>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {events?.map((items, id) => {
-                  return (
-                    <tr  key={id}>
-                      <td className="event-row">
-                        <Box className="event-flex-row">
-                          <Box className="event-col">
-                            <CiStar />
-                            <Link
-                              className="event-name ng-binding"
-                              to="/d/display/EVENT/4/33433288"
-                            >
-                              {items?.name}
-                            </Link>
-                          </Box>
-                          <Box className="event-col">
-                            <small className="event-time ">
-                              <Box className="">
-                                <time className="ng-binding ">
-                                  {items?.time}
-                                </time>
-                              </Box>
-                            </small>
-                          </Box>
-                        </Box>
-                      </td>
-
-                      <td colSpan={6} className="inner-table-container ">
-                        <table className="inner-table">
-                          <tbody>
-                           
-                                <tr>
-                                  <td className="back">
-                                    <Box className="bet-button-wrapper">
-                                      <strong className="odds ng-binding">
-                                        {items?.odds[0]?.back}
-                                      </strong>
-                                      <Box className="size">
-                                        <span className="ng-binding"></span>
-                                      </Box>
-                                    </Box>
-                                  </td>
-                                  <td className="lay">
-                                    <Box className="bet-button-wrapper">
-                                      <strong className="odds ng-binding">
-                                      {items?.odds[0]?.lay}
-                                      </strong>
-                                      <Box className="size">
-                                        <span className="ng-binding"></span>
-                                      </Box>
-                                    </Box>
-                                  </td>
-
-
-                                  <td className="back">
-                                    <Box className="bet-button-wrapper">
-                                      <strong className="odds ng-binding">
-                                      {items?.odds[2]?.lay}
-                                      </strong>
-                                      <Box className="size">
-                                        <span className="ng-binding"></span>
-                                      </Box>
-                                    </Box>
-                                  </td>
-                                  <td className="lay">
-                                    <Box className="bet-button-wrapper">
-                                      <strong className="odds ng-binding">
-                                      {items?.odds[2]?.lay}
-                                      </strong>
-                                      <Box className="size">
-                                        <span className="ng-binding"></span>
-                                      </Box>
-                                    </Box>
-                                  </td>
-                                </tr>
-                              
-                          </tbody>
-                        </table>
-                      </td>
+              <Box className="event_data">
+                <table className="market-listing-table ">
+                  <thead>
+                    <tr>
+                      <th className="title ng-binding">Live &amp; Upcoming</th>
+                      <th className="_align-center col-first-player" colSpan={2}>
+                        <Box className="two-cells-header">1</Box>
+                      </th>
+                      <th className="_align-center col-second-player" colSpan={2}>
+                        <Box className="two-cells-header">2</Box>
+                      </th>
                     </tr>
-                  );
-                })}
-                
-              </tbody>
-            </table>
+                  </thead>
+                  <tbody>
+                    {activeData[matchName]?.map((items, index) => {
+                      console.log(
+                        items,
+                        "hui",
+                      );
+                      const date = moment(items?.MstDate).local();
+
+                      let formattedDate = date.format("DD/MM/YYYY HH:mm");
+                      return (
+                        <tr key={index}>
+                          <td className="event-row">
+                            <Box className="event-flex-row">
+                              <Box className="event-col">
+                                <CiStar />
+                                <Link
+                                  className="event-name ng-binding"
+                                  to={`/d/display/EVENT/${id}/${items?.matchid}`}
+                                >
+                                  {items?.matchName}
+                                </Link>
+                              </Box>
+                              <Box className="event-col">
+                                {items?.data?.marketDefinition?.inPlay ? (
+                                  <small className="in-play-content">
+                                    <PlayCircleFilledWhiteIcon />
+                                    <Box className="">In-Play</Box>
+                                  </small>
+                                ) : (
+                                  <small className="event-time ">
+                                    <Box className="">{formattedDate}</Box>
+                                  </small>
+                                )}
+                              </Box>
+                            </Box>
+                          </td>
+
+                          <td colSpan={6} className="inner-table-container ">
+                            <table className="inner-table">
+                              <tbody>
+                                {items?.data !== null ? (
+                                  <tr>
+                                    <td className="back">
+                                      <Box className="bet-button-wrapper">
+                                        <strong className="odds ng-binding">
+                                          {items?.data?.rc[0]?.batb[0][1]}
+                                        </strong>
+                                        <Box className="size">
+                                          <span className="ng-binding"></span>
+                                        </Box>
+                                      </Box>
+                                    </td>
+                                    <td className="lay">
+                                      <Box className="bet-button-wrapper">
+                                        <strong className="odds ng-binding">
+                                          {items?.data?.rc[0]?.batl[0][1]}
+                                        </strong>
+                                        <Box className="size">
+                                          <span className="ng-binding"></span>
+                                        </Box>
+                                      </Box>
+                                    </td>
+
+                                    
+                                    <td className="back">
+                                      <Box className="bet-button-wrapper">
+                                        <strong className="odds ng-binding">
+                                          {items?.data?.rc[1]?.batb[0][1]}
+                                        </strong>
+                                        <Box className="size">
+                                          <span className="ng-binding"></span>
+                                        </Box>
+                                      </Box>
+                                    </td>
+                                    <td className="lay">
+                                      <Box className="bet-button-wrapper">
+                                        <strong className="odds ng-binding">
+                                          {items?.data?.rc[1]?.batl[0][1]}
+                                        </strong>
+                                        <Box className="size">
+                                          <span className="ng-binding"></span>
+                                        </Box>
+                                      </Box>
+                                    </td>
+                                  </tr>
+                                ) : (
+                                  <tr className="-status more">
+                                    <Link
+                                      className="status-label status-label-more back"
+                                      to="#/display/EVENT/4/9.33076_1"
+                                    >
+                                      <span className="status-label-more-text">
+                                        See more markets
+                                      </span>
+                                      <RiArrowRightSLine
+                                        style={{ fontSize: "22px" }}
+                                      />
+                                    </Link>
+                                  </tr>
+                                )}
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </Box>
+            </Box>
           </Box>
-        </Box>
-      </Box>
-    </Box>
+        </Box> :
+
+          <Box className="event_details">
+            <Box className="sport-wrapper ">
+              <Box className="events  ">
+                <MenuHeading name={teamName[id]} />
+                <Box className="event_data">
+                  <table className="market-listing-table ">
+                    <thead>
+                      <tr>
+                        <th className="title ng-binding">Live &amp; Upcoming</th>
+                        <th className="_align-center col-first-player" colSpan={2}>
+                          <Box className="two-cells-header">1</Box>
+                        </th>
+
+                        <th className="_align-center col-second-player" colSpan={2}>
+                          <Box className="two-cells-header">X</Box>
+                        </th>
+                        <th className="_align-center col-second-player" colSpan={2}>
+                          <Box className="two-cells-header">2</Box>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data?.data?.map((items, index) => {
+                        const date = moment(items?.MstDate).local();
+
+                        let formattedDate = date.format("DD/MM/YYYY HH:mm");
+                        return (
+                          <tr key={index}>
+                            <td className="event-row">
+                              <Box className="event-flex-row">
+                                <Box className="event-col">
+                                  <CiStar />
+                                  <Link
+                                    className="event-name ng-binding"
+                                    to={`/d/display/EVENT/${id}/${items?.matchid}`}
+                                  >
+                                    {items?.matchName}
+                                  </Link>
+                                </Box>
+                                <Box className="event-col">
+                                  {items?.data?.marketDefinition?.inPlay ? (
+                                    <small className="in-play-content">
+                                      <PlayCircleFilledWhiteIcon />
+                                      <Box className="">In-Play</Box>
+                                    </small>
+                                  ) : (
+                                    <small className="event-time ">
+                                      <Box className="">{formattedDate}</Box>
+                                    </small>
+                                  )}
+                                </Box>
+                              </Box>
+                            </td>
+
+                            <td colSpan={6} className="inner-table-container ">
+                              <table className="inner-table">
+                                <tbody>
+                                  {items?.data !== null ? (
+                                    <tr>
+                                      <td className="back">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[0]?.batb[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
+                                        </Box>
+                                      </td>
+                                      <td className="lay">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[0]?.batl[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
+                                        </Box>
+                                      </td>
+
+                                      <td className="empty betting-disabled">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            -
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
+                                        </Box>
+                                      </td>
+                                      <td className="empty betting-disabled">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            -
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
+                                        </Box>
+                                      </td>
+
+                                      <td className="back">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[1]?.batb[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
+                                        </Box>
+                                      </td>
+                                      <td className="lay">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[1]?.batl[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
+                                        </Box>
+                                      </td>
+                                    </tr>
+                                  ) : (
+                                    <tr className="-status more">
+                                      <Link
+                                        className="status-label status-label-more back"
+                                        to="#/display/EVENT/4/9.33076_1"
+                                      >
+                                        <span className="status-label-more-text">
+                                          See more markets
+                                        </span>
+                                        <RiArrowRightSLine
+                                          style={{ fontSize: "22px" }}
+                                        />
+                                      </Link>
+                                    </tr>
+                                  )}
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+      }
+    </>
   );
 };
 

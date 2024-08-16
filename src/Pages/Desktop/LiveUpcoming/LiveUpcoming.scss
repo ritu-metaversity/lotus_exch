@@ -23,7 +23,7 @@
                 .event-row {
                     padding: 4px 8px !important;
                     border-bottom: 1px solid #ddd;
-                    height: 33px;
+                    height: 43px;
                     .event-flex-row {
                         display: flex;
                         flex-direction: row;
@@ -101,7 +101,7 @@
             align-items: center;
             color: #000;
             text-decoration: none;
-            height: 33px;
+            height: 43px;
             text-align: center;
             width: 380px;
         }
@@ -112,7 +112,7 @@
         .status.more {
             padding: 0;
             color: #000;
-            background: #a7d8fd;
+            background: #a7d8fd !important;
         }
     }
 }
@@ -153,7 +153,7 @@
     position: relative;
 }
 .market-listing-table > tbody tr td {
-    height: 33px;
+    height: 43px;
 }
 
 .market-listing-table > tbody tr {
@@ -170,9 +170,9 @@
     font-weight: normal;
     font-family: Lato, Avenir, Verdana, Nunito;
 }
-.size {
-    display: none;
-}
+// .size {
+//     display: none;
+// }
 
 
 .in-play-content {

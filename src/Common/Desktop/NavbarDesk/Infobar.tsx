@@ -1,11 +1,16 @@
 import { Box } from "@mui/material";
+import type { FC } from "react";
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Infobar = () => {
+interface Props{
+  loginData: any
+}
+
+const Infobar:FC<Props> = ({loginData}) => {
   const [active, setActive] = useState(false);
   const [focus, setFocus] = useState(false);
   const dropdownRef = useRef(null);
@@ -27,6 +32,9 @@ const Infobar = () => {
     };
   }, []);
 
+
+  console.log(loginData?.data?.loginData?.user?.mstrname, "vdfdfgdggfdg")
+
   return (
     <div className="infobar">
       <ul className="linkbar">
@@ -47,7 +55,7 @@ const Infobar = () => {
         </li>
 
         <li>
-          <p className="ng-binding">Logged in as risky69</p>
+          <p className="ng-binding">Logged in as {loginData?.data?.loginData?.user?.mstrname}</p>
           <p className="last-login ng-binding">
             Last logged in:
             <Box>

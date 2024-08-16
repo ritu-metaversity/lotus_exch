@@ -1,21 +1,31 @@
 import { Box } from "@mui/material";
-import React, { useState } from "react";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const DateArea = () => {
-    const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
+  const [time, setTime] = useState(moment().format("HH:mm:ss"));
 
-    const handleActive = ()=>{
-        setActive(!active)
-    }
+  const handleActive = () => {
+    setActive(!active);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(moment().format("HH:mm:ss"));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
       <Box className=" ">
-        <Box className="ng-binding ">Aug 2, 2024</Box>
+        <Box className="ng-binding ">{moment().format("MMM D, YYYY")}</Box>
       </Box>
       <Box className="time  ">
-        <Box className="ng-binding ">13:29:14</Box>
+        <Box className="ng-binding ">{time}</Box>
       </Box>
       <div className="clock-timezone-settings">
         (
