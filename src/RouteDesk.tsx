@@ -57,7 +57,7 @@ const MobileRoutes = () => (
       <Route path="sport/esport" element={<Sports icon={esport} name="E-Sport" />} />
       <Route path="sport/genie" element={<Genie icon={football} name="Football" genieIcon={genies} />} />
       <Route path="casino/super-casino/tab" element={<LiveCasino />} />
-      <Route path="sport/:id/e/:matchId" element={<Gamedetails />} />
+      <Route path="sport/:id/:matchId" element={<Gamedetails />} />
       <Route path="settings" element={<SettingsMob />} />
       <Route path="open-bets" element={<CurrentBetMob />} />
       <Route path="betting-pnl" element={<ProfitandLossMob />} />

@@ -69,10 +69,7 @@ const LiveUpcomingEvent = () => {
                   </thead>
                   <tbody>
                     {activeData[matchName]?.map((items, index) => {
-                      console.log(
-                        items,
-                        "hui",
-                      );
+                      
                       const date = moment(items?.MstDate).local();
 
                       let formattedDate = date.format("DD/MM/YYYY HH:mm");

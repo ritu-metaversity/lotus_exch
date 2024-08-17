@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-restricted-imports */
 import React, { useEffect } from "react";
 import { useRef } from "react";
 import type { FC, TouchEvent } from "react";
@@ -5,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { Box } from "@mui/material";
 import "./style.scss";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
 import { selectHomeSwipe, setHomeSwipe } from "../../../../utils/slice/homeSlice";
 import moment from "moment";
@@ -18,9 +19,8 @@ interface Props {
 
 const Cricket: FC<Props> = ({ activeData, name }) => {
   const nav = useNavigate();
-  const handleNav = () => {
-    nav("/sport/4/e/33450249");
-  };
+
+  const {id} = useParams()
 
   const dispatch = useDispatch();
   const isSwiped = useAppSelector(selectHomeSwipe);
@@ -56,6 +56,9 @@ const Cricket: FC<Props> = ({ activeData, name }) => {
   };
 
 
+  const handleNav = (matchid:string) => {
+    nav(`/m/sport/${id}/${matchid}`);
+  };
 
 
 
@@ -127,7 +130,7 @@ const Cricket: FC<Props> = ({ activeData, name }) => {
                             return (
                               <Box >
                                 <div className="market" >
-                                  <Box className="market-title">
+                                  <Box className="market-title" onClick={()=>handleNav(matches?.matchid)}>
                                     <div className="info-box">
                                       <div className="info">
                                         <Box _nghost-bfg-c169="">
@@ -238,7 +241,7 @@ const Cricket: FC<Props> = ({ activeData, name }) => {
 
                   <div className="sport-events-group-container">
                     <div className="sport-group-header first">
-                      <div className="group-title">
+                      <div className="group-title" >
                         <span className="title-item">{name}</span>
                         <span className="title-item">{items}</span>
                       </div>
@@ -275,7 +278,7 @@ const Cricket: FC<Props> = ({ activeData, name }) => {
                           return (
                             <Box >
                               <div className="market" >
-                                <Box className="market-title">
+                                <Box className="market-title" onClick={()=>handleNav(matches?.matchid)}>
                                   <div className="info-box">
                                     <div className="info">
                                       {formattedDate}

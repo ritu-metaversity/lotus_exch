@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-restricted-imports */
 import {
   Box,
   Typography,
@@ -9,13 +10,21 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BetplacedDesk from "./BetplacedDesk";
+import { useSelector } from "react-redux";
+import { betSelector } from "../../../../utils/slice/betSlice";
+import { fancySelector } from "../../../../utils/slice/fancySlice";
+import FancyBetPlaced from "./FancyBetPlaced";
 
 const BetList = () => {
   const [active, setActive] = useState<number>(0);
+  const betData = useSelector(betSelector);
+  const fancyData = useSelector(fancySelector);
 
   const handleActive = (val: number) => {
     setActive(val);
   };
+
+  // console.log(fancyData?.selectionId?.length, "fancyDatafancyDatafancyDatafancyData")
 
   const AccordionSection = ({
     title,
@@ -66,6 +75,7 @@ const BetList = () => {
     </Box>
   );
 
+  console.log(betData?.selectionId  == 0 , fancyData?.selectionId?.length == 0, "fancyData?.selectionId?.length")
   return (
     <div className="bet-manager">
       <h4 className="bet_slip_heading">Betslip</h4>
@@ -96,8 +106,17 @@ const BetList = () => {
           <li id="tab-betslip" className="tab-betslip" style={{ height: 469 }}>
             <div className="bets betslip ng-isolate-scope has-empty-message">
               <div className="empty-list-info ng-scope">
-                {/* Click on the odds to add selections to the betslip. */}
-                <BetplacedDesk />
+                
+                {
+                  betData?.selectionId > 0 ?<BetplacedDesk betData={betData}/>:""
+                }
+                {
+                  fancyData?.selectionId?.length !== 0 ?<FancyBetPlaced betData={fancyData}/>:""
+                }
+                {
+                  (betData?.selectionId  == 0 && fancyData?.selectionId?.length == 0) && "Click on the odds to add selections to the betslip."
+                }
+                
               </div>
             </div>
           </li>

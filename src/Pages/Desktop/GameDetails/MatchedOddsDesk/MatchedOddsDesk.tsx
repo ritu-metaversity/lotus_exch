@@ -9,7 +9,6 @@ interface Props {
   // matchedRunners: any;
   bets: any;
   moduleOpenHandler: any;
-  betData: any;
   state: any;
   marketData: any;
   sportId: string;
@@ -18,7 +17,6 @@ interface Props {
 const MatchedOddsDesk: FC<Props> = ({
   bets,
   moduleOpenHandler,
-  betData,
   state,
   marketData,
   sportId,
@@ -33,7 +31,7 @@ const MatchedOddsDesk: FC<Props> = ({
         const extractedRunners = runners.map((runner) => ({
           id: runner.id,
           name: runner.name,
-        })); // Extract id and name from each runner
+        }));
         return {
           matchName: item.matchName,
           matchid: item.matchid,
@@ -43,6 +41,8 @@ const MatchedOddsDesk: FC<Props> = ({
           runners: extractedRunners,
           market_name: item?.market_name,
           marketid: item?.marketid,
+          minStack:item?.min_stack,
+          maxStack:item?.max_stack
         };
       });
       setMatchedRunners(processedData);
@@ -51,7 +51,6 @@ const MatchedOddsDesk: FC<Props> = ({
 
   useEffect(() => {
     function mergeData(data1: any[], data2: any[]): any[] {
-      console.log(data1,data2, "32456yutjhgbfvdcs" )
       return data2?.map((match2) => {
         const match1 = data1?.find((match1) =>
           match1?.runners?.some(
@@ -209,14 +208,13 @@ const MatchedOddsDesk: FC<Props> = ({
                                 moduleOpenHandler(
                                   0,
                                   matches.marketid,
-                                  res.matchName,
-                                  res.name,
-                                  res?.batb[0][1],
-                                  res.id.toString(),
+                                  matches.matchName,
+                                  matchName[0]?.name,
+                                  items[1],
+                                  res?.id?.toString(),
                                   matches.matchid,
-                                  res.SportId,
-                                  res.minStack,
-                                  res.maxStack,
+                                  matches.minStack,
+                                  matches.maxStack,
                                 )
                               }
                             >
@@ -240,14 +238,14 @@ const MatchedOddsDesk: FC<Props> = ({
                               moduleOpenHandler(
                                 1,
                                 matches.marketid,
-                                res.matchName,
-                                res.name,
-                                res?.batl[0][1],
-                                res.id.toString(),
+                                matches.matchName,
+                                matchName[0]?.name,
+                                items[1],
+                                res?.id?.toString(),
                                 matches.matchid,
-                                res.SportId,
-                                res?.minStack,
-                                res?.maxStack
+                                matches.SportId,
+                                matches?.minStack,
+                                matches?.maxStack
                               )
                             }
                           >

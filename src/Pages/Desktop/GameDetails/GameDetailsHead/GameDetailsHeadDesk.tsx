@@ -8,7 +8,12 @@ import FeaturedPlayListOutlinedIcon from "@mui/icons-material/FeaturedPlayListOu
 import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
-const GameDetailsHeadDesk = () => {
+interface Props{
+  seriesName:string,
+  matchName:string
+}
+
+const GameDetailsHeadDesk = ({matchName, seriesName}) => {
   return (
     <Box className="match-stats-video">
       <Box>
@@ -24,8 +29,8 @@ const GameDetailsHeadDesk = () => {
                 />
                 <div className="title-competition-box">
                   
-                  London Spirit Women v Welsh Fire Women
-                  <div className="competition">The Hundred - Womens</div>
+                 {matchName}
+                  <div className="competition">{seriesName}</div>
                 </div>
               </h1>
               <KeyboardArrowUpIcon

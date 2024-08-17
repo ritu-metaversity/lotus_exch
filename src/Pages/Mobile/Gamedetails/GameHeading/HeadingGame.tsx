@@ -1,9 +1,14 @@
+import type { FC } from 'react';
 import React from 'react';
 import { Box, Typography, IconButton, Grid } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './style.scss'
 
-const HeadingGame = () => {
+interface Props{
+  marketData: any[]
+}
+
+const HeadingGame:FC<Props> = ({marketData}) => {
   return (
     <Box className="event-details">
       <Box className="other-event-details ignore-content-spacing in-play">
@@ -15,23 +20,14 @@ const HeadingGame = () => {
               </Grid>
               <Grid item className="event-title-box">
                 <Typography variant="h5" className="event-title">
-                  Surrey v Gloucestershire
+                  {marketData && marketData[0]?.matchName}
                 </Typography>
                 <Typography variant="subtitle1" className="competition">
-                  Metro Bank One Day Cup
+                {marketData && marketData[0]?.series_name}
                 </Typography>
               </Grid>
             </Grid>
-            {/* <Box className="match-stats-info">
-              <Typography variant="body1" className="team" sx={{
-                fontSize:"10px"
-              }}>
-                Gloucestershire: 51-0 (10.4 Ovs)
-              </Typography>
-              <Typography variant="body2" className="info">
-                Surrey opt to bowl
-              </Typography>
-            </Box> */}
+            
           </Box>
         </Box>
         <Box className="actions">

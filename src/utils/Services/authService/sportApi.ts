@@ -30,8 +30,22 @@ export const sportApi = createApi({
         method: "GET",
       }),
     }),
+    getBetPlaced: build.mutation<DashboardResponse, any>({
+      query: (body) => ({
+        url: `/api/bets/market`,
+        method: "Post",
+        body
+      }),
+    }),
+    getFancyPlaced: build.mutation<DashboardResponse, any>({
+      query: (body) => ({
+        url: `/api/bets/fancy`,
+        method: "Post",
+        body
+      }),
+    }),
   
   }),
 });
 
-export const { useGetDashboardDataQuery, useGetBetsDetailsMutation, useGetMatchedMarketMutation, useGetFancyMarketMutation } = sportApi;
+export const { useGetDashboardDataQuery, useGetBetsDetailsMutation, useGetMatchedMarketMutation, useGetFancyMarketMutation, useGetBetPlacedMutation, useGetFancyPlacedMutation } = sportApi;

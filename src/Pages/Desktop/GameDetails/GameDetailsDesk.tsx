@@ -8,33 +8,19 @@ import { useGetBetsDetailsMutation, useGetDashboardDataQuery, useGetFancyMarketM
 import { useParams } from "react-router-dom";
 import { socket } from "./socket";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginSelector } from "../../../utils/slice/loginSlice";
+import { setBetData } from "../../../utils/slice/betSlice";
+import { setFancyBetData } from "../../../utils/slice/fancySlice";
 
 const GameDetailsDesk = () => {
   const [moduleOpen, setModuleOpen] = useState<boolean>(false);
   const [isFavAndMatchIds, setisFavAndMatchIds] = useState<any>([]);
   const [filterSportData, setFilterSportData] = useState<any[]>([]);
   const [marketData, setMarketData] = useState<any[]>([]);
-  const [bookMakerData, setBookmakerData] = useState<any>(null);
   const [fancyData, setFancyData] = useState<any>(null);
-  const [betData, setBetData] = useState<any>({
-    isBack: 0,
-    marketId: "",
-    matchName: "",
-    matchId: 0,
-    runnerName: "",
-    price: 0,
-    selectionId: "",
-    stake: 0,
-    sportId: "",
-    isCashout: false,
-    inPlay: true,
-    profit: 0,
-    deviceInfo: "",
-    minStack: 0,
-    maxStack: 0,
-  });
+  const dispatch = useDispatch();
+
   const moduleFancyOpenHandler = (
     price: number,
     typeId: number,
@@ -51,10 +37,10 @@ const GameDetailsDesk = () => {
     side: number,
     isFancy: boolean,
     minStack: string,
-    maxStack: string
+    maxStack: string,
+    isBack: number
   ) => {
-    setFancyBetData((prev: any) => ({
-      ...prev,
+    const newBetData = {
       price,
       typeId,
       matchId,
@@ -67,23 +53,25 @@ const GameDetailsDesk = () => {
       pointDiff,
       sessSizeYes,
       sessSizeNo,
-      marketId: eid?.marketid,
       side,
       isFancy,
       minStack,
       maxStack,
-    }));
+      isBack
+    };
+    dispatch(setFancyBetData(newBetData))
+    dispatch(setBetData(null));
     setModuleOpen((prev) => !prev);
   };
-  const {matchedId, id} = useParams();
-  const [getBetDetails, {data: betDetails}] = useGetBetsDetailsMutation();
-  const [getMatchedMarket, {data: matchedMarket}] = useGetMatchedMarketMutation();
-  const {data: dashboard} = useGetDashboardDataQuery("");
-  const [getFancyMarket, {data: fancyMarket}] = useGetFancyMarketMutation();
+  const { matchedId, id } = useParams();
+  const [getBetDetails, { data: betDetails }] = useGetBetsDetailsMutation();
+  const [getMatchedMarket, { data: matchedMarket }] = useGetMatchedMarketMutation();
+  const { data: dashboard } = useGetDashboardDataQuery("");
+  const [getFancyMarket, { data: fancyMarket }] = useGetFancyMarketMutation();
 
   const loginData = useSelector(loginSelector);
 
-  useEffect(()=>{
+  useEffect(() => {
     getBetDetails(matchedId)
     getMatchedMarket(matchedId)
     getFancyMarket(matchedId)
@@ -108,7 +96,7 @@ const GameDetailsDesk = () => {
   //   setActiveMatchesSlider(arg);
   // };
 
- 
+
 
   useEffect(() => {
     if (dashboard) {
@@ -121,7 +109,7 @@ const GameDetailsDesk = () => {
           item?.sportid === Number(id) && item?.matchid !== Number(id)
       );
       setFilterSportData(filteredData);
-      setisFavAndMatchIds(updatedIsFavAndMatchIds); 
+      setisFavAndMatchIds(updatedIsFavAndMatchIds);
     }
   }, [dashboard]);
 
@@ -145,7 +133,6 @@ const GameDetailsDesk = () => {
 
         if (matchedMarket) {
           matchedMarket?.data?.forEach((market) => {
-            console.log(market, "marketmarketmarket")
             if (market.marketid) {
               roomEvents.push(`EID${market.marketid}`);
             }
@@ -156,26 +143,23 @@ const GameDetailsDesk = () => {
       });
 
       socket.on("message", (data) => {
-        console.log(data, "sdfsdfsdfsdfsdfdsfs")
         const oddsData = JSON.parse(data);
-        // if (!oddsData?.id?.includes("BM")) {
-          setMarketData((prevMarketData) => {
-            const updatedMarketData = [...prevMarketData];
-            const existingIndex = updatedMarketData.findIndex(
-              (item) => item.id === oddsData.id
-            );
 
-            if (existingIndex !== -1) {
-              updatedMarketData[existingIndex] = oddsData;
-            } else {
-              updatedMarketData.push(oddsData);
-            }
+        setMarketData((prevMarketData) => {
+          const updatedMarketData = [...prevMarketData];
+          const existingIndex = updatedMarketData.findIndex(
+            (item) => item.id === oddsData.id
+          );
 
-            return updatedMarketData;
-          });
-        // } else {
-        //   setBookmakerData(oddsData);
-        // }
+          if (existingIndex !== -1) {
+            updatedMarketData[existingIndex] = oddsData;
+          } else {
+            updatedMarketData.push(oddsData);
+          }
+
+          return updatedMarketData;
+        });
+
       });
 
       socket.on(`FANCY${matchedId}`, (data) => {
@@ -211,60 +195,53 @@ const GameDetailsDesk = () => {
     odds: string,
     selectionId: string,
     matchId: number,
-    sportId: number,
     minStack: number,
     maxStack: number
   ) => {
-    setBetData((prev: any) => ({
-      ...prev,
+    const newBetData = {
       isBack,
       marketId,
       matchName,
       runnerName,
       price: Number(odds),
-      selectionId: selectionId,
+      selectionId,
       matchId,
-      sportId,
       minStack,
       maxStack,
-    }));
-    // setFancyBetData((prev) => ({ ...prev, isFancy: false }));
-    setModuleOpen((prev) => !prev);
+      sportId: id,
+    };
+    dispatch(setBetData(newBetData));
+    dispatch(setFancyBetData(null))
   };
 
 
-
-
-console.log(fancyMarket, "er35yhfgbfdgdfgvdfgvdg")
-
   return (
     <div className="group-event">
-      <GameDetailsHeadDesk />
+      <GameDetailsHeadDesk matchName={matchedMarket?.data[0]?.matchName} seriesName={matchedMarket?.data[0]?.series_name} />
       <Box className="ng-isolate-scope">
         <div className="market-group ">
           <div className="markets-rows ">
             <div>
-              <MatchedOddsDesk 
-              // isFavAndMatchIds={isFavAndMatchIds}
-            // handleFav={handleFav}
-              
-              state={matchedMarket?.data}
-              marketData={marketData}
-              sportId={id}
-              
-              betData={betData}
-              bets={betDetails?.data}
-              moduleOpenHandler={moduleOpenHandler}/>
+              <MatchedOddsDesk
+                // isFavAndMatchIds={isFavAndMatchIds}
+                // handleFav={handleFav}
+
+                state={matchedMarket?.data}
+                marketData={marketData}
+                sportId={id}
+
+                bets={betDetails?.data}
+                moduleOpenHandler={moduleOpenHandler} />
             </div>
           </div>
         </div>
-       {/* <BookmakerDesk /> */} 
+
         <FancyDesk fancyData={fancyData}
-                fancyDataTabs={fancyMarket}
-                bets={betDetails?.data}
-                moduleFancyOpenHandler={moduleFancyOpenHandler}/>
-        
-       
+          fancyDataTabs={fancyMarket}
+          bets={betDetails?.data}
+          moduleFancyOpenHandler={moduleFancyOpenHandler} />
+
+
       </Box>
     </div>
   );

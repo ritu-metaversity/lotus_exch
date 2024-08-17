@@ -83,7 +83,6 @@ function LoginModals({ handleClose, locationData }: Props) {
     }
   }, [loginData])
 
-  console.log(isMobile, "isMobileisMobile")
 
   return (
     <Box sx={{ ...style, width: isMobile ? "71%" : 375 }}>

@@ -1,29 +1,34 @@
 import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { useDispatch } from "react-redux";
 import { setBetData } from "../../../../utils/slice/betSlice";
-import { useGetBetPlacedMutation } from "../../../../utils/Services/authService/sportApi";
+import {  useGetFancyPlacedMutation } from "../../../../utils/Services/authService/sportApi";
 import { Flip, toast } from "react-toastify";
+import { setFancyBetData } from "../../../../utils/slice/fancySlice";
 
-interface Props {
-  betData: any;
+
+interface Props{
+  betData: any
 }
 
-const BetplacedDesk: FC<Props> = ({ betData }) => {
+const FancyBetPlaced:FC<Props> = ({betData}) => {
   const dispatch = useDispatch();
-  const [GetbetPlace, { data: betPlace }] = useGetBetPlacedMutation();
-  const [stack, setStack] = useState(null);
+  const [GetbetPlace, {data:betPlace, isLoading}]= useGetFancyPlacedMutation()
+  const [stack, setStack] = useState(null)
 
-  const handleStackValue = (val: number) => {
-    setStack(val);
-  };
+  const handleStackValue = (val:number)=>{
+    setStack(val)
+  }
 
-  const handleBetPlace = (e) => {
+
+  console.log(betData, "betDatabetDatabetData")
+
+  const handleBetPlace = (e)=>{
     e.preventDefault();
-    GetbetPlace({ ...betData, stake: stack });
-  };
+    GetbetPlace({...betData, stake:stack})
+
+  }
 
   useEffect(() => {
     if (betPlace?.status) {
@@ -38,7 +43,7 @@ const BetplacedDesk: FC<Props> = ({ betData }) => {
         theme: "colored",
         transition: Flip,
       });
-    } else {
+    }else{
       toast.error(betPlace?.message, {
         position: "top-center",
         autoClose: 5000,
@@ -52,75 +57,83 @@ const BetplacedDesk: FC<Props> = ({ betData }) => {
       });
     }
   }, [betPlace]);
+
   return (
-    <form className="bet_slip_desk">
-      <div>
+    <form
+      className="bet_slip_desk"
+      name="betslipForm"
+    >
+      <div  >
         <div className="betslipContent">
-          <ul className="fail-messages generic-error "></ul>
-          <div>
-            <h6
-              className={`bet-type-info  ${betData?.isBack == 0 ? "back" : "lay"}`}
-            >
-              {betData?.isBack == 0 ? "Back" : "Lay"}
-            </h6>
+          <ul
+            className="fail-messages generic-error "
+           
+          ></ul>
+          <div
+            
+          >
+            <h6 className={`bet-type-info  ${betData?.isBack == 0?"back":"lay"}`}>{betData?.isBack == 0?"Back":"Lay"}</h6>
             <ul className="market-list">
-              <li ng-repeat="event in bets[side + 's'].collection | orderMap:'updatedAt':'desc'">
+              <li
+                
+                ng-repeat="event in bets[side + 's'].collection | orderMap:'updatedAt':'desc'"
+              >
                 <a className="event-name" href="#/display/EVENT/4/33455059">
-                  <span className="ng-binding ng-isolate-scope">
+                  <span className=" ng-isolate-scope">
                     {betData?.matchName}
                   </span>
                 </a>
                 <ul className="bets-list">
-                  <li>
-                    <div
-                      className={`bet ${betData?.isBack == 0 ? "back" : "lay"}`}
-                    >
+                  <li >
+                    <div className={`bet ${betData?.isBack == 0?"back":"lay"}`}>
                       <div className="bet-header">
-                        <div className="section-name-label ng-scope">
-                          <span className="selection-name ng-binding ng-scope">
+                        <div className="section-name-label ">
+                          <span className="selection-name  ">
                             {betData?.runnerName}
                           </span>
-                          <span className="pre-match-label ng-binding ng-scope">
+                          <span className="pre-match-label  ">
                             Pre-match Only
                           </span>
                         </div>
-                        <div className="max-market ng-binding ng-scope">
+                        <div className="max-market  ">
                           Max Market: {betData?.maxStack}
                         </div>
                       </div>
                       <div className="bet-fields">
                         <div className="odds-field session-runs placeholder-wrapper ng-isolate-scope">
-                          <div className="placeholder ng-binding" />
+                          <div className="placeholder " />
                           <div ng-transclude="">
-                            <div className="info-field runs-label ng-scope">
-                              <div className="ng-binding ng-scope">
+                            <div className="info-field runs-label ">
+                              <div className=" ">
                                 Odds (H-J)
                               </div>
-                              <div className="line-value ng-binding ng-scope">
+                              <div className="line-value  ">
                                 {betData?.price}
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="betslip__input placeholder-wrapper ng-isolate-scope">
-                          <div className="placeholder ng-binding" />
+                          <div className="placeholder " />
                           <div ng-transclude="">
                             <input
                               className="ng-invalid "
                               step="0.01"
                               type="text"
                               value={stack}
-                              onChange={(e) => setStack(e.target.value)}
+                              onChange={(e)=>setStack(e.target.value)}
                             />
-
-                            <div className="betslip__placeholder-label ng-binding ng-scope">
+                           
+                            <div className="betslip__placeholder-label  ">
                               Stake
                             </div>
                           </div>
                         </div>
-                        <div className="info-field ng-scope">
-                          <span className="title ng-binding">Profit</span>
-                          <span className="value ng-binding">0.00</span>
+                        <div className="info-field ">
+                          <span className="title ">
+                            Profit
+                          </span>
+                          <span className="value ">0.00</span>
                         </div>
                         <div className="control-fields">
                           <button
@@ -131,100 +144,101 @@ const BetplacedDesk: FC<Props> = ({ betData }) => {
                           </button>
                         </div>
                       </div>
-
+                    
                       <div className="six-stakes back">
                         <div className="first-row">
                           <button
-                            className="apl-btn apl-btn-secondary-alt ng-binding ng-scope"
+                            className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={() => handleStackValue(100)}
+                            onClick={()=>handleStackValue(100)}
+
                           >
                             100
                           </button>
                           <button
-                            className="apl-btn apl-btn-secondary-alt ng-binding ng-scope"
+                            className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={() => handleStackValue(500)}
+                            onClick={()=>handleStackValue(500)}
                           >
                             +500
                           </button>
                           <button
-                            className="apl-btn apl-btn-secondary-alt ng-binding ng-scope"
+                            className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={() => handleStackValue(1000)}
+                            onClick={()=>handleStackValue(1000)}
                           >
                             +1,000
                           </button>
                           <button
                             className="apl-btn apl-btn-secondary-alt"
                             type="button"
-                            onClick={() => handleStackValue(betData?.maxStack)}
+                            onClick={()=>handleStackValue(betData?.maxStack)}
                           >
                             MAX
                           </button>
                         </div>
                         <div className="second-row">
                           <button
-                            className="apl-btn apl-btn-secondary-alt ng-binding ng-scope"
+                            className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={() => handleStackValue(2000)}
+                            onClick={()=>handleStackValue(2000)}
                           >
                             +2,000
                           </button>
                           <button
-                            className="apl-btn apl-btn-secondary-alt ng-binding ng-scope"
+                            className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={() => handleStackValue(5000)}
+                            onClick={()=>handleStackValue(5000)}
                           >
                             +5,000
                           </button>
                           <button
-                            className="apl-btn apl-btn-secondary-alt ng-binding ng-scope"
+                            className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={() => handleStackValue(10000)}
+                            onClick={()=>handleStackValue(10000)}
                           >
                             +10,000
                           </button>
                           <button
                             className="clear_btn"
                             type="button"
-                            onClick={() => handleStackValue(0)}
+                            onClick={()=>handleStackValue(0)}
                           >
                             Clear
                           </button>
                         </div>
                       </div>
+                      
                     </div>
                   </li>
                 </ul>
               </li>
             </ul>
           </div>
-          <p className="summary-info ng-binding">Liability: 0.00</p>
-          <div className="summary-buttons _align-right ng-scope">
-            <button
-              className={stack > 0 ? "btn_placebet" : "btn_btn_primary"}
-              onClick={(e) => handleBetPlace(e)}
-            >
+          <p className="summary-info ">Liability: 0.00</p>
+          <div className="summary-buttons _align-right ">
+            <button className={stack>0?"btn_placebet":"btn_btn_primary"} onClick={(e)=>handleBetPlace(e)}>
               Place bets
             </button>
-            <button
-              className="apl-btn-remove"
-              type="button"
-              onClick={() => dispatch(setBetData(null))}
-            >
+            <button className="apl-btn-remove" type="button" onClick={()=>dispatch(setFancyBetData(null))}>
               Remove All
             </button>
           </div>
           <div className="confirmation-checkbox-wrapper">
-            <label className="confirmation-checkbox ng-binding">
-              <input className="check_box" type="checkbox" />
+            <label className="confirmation-checkbox ">
+              <input
+                className="check_box"
+                type="checkbox"
+              />
               Confirm bets before placing
             </label>
           </div>
           <div className="confirmation">
             <label className="confirmation-checkbox">
-              <input className="check_box" type="checkbox" />
+              <input
+                className="check_box"
+                type="checkbox"
+              />
               Auto accept better odds
             </label>
           </div>
@@ -234,4 +248,4 @@ const BetplacedDesk: FC<Props> = ({ betData }) => {
   );
 };
 
-export default BetplacedDesk;
+export default FancyBetPlaced;

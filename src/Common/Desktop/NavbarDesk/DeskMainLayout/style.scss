@@ -60,7 +60,7 @@
   
 }
 .mid-pane-casino {
-  padding: 0 20px 20px;
+  // padding: 0 20px 20px;
   position: relative;
   display: block;
   height: 100%;
@@ -152,6 +152,8 @@
   .settings-list {
     margin: 0;
     margin-left: -45px;
+    min-height: 21px;
+    height: 25px;
     li {
       float: left;
       list-style: none;
@@ -174,6 +176,7 @@
   min-height: 22px;
   margin-right: 9px;
   cursor: pointer;
+  height: 100%;
 }
 
 .apl-btn-primary {
@@ -197,7 +200,7 @@
 }
 
 .setting-input {
-  min-height: 17px;
+  min-height: 25px;
   height: 17px;
   padding: 3px 2px;
   font-size: 10px;

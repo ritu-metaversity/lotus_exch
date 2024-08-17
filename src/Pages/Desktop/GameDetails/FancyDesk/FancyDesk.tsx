@@ -41,7 +41,6 @@ const FancyDesk: FC<Props> = ({
 
 
 
-  // console.log(fancyDataTabs?.priorities, "fancyDataTabsfancyDataTabs")
 
   return (
     <div className="market-group fancy_group">
@@ -77,7 +76,7 @@ const FancyDesk: FC<Props> = ({
                     mergedData
                       .filter((item: any) => item.in_priority === value)
                       .map((item: any) => {
-                        console.log(item, "itemitemitem")
+                        console.log(item, "itemitemitemitem")
                         return (
                           <tr>
                             <td className="market-name">
@@ -108,9 +107,29 @@ const FancyDesk: FC<Props> = ({
                                           colSpan={2}
                                         ></td>
                                         <td className="lay show-size">
-                                          <div className="bet-button-wrapper">
+                                          <div className="bet-button-wrapper" onClick={() =>
+                                            moduleFancyOpenHandler(
+                                              item?.LayPrice1,
+                                              item?.TypeID,
+                                              item.MatchID,
+                                              item?.ID,
+                                              item.SelectionId,
+                                              item.HeadName,
+                                              item.SessInptYes,
+                                              item.SessInptNo,
+                                              item?.SprtId,
+                                              item?.pointDiff,
+                                              item?.YesValume,
+                                              item?.NoValume,
+                                              0,
+                                              true,
+                                              item?.min_stack,
+                                              item?.max_stack,
+                                              1
+                                            )
+                                          }>
                                             <strong className="odds ng-binding">
-                                            {item?.LayPrice1}
+                                              {item?.LayPrice1}
                                             </strong>
                                             <div className="size">
                                               <span className="ng-binding">{item?.LaySize1}</span>
@@ -118,7 +137,27 @@ const FancyDesk: FC<Props> = ({
                                           </div>
                                         </td>
                                         <td className="back show-size">
-                                          <div className="bet-button-wrapper">
+                                          <div className="bet-button-wrapper" onClick={() =>
+                                            moduleFancyOpenHandler(
+                                              item?.BackPrice1,
+                                              item?.TypeID,
+                                              item.MatchID,
+                                              item?.ID,
+                                              item.SelectionId,
+                                              item.HeadName,
+                                              item.SessInptYes,
+                                              item.SessInptNo,
+                                              item?.SprtId,
+                                              item?.pointDiff,
+                                              item?.YesValume,
+                                              item?.NoValume,
+                                              0,
+                                              true,
+                                              item?.min_stack,
+                                              item?.max_stack,
+                                              0
+                                            )
+                                          }>
                                             <strong className="odds ng-binding">
                                               {item?.BackPrice1}
                                             </strong>

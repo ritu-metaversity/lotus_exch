@@ -33,7 +33,6 @@ const Infobar:FC<Props> = ({loginData}) => {
   }, []);
 
 
-  console.log(loginData?.data?.loginData?.user?.mstrname, "vdfdfgdggfdg")
 
   return (
     <div className="infobar">
