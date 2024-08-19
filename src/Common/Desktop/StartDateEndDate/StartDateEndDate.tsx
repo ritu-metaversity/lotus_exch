@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC, SetStateAction } from "react";
 import React from "react";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
@@ -6,17 +6,28 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./CustomDatePicker.scss";
 import { Box, Button, Typography } from "@mui/material";
 import { IoSearchSharp } from "react-icons/io5";
+import type { Dispatch } from "@reduxjs/toolkit";
+interface Props{
+    setData: any,
+    date:any,
+    handleSearch: () => void
+}
 
-const StartDateEndDate: FC = () => {
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
+const StartDateEndDate: FC<Props> = ({setData, date, handleSearch}) => {
+    // const [dateRange, setDateRange] = useState({
+    //     startDate: new Date(),
+    //     endDate: new Date(),
+    //   });
 
     return (
         <Box sx={{ display: "flex", marginTop:"5px"}}>
             <Box sx={{ marginRight: "20px" }}>
                 <Typography sx={{ marginBottom: "10px" }}>From</Typography>
                 <DatePicker
-                    selected={startDate}
-                    onChange={(date: Date | null) => setStartDate(date)}
+                    selected={date?.startDate}
+                    onChange={(date) =>
+                        setData((prev) => ({ ...prev, startDate: date || new Date() }))
+                      }
                     dateFormat="dd/mm/yyyy"
                     className="custom-datepicker"
                 />
@@ -24,8 +35,10 @@ const StartDateEndDate: FC = () => {
             <Box sx={{ marginRight: "20px" }}>
                 <Typography sx={{ marginBottom: "10px" }}>To</Typography>
                 <DatePicker
-                    selected={startDate}
-                    onChange={(date: Date | null) => setStartDate(date)}
+                    selected={date?.endDate}
+                    onChange={(date) =>
+                        setData((prev) => ({ ...prev, endDate: date || new Date() }))
+                      }
                     dateFormat="dd/mm/yyyy"
                     className="custom-datepicker"
                 />
@@ -50,6 +63,7 @@ const StartDateEndDate: FC = () => {
                             backgroundColor: "#ffc629",
                         }
                     }}
+                    onClick={handleSearch}
                 >
                     <IoSearchSharp style={{
                         fontSize: "15px"

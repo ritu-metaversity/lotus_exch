@@ -17,19 +17,9 @@ const HomeMobile = () => {
   
     matches?.forEach((match) => {
       const sportName = match.sportname;
-      // const seriesName = match.seriesname;
-  
-      // Initialize the sport if it doesn't exist
       if (!groupedMatches[sportName]) {
         groupedMatches[sportName] = [];
-      }
-  
-      // Initialize the series if it doesn't exist within the sport
-      // if (!groupedMatches[sportName][seriesName]) {
-      //   groupedMatches[sportName][seriesName] = [];
-      // }
-  
-      // Add the match to the correct sport and series group
+      }  
       groupedMatches[sportName].push({ ...match });
     });
 

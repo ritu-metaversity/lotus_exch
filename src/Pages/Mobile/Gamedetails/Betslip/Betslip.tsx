@@ -11,10 +11,11 @@ import { Flip, toast } from "react-toastify";
 import { setBetData } from "../../../../utils/slice/betSlice";
 
 interface Props{
-  betData: any
+  betData: any,
+  getBalance:any
 }
 
-const Betslip:FC<Props> = ({betData}) => {
+const Betslip:FC<Props> = ({betData, getBalance}) => {
   const [checked, setChecked] = useState(false);
   const [checkedSec, setCheckedSec] = useState(false);
   const handleChange = (nextChecked: boolean) => {
@@ -41,6 +42,7 @@ const Betslip:FC<Props> = ({betData}) => {
 
   useEffect(() => {
     if (betPlace?.status) {
+      getBalance()
       toast.success(betPlace?.message, {
         position: "top-center",
         autoClose: 5000,
@@ -66,7 +68,7 @@ const Betslip:FC<Props> = ({betData}) => {
         transition: Flip,
       });
     }
-  }, [betPlace]);
+  }, [betPlace, getBalance]);
 
 
   return (

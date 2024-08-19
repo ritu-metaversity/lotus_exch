@@ -189,3 +189,12 @@
 .cricket_status_lable{
     width: 100% !important;
 }
+
+.-status.suspended, .-status.ball-running {
+    color: #1e3f5a;
+    background: rgba(30, 63, 90, 0.1);
+    .status-label {
+        text-align: center;
+        width: 383px;
+    }
+}

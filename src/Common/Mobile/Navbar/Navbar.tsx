@@ -27,9 +27,10 @@ interface Props {
   handleDrawerOpen: () => void;
   handleDrawerClose: () => void;
   handleDrawerOpenRight: () => void
+  userData: User
 }
 
-const Navbar: FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRight, openRight }) => {
+const Navbar: FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRight, openRight, userData }) => {
   const [locationData, setLocationData] = useState(null);
   const isSmallScreen = useMediaQuery("(max-width:1000px)");
 
@@ -150,7 +151,7 @@ const Navbar: FC<Props> = ({ openApp, handleDrawerOpen,handleDrawerOpenRight, op
               fontWeight:600
              }}>
              <PersonIcon /> 
-             <span> {loginData?.data?.loginData?.user?.balance}</span>
+             <span> {userData?.balance}</span>
              </Typography>
             </Button>   }
           </Box>

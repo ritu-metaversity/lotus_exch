@@ -3,10 +3,11 @@ import React from 'react'
 import Account from '../../../../Common/Desktop/SideDesk/Account/Account'
 
 interface Props{
-  name:string
+  name:string,
+  userData:User
 }
 
-const HeadingCasinoCesk:FC<Props> = ({name}) => {
+const HeadingCasinoCesk:FC<Props> = ({name, userData}) => {
   return (
     <div className="title-wrap">
       <h1>
@@ -14,7 +15,7 @@ const HeadingCasinoCesk:FC<Props> = ({name}) => {
       </h1>
       <div className='account-overview-wrap'>
 
-        <Account />
+        <Account userData={userData}/>
       </div>
     </div>
   )

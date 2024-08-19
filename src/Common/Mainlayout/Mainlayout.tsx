@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import "./style.scss";
@@ -62,8 +62,11 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
+interface Props{
+  userData: User
+}
 
-const Mainlayout = () => {
+const Mainlayout:FC<Props> = ({userData}) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [openRight, setOpenRight] = React.useState(false);
@@ -94,6 +97,7 @@ const Mainlayout = () => {
           handleDrawerClose={handleDrawerClose}
           handleDrawerOpenRight={handleDrawerOpenRight}
           openRight={openRight}
+          userData={userData}
         />
       }
       <Sidebar
@@ -107,6 +111,7 @@ const Mainlayout = () => {
         handleDrawerClose={handleDrawerClose}
         theme={theme}
         drawerWidth={drawerWidth}
+        userData={userData}
       />
       {openRight ? (
         <Main

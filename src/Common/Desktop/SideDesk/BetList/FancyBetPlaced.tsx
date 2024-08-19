@@ -1,37 +1,40 @@
 import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 import "./style.scss";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { useDispatch } from "react-redux";
 import { setBetData } from "../../../../utils/slice/betSlice";
-import {  useGetFancyPlacedMutation } from "../../../../utils/Services/authService/sportApi";
+import { useGetFancyPlacedMutation } from "../../../../utils/Services/authService/sportApi";
 import { Flip, toast } from "react-toastify";
 import { setFancyBetData } from "../../../../utils/slice/fancySlice";
 
 
-interface Props{
-  betData: any
+interface Props {
+  betData: any,
+  trigger: any
 }
 
-const FancyBetPlaced:FC<Props> = ({betData}) => {
+const FancyBetPlaced: FC<Props> = ({ betData, trigger }) => {
   const dispatch = useDispatch();
-  const [GetbetPlace, {data:betPlace, isLoading}]= useGetFancyPlacedMutation()
+  const [GetbetPlace, { data: betPlace, isLoading }] = useGetFancyPlacedMutation()
   const [stack, setStack] = useState(null)
 
-  const handleStackValue = (val:number)=>{
+  const handleStackValue = (val: number) => {
     setStack(val)
   }
 
 
   console.log(betData, "betDatabetDatabetData")
 
-  const handleBetPlace = (e)=>{
+  const handleBetPlace = (e) => {
     e.preventDefault();
-    GetbetPlace({...betData, stake:stack})
+    GetbetPlace({ ...betData, stake: stack })
 
   }
 
   useEffect(() => {
     if (betPlace?.status) {
+      trigger();
       toast.success(betPlace?.message, {
         position: "top-center",
         autoClose: 5000,
@@ -43,7 +46,7 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
         theme: "colored",
         transition: Flip,
       });
-    }else{
+    } else {
       toast.error(betPlace?.message, {
         position: "top-center",
         autoClose: 5000,
@@ -56,7 +59,7 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
         transition: Flip,
       });
     }
-  }, [betPlace]);
+  }, [betPlace, trigger]);
 
   return (
     <form
@@ -67,15 +70,15 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
         <div className="betslipContent">
           <ul
             className="fail-messages generic-error "
-           
+
           ></ul>
           <div
-            
+
           >
-            <h6 className={`bet-type-info  ${betData?.isBack == 0?"back":"lay"}`}>{betData?.isBack == 0?"Back":"Lay"}</h6>
+            <h6 className={`bet-type-info  ${betData?.isBack == 0 ? "back" : "lay"}`}>{betData?.isBack == 0 ? "Back" : "Lay"}</h6>
             <ul className="market-list">
               <li
-                
+
                 ng-repeat="event in bets[side + 's'].collection | orderMap:'updatedAt':'desc'"
               >
                 <a className="event-name" href="#/display/EVENT/4/33455059">
@@ -85,7 +88,7 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
                 </a>
                 <ul className="bets-list">
                   <li >
-                    <div className={`bet ${betData?.isBack == 0?"back":"lay"}`}>
+                    <div className={`bet ${betData?.isBack == 0 ? "back" : "lay"}`}>
                       <div className="bet-header">
                         <div className="section-name-label ">
                           <span className="selection-name  ">
@@ -121,9 +124,9 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
                               step="0.01"
                               type="text"
                               value={stack}
-                              onChange={(e)=>setStack(e.target.value)}
+                              onChange={(e) => setStack(e.target.value)}
                             />
-                           
+
                             <div className="betslip__placeholder-label  ">
                               Stake
                             </div>
@@ -144,13 +147,13 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
                           </button>
                         </div>
                       </div>
-                    
+
                       <div className="six-stakes back">
                         <div className="first-row">
                           <button
                             className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={()=>handleStackValue(100)}
+                            onClick={() => handleStackValue(100)}
 
                           >
                             100
@@ -158,21 +161,21 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
                           <button
                             className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={()=>handleStackValue(500)}
+                            onClick={() => handleStackValue(500)}
                           >
                             +500
                           </button>
                           <button
                             className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={()=>handleStackValue(1000)}
+                            onClick={() => handleStackValue(1000)}
                           >
                             +1,000
                           </button>
                           <button
                             className="apl-btn apl-btn-secondary-alt"
                             type="button"
-                            onClick={()=>handleStackValue(betData?.maxStack)}
+                            onClick={() => handleStackValue(betData?.maxStack)}
                           >
                             MAX
                           </button>
@@ -181,34 +184,34 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
                           <button
                             className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={()=>handleStackValue(2000)}
+                            onClick={() => handleStackValue(2000)}
                           >
                             +2,000
                           </button>
                           <button
                             className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={()=>handleStackValue(5000)}
+                            onClick={() => handleStackValue(5000)}
                           >
                             +5,000
                           </button>
                           <button
                             className="apl-btn apl-btn-secondary-alt  "
                             type="button"
-                            onClick={()=>handleStackValue(10000)}
+                            onClick={() => handleStackValue(10000)}
                           >
                             +10,000
                           </button>
                           <button
                             className="clear_btn"
                             type="button"
-                            onClick={()=>handleStackValue(0)}
+                            onClick={() => handleStackValue(0)}
                           >
                             Clear
                           </button>
                         </div>
                       </div>
-                      
+
                     </div>
                   </li>
                 </ul>
@@ -217,10 +220,10 @@ const FancyBetPlaced:FC<Props> = ({betData}) => {
           </div>
           <p className="summary-info ">Liability: 0.00</p>
           <div className="summary-buttons _align-right ">
-            <button className={stack>0?"btn_placebet":"btn_btn_primary"} onClick={(e)=>handleBetPlace(e)}>
+            <button className={stack > 0 ? "btn_placebet" : "btn_btn_primary"} onClick={(e) => handleBetPlace(e)}>
               Place bets
             </button>
-            <button className="apl-btn-remove" type="button" onClick={()=>dispatch(setFancyBetData(null))}>
+            <button className="apl-btn-remove" type="button" onClick={() => dispatch(setFancyBetData(null))}>
               Remove All
             </button>
           </div>

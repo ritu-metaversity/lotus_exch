@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import React from "react";
 import SideDesk from "../../SideDesk/SideDesk";
 import RightSide from "../../SideDesk/RightSide";
@@ -9,7 +10,12 @@ import FooterDesk from "../../Footer/FooterDesk";
 import { useSelector } from "react-redux";
 import { loginSelector } from "../../../../utils/slice/loginSlice";
 
-const DeskMainLayout = () => {
+interface Props{
+  userData: User,
+  trigger:any
+}
+
+const DeskMainLayout:FC<Props> = ({userData, trigger}) => {
   const { pathname } = useLocation();
 
   const isHome = pathname.includes("home");
@@ -39,7 +45,7 @@ const DeskMainLayout = () => {
         </div>
         {!isCasinoOrSettings && !isHome && loginData?.isLogin && (
           <div className="right-pane">
-            <RightSide />
+            <RightSide userData={userData} trigger={trigger}/>
           </div>
         )}
       </div>

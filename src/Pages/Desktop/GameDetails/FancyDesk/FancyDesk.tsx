@@ -76,7 +76,6 @@ const FancyDesk: FC<Props> = ({
                     mergedData
                       .filter((item: any) => item.in_priority === value)
                       .map((item: any) => {
-                        console.log(item, "itemitemitemitem")
                         return (
                           <tr>
                             <td className="market-name">
@@ -106,6 +105,11 @@ const FancyDesk: FC<Props> = ({
                                           className="odds-placeholder"
                                           colSpan={2}
                                         ></td>
+                                        {/* <td colSpan={2} className={`-status  suspended`} >
+                                          <div className="status-label " >
+                                            suspended
+                                          </div>
+                                        </td> */}
                                         <td className="lay show-size">
                                           <div className="bet-button-wrapper" onClick={() =>
                                             moduleFancyOpenHandler(

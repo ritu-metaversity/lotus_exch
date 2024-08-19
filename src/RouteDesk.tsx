@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -14,12 +15,9 @@ import Genie from "./Pages/Mobile/Sports/Genie/Genie";
 import LiveCasino from "./Pages/Mobile/Casino/LiveCasino/LiveCasino";
 import LiveCasinoDesk from "./Pages/Desktop/LiveCasinoDesk/LiveCasinoDesk";
 import GameDetailsDesk from "./Pages/Desktop/GameDetails/GameDetailsDesk";
-import FootballDesk from "./Pages/Desktop/SportDesk/FootballDesk";
 import HorseRacingDesk from "./Pages/Desktop/SportDesk/HorseRacingDesk/HorseRacingDesk";
 
-import crickt from './img/cricket.png';
 import football from './img/football.png';
-import tenis from './img/tennis-ball.png';
 import basktball from './img/basketball.png';
 import golf from './img/golf-ball.png';
 import horse from './img/horse-head.png';
@@ -42,10 +40,22 @@ import AccountStatementDesk from "./Pages/Desktop/AccountStatement/AccountStatem
 import TransferStatementDesk from "./Pages/Desktop/TransferStatement/TransferStatementDesk";
 import SecurityDesk from "./Pages/Desktop/Security/SecurityDesk";
 import SettingsDesk from "./Pages/Desktop/Settings/SettingsDesk";
+import { useGetUseDataMutation } from "./utils/Services/authService/sportApi";
+import type { MutationTrigger } from "@reduxjs/toolkit/dist/query/react/buildHooks";
+import type { BaseQueryFn, FetchBaseQueryError, MutationDefinition } from "@reduxjs/toolkit/query";
 
-const MobileRoutes = () => (
+interface Props {
+  userData: User,
+  trigger: MutationTrigger<MutationDefinition<void, BaseQueryFn<string | {
+    url: string;
+    method: string;
+    body?: any;
+}, unknown, FetchBaseQueryError>, never, userDataResponse, "sportApi">>
+}
+
+const MobileRoutes: FC<Props> = ({ userData, trigger }) => (
   <Routes>
-    <Route path="/m" element={<Mainlayout />}>
+    <Route path="/m" element={<Mainlayout userData={userData}/>}>
       <Route path="" element={<HomeMobile />} />
       <Route path="sport/:id" element={<Sports />} />
       {/* <Route path="sport/football" element={<Sports icon={football} name="Football" />} /> */}
@@ -57,7 +67,7 @@ const MobileRoutes = () => (
       <Route path="sport/esport" element={<Sports icon={esport} name="E-Sport" />} />
       <Route path="sport/genie" element={<Genie icon={football} name="Football" genieIcon={genies} />} />
       <Route path="casino/super-casino/tab" element={<LiveCasino />} />
-      <Route path="sport/:id/:matchId" element={<Gamedetails />} />
+      <Route path="sport/:id/:matchId" element={<Gamedetails trigger={trigger}/>} />
       <Route path="settings" element={<SettingsMob />} />
       <Route path="open-bets" element={<CurrentBetMob />} />
       <Route path="betting-pnl" element={<ProfitandLossMob />} />
@@ -73,40 +83,48 @@ const MobileRoutes = () => (
   </Routes>
 );
 
-const DesktopRoutes = () => (
+const DesktopRoutes: FC<Props> = ({ userData,  trigger}) => (
   <Routes>
-    <Route path="/d" element={<DeskMainLayout />}>
+    <Route path="/d" element={<DeskMainLayout userData={userData} trigger={trigger}/>}>
       <Route path="home" element={<HomeDesk />} />
       <Route path="sport/:id" element={<LiveUpcomingEvent />} />
       {/* <Route path="sport/:id" element={<FootballDesk />} /> */}
       <Route path="horseracing/:id" element={<HorseRacingDesk />} />
-      <Route path="super-casino" element={<LiveCasinoDesk />} />
+      <Route path="super-casino" element={<LiveCasinoDesk userData={userData}/>} />
       <Route path="display/EVENT/:id/:matchedId" element={<GameDetailsDesk />} />
-      <Route path="display/EVENT/:id/:matchedId" element={<GameDetailsDesk />} />
-      <Route path="orderList" element={<OrderList />} />
-      <Route path="betProfitLoss" element={<BettingPL />} />
-      <Route path="accountStatement" element={<AccountStatementDesk />} />
-      <Route path="transferStatement" element={<TransferStatementDesk />} />
-      <Route path="security" element={<SecurityDesk />} />
-      <Route path="settings" element={<SettingsDesk />} />
+      <Route path="orderList" element={<OrderList userData={userData}/>} />
+      <Route path="betProfitLoss" element={<BettingPL userData={userData}/>} />
+      <Route path="accountStatement" element={<AccountStatementDesk userData={userData}/>} />
+      <Route path="transferStatement" element={<TransferStatementDesk userData={userData}/>} />
+      <Route path="security" element={<SecurityDesk userData={userData}/>} />
+      <Route path="settings" element={<SettingsDesk userData={userData}/>} />
     </Route>
-    <Route path="*" element={<DeskMainLayout />} />
+    <Route path="*" element={<DeskMainLayout userData={userData} trigger={trigger}/>} />
   </Routes>
 );
 
 const AppRoutes = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [trigger, { data }] = useGetUseDataMutation();
+
+
+  useEffect(() => {
+    trigger();
+  }, [])
+
+
+
 
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Navigate to={windowWidth > 700 ? "/d/home" : "/m"} replace />} />
-      {windowWidth > 700 ? (
-        <Route path="*" element={<DesktopRoutes />} />
-      ) : (
-        <Route path="*" element={<MobileRoutes />} />
-      )}
-    </Routes>
+        <Route path="/" element={<Navigate to={windowWidth > 700 ? "/d/home" : "/m"} replace />} />
+        {windowWidth > 700 ? (
+          <Route path="*" element={<DesktopRoutes userData={data?.user} trigger={trigger} />} />
+        ) : (
+          <Route path="*" element={<MobileRoutes userData={data?.user} trigger={trigger}/>} />
+        )}
+      </Routes>
     </BrowserRouter>
   );
 };

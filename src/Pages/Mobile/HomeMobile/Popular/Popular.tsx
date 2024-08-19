@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
 import { selectHomeSwipe, setHomeSwipe } from "../../../../utils/slice/homeSlice";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 interface Props {
   activeData: any
 }
@@ -16,6 +17,7 @@ const Popular: FC<Props> = ({ activeData }) => {
   const isSwiped = useAppSelector(selectHomeSwipe);
   const containerRef = useRef<HTMLDivElement>(null);
   const lastTouchXRef = useRef<number | null>(null);
+  const nav = useNavigate();
 
   const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
     lastTouchXRef.current = e.touches[0].clientX;
@@ -43,6 +45,9 @@ const Popular: FC<Props> = ({ activeData }) => {
         }
       }
     }
+  };
+  const handleNav = (id:any, matchid:any) => {
+    nav(`/m/sport/${id}/${matchid}`);
   };
   return (
     <section className="section popular in-play">
@@ -121,7 +126,7 @@ const Popular: FC<Props> = ({ activeData }) => {
                                                 </div>
                                               </div>
                                             </div>
-                                            <div className="competitors">
+                                            <div className="competitors" onClick={()=>handleNav(matches?.sportid, matches?.matchid)}>
                                               <div className="width-wrapper">
                                                 <div className="line">
                                                   <div className="name">{matches?.matchName}</div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import { useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import "./LiveUpcoming.scss";
@@ -46,6 +47,8 @@ const LiveUpcomingEvent = () => {
     setActiveData(groupedMatches);
   }, [data]);
 
+
+
   return (
     <>
       {
@@ -69,7 +72,7 @@ const LiveUpcomingEvent = () => {
                   </thead>
                   <tbody>
                     {activeData[matchName]?.map((items, index) => {
-                      
+
                       const date = moment(items?.MstDate).local();
 
                       let formattedDate = date.format("DD/MM/YYYY HH:mm");
@@ -101,72 +104,78 @@ const LiveUpcomingEvent = () => {
                             </Box>
                           </td>
 
-                          <td colSpan={6} className="inner-table-container ">
-                            <table className="inner-table">
-                              <tbody>
-                                {items?.data !== null ? (
-                                  <tr>
-                                    <td className="back">
-                                      <Box className="bet-button-wrapper">
-                                        <strong className="odds ng-binding">
-                                          {items?.data?.rc[0]?.batb[0][1]}
-                                        </strong>
-                                        <Box className="size">
-                                          <span className="ng-binding"></span>
+                          {
+                            items?.data?.marketDefinition?.status !== "OPEN" &&  items?.data?.marketDefinition?.status !== undefined ? <td colSpan={6} className={`-status  ${items?.data?.marketDefinition?.status?.toLowerCase()}`} >
+                              <div className="status-label " >
+                                {items?.data?.marketDefinition?.status}
+                              </div>
+                            </td> : <td colSpan={6} className="inner-table-container ">
+                              <table className="inner-table">
+                                <tbody>
+                                  {items?.data !== null ? (
+                                    <tr>
+                                      <td className="back">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[0]?.batb[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
                                         </Box>
-                                      </Box>
-                                    </td>
-                                    <td className="lay">
-                                      <Box className="bet-button-wrapper">
-                                        <strong className="odds ng-binding">
-                                          {items?.data?.rc[0]?.batl[0][1]}
-                                        </strong>
-                                        <Box className="size">
-                                          <span className="ng-binding"></span>
+                                      </td>
+                                      <td className="lay">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[0]?.batl[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
                                         </Box>
-                                      </Box>
-                                    </td>
+                                      </td>
 
-                                    
-                                    <td className="back">
-                                      <Box className="bet-button-wrapper">
-                                        <strong className="odds ng-binding">
-                                          {items?.data?.rc[1]?.batb[0][1]}
-                                        </strong>
-                                        <Box className="size">
-                                          <span className="ng-binding"></span>
+
+                                      <td className="back">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[1]?.batb[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
                                         </Box>
-                                      </Box>
-                                    </td>
-                                    <td className="lay">
-                                      <Box className="bet-button-wrapper">
-                                        <strong className="odds ng-binding">
-                                          {items?.data?.rc[1]?.batl[0][1]}
-                                        </strong>
-                                        <Box className="size">
-                                          <span className="ng-binding"></span>
+                                      </td>
+                                      <td className="lay">
+                                        <Box className="bet-button-wrapper">
+                                          <strong className="odds ng-binding">
+                                            {items?.data?.rc[1]?.batl[0][1]}
+                                          </strong>
+                                          <Box className="size">
+                                            <span className="ng-binding"></span>
+                                          </Box>
                                         </Box>
-                                      </Box>
-                                    </td>
-                                  </tr>
-                                ) : (
-                                  <tr className="-status more">
-                                    <Link
-                                      className="status-label status-label-more back"
-                                      to="#/display/EVENT/4/9.33076_1"
-                                    >
-                                      <span className="status-label-more-text">
-                                        See more markets
-                                      </span>
-                                      <RiArrowRightSLine
-                                        style={{ fontSize: "22px" }}
-                                      />
-                                    </Link>
-                                  </tr>
-                                )}
-                              </tbody>
-                            </table>
-                          </td>
+                                      </td>
+                                    </tr>
+                                  ) : (
+                                    <tr className="-status more">
+                                      <Link
+                                        className="status-label status-label-more back"
+                                        to="#/display/EVENT/4/9.33076_1"
+                                      >
+                                        <span className="status-label-more-text">
+                                          See more markets
+                                        </span>
+                                        <RiArrowRightSLine
+                                          style={{ fontSize: "22px" }}
+                                        />
+                                      </Link>
+                                    </tr>
+                                  )}
+                                </tbody>
+                              </table>
+                            </td>
+                          }
                         </tr>
                       );
                     })}
@@ -230,93 +239,100 @@ const LiveUpcomingEvent = () => {
                                 </Box>
                               </Box>
                             </td>
+                            {
+                              items?.data?.marketDefinition?.status !== "OPEN" &&  items?.data?.marketDefinition?.status !== undefined ? <td colSpan={6} className={`-status  ${items?.data?.marketDefinition?.status?.toLowerCase()}`} >
+                                <div className="status-label " >
+                                  {items?.data?.marketDefinition?.status}
+                                </div>
+                              </td> : <td colSpan={6} className="inner-table-container ">
+                                <table className="inner-table">
+                                  <tbody>
+                                    {items?.data !== null ? (
+                                      <tr>
+                                        <td className="back">
+                                          <Box className="bet-button-wrapper">
+                                            <strong className="odds ng-binding">
+                                              {items?.data?.rc[0]?.batb[0][1]}
+                                            </strong>
+                                            <Box className="size">
+                                              <span className="ng-binding"></span>
+                                            </Box>
+                                          </Box>
+                                        </td>
+                                        <td className="lay">
+                                          <Box className="bet-button-wrapper">
+                                            <strong className="odds ng-binding">
+                                              {items?.data?.rc[0]?.batl[0][1]}
+                                            </strong>
+                                            <Box className="size">
+                                              <span className="ng-binding"></span>
+                                            </Box>
+                                          </Box>
+                                        </td>
 
-                            <td colSpan={6} className="inner-table-container ">
-                              <table className="inner-table">
-                                <tbody>
-                                  {items?.data !== null ? (
-                                    <tr>
-                                      <td className="back">
-                                        <Box className="bet-button-wrapper">
-                                          <strong className="odds ng-binding">
-                                            {items?.data?.rc[0]?.batb[0][1]}
-                                          </strong>
-                                          <Box className="size">
-                                            <span className="ng-binding"></span>
+                                        <td className="empty betting-disabled">
+                                          <Box className="bet-button-wrapper">
+                                            <strong className="odds ng-binding">
+                                              -
+                                            </strong>
+                                            <Box className="size">
+                                              <span className="ng-binding"></span>
+                                            </Box>
                                           </Box>
-                                        </Box>
-                                      </td>
-                                      <td className="lay">
-                                        <Box className="bet-button-wrapper">
-                                          <strong className="odds ng-binding">
-                                            {items?.data?.rc[0]?.batl[0][1]}
-                                          </strong>
-                                          <Box className="size">
-                                            <span className="ng-binding"></span>
+                                        </td>
+                                        <td className="empty betting-disabled">
+                                          <Box className="bet-button-wrapper">
+                                            <strong className="odds ng-binding">
+                                              -
+                                            </strong>
+                                            <Box className="size">
+                                              <span className="ng-binding"></span>
+                                            </Box>
                                           </Box>
-                                        </Box>
-                                      </td>
+                                        </td>
 
-                                      <td className="empty betting-disabled">
-                                        <Box className="bet-button-wrapper">
-                                          <strong className="odds ng-binding">
-                                            -
-                                          </strong>
-                                          <Box className="size">
-                                            <span className="ng-binding"></span>
+                                        <td className="back">
+                                          <Box className="bet-button-wrapper">
+                                            <strong className="odds ng-binding">
+                                              {items?.data?.rc[1]?.batb[0][1]}
+                                            </strong>
+                                            <Box className="size">
+                                              <span className="ng-binding"></span>
+                                            </Box>
                                           </Box>
-                                        </Box>
-                                      </td>
-                                      <td className="empty betting-disabled">
-                                        <Box className="bet-button-wrapper">
-                                          <strong className="odds ng-binding">
-                                            -
-                                          </strong>
-                                          <Box className="size">
-                                            <span className="ng-binding"></span>
+                                        </td>
+                                        <td className="lay">
+                                          <Box className="bet-button-wrapper">
+                                            <strong className="odds ng-binding">
+                                              {items?.data?.rc[1]?.batl[0][1]}
+                                            </strong>
+                                            <Box className="size">
+                                              <span className="ng-binding"></span>
+                                            </Box>
                                           </Box>
-                                        </Box>
-                                      </td>
+                                        </td>
+                                      </tr>
+                                    ) : (
+                                      <tr className="-status more">
+                                        <Link
+                                          className="status-label status-label-more back"
+                                          to="#/display/EVENT/4/9.33076_1"
+                                        >
+                                          <span className="status-label-more-text">
+                                            See more markets
+                                          </span>
+                                          <RiArrowRightSLine
+                                            style={{ fontSize: "22px" }}
+                                          />
+                                        </Link>
+                                      </tr>
+                                    )}
+                                  </tbody>
+                                </table>
+                              </td>
+                            }
 
-                                      <td className="back">
-                                        <Box className="bet-button-wrapper">
-                                          <strong className="odds ng-binding">
-                                            {items?.data?.rc[1]?.batb[0][1]}
-                                          </strong>
-                                          <Box className="size">
-                                            <span className="ng-binding"></span>
-                                          </Box>
-                                        </Box>
-                                      </td>
-                                      <td className="lay">
-                                        <Box className="bet-button-wrapper">
-                                          <strong className="odds ng-binding">
-                                            {items?.data?.rc[1]?.batl[0][1]}
-                                          </strong>
-                                          <Box className="size">
-                                            <span className="ng-binding"></span>
-                                          </Box>
-                                        </Box>
-                                      </td>
-                                    </tr>
-                                  ) : (
-                                    <tr className="-status more">
-                                      <Link
-                                        className="status-label status-label-more back"
-                                        to="#/display/EVENT/4/9.33076_1"
-                                      >
-                                        <span className="status-label-more-text">
-                                          See more markets
-                                        </span>
-                                        <RiArrowRightSLine
-                                          style={{ fontSize: "22px" }}
-                                        />
-                                      </Link>
-                                    </tr>
-                                  )}
-                                </tbody>
-                              </table>
-                            </td>
+
                           </tr>
                         );
                       })}

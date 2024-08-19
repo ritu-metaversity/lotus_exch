@@ -134,13 +134,15 @@ interface Props {
 // Main component
 const LiveMobile: FC<Props> = ({ activeData }) => {
   const nav = useNavigate();
-  const handleNav = () => {
-    nav("/m/sport/4/e/33450249");
+
+  const handleNav = (id:any, matchid:any) => {
+    nav(`/m/sport/${id}/${matchid}`);
   };
 
   const MarketItem = ({ date, competitors, odds }: any) => {
+    console.log(date, "datedatedatedate")
     return (
-      <div className="market-list-item" onClick={handleNav}>
+      <div className="market-list-item" onClick={()=>handleNav(date?.sportid, date?.matchid)}>
         <div className="market">
           <EventInfo date={date?.MstDate} matchName={date} competitors={competitors} />
           <Odds date={date} />

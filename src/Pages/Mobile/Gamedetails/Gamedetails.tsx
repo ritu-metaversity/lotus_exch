@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import HeadingGame from "./GameHeading/HeadingGame";
 import SportTabs from "./SportTabs/SportTabs";
 import Matchodds from "./Matchodds/Matchodds";
@@ -17,8 +17,18 @@ import {
 import { loginSelector } from "../../../utils/slice/loginSlice";
 import { socket } from "../../Desktop/GameDetails/socket";
 import { useParams } from "react-router-dom";
+import type { MutationTrigger } from "@reduxjs/toolkit/dist/query/react/buildHooks";
+import type { BaseQueryFn, FetchBaseQueryError, MutationDefinition } from "@reduxjs/toolkit/query";
 
-const Gamedetails = () => {
+interface Props{
+  trigger:MutationTrigger<MutationDefinition<void, BaseQueryFn<string | {
+    url: string;
+    method: string;
+    body?: any;
+}, unknown, FetchBaseQueryError>, never, userDataResponse, "sportApi">>
+}
+
+const Gamedetails:FC<Props> = ({trigger}) => {
   const [value, setValue] = React.useState("one");
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -236,8 +246,12 @@ const Gamedetails = () => {
           sportId={id}
           bets={betDetails?.data}
           moduleOpenHandler={moduleOpenHandler}
+          getBalance={trigger}
         />
-        <Fancy />
+        <Fancy fancyData={fancyData}
+          fancyDataTabs={fancyMarket}
+          bets={betDetails?.data}
+          moduleFancyOpenHandler={moduleFancyOpenHandler}/>
       </Box>
     </Box>
   );

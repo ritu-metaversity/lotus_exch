@@ -1,13 +1,15 @@
+import type { FC } from "react";
 import React from "react";
 import HeadingCasinoCesk from "../LiveCasinoDesk/HeadingCasinoCesk/HeadingCasinoCesk";
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import './style.scss'
+import type { Props } from "../orderList/OrderList";
 
-const SecurityDesk = () => {
+const SecurityDesk:FC<Props> = ({userData}) => {
   return (
     <div className="app-casino-main">
-      <HeadingCasinoCesk name="Security" />
+      <HeadingCasinoCesk name="Security" userData={userData}/>
       <Box sx={{ height: "99px" }}>
         <Typography sx={{
           fontSize: "16px",

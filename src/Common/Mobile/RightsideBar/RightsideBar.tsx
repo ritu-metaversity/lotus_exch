@@ -29,6 +29,7 @@ interface Props {
   drawerWidth: number;
   handleDrawerClose: () => void;
   theme: Theme;
+  userData: User
 }
 
 const menuItems = [
@@ -51,6 +52,7 @@ const RightsideBar: FC<Props> = ({
   drawerWidth,
   handleDrawerClose,
   theme,
+  userData
 }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const nav  = useNavigate();
@@ -153,7 +155,7 @@ const RightsideBar: FC<Props> = ({
                     fontFamily: "Lato, sans-serif",
                   }}
                 >
-                  <strong>{loginData?.data?.loginData?.user?.balance}</strong>
+                  <strong>{userData?.balance}</strong>
                 </Typography>
               </Box>
 
@@ -207,11 +209,11 @@ const RightsideBar: FC<Props> = ({
                   sx={{
                     textAlign: "right",
                     fontSize: "14px",
-                    color: loginData?.data?.loginData?.user?.profit_loss>0?"green":"red",
+                    color:   Number(userData?.profit_loss) > 0?"green":"red",
                     fontFamily: "Lato, sans-serif",
                   }}
                 >
-                  <strong>{loginData?.data?.loginData?.user?.profit_loss}</strong>
+                  <strong>{userData?.profit_loss}</strong>
                 </Typography>
               </Box>
               <Box
@@ -238,7 +240,7 @@ const RightsideBar: FC<Props> = ({
                     fontFamily: "Lato, sans-serif",
                   }}
                 >
-                  <strong>{loginData?.data?.loginData?.user?.liability}</strong>
+                  <strong>{userData?.liability}</strong>
                 </Typography>
               </Box>
             </div>

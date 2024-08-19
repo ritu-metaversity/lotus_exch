@@ -15,7 +15,7 @@ import { betSelector } from "../../../../utils/slice/betSlice";
 import { fancySelector } from "../../../../utils/slice/fancySlice";
 import FancyBetPlaced from "./FancyBetPlaced";
 
-const BetList = () => {
+const BetList = ({trigger}:any) => {
   const [active, setActive] = useState<number>(0);
   const betData = useSelector(betSelector);
   const fancyData = useSelector(fancySelector);
@@ -75,7 +75,6 @@ const BetList = () => {
     </Box>
   );
 
-  console.log(betData?.selectionId  == 0 , fancyData?.selectionId?.length == 0, "fancyData?.selectionId?.length")
   return (
     <div className="bet-manager">
       <h4 className="bet_slip_heading">Betslip</h4>
@@ -108,10 +107,10 @@ const BetList = () => {
               <div className="empty-list-info ng-scope">
                 
                 {
-                  betData?.selectionId > 0 ?<BetplacedDesk betData={betData}/>:""
+                  betData?.selectionId > 0 ?<BetplacedDesk betData={betData} trigger={trigger}/>:""
                 }
                 {
-                  fancyData?.selectionId?.length !== 0 ?<FancyBetPlaced betData={fancyData}/>:""
+                  fancyData?.selectionId?.length !== 0 ?<FancyBetPlaced betData={fancyData} trigger={trigger}/>:""
                 }
                 {
                   (betData?.selectionId  == 0 && fancyData?.selectionId?.length == 0) && "Click on the odds to add selections to the betslip."
@@ -198,6 +197,8 @@ const BetList = () => {
           </Box>
         </>
       )}
+
+
     </div>
   );
 };

@@ -41,8 +41,8 @@ const MatchedOddsDesk: FC<Props> = ({
           runners: extractedRunners,
           market_name: item?.market_name,
           marketid: item?.marketid,
-          minStack:item?.min_stack,
-          maxStack:item?.max_stack
+          minStack: item?.min_stack,
+          maxStack: item?.max_stack
         };
       });
       setMatchedRunners(processedData);
@@ -180,6 +180,8 @@ const MatchedOddsDesk: FC<Props> = ({
                     (resp) => resp?.id == res?.id,
                   );
 
+
+
                   return (
                     <tr ng-repeat="runner in vm.market.runners | orderBy: 'sort' track by runner.id">
                       <td className="event-row -with-pnl">
@@ -199,22 +201,59 @@ const MatchedOddsDesk: FC<Props> = ({
                           </div>
                         </Box>
                       </td>
-                      {res?.batb
-                        ?.map((items, index) => {
+                      {matches?.marketDefinition?.status !== "OPEN" ?
+                      <td colSpan={6} className={`-status  ${matches?.marketDefinition?.status?.toLowerCase()}`} >
+                        <div className="status-label " >
+                          {matches?.marketDefinition?.status}
+                        </div>
+                      </td> : <>
+                        {res?.batb
+                          ?.map((items, index) => {
+                            return (
+                              <td
+                                className={`back ${index == 0 ? "" : "unhighlighted"} show-size`}
+                                onClick={() =>
+                                  moduleOpenHandler(
+                                    0,
+                                    matches.marketid,
+                                    matches.matchName,
+                                    matchName[0]?.name,
+                                    items[1],
+                                    res?.id?.toString(),
+                                    matches.matchid,
+                                    matches.minStack,
+                                    matches.maxStack,
+                                  )
+                                }
+                              >
+                                <div className="bet-button-wrapper">
+                                  <strong className="odds ng-binding">
+                                    {items[1]}
+                                  </strong>
+                                  <div className="size">
+                                    <span className="ng-binding">{items[2]}</span>
+                                  </div>
+                                </div>
+                              </td>
+                            );
+                          })
+                          .reverse()}
+                        {res?.batl?.map((items, index) => {
                           return (
                             <td
-                              className={`back ${index == 0 ? "" : "unhighlighted"} show-size`}
+                              className={`lay ${index == 0 ? "" : "unhighlighted"} show-size`}
                               onClick={() =>
                                 moduleOpenHandler(
-                                  0,
+                                  1,
                                   matches.marketid,
                                   matches.matchName,
                                   matchName[0]?.name,
                                   items[1],
                                   res?.id?.toString(),
                                   matches.matchid,
-                                  matches.minStack,
-                                  matches.maxStack,
+                                  matches.SportId,
+                                  matches?.minStack,
+                                  matches?.maxStack
                                 )
                               }
                             >
@@ -228,38 +267,9 @@ const MatchedOddsDesk: FC<Props> = ({
                               </div>
                             </td>
                           );
-                        })
-                        .reverse()}
-                      {res?.batl?.map((items, index) => {
-                        return (
-                          <td
-                            className={`lay ${index == 0 ? "" : "unhighlighted"} show-size`}
-                            onClick={() =>
-                              moduleOpenHandler(
-                                1,
-                                matches.marketid,
-                                matches.matchName,
-                                matchName[0]?.name,
-                                items[1],
-                                res?.id?.toString(),
-                                matches.matchid,
-                                matches.SportId,
-                                matches?.minStack,
-                                matches?.maxStack
-                              )
-                            }
-                          >
-                            <div className="bet-button-wrapper">
-                              <strong className="odds ng-binding">
-                                {items[1]}
-                              </strong>
-                              <div className="size">
-                                <span className="ng-binding">{items[2]}</span>
-                              </div>
-                            </div>
-                          </td>
-                        );
-                      })}
+                        })}
+                      </>}
+
                     </tr>
                   );
                 },

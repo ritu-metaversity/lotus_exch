@@ -5,9 +5,10 @@ import "./style.scss";
 
 interface Props {
   pastActive: number;
+  betHistory: betHistory[]
 }
 
-const OrderListData: FC<Props> = ({ pastActive }) => {
+const OrderListData: FC<Props> = ({ pastActive, betHistory }) => {
   return (
     <Box>
       <table className="listing order_list">
@@ -44,6 +45,29 @@ const OrderListData: FC<Props> = ({ pastActive }) => {
           </tr>
         </thead>
         <tbody>
+          {
+            betHistory?.map((items)=>{
+              console.log(items, "itemsitemsitemsitems")
+              return(
+                <tr>
+                  <td style={{textAlign:"center"}}>{items?.MstDate}</td>
+                  <td style={{textAlign:"center"}}>{items?.Description}</td>
+                  <td style={{textAlign:"center"}}>{items?.Type}</td>
+                  <td style={{textAlign:"right"}}>{items?.Odds}</td>
+                  <td style={{textAlign:"right"}}>{items?.Stack}</td>
+                  {
+                    pastActive === 0 &&<td style={{textAlign:"right"}}>{items?.Liability}</td>
+                  }
+                  
+                  <td style={{textAlign:"right"}}>{items?.P_L}</td>
+                  {
+                    pastActive === 1 &&  <td style={{textAlign:"center"}}>{items?.STATUS}</td>
+                  }
+                 
+                </tr>
+              )
+            })
+          }
         </tbody>
       </table>
     </Box>

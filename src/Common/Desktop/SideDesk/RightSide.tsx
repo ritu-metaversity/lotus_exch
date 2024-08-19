@@ -1,17 +1,23 @@
 import ClickBetting from "./clickBetting/ClickBetting";
 import BetList from "./BetList/BetList";
 import Account from "./Account/Account";
+import type { FC } from "react";
 import React from "react";
 
-const RightSide = () => {
+interface Props{
+  userData: User,
+  trigger:any
+}
+
+const RightSide:FC<Props> = ({userData, trigger}) => {
   return (
     <>
       <div className="isolate-scope">
-        <Account />
+        <Account userData={userData}/>
       </div>
       <div className="inner-right-pane-placeholder ng-hide" >
       <ClickBetting />
-      <BetList />
+      <BetList trigger={trigger}/>
       </div>
     </>
   );

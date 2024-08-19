@@ -75,7 +75,7 @@ function LoginModals({ handleClose, locationData }: Props) {
       dispatch(setLoginData({ loginData, isLogin: true }))
       if(isMobile){
 
-        nav('sport/inplay-upcoming');
+        nav('/m/');
       }else{
         nav('/d/home');
       }
@@ -85,7 +85,7 @@ function LoginModals({ handleClose, locationData }: Props) {
 
 
   return (
-    <Box sx={{ ...style, width: isMobile ? "71%" : 375 }}>
+    <Box sx={{ ...style, width: isMobile ? "94%" : 375 }}>
       <form onSubmit={handleSubmit} noValidate className="login-form">
         <Close onClick={handleClose} sx={{
           position: "absolute",

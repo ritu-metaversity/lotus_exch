@@ -16,13 +16,15 @@ interface Props {
   state: any;
   marketData: any;
   sportId: string;
+  getBalance:any
 }
 
 const Matchodds: FC<Props> = ({ bets,
   moduleOpenHandler,
   state,
   marketData,
-  sportId }) => {
+  sportId,
+  getBalance }) => {
   const [mergeData, setMergeData] = useState<any[]>([]);
   const [matchedRunners, setMatchedRunners] = useState<any[]>([]);
 
@@ -251,7 +253,7 @@ const Matchodds: FC<Props> = ({ bets,
                                 </div>
                               </div>
                               {
-                                betData?.selectionId == res?.id?.toString()  && <Betslip betData={betData}/>
+                                betData?.selectionId == res?.id?.toString()  && <Betslip betData={betData} getBalance={getBalance}/>
                               }
                               
                             </Box>

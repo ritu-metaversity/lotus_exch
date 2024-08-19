@@ -1,8 +1,13 @@
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
+import type { FC } from 'react';
 import React from 'react'
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-const Account = () => {
+interface Props{
+  userData: User
+}
+
+const Account:FC<Props> = ({userData}) => {
   return (
     <div className="account-overview">
           <Accordion
@@ -23,7 +28,7 @@ const Account = () => {
                 "& .MuiAccordionSummary-content": {margin: "5px 0px !important",display: "block",textAlign: "center"},
               }}
             >
-              <strong>Available Credit:</strong> <span>61.10</span>
+              <strong>Available Credit:</strong> <span>{userData?.balance}</span>
             </AccordionSummary>
             <AccordionDetails
               sx={{
@@ -36,15 +41,15 @@ const Account = () => {
               <ul className="list-wrap">
                 <li>
                   <strong>Credit Limit:</strong>
-                  506.00
+                  0
                 </li>
                 <li>
                   <strong>Winnings:</strong>
-                  <span className="negative">-444.90</span>
+                  <span className="negative">{userData?.profit_loss}</span>
                 </li>
                 <li>
                   <strong>Total Net Exposure:</strong>
-                  <span>0.00</span>
+                  <span>{userData?.liability}</span>
                 </li>
               </ul>
             </AccordionDetails>

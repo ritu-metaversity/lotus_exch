@@ -131,10 +131,13 @@
 .stroke-group{
   .nav-tabs-group-container{
     margin-bottom: 8px;
-    border-bottom: 1px solid #666666;
+    
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
+    .nav-tab{
+      border-bottom: 1px solid #666666;
+    }
   }
   .nav-tab.active{
     border-bottom: 3px solid #000000;
