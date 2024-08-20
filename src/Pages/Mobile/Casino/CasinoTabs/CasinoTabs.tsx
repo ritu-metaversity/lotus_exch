@@ -1,6 +1,9 @@
 import { Box } from '@mui/material';
-import React, { useState } from 'react';
+import type { Dispatch, FC, SetStateAction} from 'react';
+import  React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import type { GameCategory } from '../LiveCasino/LiveCasino';
 
 const tabData = [
   { name: 'All', image: '/imges/all.png' },
@@ -16,8 +19,15 @@ const tabData = [
   { name: 'Exchange', image: '/imges/exchange.png' },
 ];
 
-const CasinoTabs = () => {
-    const [value, setValue] = useState<number>(0);
+
+interface Props{
+  setValue: Dispatch<SetStateAction<number>>,
+  value:number,
+  casinoData: GameCategory
+}
+
+
+const CasinoTabs:FC<Props> = ({setValue, value, casinoData}) => {
 
     const handleActiveClass = (val:number)=>{
         setValue(val);
@@ -36,6 +46,17 @@ const CasinoTabs = () => {
             </div>
           </Link>
         ))}
+
+        {
+          Object.keys(casinoData)?.map((item)=>{
+            const data = tabData.filter((res)=>res?.name.toLowerCase() == item.toLowerCase());
+            return(
+              <>
+              </>
+            )
+          })
+        }
+
       </div>
     </Box>
   );

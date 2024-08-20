@@ -1,27 +1,30 @@
 interface ImportMetaEnv {
-    readonly VITE_BASE_URL: string;
-  }
-  
-  interface ImportMeta {
-    readonly env: ImportMetaEnv;
-  }
-  
-  interface LoginRequestBody {
-    username: string;
-    password: string;
-    device_info: string;
-    browser_info: string;
-    dom: string;
-    city: string;
-    region: string;
-    org: string;
-  }
-  
-  interface LoginResponse {
-    token: string;
-    user: User;
-    domain: Domain;
-  }
+  readonly VITE_BASE_URL: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+interface LoginRequestBody {
+  username: string;
+  password: string;
+  device_info: string;
+  browser_info: string;
+  dom: string;
+  city: string;
+  region: string;
+  org: string;
+}
+
+interface LoginResponse {
+  token: string;
+  user: User;
+  domain: Domain;
+}
+interface LooutResponse {
+  message: string;
+}
 interface Domain {
   id: number;
   name: string;
@@ -88,4 +91,15 @@ interface User {
   parentIds: number[];
   singleDealer: boolean;
 }
-  
+
+
+
+
+interface ChangePasswordReq {
+  Renewpassword: string,
+  newpassword: string,
+  old_password: string
+}
+
+
+interface ChangePasswordRes { message: string, status: boolean }

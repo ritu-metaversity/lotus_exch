@@ -7,6 +7,7 @@ import betData from '../slice/betSlice'
 import fancyBetData from '../slice/fancySlice'
 import { sportApi } from "../Services/authService/sportApi"
 import { setupListeners } from "@reduxjs/toolkit/query"
+import { casinoServices } from "../Services/authService/casinoServices"
 
 export const store = configureStore({
 	reducer: {
@@ -17,11 +18,13 @@ export const store = configureStore({
 		betData,
 		[authApi.reducerPath]: authApi.reducer,
 		[sportApi.reducerPath]: sportApi.reducer,
+		[casinoServices.reducerPath]: casinoServices.reducer,
 	},
 	middleware: defaultMiddleware =>
 		defaultMiddleware()
 			.concat(authApi.middleware)
 			.concat(sportApi.middleware)
+			.concat(casinoServices.middleware)
 })
 
 setupListeners(store.dispatch);

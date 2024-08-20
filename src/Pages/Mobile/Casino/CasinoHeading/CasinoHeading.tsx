@@ -1,8 +1,14 @@
 import { Box } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import type { FC } from "react";
+import React from "react";
 
-const CasinoHeading = () => {
+interface Props{
+  type:number
+}
+
+const CasinoHeading:FC<Props> = ({type}) => {
   const nav = useNavigate();
   const handleClick = ()=>{
     nav('/m')
@@ -21,7 +27,8 @@ const CasinoHeading = () => {
           </div>
         </nav>
       </Box>
-      <Box className="header-game-mobile ng-star-inserted">
+      {
+        type == 0? <Box className="header-game-mobile ng-star-inserted">
         <div
           className="top-game ng-star-inserted"
           style={{
@@ -29,7 +36,9 @@ const CasinoHeading = () => {
               'url("https://d2eb1cys5jgnub.cloudfront.net/cl/Evolution-b.webp")',
           }}
         />
-      </Box>
+      </Box>:""
+      }
+      
     </>
   );
 };

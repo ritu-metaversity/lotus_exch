@@ -81,6 +81,11 @@
   }
   .save_btn {
     background: #000000;
+    color: #ffffff; 
+    &:hover{
+      background: #000000;
+      color: #ffffff; 
+    }
   }
   button[disabled],
   .button[disabled]:focus,

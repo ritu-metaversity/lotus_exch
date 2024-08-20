@@ -13,7 +13,15 @@ export const authApi = createApi({
         body,
       }),
     }),
+    getlogOut: build.mutation<LooutResponse, void>({
+      query: (body) => ({
+        url: "api/logout",
+        method: "Get",
+        body,
+      }),
+    }),
+    
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useGetlogOutMutation } = authApi;

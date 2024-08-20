@@ -6,6 +6,7 @@ import MidBannerSlider from "./MidBannerSlider/MidBannerSlider";
 import Popular from "./Popular/Popular";
 import { useGetDashboardDataQuery } from "../../../utils/Services/authService/sportApi";
 
+
 const HomeMobile = () => {
   const [activeData, setActiveData] = useState<any>({})
   const { data: dashBoardData } = useGetDashboardDataQuery("");

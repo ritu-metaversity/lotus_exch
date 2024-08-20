@@ -78,6 +78,13 @@ export const sportApi = createApi({
         body
       }),
     }),
+    getChangePassword: build.mutation<ChangePasswordRes, ChangePasswordReq>({
+      query: (body) => ({
+        url: "api/changePassword",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -91,5 +98,6 @@ export const {
   useGetUseDataMutation,
   useGetAccontStatementMutation, 
   useGetProfitLossMutation,
-  useGetBetHistoryMutation
+  useGetBetHistoryMutation,
+  useGetChangePasswordMutation
 } = sportApi;

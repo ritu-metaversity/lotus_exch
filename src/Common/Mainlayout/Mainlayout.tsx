@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import "./style.scss";
@@ -7,7 +7,7 @@ import MuiAppBar from "@mui/material/AppBar";
 
 import Sidebar from "../Mobile/Sidebar/Sidebar";
 import Navbar from "../Mobile/Navbar/Navbar";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import RightsideBar from "../Mobile/RightsideBar/RightsideBar";
 
 const drawerWidth = 260;
@@ -70,6 +70,13 @@ const Mainlayout:FC<Props> = ({userData}) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [openRight, setOpenRight] = React.useState(false);
+  const token = localStorage.getItem("token");
+  const nav = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      nav('/m/')
+    }
+  }, [token])
 
   const {pathname} = useLocation()
 

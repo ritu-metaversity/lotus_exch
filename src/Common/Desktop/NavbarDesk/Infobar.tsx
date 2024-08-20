@@ -1,10 +1,13 @@
 import { Box } from "@mui/material";
 import type { FC } from "react";
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
+import { useGetlogOutMutation } from "../../../utils/Services/authService/authApi";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../utils/slice/loginSlice";
 
 interface Props{
   loginData: any
@@ -14,6 +17,10 @@ const Infobar:FC<Props> = ({loginData}) => {
   const [active, setActive] = useState(false);
   const [focus, setFocus] = useState(false);
   const dropdownRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const [getLogOut] = useGetlogOutMutation();
+  const nav = useNavigate();
 
   const toggleActive = () => setActive((prev) => !prev);
   const closeDropdown = () => setActive(false);
@@ -32,6 +39,13 @@ const Infobar:FC<Props> = ({loginData}) => {
     };
   }, []);
 
+
+  const handleLogout = ()=>{
+    getLogOut();
+    localStorage.clear();
+    dispatch(logout())
+    nav('/d/home')
+  }
 
 
   return (
@@ -91,7 +105,7 @@ const Infobar:FC<Props> = ({loginData}) => {
         </li>
 
         <li>
-          <Link to="#" className="qa-logout">
+          <Link to="#" className="qa-logout" onClick={handleLogout}>
             <LogoutIcon sx={{ verticalAlign: "middle" }} />
             <span>Logout</span>
           </Link>

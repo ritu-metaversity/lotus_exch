@@ -66,7 +66,9 @@ const MobileRoutes: FC<Props> = ({ userData, trigger }) => (
       <Route path="sport/greyhound" element={<Horseracing icon={grey} name="Greyhound Racing" />} />
       <Route path="sport/esport" element={<Sports icon={esport} name="E-Sport" />} />
       <Route path="sport/genie" element={<Genie icon={football} name="Football" genieIcon={genies} />} />
-      <Route path="casino/super-casino/tab" element={<LiveCasino />} />
+      
+      <Route path="casino/super-casino/tab" element={<LiveCasino type={0}/>} />
+     
       <Route path="sport/:id/:matchId" element={<Gamedetails trigger={trigger}/>} />
       <Route path="settings" element={<SettingsMob />} />
       <Route path="open-bets" element={<CurrentBetMob />} />
@@ -79,7 +81,8 @@ const MobileRoutes: FC<Props> = ({ userData, trigger }) => (
       <Route path="responsible-gambling" element={<ResponsibleGamblingMob />} />
       <Route path="exclusion-policy" element={<ExclusionpolicyMob />} />
     </Route>
-    <Route path="*" element={<Mainlayout />} />
+    <Route path="/dreamCasino/game/:id" element={<LiveCasino type={1} />} />
+    <Route path="*" element={<Mainlayout userData={userData}/>} />
   </Routes>
 );
 
@@ -99,6 +102,7 @@ const DesktopRoutes: FC<Props> = ({ userData,  trigger}) => (
       <Route path="security" element={<SecurityDesk userData={userData}/>} />
       <Route path="settings" element={<SettingsDesk userData={userData}/>} />
     </Route>
+    <Route path="/dreamCasino/game/:id" element={<LiveCasino type={1} />} />
     <Route path="*" element={<DeskMainLayout userData={userData} trigger={trigger}/>} />
   </Routes>
 );
@@ -107,10 +111,13 @@ const AppRoutes = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [trigger, { data }] = useGetUseDataMutation();
 
+  
+
 
   useEffect(() => {
     trigger();
   }, [])
+  
 
 
 

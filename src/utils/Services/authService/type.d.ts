@@ -242,3 +242,39 @@ interface betHistory {
   STATUS: string;
   sportName: string;
 }
+
+
+
+
+
+
+interface CasinoResponse {
+  data: Casino[];
+}
+
+interface Casino {
+  game_id: string;
+  game_name: string;
+  category: string;
+  provider_name: string;
+  sub_provider_name: string;
+  status: string;
+  url_thumb: string;
+  game_code: string;
+  product: string;
+}
+
+
+interface GmeUrlReq{
+  desktop:boolean,
+  game_code:string,
+  lobby_url:string
+}
+interface GmeUrlRes{
+  data:GmeUrl,
+}
+
+
+interface GmeUrl {
+  url: string;
+}

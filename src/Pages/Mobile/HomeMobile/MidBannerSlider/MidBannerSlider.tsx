@@ -10,55 +10,73 @@ import img8 from "../../../../img/tab_icon_9.webp";
 import img9 from "../../../../img/tab_icon_16.webp";
 import img10 from "../../../../img/tab_icon_10.webp";
 import img11 from "../../../../img/tab_icon_11.webp";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const bannerName = [
   {
     name: "Evolution",
     image: img1,
+    code:"evo_topcardlobby"
   },
   {
     name: "Roulette",
     image: img2,
+    code:""
   },
   {
     name: "Baccarat",
     image: img3,
+    code:""
   },
   {
     name: "Instant Games",
     image: img4,
+    code:""
   },
   {
     name: "Dragon Tiger",
     image: img5,
+    code:""
   },
   {
     name: "Blackjack",
     image: img6,
+    code:""
   },
   {
     name: "Teen Patti",
     image: img7,
+    code:""
   },
   {
     name: "Indian Games",
     image: img8,
+    code:""
   },
   {
     name: "Board Games",
     image: img9,
+    code:""
   },
   {
     name: "Slots",
     image: img10,
+    code:""
   },
   {
     name: "Exchange",
     image: img11,
+    code:""
   },
 ];
 
 const MidBannerSlider = () => {
+  const nav = useNavigate()
+
+  const handleCasinoRoute=(val:string)=>{
+    nav(`/dreamCasino/game/${val}`)
+  }
   return (
     <section className="mid-banner-slider">
       <div>
@@ -67,7 +85,7 @@ const MidBannerSlider = () => {
             <div className="banners">
               {bannerName.map((banner) => {
                 return (
-                    <div className="main_content">
+                    <div className="main_content" onClick={()=>handleCasinoRoute(banner?.code)}>
                   <div className="content-box">
                     <img alt={banner?.name} src={banner?.image} />
                     <div className="title">{banner?.name} </div>

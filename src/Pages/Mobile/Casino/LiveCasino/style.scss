@@ -174,3 +174,18 @@
     }
   }
 }
+
+
+
+.games-container{
+  height: calc(100vh - 40px);
+  width: 100%;
+  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  iframe{
+    height: 100%;
+    width: 100%;
+  }
+}
