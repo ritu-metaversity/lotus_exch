@@ -43,7 +43,7 @@ export const dynamicBaseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBas
     if (status === 400) {
       const errorData = result.error.data;
       if (isErrorResponse(errorData)) {
-        toast.success(errorData.message, {
+        toast.error(errorData.message, {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,

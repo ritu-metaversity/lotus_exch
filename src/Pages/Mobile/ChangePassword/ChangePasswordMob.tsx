@@ -157,7 +157,6 @@ const ChangePasswordMob = () => {
     }, [changePasswordData, error])
 
 
-    console.log(changePasswordData, error, "changePasswordchangePasswordchangePassword")
 
     return (
         <>

@@ -32,7 +32,6 @@ const OrderList: FC<Props> = ({ userData }) => {
   }
 
 
-console.log(pastActive, "pastActivepastActive")
 
   return (
     <div className="app-casino-main">

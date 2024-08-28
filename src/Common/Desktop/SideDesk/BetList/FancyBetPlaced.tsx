@@ -24,7 +24,6 @@ const FancyBetPlaced: FC<Props> = ({ betData, trigger }) => {
   }
 
 
-  console.log(betData, "betDatabetDatabetData")
 
   const handleBetPlace = (e) => {
     e.preventDefault();

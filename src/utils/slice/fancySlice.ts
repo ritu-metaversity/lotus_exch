@@ -6,7 +6,7 @@ const fancySlice = createSlice({
     initialState: {
         price: 0,
         side: 0,
-        isBack: 0,
+        isBack: null,
         typeId: 0,
         matchId: 0,
         marketId: "",

@@ -180,7 +180,11 @@ const MatchedOddsDesk: FC<Props> = ({
                     (resp) => resp?.id == res?.id,
                   );
 
-                  console.log(res?.batb || res?.batl, "dsvdfsgsgsdfgdfgfdsgd");
+                  const suspendes =matches?.marketDefinition?.runners?.find(
+                    (runner) => runner?.id === res?.id
+                  );
+
+
                   return (
                     <tr ng-repeat="runner in vm.market.runners | orderBy: 'sort' track by runner.id">
                       <td className="event-row -with-pnl">
@@ -200,13 +204,13 @@ const MatchedOddsDesk: FC<Props> = ({
                           </div>
                         </Box>
                       </td>
-                      {matches?.marketDefinition?.status !== "OPEN" && res?.batb !== undefined && res?.batl !== undefined  ? (
+                      {suspendes?.status === "SUSPENDED"  ? (
                         <td
                           colSpan={6}
-                          className={`-status  ${matches?.marketDefinition?.status?.toLowerCase()}`}
+                          className={`-status  ${suspendes?.status?.toLowerCase()}`}
                         >
                           <div className="status-label ">
-                            {matches?.marketDefinition?.status}
+                            {suspendes?.status}
                           </div>
                         </td>
                       ) : (

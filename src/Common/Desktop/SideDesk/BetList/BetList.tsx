@@ -24,7 +24,6 @@ const BetList = ({trigger}:any) => {
     setActive(val);
   };
 
-  // console.log(fancyData?.selectionId?.length, "fancyDatafancyDatafancyDatafancyData")
 
   const AccordionSection = ({
     title,

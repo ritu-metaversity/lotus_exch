@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-restricted-imports */
 import { Box } from "@mui/material";
 import video from '../../../../img/videoplay.png'
 import zero from '../../../../img/zero.png'
@@ -5,6 +6,9 @@ import stopwatch from '../../../../img/stop_watch.png'
 import type { FC } from "react";
 import React, { useEffect, useState } from "react";
 import useBooks from "../../../Desktop/GameDetails/FancyDesk/UseBook";
+import { useSelector } from "react-redux";
+import { fancySelector } from "../../../../utils/slice/fancySlice";
+import FancyBetSlip from "./FancyBetSlip";
 
 
 interface Props {
@@ -22,10 +26,13 @@ const Fancy: FC<Props> = ({
 }) => {
   const [value, setValue] = useState<number>(1);
   const [mergedData, setMergedData] = useState<any[]>([]);
+  const fancyBet = useSelector(fancySelector);
 
   const handleChange = (newValue: number) => {
     setValue(newValue);
   };
+
+
   useEffect(() => {
     if (fancyData && fancyDataTabs) {
       const merged = fancyData.map((item2: any) => {
@@ -108,84 +115,98 @@ const Fancy: FC<Props> = ({
                           <div className="odds market-odds">
                             <div className="odds-wrap">
                               <Box>
-                                <div className="market-odds__container line-market">
-                                  <Box className="not-selected more-odds">
-                                    <div className="bet-button disabled back"></div>
-                                  </Box>
+                                {
+                                  item?.GameStatus === "SUSPENDED" || item?.GameStatus === "Result Awaiting" ? <div className="suspended ng-star-inserted">
+                                    <div className="inner">SUSPENDED</div>
+                                  </div> :
 
-                                  <Box className="not-selected more-odds">
-                                    <div className="bet-button disabled back"></div>
-                                  </Box>
+                                    <div className="market-odds__container line-market">
+                                      <Box className="not-selected more-odds">
+                                        <div className="bet-button disabled back"></div>
+                                      </Box>
 
-                                  <Box className="not-selected" onClick={() =>
-                                    moduleFancyOpenHandler(
-                                      item?.BackPrice1,
-                                      item?.TypeID,
-                                      item.MatchID,
-                                      item?.ID,
-                                      item.SelectionId,
-                                      item.HeadName,
-                                      item.SessInptYes,
-                                      item.SessInptNo,
-                                      item?.SprtId,
-                                      item?.pointDiff,
-                                      item?.YesValume,
-                                      item?.NoValume,
-                                      0,
-                                      true,
-                                      item?.min_stack,
-                                      item?.max_stack,
-                                      0
-                                    )
-                                  }>
-                                    <div className="bet-button back">
-                                      <div className="price">{item?.BackPrice1}</div>
+                                      <Box className="not-selected more-odds">
+                                        <div className="bet-button disabled back"></div>
+                                      </Box>
 
-                                      <div className="price">{item?.BackSize1}</div>
+                                      <Box className={fancyBet?.isBack == 0?"selected":"not-selected"} onClick={() =>
+                                        moduleFancyOpenHandler(
+                                          item?.BackPrice1,
+                                          item?.TypeID,
+                                          item.MatchID,
+                                          item?.ID,
+                                          item.SelectionId,
+                                          item.HeadName,
+                                          item.SessInptYes,
+                                          item.SessInptNo,
+                                          item?.SprtId,
+                                          item?.pointDiff,
+                                          item?.YesValume,
+                                          item?.NoValume,
+                                          0,
+                                          true,
+                                          item?.min_stack,
+                                          item?.max_stack,
+                                          0
+                                        )
+                                      }>
+                                        <div className="bet-button back">
+                                          <div className="price">{item?.BackPrice1}</div>
+
+                                          <div className="price">{item?.BackSize1}</div>
+                                        </div>
+                                      </Box>
+
+                                      <Box className={fancyBet?.isBack == 1 ?"selected":"not-selected"} onClick={() =>
+                                        moduleFancyOpenHandler(
+                                          item?.LayPrice1,
+                                          item?.TypeID,
+                                          item.MatchID,
+                                          item?.ID,
+                                          item.SelectionId,
+                                          item.HeadName,
+                                          item.SessInptYes,
+                                          item.SessInptNo,
+                                          item?.SprtId,
+                                          item?.pointDiff,
+                                          item?.YesValume,
+                                          item?.NoValume,
+                                          0,
+                                          true,
+                                          item?.min_stack,
+                                          item?.max_stack,
+                                          1
+                                        )
+                                      }>
+                                        <div className="bet-button lay">
+                                          <div className="price">{item?.LayPrice1}</div>
+
+                                          <div className="price">{item?.LaySize1}</div>
+                                        </div>
+                                      </Box>
+
+                                      <Box className="not-selected more-odds">
+                                        <div className="bet-button disabled lay"></div>
+                                      </Box>
+
+                                      <Box className="not-selected more-odds">
+                                        <div className="bet-button disabled lay"></div>
+                                      </Box>
                                     </div>
-                                  </Box>
+                                }
 
-                                  <Box className="not-selected" onClick={() =>
-                                    moduleFancyOpenHandler(
-                                      item?.LayPrice1,
-                                      item?.TypeID,
-                                      item.MatchID,
-                                      item?.ID,
-                                      item.SelectionId,
-                                      item.HeadName,
-                                      item.SessInptYes,
-                                      item.SessInptNo,
-                                      item?.SprtId,
-                                      item?.pointDiff,
-                                      item?.YesValume,
-                                      item?.NoValume,
-                                      0,
-                                      true,
-                                      item?.min_stack,
-                                      item?.max_stack,
-                                      1
-                                    )
-                                  }>
-                                    <div className="bet-button lay">
-                                      <div className="price">{item?.LayPrice1}</div>
-
-                                      <div className="price">{item?.LaySize1}</div>
-                                    </div>
-                                  </Box>
-
-                                  <Box className="not-selected more-odds">
-                                    <div className="bet-button disabled lay"></div>
-                                  </Box>
-
-                                  <Box className="not-selected more-odds">
-                                    <div className="bet-button disabled lay"></div>
-                                  </Box>
-                                </div>
                               </Box>
                             </div>
                           </div>
                         </div>
                       </Box>
+                      
+                      {
+                        item?.SelectionId === fancyBet?.selectionId && <FancyBetSlip betData={fancyBet}
+                        // getBalance={getBalance} 
+                        />
+                      }
+
                     </Box>)
                   })
               }

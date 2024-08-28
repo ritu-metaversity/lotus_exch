@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-restricted-imports */
 import { Box } from "@mui/material";
-import video from '../../../../img/videoplay.png'
-import zero from '../../../../img/zero.png'
-import stopwatch from '../../../../img/stop_watch.png'
+import video from "../../../../img/videoplay.png";
+import zero from "../../../../img/zero.png";
+import stopwatch from "../../../../img/stop_watch.png";
 import "./style.scss";
 import Betslip from "../Betslip/Betslip";
 import type { FC } from "react";
@@ -16,15 +16,17 @@ interface Props {
   state: any;
   marketData: any;
   sportId: string;
-  getBalance:any
+  getBalance: any;
 }
 
-const Matchodds: FC<Props> = ({ bets,
+const Matchodds: FC<Props> = ({
+  bets,
   moduleOpenHandler,
   state,
   marketData,
   sportId,
-  getBalance }) => {
+  getBalance,
+}) => {
   const [mergeData, setMergeData] = useState<any[]>([]);
   const [matchedRunners, setMatchedRunners] = useState<any[]>([]);
 
@@ -46,7 +48,7 @@ const Matchodds: FC<Props> = ({ bets,
           market_name: item?.market_name,
           marketid: item?.marketid,
           minStack: item?.min_stack,
-          maxStack: item?.max_stack
+          maxStack: item?.max_stack,
         };
       });
       setMatchedRunners(processedData);
@@ -109,170 +111,172 @@ const Matchodds: FC<Props> = ({ bets,
 
   const betData = useSelector(betSelector);
 
-
   return (
     <div className="market-group">
-      {
-        (mergeData?.length == 0 ? matchedRunners : mergeData)?.map((matches) => {
-          return (
-            <Box>
-              <section className="market-list-item">
-                <div className="heading">
-                  <div className="title">
-                    <div className="header">{matches?.market_name}</div>
-                    <Box className="icon_box">
-                      <p className="block"></p>
+      {(mergeData?.length == 0 ? matchedRunners : mergeData)?.map((matches) => {
+        return (
+          <Box>
+            <section className="market-list-item">
+              <div className="heading">
+                <div className="title">
+                  <div className="header">{matches?.market_name}</div>
+                  <Box className="icon_box">
+                    <p className="block"></p>
 
-                      <p className="block">
-                        <img src={video} alt="video player" width={"25px"} />
-                      </p>
+                    <p className="block">
+                      <img src={video} alt="video player" width={"25px"} />
+                    </p>
 
-                      <p className="block">
-                        <img src={stopwatch} alt="stop watch" width={"25px"} />
+                    <p className="block">
+                      <img src={stopwatch} alt="stop watch" width={"25px"} />
+                    </p>
 
-                      </p>
-
-                      <p className="block">
-                        <img src={zero} alt="zero" width={"25px"} />
-                      </p>
-                    </Box>
-                  </div>
-                  <div className="right-title-box">
-                    <div className="markets__action">Back</div>
-                    <div className="markets__action">Lay</div>
-                  </div>
-                </div>
-
-                <div className="list-body distinct market-wrap">
-                  <Box className="list-item">
-                    {
-                      (matches?.rc == undefined ? matches?.runners : matches?.rc)?.map(
-                        (res: any, id: number) => {
-                          // const filteredBets = bets?.filter(
-                          //   (el: any) => el?.MarketId === matches?.marketid,
-                          // );
-                          // let updatedBets = [...filteredBets];
-                          // let profitLossValue = 0;
-                          // updatedBets.forEach((b) => {
-                          //   const stack =
-                          //     b.Stack === "" ? 0 : parseFloat(b.Stack.toString());
-                          //   const pl = b.P_L === "" ? 0 : parseFloat(b.P_L.toString());
-                          //   if (b.isBack.toString() === "0") {
-                          //     if (b.SelectionId.toString() === res?.id?.toString()) {
-                          //       profitLossValue += pl;
-                          //     } else {
-                          //       profitLossValue -= stack;
-                          //     }
-                          //   } else {
-                          //     if (b.SelectionId.toString() === res?.id?.toString()) {
-                          //       profitLossValue -= pl;
-                          //     } else {
-                          //       profitLossValue += stack;
-                          //     }
-                          //   }
-                          // });
-
-                          const matchName = matches?.runners?.filter(
-                            (resp) => resp?.id == res?.id,
-                          );
-                          return (
-                            <Box sx={{
-                              border: "1px solid #f2f2f2"
-                            }}>
-                              <div className="market">
-                                <Box className="market-title">
-                                  <div className="runner-details">
-                                    <span className="runner-name">{(matchName &&
-                                      matchName[0]?.name &&
-                                      matchName[0]?.name) ||
-                                      res?.name}</span>
-
-                                    <Box className="pnl" _nghost-hos-c146="">
-                                      <span />
-                                    </Box>
-                                  </div>
-                                </Box>
-
-                                <div className="odds market-odds">
-                                  <div className="odds-wrap">
-                                    <Box className="odds-line">
-                                      <div className="market-odds__container">
-                                        {
-                                          res?.batb
-                                            ?.map((items, index) => {
-                                              // console.log(res?.id, "res?.idres?.idres?.id")
-                                              return (
-                                                <Box className={`${betData?.isBack == 0 && betData?.selectionId == res?.id ?"selected":"not-selected"} ${index !== 0?"more-odds":""}`} onClick={() =>
-                                                  moduleOpenHandler(
-                                                    0,
-                                                    matches.marketid,
-                                                    matches.matchName,
-                                                    matchName[0]?.name,
-                                                    items[1],
-                                                    res?.id?.toString(),
-                                                    matches.matchid,
-                                                    matches.minStack,
-                                                    matches.maxStack,
-                                                  )
-                                                }>
-                                                  <div className={`bet-button back ${index !==0?"disabled":""}`}>
-                                                    <div className="price"> {items[1]} </div>
-                                                  </div>
-                                                </Box>
-                                              )
-                                            }).reverse()
-                                        }
-                                        {
-                                          res?.batl
-                                            ?.map((items, index) => {
-                                              return (
-                                                <Box className={`${betData?.isBack == 1 && betData?.selectionId == res?.id?"selected":"not-selected"} ${index !== 0?"more-odds":""}`} onClick={() =>
-                                                  moduleOpenHandler(
-                                                    1,
-                                                    matches.marketid,
-                                                    matches.matchName,
-                                                    matchName[0]?.name,
-                                                    items[1],
-                                                    res?.id?.toString(),
-                                                    matches.matchid,
-                                                    matches.SportId,
-                                                    matches?.minStack,
-                                                    matches?.maxStack
-                                                  )
-                                                }>
-                                                  <div className={`bet-button lay ${index !==0?"disabled":""}`}>
-                                                    <div className="price"> {items[1]} </div>
-                                                  </div>
-                                                </Box>
-                                              )
-                                            }).reverse()
-                                        }
-                                      </div>
-                                    </Box>
-                                  </div>
-                                </div>
-                              </div>
-                              {
-                                betData?.selectionId == res?.id?.toString()  && <Betslip betData={betData} getBalance={getBalance}/>
-                              }
-                              
-                            </Box>
-                          )
-                        })
-                    }
-
-
+                    <p className="block">
+                      <img src={zero} alt="zero" width={"25px"} />
+                    </p>
                   </Box>
-
                 </div>
-              </section>
-            </Box>
-          )
-        })
-      }
+                <div className="right-title-box">
+                  <div className="markets__action">Back</div>
+                  <div className="markets__action">Lay</div>
+                </div>
+              </div>
 
+              <div className="list-body distinct market-wrap">
+                <Box className="list-item">
+                  {(matches?.rc == undefined
+                    ? matches?.runners
+                    : matches?.rc
+                  )?.map((res: any, id: number) => {
+                    // const filteredBets = bets?.filter(
+                    //   (el: any) => el?.MarketId === matches?.marketid,
+                    // );
+                    // let updatedBets = [...filteredBets];
+                    // let profitLossValue = 0;
+                    // updatedBets.forEach((b) => {
+                    //   const stack =
+                    //     b.Stack === "" ? 0 : parseFloat(b.Stack.toString());
+                    //   const pl = b.P_L === "" ? 0 : parseFloat(b.P_L.toString());
+                    //   if (b.isBack.toString() === "0") {
+                    //     if (b.SelectionId.toString() === res?.id?.toString()) {
+                    //       profitLossValue += pl;
+                    //     } else {
+                    //       profitLossValue -= stack;
+                    //     }
+                    //   } else {
+                    //     if (b.SelectionId.toString() === res?.id?.toString()) {
+                    //       profitLossValue -= pl;
+                    //     } else {
+                    //       profitLossValue += stack;
+                    //     }
+                    //   }
+                    // });
 
+                    const matchName = matches?.runners?.filter(
+                      (resp) => resp?.id == res?.id,
+                    );
+                    const suspendes = matches?.marketDefinition?.runners?.find(
+                      (runner) => runner?.id === res?.id
+                    );
+                    return (
+                      <Box
+                        sx={{
+                          border: "1px solid #f2f2f2",
+                        }}
+                      >
+                        <div className="market">
+                          <Box className="market-title">
+                            <div className="runner-details">
+                              <span className="runner-name">
+                                {(matchName &&
+                                  matchName[0]?.name &&
+                                  matchName[0]?.name) ||
+                                  res?.name}
+                              </span>
 
+                              <Box className="pnl" _nghost-hos-c146="">
+                                <span />
+                              </Box>
+                            </div>
+                          </Box>
+
+                          <div className="odds market-odds">
+                            <div className="odds-wrap">
+                              <Box className="odds-line">
+
+                                {
+                                  suspendes?.status === "SUSPENDED" ? <div className="suspended ng-star-inserted">
+                                    <div className="inner">SUSPENDED</div>
+                                  </div> : <div className="market-odds__container">
+                                    {
+                                      res?.batb
+                                        ?.map((items, index) => {
+          
+                                          return (
+                                            <Box className={`${betData?.isBack == 0 && betData?.selectionId == res?.id ? "selected" : "not-selected"} ${index !== 0 ? "more-odds" : ""}`} onClick={() =>
+                                              moduleOpenHandler(
+                                                0,
+                                                matches.marketid,
+                                                matches.matchName,
+                                                matchName[0]?.name,
+                                                items[1],
+                                                res?.id?.toString(),
+                                                matches.matchid,
+                                                matches.minStack,
+                                                matches.maxStack,
+                                              )
+                                            }>
+                                              <div className={`bet-button back ${index !== 0 ? "disabled" : ""}`}>
+                                                <div className="price"> {items[1]} </div>
+                                              </div>
+                                            </Box>
+                                          )
+                                        }).reverse()
+                                    }
+                                    {
+                                      res?.batl
+                                        ?.map((items, index) => {
+                                          return (
+                                            <Box className={`${betData?.isBack == 1 && betData?.selectionId == res?.id ? "selected" : "not-selected"} ${index !== 0 ? "more-odds" : ""}`} onClick={() =>
+                                              moduleOpenHandler(
+                                                1,
+                                                matches.marketid,
+                                                matches.matchName,
+                                                matchName[0]?.name,
+                                                items[1],
+                                                res?.id?.toString(),
+                                                matches.matchid,
+                                                matches.SportId,
+                                                matches?.minStack,
+                                                matches?.maxStack
+                                              )
+                                            }>
+                                              <div className={`bet-button lay ${index !== 0 ? "disabled" : ""}`}>
+                                                <div className="price"> {items[1]} </div>
+                                              </div>
+                                            </Box>
+                                          )
+                                        }).reverse()
+                                    }
+                                  </div>
+                                }
+
+                              </Box>
+                            </div>
+                          </div>
+                        </div>
+                        {betData?.selectionId == res?.id?.toString() && (
+                          <Betslip betData={betData} getBalance={getBalance} />
+                        )}
+                      </Box>
+                    );
+                  })}
+                </Box>
+              </div>
+            </section>
+          </Box>
+        );
+      })}
     </div>
   );
 };

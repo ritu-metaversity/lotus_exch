@@ -38,7 +38,6 @@ const LiveCasino: FC<Props> = ({ type }) => {
   const origin = window.location.href;
   const { id } = useParams()
 
-  console.log(origin, "dsgdfgdfgdfgd")
 
   const { data: casinoDataRes } = useGetCasinoDataQuery();
   const [getCasinoUrl, { data: casinoUrl }] = useGetCasinoGameUrlMutation();
@@ -72,7 +71,6 @@ const LiveCasino: FC<Props> = ({ type }) => {
     });
   }, [origin, id]);
 
-  console.log(casinoUrl?.data?.url, "Casino casinoUrlcasinoUrlcasinoUrl");
 
   return (
     <Box className="casino_live">

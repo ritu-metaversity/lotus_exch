@@ -140,7 +140,6 @@ const LiveMobile: FC<Props> = ({ activeData }) => {
   };
 
   const MarketItem = ({ date, competitors, odds }: any) => {
-    console.log(date, "datedatedatedate")
     return (
       <div className="market-list-item" onClick={()=>handleNav(date?.sportid, date?.matchid)}>
         <div className="market">

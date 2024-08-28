@@ -25,6 +25,7 @@
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.45",
     "react": "^18.2.0",
+    "react-date-range": "^2.0.1",
     "react-datepicker": "^7.3.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
