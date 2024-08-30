@@ -15,7 +15,7 @@ interface Props {
 
 const StartDateEndDate: FC<Props> = ({ setData, date, handleSearch }) => {
     return (
-        <Box sx={{ display: "flex", marginTop: "5px" }}>
+        <Box sx={{ display: "flex", marginTop: "5px" }} className="date_data">
             <Box sx={{ marginRight: "20px" }}>
                 <Typography sx={{ marginBottom: "10px" }}>From</Typography>
                 <DatePicker

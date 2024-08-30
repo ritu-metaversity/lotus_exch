@@ -19,7 +19,7 @@ const AccDataDesk: FC<Props> = ({ accData }) => {
                         <th style={{ textAlign: "left", width:"20%" }}>Date</th>
                         <th style={{ textAlign: "left" }} colSpan={2}>Description</th>
                         <th>P&L</th>
-                        <th className="numeric">Credit Limit</th>
+                        <th className="numeric" style={{whiteSpace:"nowrap"}}>Credit Limit</th>
                         <th className="numeric ">Balance</th>
                     </tr>
                 </thead>
@@ -39,11 +39,11 @@ const AccDataDesk: FC<Props> = ({ accData }) => {
                                     </tr>
                                     <tr>
                                         <td style={{color:"#909090", marginLeft:"45px"}}>{moment(items?.Sdate).format("HH:MM:SS")}</td>
-                                        <td style={{ textAlign: "left", width:"20%" }}>{desData[0]}</td>
+                                        <td style={{ textAlign: "left", width:"10%" }}>{desData[0]}</td>
                                         <td style={{ textAlign: "left" }}>{desData[1]} - {desData[2]} - {desData[3]}</td>
-                                        <td style={{ textAlign: "right" }}>0</td>
-                                        <td style={{ textAlign: "right" }}>{items?.Credit}</td>
-                                        <td style={{ textAlign: "right" }}>{items?.balance}</td>
+                                        <td style={{ textAlign: "right", color:items?.Credit>0?"green":"red", fontWeight:"600" }}>{items?.Credit}</td>
+                                        <td style={{ textAlign: "right" }}>-</td>
+                                        <td style={{ textAlign: "right", color:items?.balance>0?"green":"red", fontWeight:"600" }}>{items?.balance}</td>
                                     </tr>
                                 </>
 

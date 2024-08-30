@@ -1,18 +1,23 @@
 import { Box, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import PageHeading from '../../../Component/PageHeading'
 import { DateRangePicker } from 'react-date-range';
+import { addDays } from 'date-fns';
+import CustomDatePicker from '../../../Common/CustomDatePicker';
 
 const ProfitandLossMob = () => {
-    const handleSelect = (ranges) =>{
-        console.log(ranges);
-        // {
-        //   selection: {
-        //     startDate: [native Date Object],
-        //     endDate: [native Date Object],
-        //   }
-        // }
-      }
+    const [state, setState] = useState({
+        selection: {
+            startDate: new Date(),
+            endDate: null,
+            key: 'selection'
+        },
+        compare: {
+            startDate: new Date(),
+            endDate: addDays(new Date(), 3),
+            key: 'compare'
+        }
+    });
     return (
         <Box
             sx={{
@@ -22,10 +27,16 @@ const ProfitandLossMob = () => {
         >
             <PageHeading name="Betting Profit & Loss" />
 
-            <DateRangePicker
-                // ranges={[selectionRange]}
-                // onChange={handleSelect}
-            />
+            {/* <DateRangePicker
+                onChange={item => setState({ ...state, ...item })}
+                months={1}
+                // minDate={addDays(new Date(), -30)}
+                // maxDate={addDays(new Date(), 30)}
+                direction="vertical"
+                scroll={{ enabled: true }}
+                ranges={[state.selection, state.compare]}
+            />; */}
+            <CustomDatePicker />
             <Box className="content-open-bets " sx={{
                 pb: 3
             }}>
